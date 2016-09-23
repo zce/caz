@@ -3,8 +3,13 @@
 > 由于时间的关系，没有办法写一个完整的说明，后续配合一些视频资料，请持续关注
 
 
+<video src="./resources/video.mp4" controls="controls"></video>
 
+[演示视频](./resources/video.mp4)
 
+![演示截图](./resources/s1.gif)
+
+![演示截图](./resources/s2.gif)
 
 
 
