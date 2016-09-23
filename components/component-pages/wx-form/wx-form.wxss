@@ -1,0 +1,12 @@
+wx-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+wx-label {
+  display: block;
+  margin-top: 5px;
+}
+.picker-text {
+  margin-left: 10px;
+  position: relative;
+}

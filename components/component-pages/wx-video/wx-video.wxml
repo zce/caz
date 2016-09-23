@@ -1,0 +1,17 @@
+<view class="page">
+    <view class="page__hd">
+        <text class="page__title">video</text>
+        <text class="page__desc">视频</text>
+    </view>
+    <view class="page__bd">
+        <view class="section tc">
+            <video src="http://flv.bn.netease.com/videolib3/1605/22/auDfZ8781/HD/auDfZ8781-mobile.mp4" binderror="videoErrorCallback"></video>
+        </view>
+        <view class="section tc">
+            <video src="{{src}}"></video>
+            <view class="btn-area">
+                <button bindtap="bindButtonTap">获取视频</button>
+            </view>
+        </view>
+    </view>
+</view>

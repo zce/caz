@@ -1,0 +1,10 @@
+<view class="div-view">
+    <button type="default" bindtap="checkbox" class="index-button">checkbox</button>
+    <button type="default" bindtap="radio" class="index-button">radio</button>
+    <button type="default" bindtap="form" class="index-button">form</button>
+    <button type="default" bindtap="switch" class="index-button">switch</button>
+    <button type="default" bindtap="slider" class="index-button">slider</button>
+    <button type="default" bindtap="input" class="index-button">input</button>
+    <button type="default" bindtap="label" class="index-button">label</button>
+    <button type="default" bindtap="picker" class="index-button">picker</button>
+</view>

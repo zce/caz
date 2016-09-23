@@ -1,0 +1,22 @@
+<!-- 北美电影票房 -->
+<loading hidden="{{!loading}}">
+  加载中...
+</loading>
+<view class="page-header">
+  <text class="page-header-text">{{title}}</text>
+</view>
+<scroll-view scroll-y="true" class="page-body">
+  <navigator url="../movie/movie?id={{item.subject.id}}" wx:for="{{movies}}">
+    <view class="item">
+    <image class="poster" src="{{item.subject.images.small}}"></image>
+    <view class="meta">
+      <text class="title">{{item.subject.title}}</text>
+      <text class="sub-title">{{item.subject.original_title}}({{item.subject.year}})</text>
+      <view class="artists"><text wx:for="{{item.subject.directors}}">{{item.name}} </text></view>
+    </view>
+    <view class="rating">
+      <text>{{item.subject.rating.average}}</text>
+    </view>
+    </view>
+  </navigator>
+</scroll-view>
