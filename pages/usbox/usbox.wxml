@@ -1,5 +1,5 @@
 <!-- 北美电影票房 -->
-<loading hidden="{{!loading}}">
+<!-- <loading hidden="{{!loading}}">
   加载中...
 </loading>
 <view class="page-header">
@@ -19,4 +19,9 @@
     </view>
     </view>
   </navigator>
-</scroll-view>
+</scroll-view> -->
+<import src="../common/movie-list.wxml"/>
+<view class="page-header">
+  <text class="page-header-text">{{title}}</text>
+</view>
+<template is="movie-list" data="{{title, movies, loading}}"/>

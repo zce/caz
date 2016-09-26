@@ -6,7 +6,7 @@ const API_URL = 'https://api.douban.com/v2/movie/search'
 // 创建一个页面对象用于控制页面的逻辑
 Page({
   data: {
-    title: '请输入搜索内容',
+    title: '请在此输入搜索内容',
     movies: [],
     loading: false,
   },

@@ -1,0 +1,48 @@
+<!--
+  电影列表组件
+    供每一个列表展示的页面使用
+-->
+<import src="movie-item.wxml"/>
+
+<template name="item1">
+  <navigator url="../movie/movie?id={{item.id}}">
+    <view class="item">
+      <image class="poster" src="{{item.images.small}}"></image>
+      <view class="meta">
+        <text class="title">{{item.title}}</text>
+        <text class="sub-title">{{item.original_title}}({{item.year}})</text>
+        <view class="artists"><text wx:for="{{item.directors}}">{{item.name}} </text></view>
+      </view>
+      <view class="rating">
+        <text>{{item.rating.average}}</text>
+      </view>
+    </view>
+  </navigator>
+</template>
+
+<template name="item2">
+  <navigator url="../movie/movie?id={{item.subject.id}}">
+    <view class="item">
+      <image class="poster" src="{{item.subject.images.small}}"></image>
+      <view class="meta">
+        <text class="title">{{item.subject.title}}</text>
+        <text class="sub-title">{{item.subject.original_title}}({{item.subject.year}})</text>
+        <view class="artists"><text wx:for="{{item.subject.directors}}">{{item.name}} </text></view>
+      </view>
+      <view class="rating">
+        <text>{{item.subject.rating.average}}</text>
+      </view>
+    </view>
+  </navigator>
+</template>
+
+<template name="movie-list">
+  <scroll-view scroll-y="true" class="page-body">
+    <block wx:for="{{movies}}">
+      <template is="{{item.subject ? 'item2' : 'item1'}}" data="{{item}}"/>
+    </block>
+  </scroll-view>
+  <loading hidden="{{!loading}}">
+    加载中...
+  </loading>
+</template>
