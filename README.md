@@ -4,11 +4,26 @@
 
 > 官方文档：https://mp.weixin.qq.com/debug/wxadoc/dev/
 
+
+## 有问题？
+
+### Welcome PR or Issue or Wechat
+
+#### 微信小程序交流群
+
+![交流群](./files/qrcode.jpeg)
+
+#### 我的微信
+
+![我的微信](./files/wechat.jpeg)
+
+
+
 ## Demo 预览
 
 ![演示截图](./files/preview.gif)
 
-[演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/preview.mp4)
+[演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/files/preview.mp4)
 
 ## 使用步骤
 
@@ -153,18 +168,9 @@ App({
 ### 未完待续...
 
 
+## 恶心的地方
 
-## 有问题？
-
-### 欢迎 PR or Issue or Wechat
-
-#### 我的微信
-
-![我的微信](./files/wechat.jpeg)
-
-#### 微信小程序交流群
-
-![交流群](./files/qrcode.jpeg)
+好像没有自定义组件的机制~~
 
 
 
