@@ -19,24 +19,24 @@
     "color": "#ccc",
     "selectedColor": "#35495e",
     "borderStyle": "white",
-    "backgroundColor": "#fafafa",
+    "backgroundColor": "#f9f9f9",
     "list": [
       {
         "text": "推荐电影",
         "pagePath": "pages/featured/featured",
-        "iconPath": "images/featured.png",
-        "selectedIconPath": "images/featured-actived.png"
+        "iconPath": "images/star.png",
+        "selectedIconPath": "images/star-actived.png"
       },
       {
         "text": "北美票房",
         "pagePath": "pages/usbox/usbox",
-        "iconPath": "images/usbox.png",
-        "selectedIconPath": "images/usbox-actived.png"
+        "iconPath": "images/note.png",
+        "selectedIconPath": "images/note-actived.png"
       },
       {
         "text": "搜索",
         "pagePath": "pages/search/search",
-        "iconPath": "images/search.png",
+        "iconPath": "images/search-actived.png",
         "selectedIconPath": "images/search-actived.png"
       },
       {
