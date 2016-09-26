@@ -62,12 +62,10 @@
 
 6. 通过左下角重启按钮，刷新编码过后的预览
 
-7. `Bash`用户可以通过在项目目录下执行以下命令快速创建新组件所需文件：
+7. `Bash`用户可以通过在项目目录下执行以下命令快速创建新页面组件所需文件：
 
   ```bash
-  $ ./files/generate page <new-page-name>
-  # or
-  $ ./files/generate component <new-component-name>
+  $ ./files/generate <new-page-name>
   ```
 
 8. 剩下的可以自由发挥了
