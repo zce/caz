@@ -6,7 +6,7 @@
 
 ## Demo 预览
 
-![演示截图](./preview.gif)
+![演示截图](./files/preview.gif)
 
 [演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/preview.mp4)
 
@@ -35,24 +35,24 @@
   - 项目目录：选择刚刚克隆的文件夹
   - 点击`添加项目`
 
-  ![添加项目](./add-proj.png)
+  ![添加项目](./files/add-proj.png)
 
 4. 新年快乐，恭喜发财
 
-  ![项目预览](./main-view.png)
+  ![项目预览](./files/main-view.png)
 
 5. 你可以选择在`微信Web开放者工具`中编码（也可选择你喜欢的编辑器）
 
-  ![编码功能](./coding.png)
+  ![编码功能](./files/coding.png)
 
 6. 通过左下角重启按钮，刷新编码过后的预览
 
 7. `Bash`用户可以通过在项目目录下执行以下命令快速创建新组件所需文件：
 
   ```bash
-  $ ./generate page <new-page-name>
+  $ ./files/generate page <new-page-name>
   # or
-  $ ./generate component <new-component-name>
+  $ ./files/generate component <new-component-name>
   ```
 
 8. 剩下的可以自由发挥了
@@ -158,11 +158,17 @@ App({
 
 ### 欢迎 PR or Issue or Wechat
 
-![我的微信](./wechat.jpeg)
+#### 我的微信
+
+![我的微信](./files/wechat.jpeg)
+
+#### 微信小程序交流群
+
+![交流群](./files/qrcode.jpeg)
 
 
 
 ## LICENSE
 
-[MIT](./LICENSE)
+[MIT](./files/LICENSE)
 
