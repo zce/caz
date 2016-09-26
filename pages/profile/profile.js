@@ -4,10 +4,33 @@ Page({
   data: {
     title: 'About Me',
     userInfo: {
-      nickname: 'iceStone',
-      realname: '汪磊',
       wechat: 'WEDN-NET',
-      avatar: '../../images/wechat.jpeg'
+      nickName: 'iceStone',
+      avatarUrl: '../../images/wechat.jpeg'
     }
+  },
+
+  getUserInfo () {
+    const that = this
+    wx.getUserInfo({
+      success (res) {
+        console.log(res)
+        that.setData({ userInfo: res.userInfo })
+      }
+    })
+  },
+
+  onLoad () {
+    wx.login({
+      success (res) {
+        if (res.code) {
+          console.log('登录成功！' + res.code)
+        } else {
+          console.error('获取用户登录态失败！' + res.errMsg)
+        }
+      },
+      fail () {},
+      complete () {},
+    })
   }
 })

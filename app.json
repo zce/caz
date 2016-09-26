@@ -1,16 +1,16 @@
 {
   "pages": [
-    "pages/featured/featured",
     "pages/splash/splash",
-    "pages/movie/movie",
-    "pages/usbox/usbox",
+    "pages/board/board",
+    "pages/list/list",
+    "pages/item/item",
     "pages/search/search",
     "pages/profile/profile"
   ],
   "window": {
     "navigationBarBackgroundColor": "#35495e",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "豆瓣",
+    "navigationBarTitleText": "电影 « 豆瓣",
     "backgroundColor": "#fff",
     "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true
@@ -22,16 +22,10 @@
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "text": "推荐电影",
-        "pagePath": "pages/featured/featured",
-        "iconPath": "images/star.png",
-        "selectedIconPath": "images/star-actived.png"
-      },
-      {
-        "text": "北美票房",
-        "pagePath": "pages/usbox/usbox",
-        "iconPath": "images/note.png",
-        "selectedIconPath": "images/note-actived.png"
+        "text": "榜单",
+        "pagePath": "pages/board/board",
+        "iconPath": "images/board.png",
+        "selectedIconPath": "images/board-actived.png"
       },
       {
         "text": "搜索",

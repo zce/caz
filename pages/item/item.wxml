@@ -4,7 +4,7 @@
 </loading>
 <scroll-view scroll-y="true">
   <view class="meta">
-    <image class="poster" src="{{movie.images.large}}" background-size="cover"></image>
+    <image class="poster" src="{{movie.images.large}}" background-size="cover"/>
     <text class="title">{{movie.title}}({{movie.year}})</text>
     <text class="info">评分：{{movie.rating.average}}</text>
     <text class="info">导演：<block wx:for="{{movie.directors}}"> {{item.name}} </block></text>

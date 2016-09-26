@@ -1,7 +1,8 @@
 <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
-  <block wx:for="{{imgUrls}}">
-    <swiper-item bindtap="start">
-      <image src="{{item}}" class="slide-image"/>
+  <block wx:for="{{list}}" wx:for-index="index">
+    <swiper-item>
+      <image src="{{item.images.large}}" class="slide-image" mode="aspectFill"/>
+      <button class="btn" bindtap="start" wx:if="{{index == list.length - 1}}">立即体验</button>
     </swiper-item>
   </block>
 </swiper>

@@ -8,20 +8,24 @@
   box-sizing: border-box;
 }
 
-/**index.wxss**/
-.userinfo {
+.page-header-text {
+  font-size: 100rpx;
+  padding: 40rpx;
+}
+
+.user {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.userinfo-avatar {
+.user-avatar {
   width: 520rpx;
   height: 520rpx;
   margin: 20rpx;
 }
 
-.userinfo-nickname {
+.user-nickname {
   color: #aaa;
 }
 

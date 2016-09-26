@@ -16,6 +16,7 @@ App({
         callback(null, res.data)
       },
       fail (e) {
+        console.error(e)
         callback(e)
       }
     })

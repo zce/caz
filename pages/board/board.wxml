@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="head">
+    <text class="title">豆瓣电影榜单集合</text>
+    <text class="description">最新，最IN的影视信息收集~</text>
+  </view>
+  <view class="body">
+    <scroll-view scroll-y="true" height="100%">
+      <block wx:for="{{boards}}">
+        <navigator url="../list/list?type={{item.key}}&title={{item.name}}">
+          <view class="item">
+            <view class="item-info">
+              <text class="item-name">{{item.name}}</text>
+              <image class="item-img" src="/images/arrowright.png" mode="aspectFill" />
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </scroll-view>
+  </view>
+</view>

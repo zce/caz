@@ -1,0 +1,50 @@
+.container {
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100%;
+  font-size: 32rpx;
+}
+.head {
+  padding: 80rpx;
+  line-height: 1;
+}
+.body {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  flex: 1;
+  overflow: auto;
+}
+.title {
+  display: block;
+  font-size: 52rpx;
+}
+.description {
+  display: block;
+  margin-top: 30rpx;
+  color: #888;
+  font-size: 28rpx;
+}
+
+.item {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  background-color: #FBF9FE;
+  overflow: hidden;
+  border-radius: 4rpx;
+  cursor: pointer;
+}
+.item-info {
+  display: flex;
+  padding: 40rpx;
+  align-items: center;
+  flex-direction: row;
+}
+.item-name {
+  flex: 1;
+}
+.item-img {
+  width: 32rpx;
+  height: 32rpx;
+}

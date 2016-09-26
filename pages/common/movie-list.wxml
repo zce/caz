@@ -5,7 +5,7 @@
 <import src="movie-item.wxml"/>
 
 <template name="item1">
-  <navigator url="../movie/movie?id={{item.id}}">
+  <navigator url="../item/item?id={{item.id}}">
     <view class="item">
       <image class="poster" src="{{item.images.small}}"></image>
       <view class="meta">
@@ -21,7 +21,7 @@
 </template>
 
 <template name="item2">
-  <navigator url="../movie/movie?id={{item.subject.id}}">
+  <navigator url="../item/item?id={{item.subject.id}}">
     <view class="item">
       <image class="poster" src="{{item.subject.images.small}}"></image>
       <view class="meta">

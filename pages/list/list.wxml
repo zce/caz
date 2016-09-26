@@ -1,0 +1,6 @@
+<!-- 推荐电影 -->
+<import src="../common/movie-list.wxml"/>
+<view class="page-header">
+  <text class="page-header-text">{{subtitle}}</text>
+</view>
+<template is="movie-list" data="{{ movies, loading }}"/>
