@@ -1,9 +1,0 @@
-.flex-wrp{
-    height: 100px;
-    display:flex;
-    background-color: #FFFFFF;
-}
-.flex-item{
-    width: 100px;
-    height: 100px;
-}

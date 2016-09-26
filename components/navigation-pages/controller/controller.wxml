@@ -1,6 +1,0 @@
-<view class="div-view">
-    <button type="default" bindtap="action-sheet" class="index-button">action-sheet</button>
-    <button type="default" bindtap="button" class="index-button">button</button>
-    <button type="default" bindtap="modal" class="index-button">modal</button>
-    <button type="default" bindtap="navigator" class="index-button">navigator</button>
-</view>

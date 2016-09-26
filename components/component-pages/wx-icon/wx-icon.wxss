@@ -1,4 +1,0 @@
-.group{
-    flex-direction: row;
-    align-items: center;
-}

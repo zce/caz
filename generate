@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# $1: page / component
+# $2: name of component
+
+if [[ $1 == '' || $2 == '' ]]; then
+	echo 'usage: ./generate <command> <name>'
+else
+	mkdir $1s/$2
+	touch $1s/$2/$2.js
+	echo "$1s/$2/$2.js generated"
+	touch $1s/$2/$2.wxml
+	echo "$1s/$2/$2.wxml generated"
+	touch $1s/$2/$2.wxss
+	echo "$1s/$2/$2.wxss generated"
+	touch $1s/$2/$2.json
+	echo "$1s/$2/$2.json generated"
+fi
+

@@ -1,0 +1,34 @@
+{
+  "name": "weapp-demo",
+  "version": "0.1.0",
+  "description": "A demo application for wechat weapp runtime",
+  "main": "app.js",
+  "scripts": {
+    "generate:page": "./generate page",
+    "generate:component": "./generate component"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zce/weapp-demo.git"
+  },
+  "keywords": [
+    "weapp",
+    "weapp",
+    "demo",
+    "wechat",
+    "weixin",
+    "xiaochengxu",
+    "zce",
+    "iceStone",
+    "wedn",
+    "wedn.net",
+    "micua",
+    "micua.com"
+  ],
+  "author": "iceStone <ice@micua.com> (https://www.micua.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zce/weapp-demo/issues"
+  },
+  "homepage": "https://github.com/zce/weapp-demo#readme"
+}
