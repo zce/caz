@@ -44,7 +44,7 @@
     * `wechat_web_devtools_0.9.092300.dmg`（macOS）
 
 3. 选择`添加项目`，填写或选择相应信息
-  
+
   - AppID：点击右下角`无AppID`（我也没有资格，据说这次200个名额是小龙钦点的）
   - 项目名称：随便填写，因为不涉及到部署，所以无所谓
   - 项目目录：选择刚刚克隆的文件夹
@@ -62,10 +62,13 @@
 
 6. 通过左下角重启按钮，刷新编码过后的预览
 
-7. `Bash`用户可以通过在项目目录下执行以下命令快速创建新页面组件所需文件：
+7. 可以通过在项目目录下执行以下命令快速创建新页面组件所需文件：
 
   ```bash
-  $ ./files/generate <new-page-name>
+  # `Bash`用户
+  $ ./generate <new-page-name>
+  # `Cmd`用户
+  $ .\generate <new-page-name>
   ```
 
 8. 剩下的可以自由发挥了
@@ -75,7 +78,7 @@
 
 ### 创建一个项目文件夹，创建基本所需文件
 
-#### app.js 
+#### app.js
 
 项目主入口文件（用于创建应用程序对象）
 
@@ -102,7 +105,7 @@ App({
 
 ```
 
-#### app.json 
+#### app.json
 
 项目配置声明文件（指定项目的一些信息，比如导航栏样式颜色等等）
 
@@ -141,21 +144,21 @@ App({
   * 页面逻辑文件，用于处理页面生命周期控制和数据处理
   * 未完待续...
 
-- page-name.json 
- 
+- page-name.json
+
  * 设置当前页面工作时的一些配置
  * 此处可以覆盖app.json中的window设置
  * 也就是说只可以设置window中设置的熟悉
  * 未完待续...
 
-- page-name.wxml 
+- page-name.wxml
 
   * wxml指的是`Wei Xin Markup Language`
   * 用于定义页面中元素结构的
   * 语法遵循XML语法，注意是XML语法，不是HTML语法，不是HTML语法，不是HTML语法
   * 未完待续...
 
-- page-name.wxss 
+- page-name.wxss
 
   * wxml指的是`Wei Xin Style Sheet`
   * 用于定义页面样式的
