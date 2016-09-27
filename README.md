@@ -1,16 +1,18 @@
 # 微信小程序 Demo（豆瓣电影）
 
-> 由于时间的关系，没有办法写一个完整的说明，后续配合一些视频资料，请持续关注
+由于时间的关系，没有办法写一个完整的说明，后续配合一些视频资料，请持续关注
 
 > 官方文档：https://mp.weixin.qq.com/debug/wxadoc/dev/
-
+>
 > 豆瓣API官方文档：https://developers.douban.com/wiki/?title=movie_v2
 
+
 > 重要申明：**官方已经对没有资格的开发者开放了`微信Web开发者工具`的使用**
-
+>
 > 不需要再用之前的办法破解，破解了有问题！破解了有问题！破解了有问题！
-
+>
 > 解决办法就是完全卸载之前的版本，安装`2300`版本，下载地址下面有说明
+
 
 
 ## Demo 预览
@@ -20,6 +22,16 @@
 </p>
 
 [演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/files/preview.mp4)
+
+## 可能有刚入门的同学
+
+可以从提交历史记录中找之前提交的版本
+
+当前版本中的代码比较绕，用到挺多的新特性
+
+https://github.com/zce/weapp-demo/commits/master
+
+不会弄，加我微信聊
 
 
 ## 有问题？
