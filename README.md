@@ -4,6 +4,8 @@
 
 > 官方文档：https://mp.weixin.qq.com/debug/wxadoc/dev/
 
+> 豆瓣API官方文档：https://developers.douban.com/wiki/?title=movie_v2
+
 > 重要申明：**官方已经对没有资格的开发者开放了`微信Web开发者工具`的使用**
 
 > 不需要再用之前的办法破解，破解了有问题！破解了有问题！破解了有问题！
@@ -184,5 +186,5 @@ App({
 
 ## LICENSE
 
-[MIT](./files/LICENSE)
+[MIT](./LICENSE)
 

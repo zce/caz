@@ -25,7 +25,7 @@ Page({
         if (d.subjects.length) {
           this.setData({ subtitle: d.title, movies: this.data.movies.concat(d.subjects), loading: false })
         } else {
-          this.setData({ hasMore: false, loading: false })
+          this.setData({ subtitle: d.title, hasMore: false, loading: false })
         }
       })
       .catch(e => {
