@@ -1,5 +1,4 @@
 .container {
-  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
   display: flex;
   flex: 1;
   flex-direction: column;

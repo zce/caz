@@ -2,7 +2,7 @@
 <loading hidden="{{!loading}}">
   加载中...
 </loading>
-<scroll-view scroll-y="true">
+<scroll-view scroll-y="true" wx:if="{{movie.title}}">
   <view class="meta">
     <image class="poster" src="{{movie.images.large}}" background-size="cover"/>
     <text class="title">{{movie.title}}({{movie.year}})</text>

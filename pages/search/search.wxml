@@ -1,6 +1,6 @@
 <!-- 搜索电影 -->
 <import src="../common/movie-list.wxml"/>
 <view class="page-header">
-  <input class="page-header-text" placeholder="{{title}}" bindchange="search"/>
+  <input class="page-header-text" placeholder="{{subtitle}}" bindchange="search"/>
 </view>
-<template is="movie-list" data="{{title, movies, loading}}"/>
+<template is="movie-list" data="{{ movies, loading }}"/>

@@ -1,5 +1,6 @@
 page {
-  font-family: 'Microsoft YaHei';
+  font-family: -apple-system-font, 'Helvetica Neue', Helvetica, 'Microsoft YaHei', sans-serif;
+  font-family:;
   background-color: #fff;
   display: flex;
   flex-direction: column;

@@ -30,7 +30,7 @@
       {
         "text": "搜索",
         "pagePath": "pages/search/search",
-        "iconPath": "images/search-actived.png",
+        "iconPath": "images/search.png",
         "selectedIconPath": "images/search-actived.png"
       },
       {
