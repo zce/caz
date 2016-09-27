@@ -7,10 +7,10 @@
     <scroll-view scroll-y="true" height="100%">
       <block wx:for="{{boards}}">
         <navigator url="../list/list?type={{item.key}}&title={{item.name}}">
-          <view class="item">
-            <view class="item-info">
-              <text class="item-name">{{item.name}}</text>
-              <image class="item-img" src="/images/arrowright.png" mode="aspectFill" />
+          <view class="board">
+            <view class="board-info">
+              <text class="board-name">{{item.name}}</text>
+              <image class="board-img" src="/images/arrowright.png" mode="aspectFill"/>
             </view>
           </view>
         </navigator>

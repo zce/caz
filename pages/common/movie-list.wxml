@@ -11,7 +11,7 @@
       <view class="meta">
         <text class="title">{{item.title}}</text>
         <text class="sub-title">{{item.original_title}}({{item.year}})</text>
-        <view class="artists"><text wx:for="{{item.directors}}">{{item.name}} </text></view>
+        <view class="artists"><text>导演：</text><text wx:for="{{item.directors}}"> {{item.name}} </text></view>
       </view>
       <view class="rating">
         <text>{{item.rating.average}}</text>
@@ -27,7 +27,7 @@
       <view class="meta">
         <text class="title">{{item.subject.title}}</text>
         <text class="sub-title">{{item.subject.original_title}}({{item.subject.year}})</text>
-        <view class="artists"><text wx:for="{{item.subject.directors}}">{{item.name}} </text></view>
+        <view class="artists"><text>导演：</text><text wx:for="{{item.subject.directors}}"> {{item.name}} </text></view>
       </view>
       <view class="rating">
         <text>{{item.subject.rating.average}}</text>
@@ -37,10 +37,12 @@
 </template>
 
 <template name="movie-list">
-  <scroll-view scroll-y="true" class="page-body">
-    <block wx:for="{{movies}}">
-      <template is="{{item.subject ? 'item2' : 'item1'}}" data="{{item}}"/>
-    </block>
+  <scroll-view scroll-y="true" class="page-body" bindscrolltolower="loadMore">
+    <template is="{{item.subject ? 'item2' : 'item1'}}" data="{{item}}" wx:for="{{movies}}"/>
+    <view class="tips">
+      <view wx:if="{{hasMore}}"><image src="/images/loading.gif" mode="aspectFill"/><text>玩了命的加载中...</text></view>
+      <view wx:else><text>没有更多内容了</text></view>
+    </view>
   </scroll-view>
   <loading hidden="{{!loading}}">
     加载中...

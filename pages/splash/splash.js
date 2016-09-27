@@ -22,6 +22,6 @@ Page({
 
   start () {
     // TODO: 访问历史的问题
-    wx.navigateTo({ url: '../board/board' })
+    wx.redirectTo({ url: '../board/board' })
   }
 })

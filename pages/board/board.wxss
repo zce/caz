@@ -26,7 +26,7 @@
   font-size: 28rpx;
 }
 
-.item {
+.board {
   margin-top: 20rpx;
   margin-bottom: 20rpx;
   background-color: #FBF9FE;
@@ -34,16 +34,16 @@
   border-radius: 4rpx;
   cursor: pointer;
 }
-.item-info {
+.board-info {
   display: flex;
   padding: 40rpx;
   align-items: center;
   flex-direction: row;
 }
-.item-name {
+.board-name {
   flex: 1;
 }
-.item-img {
+.board-img {
   width: 32rpx;
   height: 32rpx;
 }

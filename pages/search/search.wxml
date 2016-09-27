@@ -3,4 +3,4 @@
 <view class="page-header">
   <input class="page-header-text" placeholder="{{subtitle}}" bindchange="search"/>
 </view>
-<template is="movie-list" data="{{ movies, loading }}"/>
+<template is="movie-list" data="{{ movies, loading, hasMore, loadMore }}"/>
