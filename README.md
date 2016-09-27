@@ -4,26 +4,31 @@
 
 > 官方文档：https://mp.weixin.qq.com/debug/wxadoc/dev/
 
+> 重要申明：**官方已经对没有资格的开发者开放了`微信Web开发者工具`的使用**
+
+> 不需要再用之前的办法破解，破解了有问题！破解了有问题！破解了有问题！
+
+> 解决办法就是完全卸载之前的版本，安装`2300`版本，下载地址下面有说明
+
+
+## Demo 预览
+
+<p align="center">
+  <img src="./files/preview.gif" alt="豆瓣电影演示" width="100%">
+</p>
+
+[演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/files/preview.mp4)
+
 
 ## 有问题？
 
 ### Welcome PR or Issue or Wechat
 
-#### 微信小程序交流群
-
-![交流群](./files/qrcode.jpeg)
-
-#### 我的微信
-
-![我的微信](./files/wechat.jpeg)
+<p align="center">
+  <img src="./files/qrcode.png" alt="我的二维码" width="100%">
+</p>
 
 
-
-## Demo 预览
-
-![演示截图](./files/preview.gif)
-
-[演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/files/preview.mp4)
 
 ## 使用步骤
 
