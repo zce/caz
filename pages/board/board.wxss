@@ -6,7 +6,6 @@
   font-size: 32rpx;
 }
 .head {
-  padding: 80rpx;
   line-height: 1;
 }
 .body {
@@ -15,9 +14,20 @@
   flex: 1;
   overflow: auto;
 }
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+.header {
+  padding: 40rpx 80rpx 20rpx;
+}
 .title {
   display: block;
-  font-size: 52rpx;
+  font-size: 50rpx;
 }
 .description {
   display: block;
