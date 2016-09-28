@@ -1,5 +1,3 @@
-var app = getApp()
-
 Page({
   data: {
     title: 'About Me',

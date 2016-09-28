@@ -1,5 +1,3 @@
-// 拿到全局应用程序实例
-const app = getApp()
 // Douban API 操作
 const douban = require('../../libraries/douban.js')
 
