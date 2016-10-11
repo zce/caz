@@ -34,15 +34,6 @@ https://github.com/zce/weapp-demo/commits/master
 不会弄，加我微信聊
 
 
-## 有问题？
-
-### Welcome PR or Issue or Wechat
-
-<p align="center">
-  <img src="./files/qrcode.png" alt="我的二维码" width="100%">
-</p>
-
-
 
 ## 使用步骤
 
@@ -193,6 +184,15 @@ App({
 1. 好像没有自定义组件的机制~~
 2. 没有热更新
 3. 修改代码即时同步问题
+
+
+## 有问题？
+
+### Welcome PR or Issue or Wechat
+
+<p align="center">
+  <img src="./files/qrcode.png" alt="我的二维码" width="100%">
+</p>
 
 
 
