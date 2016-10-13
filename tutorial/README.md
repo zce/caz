@@ -2,19 +2,19 @@
 
 ## 准备
 
-### Demo 项目地址
+### Demo 项目地址，主分支的代码已经更新，不能按照以下步骤运行
 
-https://github.com/zce/weapp-demo
+https://github.com/zce/weapp-demo/tree/backup
 
 #### Clone or Download（需准备`GIT`环境）
 
 ```bash
 $ cd path/to/project/root
-$ git clone https://github.com/zce/weapp-demo.git project-name --depth 1
+$ git clone https://github.com/zce/weapp-demo.git project-name -b backup --depth 1
 $ cd project-name
 ```
 
-没有`git`环境，可以直接[下载](https://github.com/zce/weapp-demo/archive/master.zip)
+没有`git`环境，可以直接[下载](https://github.com/zce/weapp-demo/archive/backup.zip)
 
 
 ### 安装开发环境
@@ -38,29 +38,29 @@ $ cd project-name
 开发者工具安装完成后，打开并使用微信扫码登录。
 
 <p align="center">
-  ![扫码登陆](./img/step-01.png)
+  <img alt="扫码登陆" src="./img/step-01.png">
 </p>
 
 <p align="center">
-  ![登陆结果](./img/step-02.png)
+  <img alt="登陆结果" src="./img/step-02.png">
 </p>
 
 选择创建“项目”，填入你在公众平台的`AppID`，如果没有的话可以点击`无AppID`。
 
 <p align="center">
-  ![添加新项目](./img/step-03.png)
+  <img alt="添加新项目" src="./img/step-03.png">
 </p>
 
 设置一个本地项目的名称（非小程序名称），比如`WeApp Demo`，并选择一个本地文件夹作为存储目录。
 
 <p align="center">
-  ![添加新项目](./img/step-04.png)
+  <img alt="添加新项目" src="./img/step-04.png">
 </p>
 
 接下来点击`新建项目`就可以在主界面中预览到我们的`豆瓣电影示例`了
 
 <p align="center">
-  ![项目预览](./img/step-05.png)
+  <img alt="项目预览" src="./img/step-05.png">
 </p>
 
 
@@ -81,7 +81,7 @@ $ cd project-name
 官方的开发工具为此准备了一个`QuickStart`项目。在创建过程中，如果选择的文件夹是个空文件夹，开发者工具会提示：是否需要创建一个`quick start`项目。选择`是`，开发者工具会自动帮助我们在开发目录里生成一个简单的项目。
 
 <p align="center">
-  ![创建QuickStart项目](./img/step-06.png)
+  <img alt="创建QuickStart项目" src="./img/step-06.png">
 </p>
 
 借助官方的`QuickStart项目`完成最基本的`Hello world`，理解小程序项目的基本结构，学习基础操作与语法。
@@ -140,7 +140,7 @@ $ cd project-name
 #### 项目配置
 
 <p align="center">
-  ![小程序界面结构](./img/config.jpg)
+  <img alt="小程序界面结构" src="./img/config.jpg">
 </p>
 
 > 相关链接：
