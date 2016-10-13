@@ -77,7 +77,7 @@ gulp.task('compile:xml', () => {
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.if(isProduction, plugins.htmlmin({
       collapseWhitespace: true,
-      collapseBooleanAttributes: true,
+      // collapseBooleanAttributes: true,
       // removeAttributeQuotes: true,
       keepClosingSlash: true, // xml
       removeComments: true,
