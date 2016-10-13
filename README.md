@@ -19,7 +19,7 @@
 - [backup分支 - 简单版本（旧版）](https://github.com/zce/weapp-demo/tree/backup)
 
 
-## [如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
+## [视频演示如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
 
 
 ## 目录
