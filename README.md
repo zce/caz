@@ -9,9 +9,14 @@
 
 ## [微信小程序开发教程](./tutorial)
 
+
+## 如果你是看公开课视频来的，请注意
+
+公开课上演示的代码我放到了`backup`分支上，当前版本包含一套自动化工作流，请仔细往下看。
+
 如果你不了解Node和自动化工作，可以看看之前的版本：
 
-- [简单版本（旧版）](https://github.com/zce/weapp-demo/tree/backup)
+- [backup分支 - 简单版本（旧版）](https://github.com/zce/weapp-demo/tree/backup)
 
 
 ## 目录
