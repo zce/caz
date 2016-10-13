@@ -19,6 +19,9 @@
 - [backup分支 - 简单版本（旧版）](https://github.com/zce/weapp-demo/tree/backup)
 
 
+## [如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
+
+
 ## 目录
 
 - [目录](#目录)
@@ -43,6 +46,8 @@
 <p align="center">
   <img src="./tutorial/img/preview.gif" alt="豆瓣电影演示" width="100%">
 </p>
+
+[视频演示](http://files.wedn.net/videos/weapp/preview.mp4)
 
 ## 重要申明
 
