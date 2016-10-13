@@ -18,10 +18,9 @@
 ## Demo 预览
 
 <p align="center">
-  <img src="./files/preview.gif" alt="豆瓣电影演示" width="100%">
+  <img src="./img/preview.gif" alt="豆瓣电影演示" width="100%">
 </p>
 
-[演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/files/preview.mp4)
 
 ## 可能有刚入门的同学
 
@@ -60,15 +59,15 @@ https://github.com/zce/weapp-demo/commits/master
   - 项目目录：选择刚刚克隆的文件夹
   - 点击`添加项目`
 
-  ![添加项目](./files/add-proj.png)
+  ![添加项目](./img/add-proj.png)
 
 4. 新年快乐，恭喜发财
 
-  ![项目预览](./files/main-view.png)
+  ![项目预览](./img/main-view.png)
 
 5. 你可以选择在`微信Web开放者工具`中编码（也可选择你喜欢的编辑器）
 
-  ![编码功能](./files/coding.png)
+  ![编码功能](./img/coding.png)
 
 6. 通过左下角重启按钮，刷新编码过后的预览
 
@@ -191,7 +190,7 @@ App({
 ### Welcome PR or Issue or Wechat
 
 <p align="center">
-  <img src="./files/qrcode.png" alt="我的二维码" width="100%">
+  <img src="./img/qrcode1.png" alt="我的二维码" width="100%">
 </p>
 
 
