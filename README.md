@@ -26,8 +26,8 @@
   + [生产阶段](#生产阶段)
 - [开发计划](#开发计划)
 - [分支说明](#分支说明)
-- [有问题？](#有问题？)
 - [相关项目](#相关项目)
+- [联系方式](#有问题)
 - [许可](#许可)
 
 
@@ -213,14 +213,22 @@ $ npm run build
   + 主线版本，包含全部功能和特性！
 
 
-## 有问题？
-
-Welcome PR or Issue！
-
-
 ## 相关项目
 
-[zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate)
+[zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate) - 一个小程序的快速开发骨架
+
+
+## 有问题
+
+Welcome PR or Issue or WeChat！
+
+### 交流群（一个个的拉，拉不过来）
+
+![微信交流群](./tutorial/img/qrcode2.png)
+
+### 如果你不喜欢热闹，或者加不进去，可以告诉我
+
+![我的微信](./tutorial/img/qrcode1.png)
 
 
 ## 许可
