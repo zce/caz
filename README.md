@@ -9,7 +9,9 @@
 
 ## [微信小程序开发教程](./tutorial)
 
-- [老版本的README](./tutorial/OLD.md)
+如果你不了解Node和自动化工作，可以看看之前的版本：
+
+- [简单版本（旧版）](https://github.com/zce/weapp-demo/tree/backup)
 
 
 ## 目录
@@ -78,6 +80,8 @@
 
 ### 将项目克隆到本地
 
+用到了`GIT`环境，没有环境的话请自行解决吧。
+
 ```bash
 # 定位到任意目录
 $ cd path/to/root
@@ -90,6 +94,8 @@ $ cd [project-name]
 ```
 
 ### 安装项目`NPM`依赖
+
+用到了`Node`环境，没有环境的话也请自行解决吧。
 
 ```bash
 $ npm install
