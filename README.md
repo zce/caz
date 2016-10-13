@@ -1,6 +1,8 @@
-# 神技！微信小程序（应用号）DEMO 抢先入门教程（豆瓣电影）持续更新
+# 微信小程序（应用号）DEMO 抢先入门教程（豆瓣电影）持续更新
 
-由于时间的关系，没有办法写一个完整的说明，后续配合一些视频资料，请持续关注
+**Deprecated!**
+
+请查看最新分支: https://github.com/zce/weapp-demo
 
 > 官方文档：https://mp.weixin.qq.com/debug/wxadoc/dev/
 >
