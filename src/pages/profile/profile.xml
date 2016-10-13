@@ -1,0 +1,14 @@
+<!-- 可用组件：https://mp.weixin.qq.com/debug/wxadoc/dev/component/ -->
+<view class="container">
+  <view class="header">
+    <text class="title">{{ title }}</text>
+  </view>
+  <view class="user" bindtap="getUserInfo">
+    <image class="user-avatar" src="{{ userInfo.avatarUrl }}" mode="aspectFit"/>
+    <text class="user-nickname">{{ userInfo.nickName }}</text>
+    <text hidden="{{ !userInfo.city }}">{{ userInfo.city }}, {{ userInfo.province }}</text>
+    <text hidden="{{ !userInfo.city }}"> Thanks~ </text>
+  </view>
+</view>
+
+

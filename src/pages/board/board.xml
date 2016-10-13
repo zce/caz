@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="slide">
+    <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+      <swiper-item wx:for="{{ movies }}">
+        <image src="{{ item.images.large }}" mode="aspectFill"/>
+      </swiper-item>
+    </swiper>
+  </view>
+  <scroll-view class="board" scroll-y="true">
+    <navigator wx:for="{{ boards }}" url="../list/list?type={{ item.key }}&title={{ item.name }}" hover-class="none">
+      <view class="board-item">
+        <text>{{ item.name }}</text>
+        <image src="../../images/arrowright.png" mode="aspectFill"/>
+      </view>
+    </navigator>
+  </scroll-view>
+</view>

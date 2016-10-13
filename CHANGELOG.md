@@ -1,3 +1,9 @@
+# 2016-10-13 02:24:26
+
+- 使用[zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate)骨架重构，详细请参考该骨架说明
+- 开发工具更新到`0.10.101100`版本后产生的一些问题
+- 其他细小样式调整
+
 # 2016-09-28 18:30:26
 
 - 删除`movie-list.wxml`中无用的import

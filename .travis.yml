@@ -1,0 +1,22 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - stable
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+#   - npm install -g gulp
+
+script:
+  - npm run lint
+  - npm run build
