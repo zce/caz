@@ -7,6 +7,11 @@
 [![devDependency Status](https://david-dm.org/zce/weapp-demo/dev-status.svg)](https://david-dm.org/zce/weapp-demo#info=devDependencies)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+## [微信小程序开发教程](./tutorial)
+
+- [老版本的README](./tutorial/OLD.md)
+
+
 ## 目录
 
 - [目录](#目录)
@@ -25,9 +30,6 @@
 - [相关项目](#相关项目)
 - [许可](#许可)
 
-### [微信小程序开发教程](./tutorial)
-
-- [老版本的README](./tutorial/OLD.md)
 
 ## 预览
 
