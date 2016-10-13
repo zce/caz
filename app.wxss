@@ -1,6 +1,7 @@
 page {
   font-family: -apple-system-font, 'Helvetica Neue', Helvetica, 'Microsoft YaHei', sans-serif;
-  font-family:;
+  height: 100%;
+  width: 100%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
