@@ -21,7 +21,7 @@ Page({
 
     this.setData({ subtitle: '加载中...', loading: true })
 
-    app.douban.find('search', this.data.page++, this.data.size, this.data.search)
+    return app.douban.find('search', this.data.page++, this.data.size, this.data.search)
       .then(d => {
         if (d.subjects.length) {
           this.setData({ subtitle: d.title, movies: this.data.movies.concat(d.subjects), loading: false })
@@ -37,7 +37,9 @@ Page({
 
   handleSearch (e) {
     if (!e.detail.value) return
+
     this.setData({ subtitle: '加载中...', hasMore: true, loading: true, search: e.detail.value })
+
     this.handleLoadMore()
   },
 
@@ -79,7 +81,9 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefreash () {
-    // TODO: onPullDownRefreash
+  onPullDownRefresh () {
+    this.setData({ movies: [], page: 1 })
+    this.handleLoadMore()
+      .then(() => app.wechat.original.stopPullDownRefresh())
   }
 })

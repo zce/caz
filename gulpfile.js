@@ -45,7 +45,7 @@ function generateJson (options) {
 /**
  * Clean distribution directory
  */
-gulp.task('clean', del.bind(null, ['dist']))
+gulp.task('clean', del.bind(null, ['dist/*']))
 
 /**
  * Lint source code
