@@ -37,7 +37,7 @@ Page({
 
   handleSearch (e) {
     if (!e.detail.value) return
-
+    this.setData({ movies: [], page: 1 })
     this.setData({ subtitle: '加载中...', hasMore: true, loading: true, search: e.detail.value })
 
     this.handleLoadMore()
