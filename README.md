@@ -1,202 +1,252 @@
-# 神技！微信小程序（应用号）DEMO 抢先入门教程（豆瓣电影）持续更新
+# 微信小程序开发教程示例
 
-由于时间的关系，没有办法写一个完整的说明，后续配合一些视频资料，请持续关注
+> 一个微信小程序（应用号）开发示例（豆瓣电影）
 
-> 官方文档：https://mp.weixin.qq.com/debug/wxadoc/dev/
->
-> 豆瓣API官方文档：https://developers.douban.com/wiki/?title=movie_v2
+[![Build Status](https://travis-ci.org/zce/weapp-demo.svg?branch=master)](https://travis-ci.org/zce/weapp-demo)
+[![Dependency Status](https://david-dm.org/zce/weapp-demo.svg)](https://david-dm.org/zce/weapp-demo)
+[![devDependency Status](https://david-dm.org/zce/weapp-demo/dev-status.svg)](https://david-dm.org/zce/weapp-demo#info=devDependencies)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-
-> 重要申明：**官方已经对没有资格的开发者开放了`微信Web开发者工具`的使用**
->
-> 不需要再用之前的办法破解，破解了有问题！破解了有问题！破解了有问题！
->
-> 解决办法就是完全卸载之前的版本，安装`2300`版本，下载地址下面有说明
+## [微信小程序开发教程](./tutorial)
 
 
+## 如果你是看公开课视频来的，请注意
 
-## Demo 预览
+公开课上演示的代码我放到了`backup`分支上，当前版本包含一套自动化工作流，请仔细往下看。
+
+如果你不了解Node和自动化工作，可以看看之前的版本：
+
+- [backup分支 - 简单版本（旧版）](https://github.com/zce/weapp-demo/tree/backup)
+
+
+## [视频演示如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
+
+
+## 目录
+
+- [目录](#目录)
+- [预览](#预览)
+- [重要申明](#重要申明)
+  + [解决办法](#解决办法)
+  + [下载链接](#下载链接)
+- [完整示例特点](#完整示例特点)
+- [操作步骤](#操作步骤)
+- [使用说明](#使用说明)
+  + [开发阶段](#开发阶段)
+  + [生产阶段](#生产阶段)
+- [开发计划](#开发计划)
+- [分支说明](#分支说明)
+- [相关项目](#相关项目)
+- [联系方式](#有问题)
+- [许可](#许可)
+
+
+## 预览
 
 <p align="center">
-  <img src="./files/preview.gif" alt="豆瓣电影演示" width="100%">
+  <img src="./tutorial/img/preview.gif" alt="豆瓣电影演示" width="100%">
 </p>
 
-[演示视频（流量预警 2.64MB）](https://github.com/zce/weapp-demo/blob/master/files/preview.mp4)
+[视频演示](http://files.wedn.net/videos/weapp/preview.mp4)
 
-## 可能有刚入门的同学
+## 重要申明
 
-可以从提交历史记录中找之前提交的版本
+- **微信小程序官方已经向没有资格的开发者开放了`微信Web开发者工具`的使用**
+- 这里不需要再用[之前的办法](https://github.com/gavinkwoe/weapp-ide-crack)破解，破解了有问题！破解了有问题！破解了有问题！
 
-当前版本中的代码比较绕，用到挺多的新特性
+### 解决办法
 
-https://github.com/zce/weapp-demo/commits/master
+- 完全卸载之前的版本(删除掉用户目录下与`微信Web开发者工具`相关的目录)
+- 安装`0.9.092300`或`0.10.101100`版本
 
-不会弄，加我微信聊
+### 下载链接
 
+> `0.10.101100`版本
 
-## 有问题？
-
-### Welcome PR or Issue or Wechat
-
-<p align="center">
-  <img src="./files/qrcode.png" alt="我的二维码" width="100%">
-</p>
-
+- [Windows 64位](https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&t=1475052055457)
+- [Windows 32位](https://servicewechat.com/wxa-dev-logic/download_redirect?type=ia32&from=mpwiki&t=1475052055457)
+- [macOS](https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&from=mpwiki&t=1475052055457)
 
 
-## 使用步骤
+## 完整示例特点
 
-1. 将仓库克隆到本地：
-
-  ```bash
-  $ git clone https://github.com/zce/weapp-demo.git weapp-douban --depth 1
-  $ cd weapp-douban
-  ```
-
-2. 打开`微信Web开放者工具`（注意：必须是`0.9.092300`版本）
-
-  - 必须是`0.9.092300`版本，之前的版本不能保证正常运行
-  - 不需要所谓的破解，网上所谓的破解只是针对之前的`0.9.092100`版本，新的官方版本不需要破解，不需要破解，不需要破解！
-  - 下载链接（官方版本，放心下载）：https://pan.baidu.com/s/1qYld6Vi
-    * `wechat_web_devtools_0.9.092300_x64.exe`（Windows 64位）
-    * `wechat_web_devtools_0.9.092300_ia32.exe`（Windows 32位）
-    * `wechat_web_devtools_0.9.092300.dmg`（macOS）
-
-3. 选择`添加项目`，填写或选择相应信息
-
-  - AppID：点击右下角`无AppID`（我也没有资格，据说这次200个名额是小龙钦点的）
-  - 项目名称：随便填写，因为不涉及到部署，所以无所谓
-  - 项目目录：选择刚刚克隆的文件夹
-  - 点击`添加项目`
-
-  ![添加项目](./files/add-proj.png)
-
-4. 新年快乐，恭喜发财
-
-  ![项目预览](./files/main-view.png)
-
-5. 你可以选择在`微信Web开放者工具`中编码（也可选择你喜欢的编辑器）
-
-  ![编码功能](./files/coding.png)
-
-6. 通过左下角重启按钮，刷新编码过后的预览
-
-7. 可以通过在项目目录下执行以下命令快速创建新页面组件所需文件：
-
-  ```bash
-  # `Bash`用户
-  $ ./generate <new-page-name>
-  # `Cmd`用户
-  $ .\generate <new-page-name>
-  ```
-
-8. 剩下的可以自由发挥了
+- 开发阶段与生产阶段分离。
+- 自动化生成新页面所需文件并添加到配置中。
+- 以`Standard Code Style`校验全部的`js`和`json`文件。
+- 开发阶段`json`配置文件可以有注释，方便备注。
+- 代码中集成部分文档内容，减少查文档的时间。
+- 开发阶段可以使用`less`完成样式编码，原因你懂得~ （如果你了解这些，当然可以支持`sass`等其他预处理样式）。
+- 借助`babel`自动进行`ES2015`特性转换，放心使用新特性。
+- 开发阶段用`xml`文件后缀取代`wxml`后缀，避免在开发工具中配置代码高亮。
+- Source Map
+- Travis CI
 
 
-## 微信小程序基本教程（持续更新）
+## 操作步骤
 
-### 创建一个项目文件夹，创建基本所需文件
+### for English
 
-#### app.js
+[README.en.md](./README.en.md)
 
-项目主入口文件（用于创建应用程序对象）
+### 将项目克隆到本地
 
-```javascript
-// App函数是一个全局函数，用于创建应用程序对象
-App({
-  // ========== 全局数据对象（整个应用程序共享） ==========
-  globalData: { ... },
+用到了`GIT`环境，没有环境的话请自行解决吧。
 
-  // ========== 应用程序全局方法 ==========
-  method1 (p1, p2) { ... },
-  method2 (p1, p2) { ... },
+```bash
+# 定位到任意目录
+$ cd path/to/root
 
-  // ========== 生命周期方法 ==========
-  // 应用程序启动时触发一次
-  onLaunch () { ... },
+# 克隆仓库到指定的文件夹
+$ git clone https://github.com/zce/weapp-demo.git [project-name] --depth 1
 
-  // 当应用程序进入前台显示状态时触发
-  onShow () { ... },
-
-  // 当应用程序进入后台状态时触发
-  onHide () { ... }
-})
-
+# 进入指定的文件夹
+$ cd [project-name]
 ```
 
-#### app.json
+### 安装项目`NPM`依赖
 
-项目配置声明文件（指定项目的一些信息，比如导航栏样式颜色等等）
+用到了`Node`环境，没有环境的话也请自行解决吧。
 
-```javascript
-{
-  // 当前程序是由哪些页面组成的（第一项默认为初始页面）
-  // 所有使用到的组件或页面都必须在此体现
-  // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages
-  "pages": [ ... ],
-  // 应用程序窗口设置
-  // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#window
-  "window": { ... },
-  // 应用导航栏设置
-  // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#tabBar
-  "tabBar": { ... },
-  // 网络超时设置
-  // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#networkTimeout
-  "networkTimeout": {},
-  // 是否在控制台输出调试信息
-  // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#debug
-  "debug": true
-}
+```bash
+$ npm install
 ```
 
-#### app.wxss
 
-[!可选!]项目全局的样式文件，内容遵循CSS标准语法
+## 使用说明
 
+### for English
 
-### 创建页面组件
+[README.en.md](./README.en.md)
 
-每个页面组件也分为四个文件组成：
+### 开发阶段
 
-- page-name.js
+执行如下命令
 
-  * 页面逻辑文件，用于处理页面生命周期控制和数据处理
-  * 未完待续...
+```bash
+# 启动监视
+$ npm run watch
+```
 
-- page-name.json
+通过`微信Web开放者工具`打开项目根目录下`dist`文件夹，预览~
 
- * 设置当前页面工作时的一些配置
- * 此处可以覆盖app.json中的window设置
- * 也就是说只可以设置window中设置的熟悉
- * 未完待续...
+- 打开`微信Web开放者工具`，选择`添加项目`，填写或选择相应信息
+  + AppID：点击右下角`无AppID`（尚未开放申请）
+  + 项目名称：随便填写，因为不涉及到部署，所以无所谓
+  + 项目目录：选择项目根目录下`dist`文件夹
+  + 点击`添加项目`
+- 可以通过任意开发工具完成`src`下的编码，`gulp`会监视项目根目录下`src`文件夹，当文件变化自动编译
 
-- page-name.wxml
+#### 创建新页面
 
-  * wxml指的是`Wei Xin Markup Language`
-  * 用于定义页面中元素结构的
-  * 语法遵循XML语法，注意是XML语法，不是HTML语法，不是HTML语法，不是HTML语法
-  * 未完待续...
+执行如下命令
 
-- page-name.wxss
+```bash
+# 启动生成器
+$ npm run generate
+? Input the page name (index) [page-name]
+? Do you need a configuration file (y/N) N
+? Select a style framework (Use arrow keys)
+> less
+# 自动生成...
+```
 
-  * wxml指的是`Wei Xin Style Sheet`
-  * 用于定义页面样式的
-  * 语法遵循CSS语法，扩展了CSS基本用法和长度单位（主要就是rpx响应式像素）
-  * 未完待续...
-
-
-### 未完待续...
-
-
-## 恶心的地方
-
-1. 好像没有自定义组件的机制~~
-2. 没有热更新
-3. 修改代码即时同步问题
+由于微信小程序的每一个页面有特定的结构，新建工作比较繁琐。可以通过此任务减少操作。
 
 
+### 生产阶段
 
-## LICENSE
+执行如下命令
 
-[MIT](./LICENSE)
+```bash
+# 启动编译
+$ npm run build
+```
 
+生产阶段的代码会经过压缩处理，最终输出到`dist`下。
+
+同样可以通过`微信Web开放者工具`测试。
+
+
+## 开发计划
+
+- [x] 自动化生成新页面所需文件；
+- [x] 自动生成新页面时，自动添加配置到`app.json`；
+- [ ] 加入`ES2015`的`Polyfill`，支持类似`Promise`的新`API`；
+- [ ] 自动刷新`微信Web开放者工具`中的预览；
+- [ ] `HTML` to `WXML` 转换器，让大家可以直接使用`HTML`元素开发；
+
+
+## 分支说明
+
+> for 新手同学
+
+这段时间有很多人反映代码看不懂，没法看下去。
+
+可能有很多刚入门的同学，刚开始学习没有接触太多，而我的这个仓库也旨在服务大众。
+
+为此特地创建多个分支，每个分支的特点和复杂程度各不相同（计划，请持续关注）：
+
+- [ ] [level-00](https://github.com/zce/weapp-demo/tree/level-00)
+
+  + 最基本的微信小程序项目结构
+  + 一个简单页面的工作
+
+- [ ] [level-01](https://github.com/zce/weapp-demo/tree/level-01)
+
+  + 包含`NavigationBar`和`TabBar`的设置
+  + 多标签页面切换
+
+- [ ] [level-02](https://github.com/zce/weapp-demo/tree/level-02)
+
+  + 划分程序中的各个页面
+  + 分别完成各个页面的结构和布局
+
+- [ ] [level-03](https://github.com/zce/weapp-demo/tree/level-03)
+
+  + 使用假数据的方式完成数据绑定
+
+- [ ] [level-04](https://github.com/zce/weapp-demo/tree/level-04)
+
+  + 改用`wx.request`接口调用`豆瓣API`完成数据加载
+  + 增加加载过程界面体现（loading）
+
+- [ ] [level-05](https://github.com/zce/weapp-demo/tree/level-05)
+
+  + 封装操作`豆瓣API`的模块
+  + 二次封装`微信API`为`Promise`的实现
+
+- [ ] [level-06](https://github.com/zce/weapp-demo/tree/level-06)
+
+  + 上拉加载（数据分页）
+
+- [ ] [level-07](https://github.com/zce/weapp-demo/tree/level-07)
+
+  + 其他`微信API`的使用
+  + ..
+
+- [x] master
+
+  + 主线版本，包含全部功能和特性！
+
+
+## 相关项目
+
+[zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate) - 一个小程序的快速开发骨架
+
+
+## 有问题
+
+Welcome PR or Issue or WeChat！
+
+### 交流群（一个个的拉，拉不过来）
+
+![微信交流群](./tutorial/img/qrcode2.png)
+
+### 如果你不喜欢热闹，或者加不进去，可以告诉我
+
+![我的微信](./tutorial/img/qrcode1.png)
+
+
+## 许可
+
+[MIT](./LICENSE) &copy; [汪磊](http://github.com/zce)

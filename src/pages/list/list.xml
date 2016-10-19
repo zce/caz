@@ -1,0 +1,7 @@
+<import src="../common/movie-list"/>
+<view class="container">
+  <view class="header">
+    <text>{{ subtitle }}</text>
+  </view>
+  <template is="movie-list" data="{{ movies, loading, hasMore }}"/>
+</view>
