@@ -10,7 +10,7 @@ Page({
     boards: [
       { key: 'in_theaters' },
       { key: 'coming_soon' },
-      { key: 'top250' },
+      { key: 'top250' }
       // { key: 'weekly' },
       // { key: 'new_movies' },
       // { key: 'us_box', name: '北美票房榜' }
