@@ -8,25 +8,60 @@
 }
 
 .board {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+  // display: flex;
+  // flex: 1;
+  // flex-direction: column;
   box-sizing: border-box;
+  background-color: #f6f6f6;
 }
 
 .board-item {
   display: flex;
+  flex-direction: column;
   cursor: pointer;
-  border: 1rpx solid #eee;
-  margin: 40rpx;
-  padding: 40rpx;
+  font-size: 20rpx;
+  margin: 40rpx 0;
+  padding: 20rpx;
+  background-color: #fff;
 
-  text {
-    flex: 1;
+  .title {
+    display: flex;
+    margin-bottom: 10rpx;
+    width: 100%;
+
+    text {
+      flex: 1;
+    }
+
+    image {
+      height: 20rpx;
+      width: 20rpx;
+    }
   }
 
-  image {
-    height: 40rpx;
-    width: 40rpx;
+  .content .inner {
+    display: flex;
+    flex-direction: row;
+    height: 300rpx;
+    width: 900rpx;
+
+    .movie-item {
+      display: flex;
+      flex-direction: column;
+      width: 180rpx;
+      margin: 10rpx;
+
+      image {
+        width: 180rpx;
+        height: 250rpx;
+      }
+
+      text {
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
   }
 }

@@ -1,17 +1,31 @@
 <view class="container">
   <view class="slide">
     <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
-      <swiper-item wx:for="{{ movies }}">
+      <swiper-item wx:for="{{ boards[0].movies }}">
         <image src="{{ item.images.large }}" mode="aspectFill"/>
       </swiper-item>
     </swiper>
   </view>
-  <scroll-view class="board" scroll-y="true">
-    <navigator wx:for="{{ boards }}" url="../list/list?type={{ item.key }}&title={{ item.name }}" hover-class="none">
+  <view class="board" scroll-y="true">
+    <block wx:for="{{ boards }}">
       <view class="board-item">
-        <text>{{ item.name }}</text>
-        <image src="../../images/arrowright.png" mode="aspectFill"/>
+        <navigator url="../list/list?type={{ item.key }}&title={{ item.title }}" hover-class="none">
+          <view class="title">
+            <text>{{ item.title }}</text>
+            <image src="../../images/arrowright.png" mode="aspectFill"/>
+          </view>
+        </navigator>
+        <scroll-view class="content" scroll-x="true">
+          <view class="inner">
+            <navigator wx:for="{{ item.movies }}" url="../item/item?id={{ item.id }}">
+              <view class="movie-item">
+                <image src="{{ item.images.medium }}" mode="aspectFill"/>
+                <text>{{ item.title }}</text>
+              </view>
+            </navigator>
+          </view>
+        </scroll-view>
       </view>
-    </navigator>
-  </scroll-view>
+    </block>
+  </view>
 </view>

@@ -8,14 +8,13 @@ Page({
    */
   data: {
     boards: [
-      { key: 'in_theaters', name: '正在热映' },
-      { key: 'coming_soon', name: '即将上映' },
-      { key: 'top250', name: 'TOP250' },
-      // { key: 'weekly', name: '口碑榜' },
-      // { key: 'new_movies', name: '新片榜' },
-      { key: 'us_box', name: '北美票房榜' }
+      { key: 'in_theaters' },
+      { key: 'coming_soon' },
+      { key: 'top250' },
+      // { key: 'weekly' },
+      // { key: 'new_movies' },
+      // { key: 'us_box', name: '北美票房榜' }
     ],
-    movies: [],
     loading: true
   },
 
@@ -23,12 +22,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad () {
-    app.douban.find('in_theaters', 1, 5)
-      .then(d => this.setData({ movies: d.subjects, loading: false }))
-      .catch(e => {
-        console.error(e)
-        this.setData({ loading: false })
-      })
+    const promises = this.data.boards.map(board => {
+      return app.douban.find(board.key, 1, 5)
+        .then(d => {
+          board.title = d.title
+          board.movies = d.subjects
+          return board
+        })
+    })
+    Promise.all(promises).then(boards => this.setData({ boards: boards, loading: false }))
   },
 
   /**
