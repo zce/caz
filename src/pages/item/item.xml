@@ -6,8 +6,8 @@
       <image class="poster" src="{{ movie.images.large }}" mode="aspectFit"/>
       <text class="title">{{ movie.title }}({{ movie.year }})</text>
       <text class="info">评分：{{ movie.rating.average }}</text>
-      <text class="info">导演：<block wx:for="{{ movie.directors }}"> {{ item.name }} </block></text>
-      <text class="info">主演：<block wx:for="{{ movie.casts }}"> {{ item.name }} </block></text>
+      <text class="info">导演：<block wx:for="{{ movie.directors }}" wx:key="{{ item.id }}"> {{ item.name }} </block></text>
+      <text class="info">主演：<block wx:for="{{ movie.casts }}" wx:key="{{ item.id }}"> {{ item.name }} </block></text>
     </view>
     <view class="summary">
       <text class="label">摘要：</text>

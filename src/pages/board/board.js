@@ -23,7 +23,7 @@ Page({
    */
   onLoad () {
     const promises = this.data.boards.map(board => {
-      return app.douban.find(board.key, 1, 5)
+      return app.douban.find(board.key, 1, 10)
         .then(d => {
           board.title = d.title
           board.movies = d.subjects

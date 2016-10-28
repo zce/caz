@@ -57,11 +57,11 @@
 ### 解决办法
 
 - 完全卸载之前的版本(删除掉用户目录下与`微信Web开发者工具`相关的目录)
-- 安装`0.9.092300`或`0.10.101100`版本
+- 安装`0.9.092300`或`0.10.102800`版本
 
 ### 下载链接
 
-> `0.10.101100`版本
+> `0.10.102800`版本
 
 - [Windows 64位](https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&t=1475052055457)
 - [Windows 32位](https://servicewechat.com/wxa-dev-logic/download_redirect?type=ia32&from=mpwiki&t=1475052055457)

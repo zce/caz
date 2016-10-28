@@ -41,6 +41,7 @@
     "selectedColor": "#35495e",
     "borderStyle": "white",
     "backgroundColor": "#f5f5f5",
+    "position": "bottom",
     "list": [
       {
         "text": "搜索",
