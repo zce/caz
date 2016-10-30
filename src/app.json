@@ -3,7 +3,7 @@
   // First is default to view
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages
   "pages": [
-    "pages/splash/splash",
+    // "pages/splash/splash",
     "pages/board/board",
     "pages/list/list",
     "pages/item/item",
