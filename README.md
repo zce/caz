@@ -43,9 +43,7 @@
 
 ## 预览
 
-<p align="center">
-  <img src="http://files.wedn.net/videos/weapp/preview.gif" alt="豆瓣电影演示" width="100%">
-</p>
+![豆瓣电影演示](http://files.wedn.net/videos/weapp/preview.gif)
 
 [视频演示](http://files.wedn.net/videos/weapp/preview.mp4)
 
