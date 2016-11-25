@@ -1,4 +1,5 @@
 const URI = 'https://api.douban.com/v2/movie'
+const Promise = require('./bluebird')
 
 /**
  * 抓取豆瓣电影特定类型的API
