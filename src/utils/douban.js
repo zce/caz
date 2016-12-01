@@ -13,7 +13,7 @@ function fetchApi (type, params) {
     wx.request({
       url: `${URI}/${type}`,
       data: Object.assign({}, params),
-      header: { 'Content-Type': 'application/json' },
+      header: { 'Content-Type': 'json' },
       success: resolve,
       fail: reject
     })
