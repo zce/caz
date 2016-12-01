@@ -39,28 +39,31 @@
     }
   }
 
-  .content .inner {
-    display: flex;
-    flex-direction: row;
+  .content {
     height: 300rpx;
-    width: 900rpx;
-
-    .movie-item {
+    .inner {
       display: flex;
-      flex-direction: column;
-      width: 180rpx;
-      margin: 10rpx;
+      flex-direction: row;
+      height: 300rpx;
+      width: 900rpx;
 
-      image {
+      .movie-item {
+        display: flex;
+        flex-direction: column;
         width: 180rpx;
-        height: 250rpx;
-      }
+        margin: 10rpx;
 
-      text {
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        image {
+          width: 180rpx;
+          height: 250rpx;
+        }
+
+        text {
+          text-align: center;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
       }
     }
   }
