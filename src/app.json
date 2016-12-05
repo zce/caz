@@ -3,7 +3,7 @@
   // First is default to view
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages
   "pages": [
-    // "pages/splash/splash",
+    "pages/splash/splash",
     "pages/board/board",
     "pages/list/list",
     "pages/item/item",
@@ -41,19 +41,18 @@
     "selectedColor": "#35495e",
     "borderStyle": "white",
     "backgroundColor": "#f5f5f5",
-    "position": "bottom",
     "list": [
-      {
-        "text": "搜索",
-        "pagePath": "pages/search/search",
-        "iconPath": "images/search.png",
-        "selectedIconPath": "images/search-actived.png"
-      },
       {
         "text": "榜单",
         "pagePath": "pages/board/board",
         "iconPath": "images/board.png",
         "selectedIconPath": "images/board-actived.png"
+      },
+      {
+        "text": "搜索",
+        "pagePath": "pages/search/search",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/search-actived.png"
       },
       {
         "text": "我的",
