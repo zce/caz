@@ -21,6 +21,8 @@
 
 ## [视频演示如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
 
+## [真机测试](http://files.wedn.net/videos/weapp/weapp.mp4)
+
 
 ## 目录
 
@@ -186,49 +188,49 @@ $ npm run build
 
 - [ ] [level-00](https://github.com/zce/weapp-demo/tree/level-00)
 
-  + 最基本的微信小程序项目结构
-  + 一个简单页面的工作
++ 最基本的微信小程序项目结构
++ 一个简单页面的工作
 
 - [ ] [level-01](https://github.com/zce/weapp-demo/tree/level-01)
 
-  + 包含`NavigationBar`和`TabBar`的设置
-  + 多标签页面切换
++ 包含`NavigationBar`和`TabBar`的设置
++ 多标签页面切换
 
 - [ ] [level-02](https://github.com/zce/weapp-demo/tree/level-02)
 
-  + 划分程序中的各个页面
-  + 分别完成各个页面的结构和布局
++ 划分程序中的各个页面
++ 分别完成各个页面的结构和布局
 
 - [ ] [level-03](https://github.com/zce/weapp-demo/tree/level-03)
 
-  + 页面与页面之间的跳转
++ 页面与页面之间的跳转
 
 - [ ] [level-04](https://github.com/zce/weapp-demo/tree/level-03)
 
-  + 使用假数据的方式完成数据绑定
++ 使用假数据的方式完成数据绑定
 
 - [ ] [level-05](https://github.com/zce/weapp-demo/tree/level-04)
 
-  + 改用`wx.request`接口调用`豆瓣API`完成数据加载
-  + 增加加载过程界面体现（loading）
++ 改用`wx.request`接口调用`豆瓣API`完成数据加载
++ 增加加载过程界面体现（loading）
 
 - [ ] [level-06](https://github.com/zce/weapp-demo/tree/level-05)
 
-  + 封装操作`豆瓣API`的模块
-  + 二次封装`微信API`为`Promise`的实现
++ 封装操作`豆瓣API`的模块
++ 二次封装`微信API`为`Promise`的实现
 
 - [ ] [level-07](https://github.com/zce/weapp-demo/tree/level-06)
 
-  + 上拉加载（数据分页）
++ 上拉加载（数据分页）
 
 - [ ] [level-08](https://github.com/zce/weapp-demo/tree/level-07)
 
-  + 其他`微信API`的使用
-  + ..
++ 其他`微信API`的使用
++ ..
 
 - [x] master
 
-  + 主线版本，包含全部功能和特性！
++ 主线版本，包含全部功能和特性！
 
 
 ## 相关项目
