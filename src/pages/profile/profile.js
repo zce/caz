@@ -1,4 +1,4 @@
-// 获取全局应用程序实例对象
+﻿// 获取全局应用程序实例对象
 const app = getApp()
 
 // 创建页面实例对象
@@ -10,8 +10,7 @@ Page({
     title: 'About',
     userInfo: {
       wechat: 'WEDN-NET',
-      // nickName: '汪磊(iceStone)',
-      nickName: '博学谷在线',
+      nickName: '汪磊(iceStone)',
       avatarUrl: '../../images/qrcode.png'
     }
   },
