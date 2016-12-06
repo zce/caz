@@ -1,5 +1,5 @@
 <view class="container">
-  <swiper class="splash" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+  <swiper class="splash" indicator-dots>
     <swiper-item wx:for="{{ movies }}" wx:for-index="index" wx:key="{{ item.id }}">
       <image src="{{ item.images.large }}" class="slide-image" mode="aspectFill"/>
       <button class="start" bindtap="handleStart" wx:if="{{ index == movies.length - 1 }}">立即体验</button>

@@ -1,7 +1,7 @@
 <import src="../common/movie-list"/>
 <view class="container">
   <view class="header">
-    <input placeholder="{{ subtitle }}" bindchange="handleSearch"/>
+    <input class="search" placeholder="{{ subtitle }}" placeholder-class="search-placeholder" auto-focus bindchange="handleSearch"/>
   </view>
   <template is="movie-list" data="{{ movies, loading, hasMore }}"/>
 </view>

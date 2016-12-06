@@ -10,8 +10,9 @@ Page({
     title: 'About',
     userInfo: {
       wechat: 'WEDN-NET',
-      nickName: '汪磊(iceStone)',
-      avatarUrl: '../../images/wechat.jpg'
+      // nickName: '汪磊(iceStone)',
+      nickName: '博学谷在线',
+      avatarUrl: '../../images/qrcode.png'
     }
   },
 
