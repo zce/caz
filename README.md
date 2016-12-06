@@ -7,7 +7,7 @@
 [![devDependency Status](https://david-dm.org/zce/weapp-demo/dev-status.svg)](https://david-dm.org/zce/weapp-demo#info=devDependencies)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-## [微信小程序开发教程](./tutorial)
+## [微信小程序开发教程](https://github.com/zce/weapp-demo/tree/tutorial)
 
 
 ## 如果你是看公开课视频来的，请注意
@@ -21,7 +21,7 @@
 
 ## [视频演示如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
 
-## [真机测试](http://files.wedn.net/videos/weapp/weapp.mp4)
+## [豆瓣电影小程序真机测试](http://files.wedn.net/videos/weapp/weapp.mp4)
 
 
 ## 目录
@@ -45,7 +45,7 @@
 
 ## 预览
 
-![豆瓣电影演示](http://files.wedn.net/videos/weapp/preview.gif)
+![豆瓣电影演示](https://github.com/zce/weapp-demo/raw/tutorial/preview.gif)
 
 [视频演示](http://files.wedn.net/videos/weapp/preview.mp4)
 
@@ -171,8 +171,8 @@ $ npm run build
 
 - [x] 自动化生成新页面所需文件；
 - [x] 自动生成新页面时，自动添加配置到`app.json`；
-- [ ] 加入`ES2015`的`Polyfill`，支持类似`Promise`的新`API`；
-- [ ] 自动刷新`微信Web开放者工具`中的预览；
+- [x] 加入`ES2015`的`Polyfill`，支持类似`Promise`的新`API`；
+- [x] 自动刷新`微信Web开放者工具`中的预览；
 - [ ] `HTML` to `WXML` 转换器，让大家可以直接使用`HTML`元素开发；
 
 
@@ -186,26 +186,26 @@ $ npm run build
 
 为此特地创建多个分支，每个分支的特点和复杂程度各不相同（计划，请持续关注）：
 
-- [ ] [level-00](https://github.com/zce/weapp-demo/tree/level-00)
+- [x] [level-00](https://github.com/zce/weapp-demo/tree/level-00)
 
 + 最基本的微信小程序项目结构
 + 一个简单页面的工作
 
-- [ ] [level-01](https://github.com/zce/weapp-demo/tree/level-01)
+- [x] [level-01](https://github.com/zce/weapp-demo/tree/level-01)
 
 + 包含`NavigationBar`和`TabBar`的设置
 + 多标签页面切换
 
-- [ ] [level-02](https://github.com/zce/weapp-demo/tree/level-02)
+- [x] [level-02](https://github.com/zce/weapp-demo/tree/level-02)
 
 + 划分程序中的各个页面
 + 分别完成各个页面的结构和布局
 
-- [ ] [level-03](https://github.com/zce/weapp-demo/tree/level-03)
+- [x] [level-03](https://github.com/zce/weapp-demo/tree/level-03)
 
 + 页面与页面之间的跳转
 
-- [ ] [level-04](https://github.com/zce/weapp-demo/tree/level-03)
+- [x] [level-04](https://github.com/zce/weapp-demo/tree/level-03)
 
 + 使用假数据的方式完成数据绑定
 
