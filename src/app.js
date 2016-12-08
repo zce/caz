@@ -12,6 +12,12 @@ const wechat = require('./utils/wechat.js')
  */
 const douban = require('./utils/douban.js')
 
+/**
+ * Baidu API 模块
+ * @type {Object}
+ */
+const baidu = require('./utils/baidu.js')
+
 App({
   /**
    * Global shared
@@ -19,7 +25,8 @@ App({
    */
   data: {
     name: 'Douban Movie',
-    version: '0.1.0'
+    version: '0.1.0',
+    currentCity: '北京'
   },
 
   /**
@@ -33,10 +40,29 @@ App({
   douban: douban,
 
   /**
+   * Baidu API
+   */
+  baidu: baidu,
+
+  /**
    * 生命周期函数--监听小程序初始化
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch () {
+    wechat
+      .getLocation()
+      .then(res => {
+        const { latitude, longitude } = res
+        return baidu.getCityName(latitude, longitude)
+      })
+      .then(name => {
+        this.data.currentCity = name.replace('市', '')
+        console.log(`currentCity : ${this.data.currentCity}`)
+      })
+      .catch(err => {
+        this.data.currentCity = '北京'
+        console.error(err)
+      })
     console.log(' ========== Application is launched ========== ')
   },
   /**

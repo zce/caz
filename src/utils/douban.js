@@ -1,5 +1,5 @@
 const URI = 'https://api.douban.com/v2/movie'
-const Promise = require('./bluebird')
+const fetch = require('./fetch')
 
 /**
  * 抓取豆瓣电影特定类型的API
@@ -9,15 +9,7 @@ const Promise = require('./bluebird')
  * @return {Promise}       包含抓取任务的Promise
  */
 function fetchApi (type, params) {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: `${URI}/${type}`,
-      data: Object.assign({}, params),
-      header: { 'Content-Type': 'json' },
-      success: resolve,
-      fail: reject
-    })
-  })
+  return fetch(URI, type, params)
 }
 
 /**
@@ -29,7 +21,7 @@ function fetchApi (type, params) {
  * @return {Promise}       包含抓取任务的Promise
  */
 function find (type, page = 1, count = 20, search = '') {
-  const params = { start: (page - 1) * count, count: count }
+  const params = { start: (page - 1) * count, count: count, city: getApp().data.currentCity }
   return fetchApi(type, search ? Object.assign(params, { q: search }) : params)
     .then(res => res.data)
 }

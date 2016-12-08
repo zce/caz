@@ -24,10 +24,17 @@ function getStorage (key) {
   })
 }
 
+function getLocation (type) {
+  return new Promise((resolve, reject) => {
+    wx.getLocation({ type: type, success: resolve, fail: reject })
+  })
+}
+
 module.exports = {
   login,
   getUserInfo,
   setStorage,
   getStorage,
+  getLocation,
   original: wx
 }
