@@ -7,7 +7,7 @@
       <view class="meta">
         <text class="title">{{ item.title }}</text>
         <text class="sub-title">{{ item.original_title }} ({{ item.year }})</text>
-        <view class="artists" wx:key="{{ item.id }}">导演：<block wx:for="{{ item.directors }}"> {{ item.name }} </block></view>
+        <view class="artists">导演：<block wx:for="{{ item.directors }}" wx:key="{{ item.id }}"> {{ item.name }} </block></view>
       </view>
       <view class="rating">
         <text>{{ item.rating.average }}</text>
