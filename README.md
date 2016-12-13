@@ -24,6 +24,19 @@
 ## [豆瓣电影小程序真机测试](http://files.wedn.net/videos/weapp/weapp.mp4)
 
 
+## 有问题
+
+Welcome PR or Issue or WeChat！
+
+### 交流群（一个个的拉，拉不过来）
+
+![微信交流群](qrcode2.png)
+
+### 如果你不喜欢热闹，或者加不进去，可以告诉我
+
+![我的微信](qrcode1.png)
+
+
 ## 目录
 
 - [目录](#目录)
@@ -236,19 +249,6 @@ $ npm run build
 ## 相关项目
 
 [zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate) - 一个小程序的快速开发骨架
-
-
-## 有问题
-
-Welcome PR or Issue or WeChat！
-
-### 交流群（一个个的拉，拉不过来）
-
-![微信交流群](./tutorial/img/qrcode2.png)
-
-### 如果你不喜欢热闹，或者加不进去，可以告诉我
-
-![我的微信](./tutorial/img/qrcode1.png)
 
 
 ## 许可
