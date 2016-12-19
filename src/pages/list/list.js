@@ -80,7 +80,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh () {
-    this.setData({ movies: [], page: 1 })
+    this.setData({ movies: [], page: 1, hasMore: true })
     this.handleLoadMore()
       .then(() => app.wechat.original.stopPullDownRefresh())
   }
