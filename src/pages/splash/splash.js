@@ -30,7 +30,9 @@ Page({
 
   handleStart () {
     // TODO: 访问历史的问题
-    wx.redirectTo({ url: '../board/board' })
+    wx.switchTab({
+      url: '../board/board'
+    })
   },
 
   /**

@@ -57,5 +57,13 @@ Page({
    */
   onPullDownRefresh () {
     // TODO: onPullDownRefresh
+  },
+
+  onShareAppMessage () {
+    return {
+      title: '自定义分享标题',
+      desc: '自定义分享描述',
+      path: '/pages/item?id=' + this.data.id
+    }
   }
 })
