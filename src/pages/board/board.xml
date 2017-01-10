@@ -19,7 +19,7 @@
           <view class="inner">
             <navigator wx:for="{{ item.movies }}" wx:key="{{ item.id }}" url="../item/item?id={{ item.id }}">
               <view class="movie-item">
-                <image src="{{ item.images.medium }}" mode="aspectFill"/>
+                <image src="{{ item.images.large }}" mode="aspectFill"/>
                 <text>{{ item.title }}</text>
               </view>
             </navigator>
