@@ -79,6 +79,7 @@ gulp.task('compile:xml', () => {
       collapseWhitespace: true,
       // collapseBooleanAttributes: true,
       // removeAttributeQuotes: true,
+      caseSensitive: true,
       keepClosingSlash: true, // xml
       removeComments: true,
       removeEmptyAttributes: true,
