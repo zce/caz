@@ -17,7 +17,10 @@ Page({
    */
   onLoad (params) {
     app.douban.findOne(params.id)
-      .then(d => this.setData({ title: d.title, movie: d, loading: false }))
+      .then(d => {
+        this.setData({ title: d.title, movie: d, loading: false })
+        wx.setNavigationBarTitle({ title: d.title + ' « 电影 « 豆瓣' })
+      })
       .catch(e => {
         this.setData({ title: '获取数据异常', movie: {}, loading: false })
         console.error(e)
