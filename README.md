@@ -24,6 +24,12 @@
 ## [豆瓣电影小程序真机测试](http://files.wedn.net/videos/weapp/weapp.mp4)
 
 
+## 相关项目
+
+- [zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate) - 一个小程序的快速开发骨架
+- [zce/weapp-todos](https://github.com/zce/weapp-todos) - 一个简单的任务清单小程序
+
+
 ## 有问题
 
 Welcome PR or Issue or WeChat！
@@ -245,11 +251,6 @@ $ npm run build
 
 + 主线版本，包含全部功能和特性！
 
-
-## 相关项目
-
-- [zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate) - 一个小程序的快速开发骨架
-- [zce/weapp-todos](https://github.com/zce/weapp-todos) - 一个简单的任务清单小程序
 
 ## 许可
 
