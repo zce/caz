@@ -105,7 +105,7 @@ Welcome PR or Issue or WeChat！
 
 用到了`GIT`环境，没有环境的话请自行解决吧。
 
-```bash
+```shell
 # 定位到任意目录
 $ cd path/to/root
 
@@ -120,7 +120,7 @@ $ cd [project-name]
 
 用到了`Node`环境，没有环境的话也请自行解决吧。
 
-```bash
+```shell
 $ npm install
 ```
 
@@ -135,7 +135,7 @@ $ npm install
 
 执行如下命令
 
-```bash
+```shell
 # 启动监视
 $ npm run watch
 ```
@@ -153,7 +153,7 @@ $ npm run watch
 
 执行如下命令
 
-```bash
+```shell
 # 启动生成器
 $ npm run generate
 ? Input the page name (index) [page-name]
@@ -170,7 +170,7 @@ $ npm run generate
 
 执行如下命令
 
-```bash
+```shell
 # 启动编译
 $ npm run build
 ```
