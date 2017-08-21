@@ -1,5 +1,3 @@
-const Promise = require('./bluebird')
-
 /**
  * 抓取远端API的结构
  * https://developers.douban.com/wiki/?title=movie_v2

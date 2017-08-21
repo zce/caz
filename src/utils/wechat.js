@@ -1,5 +1,3 @@
-const Promise = require('./bluebird')
-
 function login () {
   return new Promise((resolve, reject) => {
     wx.login({ success: resolve, fail: reject })
