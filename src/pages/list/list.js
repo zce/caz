@@ -17,7 +17,7 @@ Page({
     movies: []
   },
 
-  handleLoadMore () {
+  loadMore () {
     if (!this.data.hasMore) return
 
     this.setData({ subtitle: '加载中...', loading: true })
@@ -45,7 +45,7 @@ Page({
     // 类型： in_theaters  coming_soon  us_box
     this.data.type = params.type || this.data.type
 
-    this.handleLoadMore()
+    this.loadMore()
   },
 
   /**
@@ -56,32 +56,15 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow () {
-    // TODO: onShow
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide () {
-    // TODO: onHide
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload () {
-    // TODO: onUnload
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh () {
     this.setData({ movies: [], page: 1, hasMore: true })
-    this.handleLoadMore()
+    this.loadMore()
       .then(() => app.wechat.original.stopPullDownRefresh())
+  },
+
+  onReachBottom () {
+    this.loadMore()
   }
 })

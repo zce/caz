@@ -16,7 +16,7 @@ Page({
     hasMore: false
   },
 
-  handleLoadMore () {
+  loadMore () {
     if (!this.data.hasMore) return
 
     this.setData({ subtitle: '加载中...', loading: true })
@@ -40,42 +40,7 @@ Page({
     this.setData({ movies: [], page: 1 })
     this.setData({ subtitle: '加载中...', hasMore: true, loading: true, search: e.detail.value })
 
-    this.handleLoadMore()
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad () {
-    // TODO: onLoad
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady () {
-    // TODO: onReady
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow () {
-    // TODO: onShow
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide () {
-    // TODO: onHide
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload () {
-    // TODO: onUnload
+    this.loadMore()
   },
 
   /**
@@ -83,7 +48,11 @@ Page({
    */
   onPullDownRefresh () {
     this.setData({ movies: [], page: 1 })
-    this.handleLoadMore()
+    this.loadMore()
       .then(() => app.wechat.original.stopPullDownRefresh())
+  },
+
+  onReachBottom () {
+    this.loadMore()
   }
 })

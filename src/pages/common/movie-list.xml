@@ -36,7 +36,7 @@
 
 <!-- 电影列表组件 供每一个列表展示的页面使用 -->
 <template name="movie-list">
-  <scroll-view scroll-y="true" class="list" bindscrolltolower="handleLoadMore">
+  <view class="list">
     <template is="{{ item.subject ? 'item2' : 'item1' }}" data="{{ item }}" wx:for="{{ movies }}" wx:key="{{ item.id }}"/>
     <view class="tips">
       <view wx:if="{{ hasMore }}">
@@ -47,6 +47,6 @@
         <text>没有更多内容了</text>
       </view>
     </view>
-  </scroll-view>
+  </view>
   <loading hidden="{{ !loading }}">加载中...</loading>
 </template>

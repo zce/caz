@@ -1,4 +1,4 @@
-<scroll-view class="container" scroll-y="true">
+<view class="container">
   <view class="slide">
     <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
       <swiper-item wx:for="{{ boards[0].movies }}" wx:key="{{ item.id }}">
@@ -7,7 +7,7 @@
     </swiper>
   </view>
   <view class="board" scroll-y="true">
-    <block wx:for="{{ boards }}" wx:key="{{ item.key }}">
+    <block wx:for="{{ boards }}" wx:key="key">
       <view class="board-item">
         <navigator url="../list/list?type={{ item.key }}&title={{ item.title }}" hover-class="none">
           <view class="title">
@@ -17,7 +17,7 @@
         </navigator>
         <scroll-view class="content" scroll-x="true">
           <view class="inner">
-            <navigator wx:for="{{ item.movies }}" wx:key="{{ item.id }}" url="../item/item?id={{ item.id }}">
+            <navigator wx:for="{{ item.movies }}" wx:key="id" url="../item/item?id={{ item.id }}">
               <view class="movie-item">
                 <image src="{{ item.images.large }}" mode="aspectFill"/>
                 <text>{{ item.title }}</text>
@@ -28,4 +28,4 @@
       </view>
     </block>
   </view>
-</scroll-view>
+</view>

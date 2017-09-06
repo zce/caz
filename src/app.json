@@ -65,10 +65,10 @@
   // Network timeout configuration
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#networkTimeout
   "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
+    "request": 20000,
+    "downloadFile": 20000
   },
   // Debug log to console
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#debug
-  "debug": true
+  "debug": false
 }
