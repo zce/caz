@@ -64,8 +64,7 @@ gulp.task('compile:js', () => {
   return gulp.src(['src/**/*.js'])
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.babel())
-    .pipe(plugins.if(isProduction, plugins.uglify()))
-    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(plugins.if(isProduction, plugins.uglify(), plugins.sourcemaps.write('.')))
     .pipe(gulp.dest('dist'))
 })
 
@@ -87,7 +86,7 @@ gulp.task('compile:xml', () => {
       removeStyleLinkTypeAttributes: true
     })))
     .pipe(plugins.rename({ extname: '.wxml' }))
-    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(plugins.if(!isProduction, plugins.sourcemaps.write('.')))
     .pipe(gulp.dest('dist'))
 })
 
@@ -100,7 +99,7 @@ gulp.task('compile:less', () => {
     .pipe(plugins.less())
     .pipe(plugins.if(isProduction, plugins.cssnano({ compatibility: '*' })))
     .pipe(plugins.rename({ extname: '.wxss' }))
-    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(plugins.if(!isProduction, plugins.sourcemaps.write('.')))
     .pipe(gulp.dest('dist'))
 })
 
@@ -111,7 +110,7 @@ gulp.task('compile:json', () => {
   return gulp.src(['src/**/*.json'])
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.jsonminify())
-    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(plugins.if(!isProduction, plugins.sourcemaps.write('.')))
     .pipe(gulp.dest('dist'))
 })
 
