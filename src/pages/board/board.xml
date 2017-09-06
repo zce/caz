@@ -1,7 +1,7 @@
 <view class="container">
   <view class="slide">
     <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
-      <swiper-item wx:for="{{ boards[0].movies }}" wx:key="{{ item.id }}">
+      <swiper-item wx:for="{{ boards[0].movies }}" wx:key="id">
         <image src="{{ item.images.large }}" mode="aspectFill"/>
       </swiper-item>
     </swiper>

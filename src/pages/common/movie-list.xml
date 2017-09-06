@@ -7,7 +7,7 @@
       <view class="meta">
         <text class="title">{{ item.title }}</text>
         <text class="sub-title">{{ item.original_title }} ({{ item.year }})</text>
-        <view class="artists">导演：<block wx:for="{{ item.directors }}" wx:key="{{ item.id }}"> {{ item.name }} </block></view>
+        <view class="artists">导演：<block wx:for="{{ item.directors }}" wx:key="id"> {{ item.name }} </block></view>
       </view>
       <view class="rating">
         <text>{{ item.rating.average }}</text>
@@ -25,7 +25,7 @@
       <view class="meta">
         <text class="title">{{ item.subject.title }}</text>
         <text class="sub-title">{{ item.subject.original_title }} ({{ item.subject.year }})</text>
-        <view class="artists">导演：<block wx:for="{{ item.directors }}" wx:key="{{ item.id }}"> {{ item.name }} </block></view>
+        <view class="artists">导演：<block wx:for="{{ item.directors }}" wx:key="id"> {{ item.name }} </block></view>
       </view>
       <view class="rating">
         <text>{{ item.subject.rating.average }}</text>
@@ -37,7 +37,7 @@
 <!-- 电影列表组件 供每一个列表展示的页面使用 -->
 <template name="movie-list">
   <view class="list">
-    <template is="{{ item.subject ? 'item2' : 'item1' }}" data="{{ item }}" wx:for="{{ movies }}" wx:key="{{ item.id }}"/>
+    <template is="{{ item.subject ? 'item2' : 'item1' }}" data="{{ item }}" wx:for="{{ movies }}" wx:key="id"/>
     <view class="tips">
       <view wx:if="{{ hasMore }}">
         <image src="/images/loading.gif" mode="aspectFill"/>
