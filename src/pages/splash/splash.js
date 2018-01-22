@@ -15,13 +15,14 @@ Page({
     return new Promise(resolve => {
       app.wechat.getStorage('last_splash_data')
         .then(res => {
+          const { movies, expires } = res.data
           // 有缓存，判断是否过期
-          if (res.data.expires < Date.now()) {
-            // 已经过期
-            console.log('storage expired')
-            return resolve(null)
+          if (movies && expires > Date.now()) {
+            return resolve(res.data)
           }
-          return resolve(res.data)
+          // 已经过期
+          console.log('uncached')
+          return resolve(null)
         })
         .catch(e => resolve(null))
     })

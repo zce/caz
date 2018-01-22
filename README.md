@@ -7,6 +7,20 @@
 [![devDependency Status](https://david-dm.org/zce/weapp-demo/dev-status.svg)](https://david-dm.org/zce/weapp-demo#info=devDependencies)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+## 关于豆瓣API限制第三方小程序调用问题说明
+
+很多朋友最近都在反馈豆瓣接口 403 的问题，我抽空仔细排查了一遍，豆瓣官方应该是限制了第三方小程序对豆瓣接口的调用，对于这一行为我认为“无可厚非”，因为你没有为豆瓣的免费服务“买单”，请各位不要骂街（想都不应该想）。
+
+为了帮助更多初学者或是爱好者，我个人准备了一个反向代理服务器（免费开放）。希望各位珍惜资源切勿滥用，谢谢！
+
+接口地址：https://douban.uieee.com （支持 HTTP / HTTPS）
+
+### 具体使用
+
+- 将豆瓣的 API 地址更改为以上地址
+- 修改微信小程序后台的白名单
+
+
 ## [微信小程序开发教程](https://github.com/zce/weapp-demo/tree/tutorial)
 
 
@@ -117,7 +131,7 @@ Welcome PR or Issue or WeChat！
 $ cd path/to/root
 
 # 克隆仓库到指定的文件夹
-$ git clone https://github.com/zce/weapp-demo.git [project-name] --depth 1
+$ git clone https://github.com/zce/weapp-demo.git [project-name] -b master --depth 1
 
 # 进入指定的文件夹
 $ cd [project-name]
