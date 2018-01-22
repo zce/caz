@@ -239,25 +239,25 @@ $ npm run build
 
 + 页面与页面之间的跳转
 
-- [x] [level-04](https://github.com/zce/weapp-demo/tree/level-03)
+- [x] [level-04](https://github.com/zce/weapp-demo/tree/level-04)
 
 + 使用假数据的方式完成数据绑定
 
-- [ ] [level-05](https://github.com/zce/weapp-demo/tree/level-04)
+- [ ] [level-05](https://github.com/zce/weapp-demo/tree/level-05)
 
 + 改用`wx.request`接口调用`豆瓣API`完成数据加载
 + 增加加载过程界面体现（loading）
 
-- [ ] [level-06](https://github.com/zce/weapp-demo/tree/level-05)
+- [ ] [level-06](https://github.com/zce/weapp-demo/tree/level-06)
 
 + 封装操作`豆瓣API`的模块
 + 二次封装`微信API`为`Promise`的实现
 
-- [ ] [level-07](https://github.com/zce/weapp-demo/tree/level-06)
+- [ ] [level-07](https://github.com/zce/weapp-demo/tree/level-07)
 
 + 上拉加载（数据分页）
 
-- [ ] [level-08](https://github.com/zce/weapp-demo/tree/level-07)
+- [ ] [level-08](https://github.com/zce/weapp-demo/tree/level-08)
 
 + 其他`微信API`的使用
 + ..
