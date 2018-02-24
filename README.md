@@ -20,52 +20,48 @@
 - 将豆瓣的 API 地址更改为以上地址
 - 修改微信小程序后台的白名单
 
+## 文字教程
 
-## [微信小程序开发教程](https://github.com/zce/weapp-demo/tree/tutorial)
+- https://github.com/zce/weapp-demo/tree/tutorial
 
+## 相关演示
 
-## 如果你是看公开课视频来的，请注意
+- [视频演示如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
+- [豆瓣电影小程序真机测试](http://files.wedn.net/videos/weapp/weapp.mp4)
 
-公开课上演示的代码我放到了`backup`分支上，当前版本包含一套自动化工作流，请仔细往下看。
+很多朋友给我发消息说希望可以真机体验一下，所以前段时间我抽空把这个小程序发布了，大家可以通过微信扫码体验：
 
-如果你不了解Node和自动化工作，可以看看之前的版本：
+![DoubanFilm](https://user-images.githubusercontent.com/6166576/36627844-fc2a74ce-1983-11e8-98b3-25efff7e1d2b.jpg)
 
-- [backup分支 - 简单版本（旧版）](https://github.com/zce/weapp-demo/tree/backup)
-
-
-## [视频演示如何运行当前项目](http://files.wedn.net/videos/weapp/run-it.mp4)
-
-## [豆瓣电影小程序真机测试](http://files.wedn.net/videos/weapp/weapp.mp4)
-
+源码我放在了：https://github.com/zce/weapp-douban
 
 ## 相关项目
 
+- [zce/weapp-douban](https://github.com/zce/weapp-douban) - 不包含开发工作流版本的豆瓣电影
 - [zce/weapp-todos](https://github.com/zce/weapp-todos) - 一个简单的任务清单小程序
 - [zce/weapp-locally](https://github.com/zce/weapp-locally) - 本地生活，本地吃喝玩乐
 - ~~[zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate) - 一个小程序的快速开发骨架~~
 
+## 有想法？
 
-## 有问题
+Welcome PR / Issue / WeChat！
 
-Welcome PR or Issue or WeChat！
+### 交流群
 
-### 交流群（一个个的拉，拉不过来）
+一个个的拉，拉不过来
 
-![微信交流群](qrcode2.png)
+![微信交流群](https://user-images.githubusercontent.com/6166576/36627930-20fc9f10-1985-11e8-87d8-bc1e2910d225.jpg)
 
-### 如果你不喜欢热闹，或者加不进去，可以告诉我
+### 我的微信
+
+如果你不喜欢热闹，或者加不进去，可以告诉我
 
 ![我的微信](qrcode1.png)
 
-
 ## 目录
 
-- [目录](#目录)
 - [预览](#预览)
-- [重要申明](#重要申明)
-  + [解决办法](#解决办法)
-  + [下载链接](#下载链接)
-- [完整示例特点](#完整示例特点)
+- [完整特性](#完整特性)
 - [操作步骤](#操作步骤)
 - [使用说明](#使用说明)
   + [开发阶段](#开发阶段)
@@ -73,9 +69,8 @@ Welcome PR or Issue or WeChat！
 - [开发计划](#开发计划)
 - [分支说明](#分支说明)
 - [相关项目](#相关项目)
-- [联系方式](#有问题)
+- [联系方式](#有想法？)
 - [许可](#许可)
-
 
 ## 预览
 
@@ -83,26 +78,7 @@ Welcome PR or Issue or WeChat！
 
 [视频演示](http://files.wedn.net/videos/weapp/preview.mp4)
 
-## 重要申明
-
-- **微信小程序官方已经向没有资格的开发者开放了`微信Web开发者工具`的使用**
-- 这里不需要再用[之前的办法](https://github.com/gavinkwoe/weapp-ide-crack)破解，破解了有问题！破解了有问题！破解了有问题！
-
-### 解决办法
-
-- 完全卸载之前的版本(删除掉用户目录下与`微信Web开发者工具`相关的目录)
-- 安装`0.9.092300`或`0.10.102800`版本
-
-### 下载链接
-
-> `0.10.102800`版本
-
-- [Windows 64位](https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&t=1475052055457)
-- [Windows 32位](https://servicewechat.com/wxa-dev-logic/download_redirect?type=ia32&from=mpwiki&t=1475052055457)
-- [macOS](https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&from=mpwiki&t=1475052055457)
-
-
-## 完整示例特点
+## 完整特性
 
 - 开发阶段与生产阶段分离。
 - 自动化生成新页面所需文件并添加到配置中。
@@ -114,7 +90,6 @@ Welcome PR or Issue or WeChat！
 - 开发阶段用`xml`文件后缀取代`wxml`后缀，避免在开发工具中配置代码高亮。
 - Source Map
 - Travis CI
-
 
 ## 操作步骤
 
@@ -164,7 +139,7 @@ $ npm run watch
 通过`微信Web开放者工具`打开项目根目录下`dist`文件夹，预览~
 
 - 打开`微信Web开放者工具`，选择`添加项目`，填写或选择相应信息
-  + AppID：点击右下角`无AppID`（尚未开放申请）
+  + AppID：点击右下角`无AppID`（个人用户可以申请）
   + 项目名称：随便填写，因为不涉及到部署，所以无所谓
   + 项目目录：选择项目根目录下`dist`文件夹
   + 点击`添加项目`
@@ -186,7 +161,6 @@ $ npm run generate
 
 由于微信小程序的每一个页面有特定的结构，新建工作比较繁琐。可以通过此任务减少操作。
 
-
 ### 生产阶段
 
 执行如下命令
@@ -200,7 +174,6 @@ $ npm run build
 
 同样可以通过`微信Web开放者工具`测试。
 
-
 ## 开发计划
 
 - [x] 自动化生成新页面所需文件；
@@ -209,8 +182,7 @@ $ npm run build
 - [x] 自动刷新`微信Web开放者工具`中的预览；
 - [ ] `HTML` to `WXML` 转换器，让大家可以直接使用`HTML`元素开发；
 
-
-## 分支说明
+## 分支说明（WIP）
 
 > for 新手同学
 
@@ -270,5 +242,3 @@ $ npm run build
 ## 许可
 
 [MIT](./LICENSE) &copy; [汪磊](http://github.com/zce)
-
-<!-- ​wxa78c9cdabef9ea77 -->
