@@ -1,6 +1,8 @@
-# 微信小程序开发教程示例
+# 微信小程序示例
 
-> 一个微信小程序（应用号）开发示例（豆瓣电影）
+> 一个微信小程序开发示例（豆瓣电影）
+> 新版本请移步至：https://github.com/zce/weapp-douban
+> 当前仓库会暂缓更新，主要留下来给大家答疑
 
 [![Build Status](https://travis-ci.org/zce/weapp-demo.svg?branch=master)](https://travis-ci.org/zce/weapp-demo)
 [![Dependency Status](https://david-dm.org/zce/weapp-demo.svg)](https://david-dm.org/zce/weapp-demo)
