@@ -24,7 +24,7 @@
 
 如果你可以的话，建议你自己参考我的配置文件配置一个自己的反向代理服务（这样就没人跟你抢了😀）
 
-接口配置文件仓库：https://github.com/zce/douban-api-proxy
+接口配置文件仓库：https://github.com/zce/douban-api-proxy (包括解决方法)
 
 ### 具体使用
 
