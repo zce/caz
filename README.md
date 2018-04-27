@@ -59,9 +59,10 @@ Welcome PR / Issue / WeChat！
 
 ### 交流群
 
-一个个的拉，拉不过来
+微信群垃圾广告和无意义的分享链接太多，最近狠下心清理了~
+改用 QQ 群，单独审核，禁止广告，我的目的很简单，就是留出一个感觉的环境，让志同道合的一起玩，谢谢大家
 
-![微信交流群](https://user-images.githubusercontent.com/6166576/36627930-20fc9f10-1985-11e8-87d8-bc1e2910d225.jpg)
+![IT BETTER群二维码](https://user-images.githubusercontent.com/6166576/39342428-99c27a22-4a0a-11e8-8cc1-fa10f2dafe23.png)
 
 ### 我的微信
 
