@@ -1,6 +1,10 @@
 {
 	"client": "dist",
 	"setting": {
-		"urlCheck": true
-	}
+		"urlCheck": true,
+		"newFeature": true
+	},
+	"appid": "wxb9eb22375e8789a7",
+	"projectname": "weapp-douban",
+	"condition": {}
 }
