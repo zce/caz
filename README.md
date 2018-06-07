@@ -51,6 +51,7 @@
 - [zce/weapp-douban](https://github.com/zce/weapp-douban) - 不包含开发工作流版本的豆瓣电影
 - [zce/weapp-todos](https://github.com/zce/weapp-todos) - 一个简单的任务清单小程序
 - [zce/weapp-locally](https://github.com/zce/weapp-locally) - 本地生活，本地吃喝玩乐
+- [zce/weapp-beauty](https://github.com/zce/weapp-beauty) - 拍拍测颜值，AI
 - ~~[zce/weapp-boilerplate](https://github.com/zce/weapp-boilerplate) - 一个小程序的快速开发骨架~~
 
 ## 有想法？
