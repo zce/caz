@@ -10,6 +10,12 @@
 [![devDependency Status](https://david-dm.org/zce/weapp-demo/dev-status.svg)](https://david-dm.org/zce/weapp-demo#info=devDependencies)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+## 豆瓣 API 文档
+
+豆瓣 API 服务计划对外关闭，官方 API 已经下线，考虑到众多初学者的需要我重新整理了一份
+
+- https://github.com/zce/douban-api-docs
+
 ## 关于豆瓣API限制第三方小程序调用问题说明
 
 很多朋友最近都在反馈豆瓣接口 403 的问题，我抽空仔细排查了一遍，豆瓣官方应该是限制了第三方小程序对豆瓣接口的调用，对于这一行为我认为“无可厚非”，因为你没有为豆瓣的免费服务“买单”，请各位不要骂街。
