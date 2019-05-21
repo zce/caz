@@ -22,7 +22,12 @@
 
 为了帮助更多初学者或是爱好者，我个人准备了一个反向代理服务器（免费开放）。希望各位**珍惜资源切勿滥用**，谢谢！
 
-接口地址：https://douban.uieee.com （支持 HTTP / HTTPS）
+接口地址：
+
+- https://douban.uieee.com （支持 HTTP / HTTPS）
+- https://douban-api.uieee.com
+- https://douban-api.now.sh
+- https://douban-api.zce.now.sh
 
 **接口限流：10000 次 / 1 小时**，由于是豆瓣官方的限流，所以所有使用我搭建的这个反向代理服务的朋友都是**共享这 10000 次请求**的，我也没办法再去提高这个数字（普通个人用户是 100 次 / 1 小时），所以还是希望大家不要滥用。
 
@@ -75,7 +80,7 @@ Welcome PR / Issue / WeChat！
 
 如果你不喜欢热闹，或者加不进去，可以告诉我（注意我不收红包！有问题直接留言就行，只求描述到我能看懂！我尽快回复）
 
-![我的微信](qrcode1.png)
+![我的微信](https://img.zce.me/qrcode/wechat.jpg)
 
 ## 目录
 
