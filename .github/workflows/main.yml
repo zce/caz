@@ -1,0 +1,20 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+      - name: Setup Node
+        uses: actions/setup-node@v2.1.0
+      - name: Install Dependencies
+        run: npm install
+      - name: Linting
+        run: npm run lint
+      - name: Testing
+        run: npm run cov
+      - name: Reporting
+        run: npx codecov

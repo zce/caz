@@ -1,0 +1,16 @@
+/* Visit https://aka.ms/tsconfig.json to read more about this file */
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "CommonJS",
+    "lib": ["ES2018"],
+    "sourceMap": true,
+    "declaration": true,
+    "removeComments": true,
+    "outDir": "lib",
+    "strict": true,
+    "esModuleInterop": true,
+    "pretty": true
+  },
+  "include": ["src"] // declarations.d.ts
+}

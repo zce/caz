@@ -1,0 +1,72 @@
+{
+  "name": "caz",
+  "version": "0.1.0",
+  "description": "A scaffolding tool for my personal productivity.",
+  "keywords": [
+    "scaffolding",
+    "generator",
+    "cli",
+    "typescript",
+    "jest",
+    "node",
+    "zce"
+  ],
+  "homepage": "https://github.com/zce/caz#readme",
+  "bugs": {
+    "url": "https://github.com/zce/caz/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zce/caz.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "zce",
+    "email": "w@zce.me",
+    "url": "https://zce.me"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": "bin/caz",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "lint": "eslint src",
+    "compile": "tsc",
+    "build": "run-s clean lint compile",
+    "test": "jest",
+    "cov": "jest --coverage",
+    "prepare": "run-s build test"
+  },
+  "eslintConfig": {
+    "extends": "standard-ts"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "cac": "^6.6.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.23",
+    "eslint": "^7.4.0",
+    "eslint-config-standard-ts": "^18.0.2",
+    "jest": "^26.1.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.1.3",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
