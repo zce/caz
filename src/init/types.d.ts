@@ -8,6 +8,10 @@ export interface File {
   contents: Buffer
 }
 
+// @typescript-eslint/no-invalid-void-type
+// export type CompleteFunction = (ctx: Context) => void | string | Promise<void | string>
+export type CompleteFunction = (ctx: Context) => any
+
 export interface Options {
   name: string
   version?: string
@@ -17,7 +21,7 @@ export interface Options {
   filters?: Record<string, (answers: Answers) => boolean>
   helpers?: Record<string, unknown>
   plugin?: Middleware<Context>
-  complete?: Middleware<Context>
+  complete?: CompleteFunction | string
 }
 
 export interface Context {

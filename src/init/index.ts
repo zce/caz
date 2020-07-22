@@ -1,7 +1,12 @@
-import path, { resolve } from 'path'
+import path from 'path'
 import { Ware } from '../common'
 import { Context } from './types'
 import confirm from './confirm'
+import resolve from './resolve'
+import load from './load'
+import plugin from './plugin'
+import inquire from './inquire'
+import complete from './complete'
 
 export interface InitOptions {
   offline?: boolean
@@ -10,8 +15,14 @@ export interface InitOptions {
 const creator = new Ware<Context>()
 
 creator.use(confirm)
+creator.use(resolve)
+creator.use(load)
+creator.use(plugin)
+creator.use(inquire)
 
-const delay = (t: number) => new Promise(resolve => setTimeout(resolve, t))
+creator.use(complete)
+
+creator.use(ctx => console.log(ctx))
 
 export default async (template: string, project: string = '.', options: InitOptions = {}): Promise<void> => {
   // // required arguments
@@ -30,10 +41,6 @@ export default async (template: string, project: string = '.', options: InitOpti
     answers: {},
     files: {}
   }
-
-  await delay(1000)
-
-  throw new Error('123')
 
   try {
     await creator.run(context)

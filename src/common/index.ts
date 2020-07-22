@@ -1,4 +1,5 @@
 export { default as config } from './config'
+export * as strings from './strings'
 export * as file from './file'
-export * from './http'
+export * as http from './http'
 export * from './ware'

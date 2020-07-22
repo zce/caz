@@ -1,6 +1,6 @@
 import fs from 'fs'
 import ora from 'ora'
-import { request, config } from '../common'
+import { config, http } from '../common'
 
 export interface Repository extends Record<string, unknown> {
   name: string
@@ -26,7 +26,7 @@ export const remote = async (owner: string): Promise<Result[]> => {
   const spinner = ora('Loading available list from remote...').start()
 
   try {
-    const response = await request<Repository[]>(`https://api.github.com/users/${owner}/repos`, {
+    const response = await http.request<Repository[]>(`https://api.github.com/users/${owner}/repos`, {
       username: '0cb723972877555ffb54',
       password: 'ad0638a75ee90bb86c8b551f5f42f3a044725f38',
       searchParams: {

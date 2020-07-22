@@ -2,7 +2,7 @@ import cac from 'cac'
 import init, { list } from '.'
 import { name, version } from '../package.json'
 
-const onError = (err: Error) => {
+const onError = (err: Error): void => {
   console.error(err.message)
   process.exit(1)
 }

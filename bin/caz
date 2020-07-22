@@ -3,8 +3,11 @@
 const fs = require('fs')
 const path = require('path')
 
+// tsconfig filename
+const project = path.join(__dirname, '../tsconfig.json')
+
 // check if we're running in dev mode
-const devMode = fs.existsSync(path.join(__dirname, '../tsconfig.json'))
+const devMode = fs.existsSync(project)
 // or want to "force" running the compiled version with --compiled-build
 const wantsCompiled = process.argv.slice(2).indexOf('--compiled-build') >= 0
 
@@ -15,7 +18,7 @@ if (!devMode || wantsCompiled) {
 } else {
   // hook into ts-node so we can run typescript on the fly
   // require('ts-node').register({ typeCheck: false })
-  require('ts-node').register({ files: '../src/types.d.ts' })
+  require('ts-node').register({ project, files: true })
 
   // import cli from the source
   // run the CLI with the current process arguments

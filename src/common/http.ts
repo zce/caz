@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
-import { createWriteStream } from 'fs'
+import { promises as fs, createWriteStream } from 'fs'
 import got, { StreamOptions } from 'got'
 import config from './config'
 import { name, version, homepage } from '../../package.json'
@@ -29,6 +29,8 @@ export const request = client.extend({
  * @returns
  */
 export const download = async (url: string, options?: StreamOptions): Promise<string> => {
+  // ensure temp dir
+  await fs.mkdir(config.paths.temp, { recursive: true })
   const filename = join(config.paths.temp, Date.now().toString() + '.tmp')
   await pipe(client.stream(url, options), createWriteStream(filename))
   return filename

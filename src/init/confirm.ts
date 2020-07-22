@@ -3,7 +3,7 @@ import { file } from '../common'
 import { Context } from './types'
 
 /**
- * confirm destination
+ * Confirm destination.
  */
 export default async (ctx: Context): Promise<void> => {
   const exists = await file.exists(ctx.dest)
@@ -11,39 +11,42 @@ export default async (ctx: Context): Promise<void> => {
   //  dist not exists
   if (exists === false) return
 
-  if (exists !== 'dir') throw new Error(`Cannot init ${ctx.project}: File exists.`)
-
   // empty dir
   if (await file.isEmpty(ctx.dest)) return
+
+  // destination is file
+  if (exists !== 'dir') throw new Error(`Cannot create ${ctx.project}: File exists.`)
 
   // clear console
   console.clear()
 
-  // confirm
-  const { sure }: { sure: boolean } = await prompts({
-    type: 'confirm',
-    name: 'sure',
-    message: ctx.dest === process.cwd() ? 'Generate project in current directory?' : 'Target directory already exists. Continue?'
-  })
+  // is current working directory
+  const isCurrent = ctx.dest === process.cwd()
 
-  // cancel task
-  if (!sure) throw new Error('You have to cancel the init task.')
+  // confirm & choose next
+  const { choose }: { choose?: string } = await prompts([
+    {
+      type: 'confirm',
+      name: 'sure',
+      message: isCurrent ? 'Create in current directory?' : 'Target directory already exists. Continue?'
+    },
+    {
+      type: (prev: boolean) => prev ? 'select' : null,
+      name: 'choose',
+      message: `${isCurrent ? 'Current' : 'Target'} directory is not empty. How to continue?`,
+      choices: [
+        { title: 'Merge', value: 'merge' },
+        { title: 'Overwrite', value: 'overwrite' },
+        { title: 'Cancel', value: 'cancel' }
+      ]
+    }
+  ])
 
-  // choose next
-  const { choose }: { choose: string } = await prompts({
-    type: 'select',
-    name: 'choose',
-    message: 'Target directory is not empty. Pick an action:',
-    choices: [
-      { title: 'Merge', value: 'merge' },
-      { title: 'Overwrite', value: 'overwrite' },
-      { title: 'Cancel', value: 'cancel' }
-    ]
-  })
+  // Merge not require any action
 
-  // cancel task
-  if (choose === 'cancel') throw new Error('You have to cancel the init task.')
+  // Overwrite require empty dest
+  if (choose === 'overwrite') await file.empty(ctx.dest)
 
-  // overwrite
-  if (choose === 'overwrite') await file.remove(ctx.dest)
+  // Otherwise is cancel task
+  if (choose == null || choose === 'cancel') throw new Error('You have cancelled this task.')
 }

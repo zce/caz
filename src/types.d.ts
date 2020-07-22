@@ -1,7 +1,17 @@
+/**
+ * Global types & Module declarations
+ * - Global types for ease of use
+ * - Module declarations in order to reduce the devDependencies that need to be installed
+ */
+
 declare interface Dictionary <T> {
   [key: string]: T
 }
 
+/**
+ * PackageJson type
+ * for import package.js as ESM without having to participate in compilation
+ */
 // https://www.typescriptlang.org/docs/handbook/modules.html
 declare module '*/package.json' {
   // interface PackageJson extends Record<string, unknown> {
@@ -170,4 +180,31 @@ declare module 'prompts' {
 
     type ValueOrFunc<T extends string> = T | PrevCaller<T>
   }
+}
+
+// https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/validate-npm-package-name/index.d.ts
+declare module 'validate-npm-package-name' {
+  namespace validate {
+    let scopedPackagePattern: RegExp
+
+    interface Result {
+      errors?: string[]
+      validForNewPackages: boolean
+      validForOldPackages: boolean
+      warnings?: string[]
+    }
+  }
+
+  function validate (name: string): validate.Result
+
+  export = validate
+}
+
+// https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/semver/index.d.ts
+
+declare module 'semver' {
+  export function valid (
+    version: string,
+    optionsOrLoose?: any,
+  ): string | null
 }

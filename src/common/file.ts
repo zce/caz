@@ -1,7 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
-// import extractZip from 'extract-zip'
+import extractZip from 'extract-zip'
 
 /**
  * Read file buffer
@@ -81,13 +81,33 @@ export const mkdir = async (input: string, options?: fs.MakeDirectoryOptions): P
 }
 
 /**
- * Remove input path recursive.
+ * Remove input dir or file. recursive when dir
  * @param input input path
- * @todo
- * - https://github.com/sindresorhus/trash
+ * @todo https://github.com/sindresorhus/trash
  */
 export const remove = async (input: string, options?: fs.RmDirAsyncOptions): Promise<void> => {
-  await fs.promises.rmdir(input, { recursive: true, ...options })
+  if (await isDirectory(input)) {
+    await fs.promises.rmdir(input, { recursive: true, ...options })
+  } else {
+    await fs.promises.unlink(input)
+  }
+}
+
+/**
+ * Empty input dir.
+ * @param input input path
+ */
+export const empty = async (input: string): Promise<void> => {
+  const list = await fs.promises.readdir(input)
+  await Promise.all(list.map(async item => {
+    const fullname = path.join(input, item)
+    if (await isDirectory(fullname)) {
+      await empty(fullname)
+      await fs.promises.rmdir(fullname)
+    } else {
+      await fs.promises.unlink(fullname)
+    }
+  }))
 }
 
 // /**
@@ -143,22 +163,23 @@ export const untildify = (input: string): string => {
   return input.replace(/^~(?=$|\/|\\)/, home)
 }
 
-// /**
-//  * Unzip file.
-//  * @param input input path or stream
-//  * @param output output path
-//  * @see https://github.com/shinnn/node-strip-dirs
-//  */
-// export const extract = async (input: string, output: string, strip = 0): Promise<void> => {
-//   await extractZip(input, {
-//     dir: output,
-//     onEntry: entry => {
-//       if (strip === 0) return
-//       const items = entry.fileName.split(/\/|\\/)
-//       const start = Math.min(items.length, strip)
-//       // console.log('->', entry.fileName)
-//       entry.fileName = items.slice(start).join('/')
-//       // console.log('<-', entry.fileName)
-//     }
-//   })
-// }
+/**
+ * Extract zip file.
+ * @param input input path or stream
+ * @param output output path
+ * @param strip strip output path
+ * @see https://github.com/shinnn/node-strip-dirs
+ */
+export const extract = async (input: string, output: string, strip = 0): Promise<void> => {
+  await extractZip(input, {
+    dir: output,
+    onEntry: entry => {
+      if (strip === 0) return
+      const items = entry.fileName.split(/\/|\\/)
+      const start = Math.min(items.length, strip)
+      // console.log('->', entry.fileName)
+      entry.fileName = items.slice(start).join('/')
+      // console.log('<-', entry.fileName)
+    }
+  })
+}
