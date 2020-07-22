@@ -2,6 +2,14 @@ import cac from 'cac'
 import init, { list } from '.'
 import { name, version } from '../package.json'
 
+const onError = (err: Error) => {
+  console.error(err.message)
+  process.exit(1)
+}
+
+process.on('uncaughtException', onError)
+process.on('unhandledRejection', onError)
+
 const cli = cac(name)
 
 cli
@@ -21,12 +29,12 @@ cli
 
 // Listen to unknown commands
 cli.on('command:*', () => {
-  console.error('Invalid command: %s', cli.args.join(' '))
-  process.exit(1)
+  throw new Error('Invalid command: ' + cli.args.join(' '))
 })
 
 cli.help().version(version).parse()
 
+// use uncaughtException & unhandledRejection instead
 // https://github.com/cacjs/cac#error-handling
 // cli.runMatchedCommand().catch(err => {
 //   console.error(err.message)
