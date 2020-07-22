@@ -1,3 +1,7 @@
+declare interface Dictionary <T> {
+  [key: string]: T
+}
+
 // https://www.typescriptlang.org/docs/handbook/modules.html
 declare module '*/package.json' {
   // interface PackageJson extends Record<string, unknown> {
@@ -41,4 +45,22 @@ declare module '*/package.json' {
   export const devDependencies: Record<string, string>
   export const engines: { node?: string, npm?: string, yarn?: string }
   export const publishConfig: { access?: 'public' | 'restricted', tag?: string, yarn?: string }
+}
+
+// https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/ini/index.d.ts
+declare module 'ini' {
+  interface EncodeOptions {
+    section: string
+    whitespace: boolean
+  }
+  export function decode (str: string): {
+    [key: string]: any
+  }
+  export function parse (str: string): {
+    [key: string]: any
+  }
+  export function encode (object: any, options?: EncodeOptions | string): string
+  export function stringify (object: any, options?: EncodeOptions | string): string
+  export function safe (val: string): string
+  export function unsafe (val: string): string
 }
