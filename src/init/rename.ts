@@ -1,7 +1,7 @@
 import { Context } from './types'
 
 /**
- * Apply template plugin.
+ * Rename file if necessary.
  */
 export default async (ctx: Context): Promise<void> => {
   const regexp = /{(.*?)}/g

@@ -1,8 +1,6 @@
-/**
- * Global types & Module declarations
- * - Global types for ease of use
- * - Module declarations in order to reduce the devDependencies that need to be installed
- */
+// Global types & Module declarations
+// - [ ] Global types for ease of use
+// - [ ] Module declarations in order to reduce the devDependencies that need to be installed
 
 declare interface Dictionary <T> {
   [key: string]: T

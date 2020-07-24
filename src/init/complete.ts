@@ -1,7 +1,7 @@
 import { Context } from './types'
 
 /**
- * Apply template complete.
+ * Apply template complete hook.
  */
 export default async (ctx: Context): Promise<void> => {
   if (ctx.config.complete == null) return

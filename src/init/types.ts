@@ -63,9 +63,8 @@ export interface Template {
   init?: boolean
   /**
    * Template hooks plugin.
-   * @todo all hooks
    */
-  plugin?: HookFunction
+  setup?: HookFunction
   /**
    * Template all completed.
    */

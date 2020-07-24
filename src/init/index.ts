@@ -3,10 +3,11 @@ import { Context, Options } from './types'
 import confirm from './confirm'
 import resolve from './resolve'
 import load from './load'
+import setup from './setup'
 import inquire from './inquire'
 import prepare from './prepare'
 import rename from './rename'
-import template from './template'
+import render from './render'
 import emit from './emit'
 import install from './install'
 import init from './init'
@@ -16,15 +17,16 @@ const creator = new Ware<Context>()
 
 // TODO:
 // - require lazy
-// - lifecycle hooks
+// - all lifecycle hooks
 
 creator.use(confirm)
 creator.use(resolve)
 creator.use(load)
+creator.use(setup)
 creator.use(inquire)
 creator.use(prepare)
 creator.use(rename)
-creator.use(template)
+creator.use(render)
 creator.use(emit)
 creator.use(install)
 creator.use(init)

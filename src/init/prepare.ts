@@ -4,7 +4,7 @@ import { file } from '../common'
 import { Context } from './types'
 
 /**
- * Prepare template files.
+ * Prepare all template files.
  */
 export default async (ctx: Context): Promise<void> => {
   const cwd = path.join(ctx.src, ctx.config.source ?? 'template')

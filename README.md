@@ -12,6 +12,8 @@
 
 > **M**iddle **W**are **A**sync, Easily create your own middleware layer. It's like koa's middleware.
 
+https://stackoverflow.com/questions/56018167/typescript-does-not-copy-d-ts-files-to-build
+
 ## Installation
 
 ```shell

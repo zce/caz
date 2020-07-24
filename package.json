@@ -83,6 +83,7 @@
     "node": ">=10.12"
   },
   "publishConfig": {
+    "tag": "alpha",
     "registry": "https://registry.npmjs.org"
   }
 }

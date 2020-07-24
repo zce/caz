@@ -9,9 +9,10 @@ const project = path.join(__dirname, '../tsconfig.json')
 // check if we're running in dev mode
 const devMode = fs.existsSync(project)
 // or want to "force" running the compiled version with --compiled-build
-const wantsCompiled = process.argv.slice(2).indexOf('--compiled-build') >= 0
+const wantsCompiled = process.argv.indexOf('--compiled-build') >= 0
 
 if (!devMode || wantsCompiled) {
+  process.argv = process.argv.filter(i => i != '--compiled-build')
   // import cli from the compiled
   // run the CLI with the current process arguments
   require('../lib/cli')

@@ -5,7 +5,7 @@ import { Context } from './types'
  * Execute `npm | yarn install` command.
  */
 export default async (ctx: Context): Promise<void> => {
-  if (ctx.config.install == null || !ctx.config.install) return
+  if (ctx.config.install == null || ctx.config.install === false) return
 
   // Installing dependencies...
 

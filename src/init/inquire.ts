@@ -51,7 +51,7 @@ export const processor = (ctx: Context) => (item: PromptObject) => {
 }
 
 /**
- * Inquire prompts.
+ * Inquire template prompts.
  */
 export default async (ctx: Context): Promise<void> => {
   // default prompts

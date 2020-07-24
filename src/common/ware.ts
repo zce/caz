@@ -12,14 +12,23 @@ export class Ware<S> {
    * Use the given middleware.
    * @param middleware middleware func
    */
-  use (middleware: Middleware<S> | Array<Middleware<S>>): Ware<S> {
-    if (typeof middleware === 'function') {
-      this.middlewares.push(middleware)
-    } else {
-      this.middlewares.push(...middleware)
-    }
+  use (middleware: Middleware<S>): Ware<S> {
+    this.middlewares.push(middleware)
     return this
   }
+
+  // /**
+  //  * Use the given middleware.
+  //  * @param middleware middleware func
+  //  */
+  // use (middleware: Middleware<S> | Array<Middleware<S>>): Ware<S> {
+  //   if (typeof middleware === 'function') {
+  //     this.middlewares.push(middleware)
+  //   } else {
+  //     this.middlewares.push(...middleware)
+  //   }
+  //   return this
+  // }
 
   /**
    * Run all middlewares.
@@ -31,13 +40,4 @@ export class Ware<S> {
       Promise.resolve()
     )
   }
-
-  /**
-   * Create middlewares layer.
-   */
-  static create<T> (): Ware<T> {
-    return new Ware<T>()
-  }
 }
-
-export const ware = Ware.create

@@ -1,8 +1,13 @@
 import { spawn } from 'child_process'
 import { Context } from './types'
 
-const command = (args: string[], cwd: string) => new Promise((resolve, reject) => {
-  const child = spawn('git',args, { cwd, stdio: 'inherit' })
+/**
+ * Run git sub command.
+ * @param args command arguments
+ * @param cwd cwd directory
+ */
+const command = async (args: string[], cwd: string): Promise<void> => await new Promise((resolve, reject) => {
+  const child = spawn('git', args, { cwd, stdio: 'inherit' })
   child.on('error', reject).on('exit', code => {
     if (code === 0) return resolve()
     reject(new Error('Initial repository failed.'))
