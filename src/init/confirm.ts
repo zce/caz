@@ -16,14 +16,16 @@ export default async (ctx: Context): Promise<void> => {
   //  dist not exists
   if (exists === false) return
 
-  // empty dir
-  if (await file.isEmpty(ctx.dest)) return
+  // force mode
+  if (ctx.options.force != null && ctx.options.force) {
+    return await file.remove(ctx.dest)
+  }
 
   // destination is file
   if (exists !== 'dir') throw new Error(`Cannot create ${ctx.project}: File exists.`)
 
-  // clear console
-  console.clear()
+  // is empty dir
+  if (await file.isEmpty(ctx.dest)) return
 
   // is current working directory
   const isCurrent = ctx.dest === process.cwd()
@@ -39,6 +41,7 @@ export default async (ctx: Context): Promise<void> => {
       type: (prev: boolean) => prev ? 'select' : null,
       name: 'choose',
       message: `${isCurrent ? 'Current' : 'Target'} directory is not empty. How to continue?`,
+      hint: ' ',
       choices: [
         { title: 'Merge', value: 'merge' },
         { title: 'Overwrite', value: 'overwrite' },
@@ -51,7 +54,7 @@ export default async (ctx: Context): Promise<void> => {
   if (choose == null || choose === 'cancel') throw new Error('You have cancelled this task.')
 
   // Overwrite require empty dest
-  if (choose === 'overwrite') await file.empty(ctx.dest)
+  if (choose === 'overwrite') await file.remove(ctx.dest)
 
   // Merge not require any action
 }

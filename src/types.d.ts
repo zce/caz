@@ -14,7 +14,7 @@ declare interface Dictionary <T> {
  */
 // https://www.typescriptlang.org/docs/handbook/modules.html
 declare module '*/package.json' {
-  // interface PackageJson extends Record<string, unknown> {
+  // interface PackageJson extends Dictionary<unknown> {
   //   name: string
   //   version: string
   //   description: string
@@ -26,11 +26,11 @@ declare module '*/package.json' {
   //   author: string | { name?: string, email?: string, url?: string }
   //   main: string
   //   types: string
-  //   bin: string | Record<string, string>
+  //   bin: string | Dictionary<string>
   //   files: string[]
-  //   scripts: Record<string, string>
-  //   dependencies: Record<string, string>
-  //   devDependencies: Record<string, string>
+  //   scripts: Dictionary<string>
+  //   dependencies: Dictionary<string>
+  //   devDependencies: Dictionary<string>
   //   engines: { node?: string, npm?: string, yarn?: string }
   //   publishConfig: { access?: 'public' | 'restricted', tag?: string, yarn?: string }
   // }
@@ -48,11 +48,11 @@ declare module '*/package.json' {
   export const author: string | { name?: string, email?: string, url?: string }
   export const main: string
   export const types: string
-  export const bin: string | Record<string, string>
+  export const bin: string | Dictionary<string>
   export const files: string[]
-  export const scripts: Record<string, string>
-  export const dependencies: Record<string, string>
-  export const devDependencies: Record<string, string>
+  export const scripts: Dictionary<string>
+  export const dependencies: Dictionary<string>
+  export const devDependencies: Dictionary<string>
   export const engines: { node?: string, npm?: string, yarn?: string }
   export const publishConfig: { access?: 'public' | 'restricted', tag?: string, yarn?: string }
 }

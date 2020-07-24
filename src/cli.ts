@@ -14,6 +14,7 @@ const cli = cac(name)
 
 cli
   .command('<template> [project]', 'Create new project from a template')
+  .option('-f, --force', 'Overwrite if the target exists')
   .option('-o, --offline', 'Try to use an offline template')
   // .allowUnknownOptions() // for prompts override.
   .example(name => `  $ ${name} <template> [project] # with an official template`)

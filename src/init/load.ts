@@ -2,7 +2,7 @@ import { Context } from './types'
 
 /**
  * Load template config.
- * @todo Adapt to any repository.
+ * @todo Adapt to any repository?
  */
 export default async (ctx: Context): Promise<void> => {
   // default template name
@@ -18,7 +18,7 @@ export default async (ctx: Context): Promise<void> => {
 
     Object.assign(ctx.config, mod)
   } catch (e) {
-    // TODO: template deps not found
+    // TODO: template dependencies not found.
     if (e.code === 'MODULE_NOT_FOUND') return
     e.message = `Invalid template: ${e.message as string}`
     throw e

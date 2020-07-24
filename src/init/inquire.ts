@@ -8,7 +8,7 @@ import { Context } from './types'
 /**
  * Prompt validater.
  */
-export const validater: Record<string, (input: string) => true | string> = {
+export const validater: Dictionary<(input: string) => true | string> = {
   name: input => {
     const result = validateName(input)
     if (result.validForNewPackages) return true
@@ -17,12 +17,13 @@ export const validater: Record<string, (input: string) => true | string> = {
   version: input => {
     const valid = semver.valid(input)
     if (valid != null) return true
-    return `The '${input}' is not a semantic version.`
+    return `The \`${input}\` is not a semantic version.`
   }
 }
 
 /**
  * Return a prompt processor.
+ * defaults & validater
  */
 export const processor = (ctx: Context) => (item: PromptObject) => {
   switch (item.name) {
@@ -31,7 +32,7 @@ export const processor = (ctx: Context) => (item: PromptObject) => {
       item.initial = item.initial ?? path.basename(ctx.dest)
       break
     case 'version':
-      item.validate = validater.version
+      item.validate = item.validate ?? validater.version
       item.initial = item.initial ?? config.npm?.['init-version'] ?? config.yarn?.['init-version'] ?? '0.1.0'
       break
     case 'author':

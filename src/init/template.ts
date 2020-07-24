@@ -17,7 +17,7 @@ export default async (ctx: Context): Promise<void> => {
   ctx.files.forEach(item => {
     const text = item.contents.toString()
 
-    // ignore files that do not have interpolate
+    // ignore files without interpolate
     if (!regexp.test(text)) return
 
     const compiled = _.template(text, { imports })

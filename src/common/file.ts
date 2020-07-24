@@ -4,23 +4,6 @@ import path from 'path'
 import extractZip from 'extract-zip'
 
 /**
- * Read file buffer
- * @param input file name
- */
-export const read = async (input: string): Promise<Buffer> => {
-  return await fs.promises.readFile(input)
-}
-
-/**
- * Read file
- */
-export const write = async (input: string, contents: string | Uint8Array): Promise<void> => {
-  const dirname = path.dirname(input)
-  await mkdir(dirname)
-  return await fs.promises.writeFile(input, contents)
-}
-
-/**
  * Checks whether something exists on given path.
  * @param input input path
  */
@@ -77,6 +60,7 @@ export const isEmpty = async (input: string): Promise<boolean> => {
  * @param options recursive by default
  */
 export const mkdir = async (input: string, options?: fs.MakeDirectoryOptions): Promise<void> => {
+  // require node > v10.12
   await fs.promises.mkdir(input, { recursive: true, ...options })
 }
 
@@ -86,53 +70,42 @@ export const mkdir = async (input: string, options?: fs.MakeDirectoryOptions): P
  * @todo https://github.com/sindresorhus/trash
  */
 export const remove = async (input: string, options?: fs.RmDirAsyncOptions): Promise<void> => {
-  if (await isDirectory(input)) {
-    await fs.promises.rmdir(input, { recursive: true, ...options })
-  } else {
-    await fs.promises.unlink(input)
-  }
-}
-
-/**
- * Empty input dir.
- * @param input input path
- */
-export const empty = async (input: string): Promise<void> => {
   const list = await fs.promises.readdir(input)
   await Promise.all(list.map(async item => {
     const fullname = path.join(input, item)
     if (await isDirectory(fullname)) {
-      await empty(fullname)
-      await fs.promises.rmdir(fullname)
+      await remove(fullname, options)
     } else {
       await fs.promises.unlink(fullname)
     }
   }))
+  await fs.promises.rmdir(input, options)
+
+  // require node >= v12.10
+  // if (await isDirectory(input)) {
+  //   await fs.promises.rmdir(input, { recursive: true, ...options })
+  // } else {
+  //   await fs.promises.unlink(input)
+  // }
 }
 
-// /**
-//  * Glob.
-//  * @param pattern path pattern
-//  * @param options glob options
-//  */
-// export const glob = async (pattern: string, options: GOptions): Promise<string[]> => await new Promise((resolve, reject) => {
-//   return new Glob(pattern, options, (err, files) => {
-//     // istanbul ignore if
-//     if (err != null) return reject(err)
-//     resolve(files)
-//   })
-// })
+/**
+ * Read file as a buffer.
+ * @param input file name
+ */
+export const read = async (input: string): Promise<Buffer> => {
+  return await fs.promises.readFile(input)
+}
 
-// /**
-//  * Tests a path against the pattern using the options.
-//  * @param input input path
-//  * @param pattern pattern
-//  * @param options options
-//  */
-// export const minimatch = (input: string, pattern: string, options?: MOptions): boolean => {
-//   const match = new Minimatch(pattern, options)
-//   return match.match(input)
-// }
+/**
+ * Write file with mkdir recursive.
+ * @param input file name
+ * @param contents file contents
+ */
+export const write = async (input: string, contents: string | Uint8Array): Promise<void> => {
+  await mkdir(path.dirname(input))
+  return await fs.promises.writeFile(input, contents)
+}
 
 /**
  * Tildify absolute path.

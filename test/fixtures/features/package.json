@@ -1,0 +1,17 @@
+{
+  "name": "features",
+  "version": "0.1.0",
+  "description": "full features templates for caz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scaffolding",
+    "template",
+    "caz",
+    "zce"
+  ],
+  "author": "zce <w@zce.me> (https://zce.me/)",
+  "license": "MIT"
+}

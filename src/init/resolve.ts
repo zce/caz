@@ -39,23 +39,23 @@ export default async (ctx: Context): Promise<void> => {
   // fetch remote template
   const url = await getTemplateUrl(ctx.template)
 
-  // url hash
-  const hash = crypto.createHash('md5').update(url).digest('hex')
+  // url hash (16 digit md5)
+  const hash = crypto.createHash('md5').update(url).digest('hex').substr(8, 16)
 
   // template cache path
   ctx.src = path.join(config.paths.cache, hash)
 
+  // template cache exist
   const exists = await file.isDirectory(ctx.src)
 
   if (ctx.options.offline != null && ctx.options.offline) {
     // offline mode
     if (exists) {
       // found cached template
-      console.log(`Use cached template @ \`${chalk.yellow(file.tildify(ctx.src))}\`.`)
-      return
+      return console.log(`Using cached template: \`${chalk.yellow(file.tildify(ctx.src))}\`.`)
     }
 
-    console.log(`Template cache \`${chalk.yellow(file.tildify(ctx.src))}\` not found.`)
+    console.log(`Cache not found: \`${chalk.yellow(file.tildify(ctx.src))}\`.`)
   }
 
   // clear cache

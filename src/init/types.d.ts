@@ -1,13 +1,25 @@
-import { Stats } from 'fs'
+// import { Stats } from 'fs'
 import { PromptObject, Answers } from 'prompts'
 
-// @typescript-eslint/no-invalid-void-type
-// export type HookFunction = (ctx: Context) => void | string | Promise<void | string>
+export interface Options {
+  /**
+   * Force mode, overwrite if the target exists.
+   * @default false
+   */
+  force?: boolean
+  /**
+   * Offline mode, try to use an offline template.
+   * @default false
+   */
+  offline?: boolean
+}
 
 /**
  * Hook function.
  */
 export type HookFunction = (ctx: Context) => any
+// @typescript-eslint/no-invalid-void-type
+// export type HookFunction = (ctx: Context) => void | string | Promise<void | string>
 
 /**
  * Template config.
@@ -28,7 +40,7 @@ export interface Template {
   /**
    * Template metadata.
    */
-  metadata?: Record<string, unknown>
+  metadata?: Dictionary<unknown>
   /**
    * Template prompts.
    */
@@ -36,11 +48,19 @@ export interface Template {
   /**
    * Template file filters.
    */
-  filters?: Record<string, (answers: Answers<string>) => boolean>
+  filters?: Dictionary<(answers: Answers<string>) => boolean>
   /**
    * Template engine helpers.
    */
-  helpers?: Record<string, unknown>
+  helpers?: Dictionary<unknown>
+  /**
+   * Need auto install dependencies
+   */
+  install?: false | 'npm' | 'yarn'
+  /**
+   * Need auto init git repository
+   */
+  init?: boolean
   /**
    * Template hooks plugin.
    * @todo all hooks
@@ -61,9 +81,9 @@ export interface File {
    */
   path: string
   /**
-   * File stat
+   * File stat (useless)
    */
-  stats?: Stats
+  // stats?: Stats
   /**
    * File contents (buffer)
    */
@@ -89,7 +109,7 @@ export interface Context {
   /**
    * More options.
    */
-  readonly options: Dictionary<any> & { offline?: boolean }
+  readonly options: Options & Dictionary<any>
   /**
    * The source directory where the template (absolute).
    */

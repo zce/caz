@@ -2,7 +2,7 @@ import fs from 'fs'
 import ora from 'ora'
 import { http, config } from '../common'
 
-export interface Repository extends Record<string, unknown> {
+export interface Repository {
   name: string
   full_name: string
   description: string
