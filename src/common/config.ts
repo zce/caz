@@ -17,8 +17,7 @@ const parseIni = (filename: string): Dictionary<any> | undefined => {
 
 const defaults = {
   official: 'zce-templates',
-  // eslint-disable-next-line no-template-curly-in-string
-  registry: 'https://github.com/${owner}/${name}/archive/${branch}.zip'
+  registry: 'https://github.com/{owner}/{name}/archive/{branch}.zip'
 }
 
 const config = parseIni(path.join(os.homedir(), `.${name}rc`))

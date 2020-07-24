@@ -1,13 +1,13 @@
 import path from 'path'
+import crypto from 'crypto'
 import ora from 'ora'
 import chalk from 'chalk'
-import { config, strings, file, http } from '../common'
+import { file, http, config } from '../common'
 import { Context } from './types'
 
 /**
  * Get template url.
  * @param input template name or uri
- * @todo # or @
  * @example
  * 1. short name, e.g. 'nm'
  * 2. full name, e.g. 'zce/nm'
@@ -19,9 +19,11 @@ export const getTemplateUrl = async (input: string): Promise<string> => {
 
   input = input.includes('/') ? input : `zce-templates/${input}`
   input = input.includes('#') ? input : `${input}#master`
-  const [owner, name, branch] = input.split(/\/|#/)
 
-  return strings.render(config.registry, { owner, name, branch })
+  const [owner, name, branch] = input.split(/\/|#/)
+  const data: Dictionary<string> = { owner, name, branch }
+
+  return config.registry.replace(/{(.*?)}/g, (_, key) => data[key])
 }
 
 /**
@@ -35,17 +37,17 @@ export default async (ctx: Context): Promise<void> => {
   }
 
   // fetch remote template
-  ctx.url = await getTemplateUrl(ctx.template)
+  const url = await getTemplateUrl(ctx.template)
 
   // url hash
-  const hash = strings.md5(ctx.url)
+  const hash = crypto.createHash('md5').update(url).digest('hex')
 
   // template cache path
   ctx.src = path.join(config.paths.cache, hash)
 
   const exists = await file.isDirectory(ctx.src)
 
-  if (ctx.offline) {
+  if (ctx.options.offline != null && ctx.options.offline) {
     // offline mode
     if (exists) {
       // found cached template
@@ -63,7 +65,7 @@ export default async (ctx: Context): Promise<void> => {
 
   try {
     // download template zip
-    const temp = await http.download(ctx.url)
+    const temp = await http.download(url)
     // extract template
     await file.extract(temp, ctx.src, 1)
     // clean up

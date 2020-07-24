@@ -4,11 +4,11 @@ import { Context } from './types'
  * Apply template complete.
  */
 export default async (ctx: Context): Promise<void> => {
-  if (ctx.options?.complete == null) return
-  if (typeof ctx.options.complete === 'string') {
-    return console.log(ctx.options.complete)
+  if (ctx.config.complete == null) return
+  if (typeof ctx.config.complete === 'string') {
+    return console.log(ctx.config.complete)
   }
-  const result = await ctx.options.complete(ctx)
+  const result = await ctx.config.complete(ctx)
   if (result == null) return
   console.log(result)
 }

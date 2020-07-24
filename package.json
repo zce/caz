@@ -56,14 +56,20 @@
     "fast-glob": "^3.2.4",
     "got": "^11.5.1",
     "ini": "^1.3.5",
+    "lodash": "^4.17.19",
     "ora": "^4.0.5",
     "prompts": "^2.3.2",
     "semver": "^7.3.2",
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.5",
-    "@types/node": "^14.0.24",
+    "@types/ini": "^1.3.30",
+    "@types/jest": "^26.0.7",
+    "@types/lodash": "^4.14.158",
+    "@types/node": "^14.0.25",
+    "@types/prompts": "^2.0.8",
+    "@types/semver": "^7.3.1",
+    "@types/validate-npm-package-name": "^3.0.0",
     "eslint": "^7.5.0",
     "eslint-config-standard-ts": "^18.0.2",
     "jest": "^26.1.0",
@@ -74,7 +80,7 @@
     "typescript": "^3.9.7"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

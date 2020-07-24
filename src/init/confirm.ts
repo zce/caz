@@ -1,3 +1,4 @@
+import path from 'path'
 import prompts from 'prompts'
 import { file } from '../common'
 import { Context } from './types'
@@ -6,6 +7,10 @@ import { Context } from './types'
  * Confirm destination.
  */
 export default async (ctx: Context): Promise<void> => {
+  // resolve dest path
+  ctx.dest = path.resolve(ctx.project)
+
+  // exist
   const exists = await file.exists(ctx.dest)
 
   //  dist not exists
@@ -42,11 +47,11 @@ export default async (ctx: Context): Promise<void> => {
     }
   ])
 
-  // Merge not require any action
+  // Otherwise is cancel task
+  if (choose == null || choose === 'cancel') throw new Error('You have cancelled this task.')
 
   // Overwrite require empty dest
   if (choose === 'overwrite') await file.empty(ctx.dest)
 
-  // Otherwise is cancel task
-  if (choose == null || choose === 'cancel') throw new Error('You have cancelled this task.')
+  // Merge not require any action
 }
