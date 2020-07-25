@@ -1,6 +1,6 @@
 import path from 'path'
 import glob from 'fast-glob'
-import { file } from '../common'
+import { file } from '../core'
 import { Context } from './types'
 
 /**

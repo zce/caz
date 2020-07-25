@@ -1,6 +1,6 @@
 import fs from 'fs'
 import ora from 'ora'
-import { http, config } from '../common'
+import { http, config } from '../core'
 
 export interface Repository {
   name: string

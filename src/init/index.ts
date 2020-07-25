@@ -1,4 +1,4 @@
-import { Ware } from '../common'
+import { Ware } from '../core'
 import { Context, Options, HookFunction, Template, File } from './types'
 
 import confirm from './confirm'

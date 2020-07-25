@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import { local, remote } from './fetch'
-import { config } from '../common'
+import { config } from '../core'
 
 export interface ListOptions {
   cache?: boolean

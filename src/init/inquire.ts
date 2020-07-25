@@ -2,7 +2,7 @@ import path from 'path'
 import semver from 'semver'
 import prompts, { PromptObject } from 'prompts'
 import validateName from 'validate-npm-package-name'
-import { config } from '../common'
+import { config } from '../core'
 import { Context } from './types'
 
 /**

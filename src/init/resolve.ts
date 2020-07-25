@@ -2,7 +2,7 @@ import path from 'path'
 import crypto from 'crypto'
 import ora from 'ora'
 import chalk from 'chalk'
-import { file, http, config } from '../common'
+import { file, http, config } from '../core'
 import { Context } from './types'
 
 /**
