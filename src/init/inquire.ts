@@ -8,7 +8,7 @@ import { Context } from './types'
 /**
  * Prompt validater.
  */
-export const validater: Dictionary<(input: string) => true | string> = {
+export const validater: Record<string, (input: string) => true | string> = {
   name: input => {
     const result = validateName(input)
     if (result.validForNewPackages) return true
@@ -18,6 +18,14 @@ export const validater: Dictionary<(input: string) => true | string> = {
     const valid = semver.valid(input)
     if (valid != null) return true
     return `The \`${input}\` is not a semantic version.`
+  },
+  email: input => {
+    const valid = /[^\s]+@[^\s]+\.[^\s]+/.test(input)
+    return valid || `The \`${input}\` is not a email address.`
+  },
+  url: input => {
+    const valid = /https?:\/\/[^\s]*/.test(input)
+    return valid || `The \`${input}\` is not a url address.`
   }
 }
 
@@ -39,9 +47,11 @@ export const processor = (ctx: Context) => (item: PromptObject) => {
       item.initial = item.initial ?? config.npm?.['init-author-name'] ?? config.yarn?.['init-author-name'] ?? config.git?.['user.name']
       break
     case 'email':
+      item.validate = item.validate ?? validater.email
       item.initial = item.initial ?? config.npm?.['init-author-email'] ?? config.yarn?.['init-author-email'] ?? config.git?.['user.email']
       break
     case 'url':
+      item.validate = item.validate ?? validater.url
       item.initial = item.initial ?? config.npm?.['init-author-url'] ?? config.yarn?.['init-author-url'] ?? config.git?.['user.url']
       break
     case 'license':

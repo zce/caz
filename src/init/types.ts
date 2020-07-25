@@ -40,7 +40,7 @@ export interface Template {
   /**
    * Template metadata.
    */
-  metadata?: Dictionary<unknown>
+  metadata?: Record<string, unknown>
   /**
    * Template prompts.
    */
@@ -48,11 +48,11 @@ export interface Template {
   /**
    * Template file filters.
    */
-  filters?: Dictionary<(answers: Answers<string>) => boolean>
+  filters?: Record<string, (answers: Answers<string>) => boolean>
   /**
    * Template engine helpers.
    */
-  helpers?: Dictionary<unknown>
+  helpers?: Record<string, unknown>
   /**
    * Need auto install dependencies
    */
@@ -108,7 +108,7 @@ export interface Context {
   /**
    * More options.
    */
-  readonly options: Options & Dictionary<any>
+  readonly options: Options & Record<string, any>
   /**
    * The source directory where the template (absolute).
    */

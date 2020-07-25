@@ -9,15 +9,16 @@ import { name } from '../../package.json'
  * Parse ini config file.
  * @param filename ini config filename
  */
-const parseIni = (filename: string): Dictionary<any> | undefined => {
+const parseIni = (filename: string): Record<string, any> | undefined => {
   try {
     return ini.parse(fs.readFileSync(filename, 'utf8'))
   } catch {}
 }
 
 const defaults = {
+  registry: 'https://github.com/{owner}/{name}/archive/{branch}.zip',
   official: 'zce-templates',
-  registry: 'https://github.com/{owner}/{name}/archive/{branch}.zip'
+  branch: 'master'
 }
 
 const config = parseIni(path.join(os.homedir(), `.${name}rc`))

@@ -4,7 +4,7 @@ module.paths = module.parent.paths
 const path = require('path')
 const chalk = require('chalk')
 
-/** @type {import('../../../src/init/types').Template} */
+/** @type {import('../../../src').Template} */
 module.exports = {
   name: 'features',
   version: '0.1.0',

@@ -1,5 +1,6 @@
 import { Ware } from '../common'
-import { Context, Options } from './types'
+import { Context, Options, HookFunction, Template, File } from './types'
+
 import confirm from './confirm'
 import resolve from './resolve'
 import load from './load'
@@ -13,11 +14,11 @@ import install from './install'
 import init from './init'
 import complete from './complete'
 
-const creator = new Ware<Context>()
-
 // TODO:
 // - require lazy
 // - all lifecycle hooks
+
+const creator = new Ware<Context>()
 
 creator.use(confirm)
 creator.use(resolve)
@@ -51,7 +52,7 @@ export default async (template: string, project: string = '.', options: Options 
     files: []
   }
 
-  // clear console require node >= v8.3.0
+  // require node >= v8.3.0
   console.clear()
 
   try {
@@ -62,3 +63,5 @@ export default async (template: string, project: string = '.', options: Options 
     console.error(e)
   }
 }
+
+export { Context, Options, HookFunction, Template, File }

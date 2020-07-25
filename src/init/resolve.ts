@@ -17,11 +17,11 @@ import { Context } from './types'
 export const getTemplateUrl = async (input: string): Promise<string> => {
   if (/^https?:/.test(input)) return input
 
-  input = input.includes('/') ? input : `zce-templates/${input}`
-  input = input.includes('#') ? input : `${input}#master`
+  input = input.includes('/') ? input : `${config.official}/${input}`
+  input = input.includes('#') ? input : `${input}#${config.branch}`
 
   const [owner, name, branch] = input.split(/\/|#/)
-  const data: Dictionary<string> = { owner, name, branch }
+  const data: Record<string, string> = { owner, name, branch }
 
   return config.registry.replace(/{(.*?)}/g, (_, key) => data[key])
 }
