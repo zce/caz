@@ -369,8 +369,6 @@ See the [open issues](https://github.com/zce/caz/issues) for a list of proposed 
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
-
-&copy; [汪磊](https://zce.me)
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information. &copy; [汪磊](https://zce.me)
 
 <!-- Acknowledgements -->
