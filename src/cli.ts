@@ -29,12 +29,13 @@ cli
   .option('-s, --short', 'Output with short format')
   .action(list)
 
-// Listen to unknown commands
-cli.on('command:*', () => {
-  throw new Error('Invalid command: ' + cli.args.join(' '))
-})
-
 cli.help().version(version).parse()
+
+// useless because default command
+// // Listen to unknown commands
+// cli.on('command:*', () => {
+//   throw new Error('Invalid command: ' + cli.args.join(' '))
+// })
 
 // use uncaughtException & unhandledRejection instead
 // https://github.com/cacjs/cac#error-handling
