@@ -6,6 +6,7 @@ import { Context } from './types'
 export default async (ctx: Context): Promise<void> => {
   if (ctx.config.complete == null) return
   if (typeof ctx.config.complete === 'string') {
+    // TODO: message template
     return console.log(ctx.config.complete)
   }
   const result = await ctx.config.complete(ctx)

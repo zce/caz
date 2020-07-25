@@ -54,15 +54,15 @@ export interface Template {
    */
   helpers?: Record<string, unknown>
   /**
-   * Need auto install dependencies
+   * Auto install dependencies.
    */
   install?: false | 'npm' | 'yarn'
   /**
-   * Need auto init git repository
+   * Auto init git repository.
    */
   init?: boolean
   /**
-   * Template hooks plugin.
+   * Template setup hook.
    */
   setup?: HookFunction
   /**

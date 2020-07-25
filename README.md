@@ -1,79 +1,359 @@
-# mwa
+<div align="center">
+  <a href="https://github.com/zce/caz"><img src="docs/caz.png" alt="caz"></a>
+  <p align="center">A sample template-based Scaffolding tools for my personal productivity</p>
+  <p align="center">
+    <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI?label=actions" alt="GitHub Actions Status"></a>
+    <a href="https://travis-ci.org/zce/caz"><img src="https://img.shields.io/travis/zce/caz?label=travis" alt="Travis CI Status"></a>
+    <a href="https://codecov.io/gh/zce/caz"><img src="https://img.shields.io/codecov/c/github/zce/caz" alt="Coverage Status"></a>
+    <a href="https://github.com/zce/caz/blob/master/LICENSE"><img src="https://img.shields.io/github/license/zce/caz" alt="License"></a>
+    <a href="https://npmjs.com/caz"><img src="https://img.shields.io/node/v/caz" alt="Node Version"></a>
+    <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen" alt="Code Style"></a>
+    <br>
+    <a href="https://npmjs.com/caz"><img src="https://img.shields.io/npm/v/caz" alt="NPM Version"></a>
+    <a href="https://npmjs.com/caz"><img src="https://img.shields.io/npm/dm/caz" alt="NPM Downloads"></a>
+    <a href="https://github.com/zce/caz"><img src="https://img.shields.io/github/repo-size/zce/caz" alt="Repo size"></a>
+    <a href="https://david-dm.org/zce/caz"><img src="https://img.shields.io/david/zce/caz" alt="Dependencies Status"></a>
+    <a href="https://david-dm.org/zce/caz?type=dev"><img src="https://img.shields.io/david/dev/zce/caz" alt="DevDependencies Status"></a>
+  </p>
+</div>
 
-[![GitHub Actions Status][actions-img]][actions-url]
-[![Travis CI Status][travis-img]][travis-url]
-[![Coverage Status][codecov-img]][codecov-url]
-[![License][license-img]][license-url]
-[![NPM Downloads][downloads-img]][downloads-url]
-[![NPM Version][version-img]][version-url]
-[![Dependency Status][dependency-img]][dependency-url]
-[![devDependency Status][devdependency-img]][devdependency-url]
-[![Code Style][style-img]][style-url]
+<br>
 
-> **M**iddle **W**are **A**sync, Easily create your own middleware layer. It's like koa's middleware.
+## Introduction
 
-https://stackoverflow.com/questions/56018167/typescript-does-not-copy-d-ts-files-to-build
+CAZ (**C**reate **A**pp **Z**en)
 
-## Installation
+It's a a sample template-based Scaffolding tools for my personal productivity, inspired by [Yeoman](https://yeoman.io) &amp; [Vue CLI 2](https://npmjs.com/vue-cli) &amp; etc.
+
+- pronounced: [kæts] 📷 ✌
+- written: CAC / cac
+
+_For more introduction, please refer to the [How it works](#how-it-works)._
+
+### Features
+
+- Lightning & High efficiency
+- Less dependencies
+- Configurable
+- TypeScript
+- Use modern API
+- Easy to use
+- Still powerful
+
+> I'll give you specific reasons later
+
+## Table of Contents
+
+- [Introduction](#introduction)
+  - [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Basic Usage](#basic-usage)
+- [Common Usage](#common-usage)
+  - [GitHub Repository Templates](#github-repository-templates)
+  - [Local Templates](#local-templates)
+  - [Remote ZIP Templates](#remote-zip-templates)
+  - [Offline Mode](#offline-mode)
+  - [List Available Templates](#list-available-templates)
+  - [Official Templates](#official-templates)
+- [Advanced Usage](#advanced-usage)
+  - [Create Your Template](#create-your-template)
+  - [Configuration](#configuration)
+  - [Programic API](#programic-api)
+- [References](#references)
+- [Motivation](#motivation)
+- [About](#about)
+  - [How It Works](#how-it-works)
+  - [Built With](#built-with)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org) (>= 10.12, 12.10 preferred)
+- [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.20)
+- [Git](https://git-scm.com) (optional)
+
+### Installation
 
 ```shell
-$ npm install mwa
+# install it globally
+$ npm install -g caz
 
 # or yarn
-$ yarn add mwa
+$ yarn global add caz
 ```
 
-## Usage
+### Basic Usage
+
+Create new project from a template
+
+```shell
+$ caz <template> [project] [-f|--force] [-o|--offline]
+
+# caz with an official template
+$ caz <template> [project]
+
+# caz with a github repo
+$ caz <owner>/<repo> [project]
+```
+
+#### Options
+
+- `-f, --force`: Overwrite if the target exists
+- `-o, --offline`: Try to use an offline template
+
+## Common Usage
+
+### GitHub Repository Templates
+
+```shell
+$ caz nm my-project
+```
+
+The above command pulls the template from [caz-templates/nm](https://github.com/caz-templates/nm), then prompts for some information according to the configuration of this template, and generate the project at `./my-project`.
+
+```shell
+$ caz nm#typescript my-project
+```
+
+By running this command, CAZ will pulls the template from typescript branch of [caz-templates/nm](https://github.com/caz-templates/nm).
+
+#### Use Custom templates
+
+```shell
+$ caz zce/nm my-project
+```
+
+The above command pulls the template from [zce/nm](https://github.com/zce/nm). This means that you can also pull templates from your GitHub repository.
+
+### Local Templates
+
+Instead of a GitHub repo, you can also use a template on your local file system.
+
+e.g.
+
+```shell
+$ caz ~/local/template my-project
+```
+
+The above command use the template from `~/local/template`.
+
+### Remote ZIP Templates
+
+Instead of a GitHub repo, you can also use a template with a zip file uri.
+
+e.g.
+
+```shell
+$ caz https://cdn.zce.me/boilerplate.zip my-project
+```
+
+The above command will download & extract template from `https://cdn.zce.me/boilerplate.zip`.
+
+### Offline Mode
+
+```shell
+$ caz nm my-project --offline
+```
+
+By running this command, CAZ will try to find a cached version of `nm` template or download from GitHub if it's not yet cached.
+
+### List Available Templates
+
+Show all available templates
+
+```shell
+$ caz list [owner] [-c|--cache] [-j|--json] [-s|--short]
+```
+
+#### Options:
+
+- `-c, --cache`: Show all cached templates
+- `-j, --json`: Output with json format
+- `-s, --short`: Output with short format
+- `-h, --help`: Display this message
+- `-v, --version`: Display version number
+
+### Official Templates
+
+Current available templates list:
+
+- [template](https://github.com/caz-templates/template) - Templates template
+- [nm](https://github.com/caz-templates/nm) - Node module boilerplate
+- [webapp](https://github.com/caz-templates/webapp) - :construction: Modern web app
+- [react](https://github.com/caz-templates/react) - :construction: Modern web app by React.js
+- [vue](https://github.com/caz-templates/vue) - :construction: Modern web app by Vue.js
+- [jekyll](https://github.com/caz-templates/jekyll) - :construction: Static site by Jekyll
+- [electron](https://github.com/caz-templates/electron) - :construction: Electron app
+- [x-pages](https://github.com/caz-templates/x-pages) - :construction: Static site by [x-pages](https://github.com/zce/x-pages)
+
+Maybe more: https://github.com/caz-templates
+
+> You can also run `$ caz list` to see all available official templates in real time.
+
+## Advanced Usage
+
+### Create Your Template
+
+```shell
+$ caz template my-template
+```
+
+The above command will pulls the template from [caz-templates/template](https://github.com/caz-templates/template), and help you create your own CAZ template.
+
+To create and distribute your own template, please refer to the [How to create template](docs/create-template.md).
+
+> Maybe fork an official template is a better decision.
+
+### Configuration
+
+CAZ will read the configuration file in `~/.cazrc`, default config:
+
+```ini
+; template download registry,
+; {owner} & {name} & {branch} will eventually be replaced by the corresponding value.
+registry = https://github.com/{owner}/{name}/archive/{branch}.zip
+; template offlicial organization name
+official = caz-templates
+; default template branch name
+branch = master
+```
+
+This means that you can customize the configuration by modifying the configuration file.
+
+For example, in your `~/.cazrc`:
+
+```ini
+registry = https://gitlab.com/{owner}/{name}/archive/{branch}.zip
+official = faker
+branch = dev
+```
+
+Then run the following command:
+
+```shell
+$ caz nm my-project
+```
+
+The above command will download & extract template from `https://gitlab.com/faker/nm/archive/dev.zip`.
+
+### Programic API
+
+```shell
+# install it locally
+$ npm install caz
+
+# or yarn
+$ yarn add caz
+```
 
 ```javascript
-const app = mwa()
-
-app.use(async (state, next) => {
-  console.log('mw1 start: ', state)
-  state.a = 1
-  await next()
-  console.log('mw1 end: ', state)
-})
-
-app.use(async (state, next) => {
-  console.log('mw2 start: ', state)
-  state.b = 1
-  await next()
-  console.log('mw2 end: ', state)
-})
+import caz from 'caz'
 
 ;(async () => {
-  const initialState = {}
-  await app.run(initialState)
-  console.log('all completed')
+  const template = 'nm'
+  const project = 'my-project'
+  const options = {
+    force: false,
+    offline: false
+  }
+
+  await caz(template, project, options)
+
+  // Scaffolding...
 })()
 ```
 
-## API
+_For more examples, please refer to the [examples/usage.ts](examples/usage.ts)._
 
-### mwa()
+## References
 
-Return a new Mwa instance.
+<!-- API Docs -->
 
-### Instance
+### caz(template, project?, options?)
 
-#### .use(middleware)
+Create new project from a template
 
-Use the given middleware. Return the instance itself.
+#### template
 
-##### middleware
+- Type: `string`
+- Details: template name
 
-- Type: `async function` or `async function[]`
-- Details: middleware function.
+#### project
 
-#### .run(state)
+- Type: `string`
+- Details: project name
+- Default: `'.'`
 
-Run all middlewares. Return a Promise.
+#### options
 
-##### state
+- Type: `object`
+- Details: options
+- Default: `{}`
 
-- Type: `any`
-- Details: middleware context.
+##### force
+
+Type: `boolean`
+Details: overwrite if the target exists
+Default: `false`
+
+##### offline
+
+Type: `boolean`
+Details: try to use an offline template
+Default: `false`
+
+## Motivation
+
+👉 🛠 ⚙
+
+Joking: I want to make wheels ;P
+
+The real reason is that I think I need a scaffolding tool that is more suitable for my personal productivity.
+
+Nothing else.
+
+<!-- TODO: Concepts / Recipes / Documentation -->
+
+## About
+
+### How It Works
+
+![Scaffolding flow](docs/flow.png)
+
+> P.S. The picture is from the Internet, but I have forgotten the specific source, sorry to the author.
+
+### Built With
+
+- [cac](https://github.com/cacjs/cac) - Simple yet powerful framework for building command-line apps.
+- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
+- [conf](https://github.com/sindresorhus/conf) - Simple config handling for your app or module
+- [env-paths](https://github.com/sindresorhus/env-paths) - Get paths for storing things like data, config, cache, etc
+- [extract-zip](https://github.com/maxogden/extract-zip) - unzip a zip file into a directory using 100% javascript
+- [fast-glob](https://github.com/mrmlnc/fast-glob) - It's a very fast and efficient glob library for Node.js
+- [got](https://github.com/sindresorhus/got) - Human-friendly and powerful HTTP request library for Node.js
+- [ini](https://github.com/npm/ini) - An ini encoder/decoder for node
+- [lodash](https://github.com/lodash/lodash) - Lodash modular utilities.
+- [ora](https://github.com/sindresorhus/ora) - Elegant terminal spinner
+- [prompts](https://github.com/terkelg/promptss) - Lightweight, beautiful and user-friendly prompts
+- [semver](https://github.com/npm/node-semver) - The semantic version parser used by npm.
+- [validate-npm-package-name](https://github.com/npm/validate-npm-package-name) - Give me a string and I'll tell you if it's a valid npm package name
+
+## Roadmap
+
+The following are the features I want to achieve or are under development:
+
+- [ ] test spec
+- [ ] config command
+- [ ] cache command
+- [ ] colorful console output
+
+See the [open issues](https://github.com/zce/caz/issues) for a list of proposed features (and known issues).
 
 ## Contributing
 
@@ -88,25 +368,8 @@ Run all middlewares. Return a Promise.
 
 ## License
 
-[MIT](LICENSE) &copy; [zce](https://zce.me)
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
+&copy; [汪磊](https://zce.me)
 
-
-[actions-img]: https://img.shields.io/github/workflow/status/zce/mwa/CI?label=actions
-[actions-url]: https://github.com/zce/mwa/actions
-[travis-img]: https://img.shields.io/travis/zce/mwa?label=travis
-[travis-url]: https://travis-ci.org/zce/mwa
-[codecov-img]: https://img.shields.io/codecov/c/github/zce/mwa
-[codecov-url]: https://codecov.io/gh/zce/mwa
-[license-img]: https://img.shields.io/github/license/zce/mwa
-[license-url]: https://github.com/zce/mwa/blob/master/LICENSE
-[downloads-img]: https://img.shields.io/npm/dm/mwa
-[downloads-url]: https://npmjs.org/package/mwa
-[version-img]: https://img.shields.io/npm/v/mwa
-[version-url]: https://npmjs.org/package/mwa
-[dependency-img]: https://img.shields.io/david/zce/mwa
-[dependency-url]: https://david-dm.org/zce/mwa
-[devdependency-img]: https://img.shields.io/david/dev/zce/mwa
-[devdependency-url]: https://david-dm.org/zce/mwa?type=dev
-[style-img]: https://img.shields.io/badge/code_style-standard-brightgreen
-[style-url]: https://standardjs.com
+<!-- Acknowledgements -->
