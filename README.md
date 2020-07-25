@@ -349,6 +349,7 @@ Nothing else.
 The following are the features I want to achieve or are under development:
 
 - [ ] test spec
+- [ ] remove got
 - [ ] config command
 - [ ] cache command
 - [ ] colorful console output

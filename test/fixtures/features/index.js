@@ -36,7 +36,7 @@ module.exports = {
       instructions: false,
       choices: [
         { title: 'Foo', value: 'foo', selected: true },
-        { title: 'Bar', value: 'bar', selected: true },
+        { title: 'Bar', value: 'bar', selected: true }
       ]
     }
   ],
