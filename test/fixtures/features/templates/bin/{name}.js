@@ -3,3 +3,5 @@ const foo = {
   version: '<%= version %>',
   description: '<%= description %>'
 }
+
+console.log(foo)

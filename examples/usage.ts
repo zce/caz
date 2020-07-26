@@ -11,4 +11,4 @@ import caz from '../src'
   await caz(template, project, options)
 
   // Scaffolding...
-})()
+})().catch(console.error)

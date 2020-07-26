@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "compile": "tsc",
     "build": "run-s clean lint compile",
     "test": "jest",
@@ -52,10 +52,14 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{ts,js}": "eslint --fix"
+    "*.{ts,js}": "eslint --fix"
   },
   "eslintConfig": {
-    "extends": "standard-ts"
+    "extends": "standard-ts",
+    "parserOptions": {
+      "project": "tsconfig.eslint.json"
+    },
+    "ignorePatterns": ["lib"]
   },
   "jest": {
     "preset": "ts-jest",
