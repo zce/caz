@@ -26,7 +26,7 @@ CAZ (**C**reate **A**pp **Z**en)
 It's a a sample template-based Scaffolding tools for my personal productivity, inspired by [Yeoman](https://yeoman.io) &amp; [Vue CLI 2](https://npmjs.com/vue-cli) &amp; etc.
 
 - pronounced: [kæts] 📷 ✌
-- written: CAC / cac
+- written: CAZ / caz
 
 _For more introduction, please refer to the [How it works](#how-it-works)._
 
@@ -90,7 +90,7 @@ $ yarn global add caz
 
 ### Basic Usage
 
-Create new project from a template
+Create new project from a template.
 
 ```shell
 $ caz <template> [project] [-f|--force] [-o|--offline]
@@ -100,6 +100,12 @@ $ caz <template> [project]
 
 # caz with a github repo
 $ caz <owner>/<repo> [project]
+```
+
+If you only use it occasionally, I recommend that you use `npx` to run `caz` directly.
+
+```shell
+$ npx caz <template> [project] [-f|--force] [-o|--offline]
 ```
 
 #### Options
@@ -208,7 +214,7 @@ The above command will pulls the template from [caz-templates/template](https://
 
 To create and distribute your own template, please refer to the [How to create template](docs/create-template.md).
 
-> Maybe fork an official template is a better decision.
+> Maybe fork an official template is also a good decision.
 
 ### Configuration
 
@@ -348,9 +354,11 @@ Nothing else.
 The following are the features I want to achieve or are under development:
 
 - [ ] test spec
+- [ ] list command for local cache
 - [ ] config command
 - [ ] cache command
 - [ ] console output (colorful & verbose)
+- [ ] basic official templates
 - [ ] more and more official templates
 
 See the [open issues](https://github.com/zce/caz/issues) for a list of proposed features (and known issues).
