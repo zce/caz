@@ -336,9 +336,9 @@ Nothing else.
 - [env-paths](https://github.com/sindresorhus/env-paths) - Get paths for storing things like data, config, cache, etc
 - [extract-zip](https://github.com/maxogden/extract-zip) - unzip a zip file into a directory using 100% javascript
 - [fast-glob](https://github.com/mrmlnc/fast-glob) - It's a very fast and efficient glob library for Node.js
-- [got](https://github.com/sindresorhus/got) - Human-friendly and powerful HTTP request library for Node.js
 - [ini](https://github.com/npm/ini) - An ini encoder/decoder for node
 - [lodash](https://github.com/lodash/lodash) - Lodash modular utilities.
+- [node-fetch](https://github.com/node-fetch/node-fetch) - A light-weight module that brings Fetch API to node.js
 - [ora](https://github.com/sindresorhus/ora) - Elegant terminal spinner
 - [prompts](https://github.com/terkelg/promptss) - Lightweight, beautiful and user-friendly prompts
 - [semver](https://github.com/npm/node-semver) - The semantic version parser used by npm.
