@@ -332,7 +332,6 @@ Nothing else.
 
 - [cac](https://github.com/cacjs/cac) - Simple yet powerful framework for building command-line apps.
 - [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
-- [conf](https://github.com/sindresorhus/conf) - Simple config handling for your app or module
 - [env-paths](https://github.com/sindresorhus/env-paths) - Get paths for storing things like data, config, cache, etc
 - [extract-zip](https://github.com/maxogden/extract-zip) - unzip a zip file into a directory using 100% javascript
 - [fast-glob](https://github.com/mrmlnc/fast-glob) - It's a very fast and efficient glob library for Node.js

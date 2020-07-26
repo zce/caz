@@ -70,7 +70,6 @@
   "dependencies": {
     "cac": "^6.6.1",
     "chalk": "^4.1.0",
-    "conf": "^7.1.1",
     "env-paths": "^2.2.0",
     "extract-zip": "^2.0.1",
     "fast-glob": "^3.2.4",
