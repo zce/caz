@@ -34,7 +34,7 @@ cli.help().version(version).parse()
 // useless because default command
 // // Listen to unknown commands
 // cli.on('command:*', () => {
-//   throw new Error('Invalid command: ' + cli.args.join(' '))
+//   throw new Error('Invalid command: ' + cli.args.join(' ') + '.')
 // })
 
 // use uncaughtException & unhandledRejection instead
