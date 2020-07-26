@@ -19,8 +19,7 @@ declare module '*/package.json' {
   export const scripts: Record<string, string>
   export const dependencies: Record<string, string>
   export const devDependencies: Record<string, string>
-  export const engines: { node?: string, npm?: string, yarn?: string }
-  export const publishConfig: { access?: 'public' | 'restricted', tag?: string, yarn?: string }
+  export const engines: { node: string }
 
   // https://www.typescriptlang.org/docs/handbook/modules.html
   // interface PackageJson extends Record<string, unknown> {
@@ -40,8 +39,7 @@ declare module '*/package.json' {
   //   scripts: Record<string, string>
   //   dependencies: Record<string, string>
   //   devDependencies: Record<string, string>
-  //   engines: { node?: string, npm?: string, yarn?: string }
-  //   publishConfig: { access?: 'public' | 'restricted', tag?: string, yarn?: string }
+  //   engines: { node: string }
   // }
   // const pkg: PackageJson
   // export default pkg

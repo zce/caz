@@ -41,21 +41,21 @@ export const processor = (ctx: Context) => (item: PromptObject) => {
       break
     case 'version':
       item.validate = item.validate ?? validater.version
-      item.initial = item.initial ?? config.npm?.['init-version'] ?? config.yarn?.['init-version'] ?? '0.1.0'
+      item.initial = item.initial ?? config.npm?.['init-version'] ?? '0.1.0'
       break
     case 'author':
-      item.initial = item.initial ?? config.npm?.['init-author-name'] ?? config.yarn?.['init-author-name'] ?? config.git?.['user.name']
+      item.initial = item.initial ?? config.npm?.['init-author-name'] ?? config.git?.user?.name
       break
     case 'email':
       item.validate = item.validate ?? validater.email
-      item.initial = item.initial ?? config.npm?.['init-author-email'] ?? config.yarn?.['init-author-email'] ?? config.git?.['user.email']
+      item.initial = item.initial ?? config.npm?.['init-author-email'] ?? config.git?.user?.email
       break
     case 'url':
       item.validate = item.validate ?? validater.url
-      item.initial = item.initial ?? config.npm?.['init-author-url'] ?? config.yarn?.['init-author-url'] ?? config.git?.['user.url']
+      item.initial = item.initial ?? config.npm?.['init-author-url'] ?? config.git?.user?.url
       break
     case 'license':
-      item.initial = item.initial ?? config.npm?.['init-license'] ?? config.yarn?.['init-license'] ?? 'MIT'
+      item.initial = item.initial ?? config.npm?.['init-license'] ?? 'MIT'
       break
   }
 }

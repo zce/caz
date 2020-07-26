@@ -29,9 +29,6 @@ export default {
   get npm () {
     return parseIni(path.join(os.homedir(), '.npmrc'))
   },
-  get yarn () {
-    return parseIni(path.join(os.homedir(), '.yarnrc'))
-  },
   get git () {
     return parseIni(path.join(os.homedir(), '.gitconfig'))
   },

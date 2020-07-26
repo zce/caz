@@ -119,11 +119,11 @@ module.exports = {
 > P.S. The following keys automatically assign initial values (from other config or system info)
 >
 > - `name` - destination path basename, path.basename(dest)
-> - `version` - npm / yarn init config, fallback: `0.1.0`
-> - `author` - npm / yarn / git name config
-> - `email` - npm / yarn / git name config
-> - `url` - npm / yarn / git name config
-> - `license` - npm / yarn init config, fallback: `MIT`
+> - `version` - npm init config, fallback: `0.1.0`
+> - `author` - npm / git name config
+> - `email` - npm / git email config
+> - `url` - npm / git url config
+> - `license` - npm init config, fallback: `MIT`
 
 > P.S. The following keys automatically assign default validater
 >
