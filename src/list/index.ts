@@ -1,6 +1,5 @@
-import chalk from 'chalk'
-import { local, remote } from './fetch'
 import { config } from '../core'
+import { local, remote } from './fetch'
 
 export interface ListOptions {
   cache?: boolean
@@ -35,6 +34,6 @@ export default async (owner: string = config.official, options: ListOptions = {}
   console.log(`Available ${isOfficial ? 'official' : owner}'s templates:`)
   const infos = results.map(i => [isOfficial ? i.name : i.fullName, i.description])
   const width = Math.max(5, ...infos.map(i => i[0].length))
-  const gap = (i: string[]): string => ' '.repeat(width - i[0].length)
-  infos.forEach(i => console.log(chalk`  {yellow →} {blue ${i[0]}} ${gap(i)} ${i[1]}`))
+  const gap = (name: string): string => ' '.repeat(width - name.length)
+  infos.forEach(([name, desc]) => console.log(`  → ${name} ${gap(name)} ${desc}`))
 }

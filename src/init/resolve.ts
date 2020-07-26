@@ -1,7 +1,6 @@
 import path from 'path'
 import crypto from 'crypto'
 import ora from 'ora'
-import chalk from 'chalk'
 import { file, http, config } from '../core'
 import { Context } from './types'
 
@@ -52,10 +51,10 @@ export default async (ctx: Context): Promise<void> => {
     // offline mode
     if (exists) {
       // found cached template
-      return console.log(`Using cached template: \`${chalk.yellow(file.tildify(ctx.src))}\`.`)
+      return console.log(`Using cached template: \`${file.tildify(ctx.src)}\`.`)
     }
 
-    console.log(`Cache not found: \`${chalk.yellow(file.tildify(ctx.src))}\`.`)
+    console.log(`Cache not found: \`${file.tildify(ctx.src)}\`.`)
   }
 
   // clear cache
