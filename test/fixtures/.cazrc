@@ -1,0 +1,3 @@
+registry = https://gitlab.com/{owner}/{name}/archive/{branch}.zip
+official = faker
+branch = dev
