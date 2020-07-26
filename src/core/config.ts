@@ -17,7 +17,7 @@ const parseIni = (filename: string): Record<string, any> | undefined => {
 
 const defaults = {
   registry: 'https://github.com/{owner}/{name}/archive/{branch}.zip',
-  official: 'zce-templates',
+  official: 'caz-templates',
   branch: 'master'
 }
 
