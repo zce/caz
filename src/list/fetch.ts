@@ -33,7 +33,7 @@ export const remote = async (owner: string): Promise<Result[]> => {
     url.searchParams.append('sort', 'updated')
     url.searchParams.append('per_page', '100') // max 100
 
-    const response = await http.fetch(url.toString())
+    const response = await http.request(url.toString())
     const json = await response.json() as Repository[]
 
     spinner.stop()

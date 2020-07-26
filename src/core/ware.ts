@@ -1,3 +1,5 @@
+// ref: https://github.com/zce/mwa
+
 /* eslint-disable @typescript-eslint/promise-function-async */
 export type Middleware<S> = (state: S) => Promise<void> | void
 
