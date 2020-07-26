@@ -5,6 +5,7 @@ node_modules
 lib/
 
 coverage/
+test/.temp/
 
 package-lock.json
 yarn.lock

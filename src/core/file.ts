@@ -23,8 +23,8 @@ export const exists = async (input: string): Promise<false | 'file' | 'dir' | 'o
     if (err.code !== 'ENOENT') {
       throw err
     }
+    return false
   }
-  return false
 }
 
 /**
