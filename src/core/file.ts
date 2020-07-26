@@ -70,15 +70,24 @@ export const mkdir = async (input: string, options?: fs.MakeDirectoryOptions): P
  * @todo https://github.com/sindresorhus/trash
  */
 export const remove = async (input: string, options?: fs.RmDirAsyncOptions): Promise<void> => {
-  const list = await fs.promises.readdir(input)
-  await Promise.all(list.map(async item => {
-    const fullname = path.join(input, item)
-    if (await isDirectory(fullname)) {
-      await remove(fullname, options)
-    } else {
-      await fs.promises.unlink(fullname)
-    }
+  const result = await exists(input)
+
+  // not exists
+  if (result === false) return
+
+  // otherwise: file / other
+  if (result !== 'dir') {
+    return await fs.promises.unlink(input)
+  }
+
+  // directory
+  const entries = await fs.promises.readdir(input)
+
+  // recursive all entries
+  await Promise.all(entries.map(async item => {
+    await remove(path.join(input, item), options)
   }))
+
   await fs.promises.rmdir(input, options)
 
   // require node >= v12.10
