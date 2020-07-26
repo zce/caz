@@ -352,6 +352,7 @@ The following are the features I want to achieve or are under development:
 - [ ] config command
 - [ ] cache command
 - [ ] console output (colorful & verbose)
+- [ ] more and more official templates
 
 See the [open issues](https://github.com/zce/caz/issues) for a list of proposed features (and known issues).
 
