@@ -1,3 +1,10 @@
+// Global types & Module declarations.
+// - [x] Global types for ease of use
+// - [x] ~~Module declarations in order to reduce the devDependencies that need to be installed~~
+interface Dictionary<T> {
+  [key: string]: T
+}
+
 /**
  * PackageJson declaration type.
  * for import package.js as ESM without having to participate in compilation
@@ -44,7 +51,3 @@ declare module '*/package.json' {
   // const pkg: PackageJson
   // export default pkg
 }
-
-// Global types & Module declarations.
-// - [x] ~~Global types for ease of use~~
-// - [x] ~~Module declarations in order to reduce the devDependencies that need to be installed~~

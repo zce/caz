@@ -27,9 +27,10 @@
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "bin": "bin/caz",
+  "bin": "bin/caz.js",
   "files": [
-    "lib"
+    "lib",
+    "types.d.ts"
   ],
   "scripts": {
     "clean": "rimraf lib",
