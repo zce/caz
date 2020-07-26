@@ -1,6 +1,7 @@
 import fs from 'fs'
+import path from 'path'
 import ora from 'ora'
-import { http, config } from '../core'
+import { file, http, config } from '../core'
 
 export interface Repository {
   name: string
@@ -55,16 +56,22 @@ export const remote = async (owner: string): Promise<Result[]> => {
 /**
  * Fetch local template list
  * @param owner template owner name
+ * @todo read local cache
  */
 export const local = async (owner: string): Promise<Result[]> => {
-  const templates = await fs.promises.readdir(config.paths.cache)
-  return templates
-    .map(item => ({
-      name: item,
-      owner: 'zce',
-      fullName: '',
-      description: '',
-      updated: ''
-    }))
-    .filter(i => i.owner === owner)
+  const exists = await file.exists(config.paths.cache)
+  if (exists !== 'dir') return []
+
+  const entries = await fs.promises.readdir(config.paths.cache)
+
+  return entries.reduce<Result[]>((prev, current) => {
+    const fullpath = path.join(config.paths.cache, current)
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { name, owner: author, description, updated } = require(fullpath)
+      if (author !== owner) return prev
+      prev.push({ name, owner: author, description, updated, fullName: `${author as string}/${name as string}` })
+    } catch {}
+    return prev
+  }, [])
 }
