@@ -59,8 +59,7 @@ export default async (template: string, project: string = '.', options: Options 
     await creator.run(context)
   } catch (e) {
     // TODO: error handle
-    // console.error(e.message)
-    console.error(e)
+    console.error(e.message)
   }
 }
 
