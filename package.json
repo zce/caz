@@ -59,7 +59,9 @@
     "parserOptions": {
       "project": "tsconfig.eslint.json"
     },
-    "ignorePatterns": ["lib"]
+    "ignorePatterns": [
+      "lib"
+    ]
   },
   "jest": {
     "preset": "ts-jest",
@@ -72,9 +74,9 @@
     "env-paths": "^2.2.0",
     "extract-zip": "^2.0.1",
     "fast-glob": "^3.2.4",
-    "got": "^11.5.1",
     "ini": "^1.3.5",
     "lodash": "^4.17.19",
+    "node-fetch": "^3.0.0",
     "ora": "^4.0.5",
     "prompts": "^2.3.2",
     "semver": "^7.3.2",

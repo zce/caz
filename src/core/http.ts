@@ -2,36 +2,28 @@ import { join } from 'path'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
 import { promises as fs, createWriteStream } from 'fs'
-import got, { StreamOptions } from 'got'
+import fetch from 'node-fetch'
 import config from './config'
-import { name, version, homepage } from '../../package.json'
 
 const pipe = promisify(pipeline)
 
-const client = got.extend({
-  headers: { 'user-agent': `${name}/${version} (${homepage})` }
-})
-
-/**
- * Send a http request.
- * @param url url
- * @param options options
- */
-export const request = client.extend({
-  timeout: 8 * 1000, // 8s
-  responseType: 'json' // https://github.com/sindresorhus/got/issues/1117
-})
+export { fetch }
 
 /**
  * Download remote resource to temporary file.
- * @param url url
- * @param options options
- * @returns
+ * @param url remote url
+ * @returns temporary filename
  */
-export const download = async (url: string, options?: StreamOptions): Promise<string> => {
-  // ensure temp dir
+export const download = async (url: string): Promise<string> => {
+  const response = await fetch(url)
+
+  if (!response.ok || response.body == null) {
+    throw new Error(`Unexpected response: ${response.statusText}.`)
+  }
+
+  // ensure temp dirname
   await fs.mkdir(config.paths.temp, { recursive: true })
   const filename = join(config.paths.temp, Date.now().toString() + '.tmp')
-  await pipe(client.stream(url, options), createWriteStream(filename))
+  await pipe(response.body, createWriteStream(filename))
   return filename
 }

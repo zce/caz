@@ -26,21 +26,19 @@ export const remote = async (owner: string): Promise<Result[]> => {
   const spinner = ora('Loading available list from remote...').start()
 
   try {
-    const response = await http.request<Repository[]>(`https://api.github.com/users/${owner}/repos`, {
-      username: '0cb723972877555ffb54',
-      password: 'ad0638a75ee90bb86c8b551f5f42f3a044725f38',
-      searchParams: {
-        type: 'owner',
-        sort: 'updated',
-        per_page: 100 // max 100
-      },
-      responseType: 'json',
-      timeout: 5 * 1000 // 5s
-    })
+    const url = new URL(`https://api.github.com/users/${owner}/repos`)
+    url.username = '0cb723972877555ffb54'
+    url.password = 'ad0638a75ee90bb86c8b551f5f42f3a044725f38'
+    url.searchParams.append('type', 'owner')
+    url.searchParams.append('sort', 'updated')
+    url.searchParams.append('per_page', '100') // max 100
+
+    const response = await http.fetch(url.toString())
+    const json = await response.json() as Repository[]
 
     spinner.stop()
 
-    return response.body.map(i => ({
+    return json.map(i => ({
       name: i.name,
       owner: i.owner.login,
       fullName: i.full_name,
@@ -48,7 +46,8 @@ export const remote = async (owner: string): Promise<Result[]> => {
       updated: i.updated_at
     }))
   } catch (e) {
-    spinner.fail(`Failed to load list from remote: {red ${e.message as string}}.`)
+    spinner.fail(`Failed to load list from remote: ${e.message as string}.`)
+    console.log(e)
     return []
   }
 }

@@ -352,7 +352,7 @@ The following are the features I want to achieve or are under development:
 - [ ] remove got
 - [ ] config command
 - [ ] cache command
-- [ ] colorful console output
+- [ ] console output (colorful & verbose)
 
 See the [open issues](https://github.com/zce/caz/issues) for a list of proposed features (and known issues).
 

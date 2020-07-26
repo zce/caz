@@ -3,8 +3,6 @@
   "compilerOptions": {
     "target": "ES2018", // require node >= 10
     "module": "CommonJS",
-    "lib": ["ES2018"],
-    // "sourceMap": true,
     "declaration": true,
     "removeComments": true,
     "outDir": "lib",
