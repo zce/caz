@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/zce/caz"><img src="docs/caz.png" alt="caz"></a>
+  <a href="https://github.com/zce/caz"><img src="https://user-images.githubusercontent.com/6166576/88473000-af5fa800-cf4b-11ea-8ce4-59f1b1f09efe.png" alt="caz"></a>
   <p align="center">A sample template-based Scaffolding tools for my personal productivity</p>
   <p align="center">
     <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI?label=actions" alt="GitHub Actions Status"></a>
@@ -324,7 +324,7 @@ Nothing else.
 
 ### How It Works
 
-![Scaffolding flow](docs/flow.png)
+![Scaffolding flow](https://user-images.githubusercontent.com/6166576/88473012-d4ecb180-cf4b-11ea-968a-5508c6f84502.png)
 
 > P.S. The picture is from the Internet, but I have forgotten the specific source, sorry to the author.
 
