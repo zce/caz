@@ -76,7 +76,7 @@
     "fast-glob": "^3.2.4",
     "ini": "^1.3.5",
     "lodash": "^4.17.19",
-    "node-fetch": "^3.0.0",
+    "node-fetch": "^3.0.0-beta.7",
     "ora": "^4.0.5",
     "prompts": "^2.3.2",
     "semver": "^7.3.2",
