@@ -64,6 +64,9 @@ export const processor = (ctx: Context) => (item: PromptObject) => {
  * Inquire template prompts.
  */
 export default async (ctx: Context): Promise<void> => {
+  // require node >= v8.3.0
+  console.clear()
+
   // default prompts
   if (ctx.config.prompts == null) {
     ctx.config.prompts = { name: 'name', type: 'text', message: 'Project name' }

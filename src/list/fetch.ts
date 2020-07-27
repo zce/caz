@@ -47,9 +47,8 @@ export const remote = async (owner: string): Promise<Result[]> => {
       updated: i.updated_at
     }))
   } catch (e) {
-    spinner.fail(`Failed to load list from remote: ${e.message as string}.`)
-    console.log(e)
-    return []
+    spinner.stop()
+    throw new Error(`Failed to fetch list from remote: ${e.message as string}.`)
   }
 }
 

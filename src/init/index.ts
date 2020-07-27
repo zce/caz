@@ -52,15 +52,7 @@ export default async (template: string, project: string = '.', options: Options 
     files: []
   }
 
-  // require node >= v8.3.0
-  console.clear()
-
-  try {
-    await creator.run(context)
-  } catch (e) {
-    // TODO: error handle
-    console.error(e.message)
-  }
+  await creator.run(context)
 }
 
 export { Options, Context, Template }

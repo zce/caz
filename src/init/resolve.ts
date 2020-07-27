@@ -71,7 +71,7 @@ export default async (ctx: Context): Promise<void> => {
     await file.remove(temp)
     spinner.succeed('Download template complete.')
   } catch (e) {
-    spinner.fail('Download failed.')
-    throw new Error(`Failed to fetch template \`${ctx.template}\`: ${e.message as string}.`)
+    spinner.stop()
+    throw new Error(`Failed to pull \`${ctx.template}\` template: ${e.message as string}.`)
   }
 }

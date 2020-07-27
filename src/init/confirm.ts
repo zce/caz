@@ -30,6 +30,9 @@ export default async (ctx: Context): Promise<void> => {
   // is current working directory
   const isCurrent = ctx.dest === process.cwd()
 
+  // // require node >= v8.3.0
+  // console.clear()
+
   // confirm & choose next
   const { choose }: { choose?: string } = await prompts([
     {
