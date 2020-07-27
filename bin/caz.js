@@ -18,7 +18,6 @@ require('../lib/cli')
 //   require('../lib/cli')
 // } else {
 //   // hook into ts-node so we can run typescript on the fly
-//   // require('ts-node').register({ typeCheck: false })
 //   require('ts-node').register({ project, files: true })
 
 //   // import cli from the source
