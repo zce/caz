@@ -109,8 +109,6 @@ module.exports = {
   prompts: [
     { type: 'text', name: 'name', message: 'Project name' },
     { type: 'text', name: 'version', message: 'Project version' },
-    { type: 'text', name: 'description', message: 'Project description', initial: 'Awesome project' },
-    { type: 'text', name: 'license', message: 'Project license' },
     { type: 'confirm', name: 'sass', message: 'Use sass preprocessor?', initial: true }
   ]
 }
@@ -132,9 +130,26 @@ module.exports = {
 > - `email` - by RegExp `/[^\s]+@[^\s]+\.[^\s]+/`
 > - `url` - by RegExp `/https?:\/\/[^\s]*/`
 
+Upon prompts, they can be used as follows:
+
+```ejs
+<%= name %>
+// => User input text
+
+<%= version %>
+// => User input text
+
+<%= license %>
+// => User input text
+
+<% if (sass) { %>
+<!-- use sass preprocessor -->
+<% } %>
+```
+
 ### filters
 
-- Type: `Record<string, (answers: Answers<string>) => boolean>`
+- Type: `Record<string, (answers: Answers) => boolean>`
 - Details: Conditional filter files to output.
 - Example: [custom-filters](../test/fixtures/filters)
 
@@ -144,8 +159,8 @@ module.exports = {
     sass: { type: 'confirm', message: 'Use sass preprocessor?', initial: true }
   },
   filters: {
-    '*/*.scss': a => a.sass,
-    '*/*.css': a => !a.sass
+    '*/*.scss': answers => answers.sass,
+    '*/*.css': answers => !answers.sass
   }
 }
 ```
@@ -160,7 +175,7 @@ module.exports = {
 ```javascript
 module.exports = {
   helpers: {
-    upper: i => i.toUpperCase()
+    upper: input => input.toUpperCase()
   }
 }
 ```
@@ -178,7 +193,7 @@ Upon registration, they can be used as follows:
 
 ### install
 
-- Type: `false | 'npm' | 'yarn'`
+- Type: `false | 'npm' | 'yarn' | 'pnpm'`
 - Default: `false`
 - Details: Auto install dependencies after generation.
 - Example: [custom-install](../test/fixtures/install)
@@ -187,7 +202,7 @@ Upon registration, they can be used as follows:
 
 - Type: `boolean`
 - Default: `false`
-- Details: Auto init git repository.
+- Details: Auto init git repository after generation.
 - Example: [custom-init](../test/fixtures/init)
 
 ### setup
@@ -213,7 +228,7 @@ module.exports = {
 ```javascript
 // callback
 module.exports = {
-  complete: async (ctx) => {
+  complete: async ctx => {
     console.log('  Happy hacking ;)')
   }
 }

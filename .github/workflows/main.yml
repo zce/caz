@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-node@v2.1.1
       - name: Install Dependencies
         run: npm install
-      - name: Testing
+      - name: Test Specification
         run: npm run cov
-      - name: Reporting
+      - name: Report Coverage
         run: npx codecov

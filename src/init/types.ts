@@ -17,7 +17,7 @@ export interface Options {
 /**
  * Hook function.
  */
-export type HookFunction = (ctx: Context) => any
+export type HookFunction = (ctx: Context) => Promise<void>
 // @typescript-eslint/no-invalid-void-type
 // export type HookFunction = (ctx: Context) => void | string | Promise<void | string>
 
@@ -56,7 +56,7 @@ export interface Template {
   /**
    * Auto install dependencies.
    */
-  install?: false | 'npm' | 'yarn'
+  install?: false | 'npm' | 'yarn' | 'pnpm'
   /**
    * Auto init git repository.
    */
@@ -68,7 +68,7 @@ export interface Template {
   /**
    * Template all completed.
    */
-  complete?: HookFunction | string
+  complete?: (ctx: Context) => Promise<void> | string
 }
 
 /**
