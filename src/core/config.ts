@@ -38,6 +38,7 @@ export default {
     return parseIni(path.join(os.homedir(), '.gitconfig'))
   },
   get paths () {
+    // TODO: cache version
     return envPaths(name, { suffix: undefined })
   },
   ini: parseIni
