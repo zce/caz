@@ -4,6 +4,7 @@ import { name, version } from '../package.json'
 
 /* istanbul ignore next */
 const onError = (err: Error): void => {
+  // https://github.com/cacjs/cac#error-handling
   console.error(err.message)
   process.exit(1)
 }
