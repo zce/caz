@@ -1,4 +1,5 @@
 import { spawn } from 'child_process'
+import { config } from '../core'
 import { Context } from './types'
 
 /**
@@ -15,16 +16,17 @@ const command = async (args: string[], cwd: string): Promise<void> => await new 
 })
 
 /**
- * Execute `git init && git add . && git commit -m "feat: initial commit"` command.
+ * Execute `git init && git add && git commit` command.
  */
 export default async (ctx: Context): Promise<void> => {
-  if (ctx.config.init == null || !ctx.config.init) return
+  // init === false or not contains `.gitignore`
+  if (!(ctx.config.init ?? ctx.files.find(i => i.path === '.gitignore') != null)) return
 
   // Initializing git repository...
 
   await command(['init'], ctx.dest)
   await command(['add', '--all'], ctx.dest)
-  await command(['commit', '-m', 'feat: initial commit'], ctx.dest)
+  await command(['commit', '-m', config.commitMessage], ctx.dest)
 
   // Initial repo completed.
 }

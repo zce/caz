@@ -5,7 +5,14 @@ import { Context } from './types'
  * Execute `npm | yarn install` command.
  */
 export default async (ctx: Context): Promise<void> => {
-  if (ctx.config.install == null || ctx.config.install === false) return
+  if (ctx.config.install === false) return // off install
+
+  if (ctx.config.install == null) {
+    // not contains `package.json`
+    if (ctx.files.find(i => i.path === 'package.json') == null) return
+    // npm is used by default when it contains `package.json`
+    ctx.config.install = 'npm'
+  }
 
   // Installing dependencies...
 
