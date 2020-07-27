@@ -103,7 +103,7 @@
     "typescript": "^3.9.7"
   },
   "engines": {
-    "node": ">=10.12"
+    "node": ">=10.17"
   },
   "publishConfig": {
     "tag": "alpha",
