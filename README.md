@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/zce/caz"><img src="https://user-images.githubusercontent.com/6166576/88473000-af5fa800-cf4b-11ea-8ce4-59f1b1f09efe.png" alt="caz"></a>
-  <p align="center">A sample template-based Scaffolding tools for my personal productivity</p>
+  <a href="https://github.com/zce/caz"><img src="https://user-images.githubusercontent.com/6166576/88473000-af5fa800-cf4b-11ea-8ce4-59f1b1f09efe.png" alt="CAZ"></a>
+  <p align="center">A simple yet powerful template-based Scaffolding tools for my personal productivity.</p>
   <p align="center">
     <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI" alt="GitHub Actions Status"></a>
     <a href="https://travis-ci.org/zce/caz"><img src="https://img.shields.io/travis/zce/caz?label=travis" alt="Travis CI Status"></a>
@@ -24,7 +24,7 @@
 
 CAZ (**C**reate **A**pp **Z**en)
 
-It's a a sample template-based Scaffolding tools for my personal productivity, inspired by [Yeoman](https://yeoman.io) &amp; [Vue CLI 2](https://npmjs.com/vue-cli) &amp; etc.
+It's a a simple template-based Scaffolding tools for my personal productivity, inspired by [Yeoman](https://yeoman.io) &amp; [Vue CLI 2](https://npmjs.com/vue-cli) &amp; etc.
 
 - pronounced: [kæts] 📷 ✌
 - written: CAZ / caz
@@ -33,7 +33,7 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 ### Features
 
-- Light-weight 
+- Light-weight
 - High efficiency
 - Less dependencies
 - Configurable

@@ -1,7 +1,7 @@
 {
   "name": "caz",
   "version": "0.0.0-alpha.4",
-  "description": "A scaffolding tool for my personal productivity.",
+  "description": "A simple yet powerful template-based Scaffolding tools for my personal productivity.",
   "keywords": [
     "scaffolding",
     "generator",
