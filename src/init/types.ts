@@ -15,13 +15,6 @@ export interface Options {
 }
 
 /**
- * Hook function.
- */
-export type HookFunction = (ctx: Context) => Promise<void>
-// @typescript-eslint/no-invalid-void-type
-// export type HookFunction = (ctx: Context) => void | string | Promise<void | string>
-
-/**
  * Template config.
  */
 export interface Template {
@@ -64,11 +57,11 @@ export interface Template {
   /**
    * Template setup hook.
    */
-  setup?: HookFunction
+  setup?: (ctx: Context) => Promise<void>
   /**
    * Template all completed.
    */
-  complete?: (ctx: Context) => Promise<void> | string
+  complete?: ((ctx: Context) => string | Promise<string> | Promise<void>) | string
 }
 
 /**

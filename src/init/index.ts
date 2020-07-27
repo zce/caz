@@ -1,5 +1,5 @@
 import { Ware } from '../core'
-import { Context, Options, HookFunction, Template, File } from './types'
+import { Options, Context, Template } from './types'
 
 import confirm from './confirm'
 import resolve from './resolve'
@@ -63,4 +63,4 @@ export default async (template: string, project: string = '.', options: Options 
   }
 }
 
-export { Context, Options, HookFunction, Template, File }
+export { Options, Context, Template }
