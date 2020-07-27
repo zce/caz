@@ -10,20 +10,23 @@ test('unit:core:config', async () => {
   expect(config.registry).toBe('https://github.com/{owner}/{name}/archive/{branch}.zip')
   expect(config.official).toBe('caz-templates')
   expect(config.branch).toBe('master')
+  expect(config.commitMessage).toBe('feat: initial commit')
   expect(config.clientId).toBe('c07ff4d0cbddbfe57545')
   expect(config.clientSecret).toBe('19484a928f48768a8329d6cb11ab020625dc86c3')
 })
 
-// TODO: custom rc config file
-// test('unit:core:config:custom', async () => {
-//   const homedir = mockHomedir()
-//   expect(config.registry).toBe('https://gitlab.com/{owner}/{name}/archive/{branch}.zip')
-//   expect(config.official).toBe('faker')
-//   expect(config.branch).toBe('dev')
-//   expect(config.clientId).toBe('c07ff4d0cbddbfe57545')
-//   expect(config.clientSecret).toBe('19484a928f48768a8329d6cb11ab020625dc86c3')
-//   homedir.mockRestore()
-// })
+test('unit:core:config:custom', async () => {
+  const homedir = mockHomedir()
+  jest.resetModules()
+  const { default: conf } = await import('../../src/core/config')
+  expect(conf.registry).toBe('https://gitlab.com/{owner}/{name}/archive/{branch}.zip')
+  expect(conf.official).toBe('faker')
+  expect(conf.branch).toBe('dev')
+  expect(conf.commitMessage).toBe('feat: initial commit')
+  expect(conf.clientId).toBe('c07ff4d0cbddbfe57545')
+  expect(conf.clientSecret).toBe('19484a928f48768a8329d6cb11ab020625dc86c3')
+  homedir.mockRestore()
+})
 
 test('unit:core:config:npm', async () => {
   const homedir = mockHomedir()
