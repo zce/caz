@@ -36,12 +36,12 @@ module.exports = {
 }
 ```
 
-Configuration file can contain the following fields:
+The configuration file can contain the following fields:
 
 ### name
 
 - Type: `string`
-- Details: Name of template.
+- Details: The name of the template.
 
 ```javascript
 module.exports = {
@@ -52,7 +52,7 @@ module.exports = {
 ### version
 
 - Type: `string`
-- Details: Version of template.
+- Details: The version of the template.
 
 ```javascript
 module.exports = {
@@ -63,35 +63,38 @@ module.exports = {
 ### source
 
 - Type: `string`
+- Details: Template source files directory.
 - Default: `'template'`
-- Details: Template source files directory name.
 - Example: [custom-source](../test/fixtures/source)
 
 ```javascript
 module.exports = {
-  string: 'template'
+  source: 'template'
 }
 ```
 
 ### metadata
 
 - Type: `Record<string, unknown>`
-- Details: The metadata you can use in the template.
+- Details: The metadata you can use in the template files.
 - Example: [custom-metadata](../test/fixtures/metadata)
 
 ```javascript
 module.exports = {
   metadata: {
-    bio: 'my template generated'
+    bio: 'my template generated',
+    year: new Date().getFullYear()
   }
 }
 ```
 
-Upon metadata definition, they can be used as follows:
+Upon metadata definition, they can be used in template files as follows:
 
 ```ejs
 <%= bio %>
 // => 'my template generated'
+<%= year %>
+// => 2020
 
 // or es2015 template literal delimiter
 ${bio}
@@ -101,7 +104,7 @@ ${bio}
 ### prompts
 
 - Type: `PromptObject | PromptObject[]`
-- Details: Collect user input in CLI.
+- Details: Interactive prompts, use [prompts](https://github.com/terkelg/prompts), please refer to [prompts docs](https://github.com/terkelg/prompts#-prompt-objects).
 - Example: [custom-prompts](../test/fixtures/prompts)
 
 ```javascript
@@ -114,23 +117,23 @@ module.exports = {
 }
 ```
 
-> P.S. The following keys automatically assign initial values (from other config or system info)
->
-> - `name` - destination path basename, path.basename(dest)
-> - `version` - npm init config, fallback: `0.1.0`
-> - `author` - npm / git name config
-> - `email` - npm / git email config
-> - `url` - npm / git url config
-> - `license` - npm init config, fallback: `MIT`
+The following keys automatically assign initial values (from other config or system info):
 
-> P.S. The following keys automatically assign default validater
->
-> - `name` - by [validate-npm-package-name](https://github.com/npm/validate-npm-package-name)
-> - `version` - by [semver](https://github.com/npm/node-semver)
-> - `email` - by RegExp `/[^\s]+@[^\s]+\.[^\s]+/`
-> - `url` - by RegExp `/https?:\/\/[^\s]*/`
+- `name` - destination path basename, fallback: path.basename(dest)
+- `version` - npm init config, fallback: `0.1.0`
+- `author` - npm or git name config
+- `email` - npm or git email config
+- `url` - npm or git url config
+- `license` - npm init config, fallback: `MIT`
 
-Upon prompts, they can be used as follows:
+The following keys automatically assign default validater:
+
+- `name` - by [validate-npm-package-name](https://github.com/npm/validate-npm-package-name)
+- `version` - by [semver](https://github.com/npm/node-semver)
+- `email` - by RegExp `/[^\s]+@[^\s]+\.[^\s]+/`
+- `url` - by RegExp `/https?:\/\/[^\s]*/`
+
+Upon prompts answers, they can be used in template files as follows:
 
 ```ejs
 <%= name %>
@@ -139,18 +142,15 @@ Upon prompts, they can be used as follows:
 <%= version %>
 // => User input text
 
-<%= license %>
-// => User input text
-
 <% if (sass) { %>
-<!-- use sass preprocessor -->
+// use sass preprocessor
 <% } %>
 ```
 
 ### filters
 
 - Type: `Record<string, (answers: Answers) => boolean>`
-- Details: Conditional filter files to output.
+- Details: Filter files that you want to output.
 - Example: [custom-filters](../test/fixtures/filters)
 
 ```javascript
@@ -167,9 +167,9 @@ module.exports = {
 
 ### helpers
 
-- Type: `Object`
+- Type: `Record<string, any>`
+- Details: Custom template engine helpers.
 - Default: `{ _: require('lodash') }`
-- Details: Custom lodash template engine helpers.
 - Example: [custom-helpers](../test/fixtures/helpers)
 
 ```javascript
@@ -180,7 +180,7 @@ module.exports = {
 }
 ```
 
-Upon registration, they can be used as follows:
+Upon registration, they can be used in template files as follows:
 
 ```ejs
 <%= upper('zce') %>
@@ -194,16 +194,30 @@ Upon registration, they can be used as follows:
 ### install
 
 - Type: `false | 'npm' | 'yarn' | 'pnpm'`
-- Default: `false`
 - Details: Auto install dependencies after generation.
+- Default: According generated files contains `package.json`
 - Example: [custom-install](../test/fixtures/install)
+
+```javascript
+module.exports = {
+  // run `yarn install` after emit.
+  install: 'yarn'
+}
+```
 
 ### init
 
 - Type: `boolean`
-- Default: `false`
 - Details: Auto init git repository after generation.
+- Default: According generated files contains `.gitignore`
 - Example: [custom-init](../test/fixtures/init)
+
+```javascript
+module.exports = {
+  // run `git init && git add && git commit` after emit.
+  init: true
+}
+```
 
 ### setup
 
