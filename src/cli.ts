@@ -30,16 +30,3 @@ cli
   .action(list)
 
 cli.help().version(version).parse()
-
-// useless because default command
-// // Listen to unknown commands
-// cli.on('command:*', () => {
-//   throw new Error('Invalid command: ' + cli.args.join(' ') + '.')
-// })
-
-// use uncaughtException & unhandledRejection instead
-// https://github.com/cacjs/cac#error-handling
-// cli.runMatchedCommand().catch(err => {
-//   console.error(err.message)
-//   process.exit(1)
-// })
