@@ -29,14 +29,14 @@
   "types": "lib/index.d.ts",
   "bin": "bin/caz.js",
   "files": [
-    "lib",
-    "types.d.ts"
+    "lib"
   ],
   "scripts": {
     "clean": "rimraf lib",
     "lint": "eslint .",
     "compile": "tsc",
-    "build": "run-s clean lint compile",
+    "copy": "copyfiles -u 1 \"src/**/*.d.ts\" lib",
+    "build": "run-s clean lint compile copy",
     "test": "jest",
     "cov": "jest --coverage",
     "prepare": "run-s build test"
@@ -92,6 +92,7 @@
     "@types/prompts": "^2.0.8",
     "@types/semver": "^7.3.1",
     "@types/validate-npm-package-name": "^3.0.0",
+    "copyfiles": "^2.3.0",
     "eslint": "^7.5.0",
     "eslint-config-standard-ts": "^18.0.2",
     "husky": "^4.2.5",

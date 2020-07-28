@@ -10,5 +10,5 @@
     "esModuleInterop": true,
     "pretty": true
   },
-  "include": ["src", "types.d.ts"] // declarations.d.ts
+  "include": ["src"] // declarations.d.ts
 }
