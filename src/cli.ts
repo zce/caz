@@ -2,16 +2,6 @@ import cac from 'cac'
 import init, { list } from '.'
 import { name, version } from '../package.json'
 
-/* istanbul ignore next */
-const onError = (err: Error): void => {
-  // https://github.com/cacjs/cac#error-handling
-  console.error(err.message)
-  process.exit(1)
-}
-
-process.on('uncaughtException', onError)
-process.on('unhandledRejection', onError)
-
 const cli = cac(name)
 
 cli
@@ -32,3 +22,13 @@ cli
   .action(list)
 
 cli.help().version(version).parse()
+
+// https://github.com/cacjs/cac#error-handling
+/* istanbul ignore next */
+const onError = (err: Error): void => {
+  console.error(err.message)
+  process.exit(1)
+}
+
+process.on('uncaughtException', onError)
+process.on('unhandledRejection', onError)

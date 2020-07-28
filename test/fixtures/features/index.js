@@ -8,7 +8,7 @@ const chalk = require('chalk')
 module.exports = {
   name: 'features',
   version: '0.1.0',
-  source: 'templates',
+  source: 'template',
   metadata: { date: new Date() },
   prompts: [
     {
