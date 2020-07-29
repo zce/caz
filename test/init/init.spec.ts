@@ -4,6 +4,12 @@ import path from 'path'
 import { createContext } from './util'
 import init from '../../src/init/init'
 
+beforeAll(async () => {
+  const gitconfig = path.join(os.homedir(), '.gitconfig')
+  if (fs.existsSync(gitconfig)) return
+  fs.writeFileSync(gitconfig, '[user]\n  name = bot\n  email = bot@zce.me')
+})
+
 test('unit:init:init', async () => {
   expect(typeof init).toBe('function')
 })
