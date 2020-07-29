@@ -1,3 +1,5 @@
+// full features template
+
 // !!! Sharing the dependencies of zce-cli
 module.paths = module.parent.paths
 
@@ -54,6 +56,9 @@ module.exports = {
   },
   install: 'npm',
   init: true,
+  setup: ctx => {
+    console.log(ctx.template, 'template setup')
+  },
   complete: ctx => {
     console.clear()
 
