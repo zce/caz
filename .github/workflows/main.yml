@@ -1,16 +1,20 @@
 name: CI
 
-on: push
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
-    if: !contains(github.event.commits[0].message, '[skip ci]')
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v2
       - name: Setup Node
-        uses: actions/setup-node@v2.1.1
+        uses: actions/setup-node@v2
       - name: Install Dependencies
         run: npm install
       - name: Test Specification
