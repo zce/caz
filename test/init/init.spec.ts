@@ -4,10 +4,18 @@ import path from 'path'
 import { createContext } from './util'
 import init from '../../src/init/init'
 
+const gitconfig = path.join(os.homedir(), '.gitconfig')
+let autoGitConfig = false
+
 beforeAll(async () => {
-  const gitconfig = path.join(os.homedir(), '.gitconfig')
   if (fs.existsSync(gitconfig)) return
   fs.writeFileSync(gitconfig, '[user]\n  name = bot\n  email = bot@zce.me')
+  autoGitConfig = true
+})
+
+afterAll(async () => {
+  if (!autoGitConfig) return
+  fs.unlinkSync(gitconfig)
 })
 
 test('unit:init:init', async () => {
