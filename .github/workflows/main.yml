@@ -16,3 +16,5 @@ jobs:
         run: npm run cov
       - name: Report Coverage
         run: npx codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
