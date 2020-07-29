@@ -5,7 +5,7 @@ test('unit:init:rename', async () => {
   expect(typeof rename).toBe('function')
 })
 
-test('unit:init:rename:all', async () => {
+test('unit:init:rename:normal', async () => {
   const ctx = createContext({
     answers: { foo: 'caz' },
     files: [
