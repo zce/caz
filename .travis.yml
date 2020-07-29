@@ -10,6 +10,7 @@ notifications:
     on_success: never
     on_failure: change
 
+# npm scripts: prepare
 # script:
 #   - npm run cov
 #   - npx codecov
