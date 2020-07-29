@@ -65,7 +65,6 @@ module.exports = {
 - Type: `string`
 - Details: Template source files directory.
 - Default: `'template'`
-- Example: [custom-source](../test/fixtures/source)
 
 ```javascript
 module.exports = {
@@ -77,7 +76,6 @@ module.exports = {
 
 - Type: `Record<string, unknown>`
 - Details: The metadata you can use in the template files.
-- Example: [custom-metadata](../test/fixtures/metadata)
 
 ```javascript
 module.exports = {
@@ -94,18 +92,13 @@ Upon metadata definition, they can be used in template files as follows:
 <%= bio %>
 // => 'my template generated'
 <%= year %>
-// => 2020
-
-// or es2015 template literal delimiter
-${bio}
-// => 'my template generated'
+// => 2020 (current year)
 ```
 
 ### prompts
 
 - Type: `PromptObject | PromptObject[]`
 - Details: Interactive prompts, use [prompts](https://github.com/terkelg/prompts), please refer to [prompts docs](https://github.com/terkelg/prompts#-prompt-objects).
-- Example: [custom-prompts](../test/fixtures/prompts)
 
 ```javascript
 module.exports = {
@@ -151,7 +144,6 @@ Upon prompts answers, they can be used in template files as follows:
 
 - Type: `Record<string, (answers: Answers) => boolean>`
 - Details: Filter files that you want to output.
-- Example: [custom-filters](../test/fixtures/filters)
 
 ```javascript
 module.exports = {
@@ -170,7 +162,6 @@ module.exports = {
 - Type: `Record<string, any>`
 - Details: Custom template engine helpers.
 - Default: `{ _: require('lodash') }`
-- Example: [custom-helpers](../test/fixtures/helpers)
 
 ```javascript
 module.exports = {
@@ -196,7 +187,6 @@ Upon registration, they can be used in template files as follows:
 - Type: `false | 'npm' | 'yarn' | 'pnpm'`
 - Details: Auto install dependencies after generation.
 - Default: According generated files contains `package.json`
-- Example: [custom-install](../test/fixtures/install)
 
 ```javascript
 module.exports = {
@@ -210,7 +200,6 @@ module.exports = {
 - Type: `boolean`
 - Details: Auto init git repository after generation.
 - Default: According generated files contains `.gitignore`
-- Example: [custom-init](../test/fixtures/init)
 
 ```javascript
 module.exports = {
@@ -223,7 +212,6 @@ module.exports = {
 
 - Type: `(ctx: Context) => Promise<void>`
 - Details: Template setup hook.
-- Example: [custom-setup](../test/fixtures/setup)
 
 ```javascript
 module.exports = {
@@ -237,7 +225,6 @@ module.exports = {
 
 - Type: `string` or `(ctx: Context) => string | Promise<void | string>`
 - Details: Generate completed callback. if got a string, print it to the console.
-- Example: [custom-complete](../test/fixtures/complete)
 
 ```javascript
 // callback
