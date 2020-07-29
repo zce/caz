@@ -16,7 +16,7 @@ test('unit:init:complete', async () => {
 })
 
 test('unit:init:complete:null', async () => {
-  const ctx = createContext({})
+  const ctx = createContext()
   const result = await complete(ctx)
   expect(result).toBe(undefined)
   expect(log).not.toHaveBeenCalled()

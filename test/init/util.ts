@@ -1,7 +1,7 @@
 import path from 'path'
 import { Context, Template } from '../../src'
 
-export const createContext = (context: Partial<Context>, config?: Partial<Template>): Context => ({
+export const createContext = (context?: Partial<Context>, config?: Partial<Template>): Context => ({
   template: 'faker',
   project: 'faker',
   options: {},

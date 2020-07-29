@@ -6,7 +6,7 @@ test('unit:init:setup', async () => {
 })
 
 test('unit:init:setup:null', async () => {
-  const ctx = createContext({})
+  const ctx = createContext()
   const result = await setup(ctx)
   expect(result).toBe(undefined)
 })

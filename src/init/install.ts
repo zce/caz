@@ -17,6 +17,7 @@ export default async (ctx: Context): Promise<void> => {
   // Installing dependencies...
 
   const client = ctx.config.install
+  /* istanbul ignore next */
   const cmd = process.platform === 'win32' ? client + '.cmd' : client
 
   await new Promise((resolve, reject) => {
