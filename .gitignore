@@ -2,10 +2,10 @@
 
 node_modules
 
-lib/
+/lib
 
-coverage/
-test/.temp/
+/coverage
+/test/.temp
 
 package-lock.json
 yarn.lock

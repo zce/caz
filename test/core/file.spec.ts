@@ -179,14 +179,9 @@ test('unit:core:file:extract:zip', async () => {
 
   await file.extract(path.join(__dirname, '../fixtures/archive.zip'), temp)
 
-  const stats1 = await fs.promises.stat(path.join(temp, 'archive'))
-  expect(stats1.isDirectory()).toBe(true)
-
-  const stats2 = await fs.promises.stat(path.join(temp, 'archive/LICENSE'))
-  expect(stats2.isFile()).toBe(true)
-
-  const stats3 = await fs.promises.stat(path.join(temp, 'archive/README.md'))
-  expect(stats3.isFile()).toBe(true)
+  expect(fs.existsSync(path.join(temp, 'archive'))).toBe(true)
+  expect(fs.existsSync(path.join(temp, 'archive/LICENSE'))).toBe(true)
+  expect(fs.existsSync(path.join(temp, 'archive/README.md'))).toBe(true)
 
   await fs.promises.rmdir(temp, { recursive: true })
 })
@@ -196,11 +191,8 @@ test('unit:core:file:extract:strip', async () => {
 
   await file.extract(path.join(__dirname, '../fixtures/archive.zip'), temp, 1)
 
-  const stats1 = await fs.promises.stat(path.join(temp, 'LICENSE'))
-  expect(stats1.isFile()).toBe(true)
-
-  const stats2 = await fs.promises.stat(path.join(temp, 'README.md'))
-  expect(stats2.isFile()).toBe(true)
+  expect(fs.existsSync(path.join(temp, 'LICENSE'))).toBe(true)
+  expect(fs.existsSync(path.join(temp, 'README.md'))).toBe(true)
 
   await fs.promises.rmdir(temp, { recursive: true })
 })
