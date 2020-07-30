@@ -23,7 +23,7 @@ test('unit:core:http:request:error', async () => {
   try {
     await http.request(`${registry}/faaaaaaaaaker-${Date.now()}`)
   } catch (e) {
-    expect(e.message).toBe('Unexpected response: Not Found.')
+    expect(e.message).toBe('Unexpected response: Not Found')
   }
 })
 
@@ -47,6 +47,6 @@ test('unit:core:http:download:error', async () => {
   try {
     await http.download(`${registry}/faaaaaaaaaker-${Date.now()}.tgz`)
   } catch (e) {
-    expect(e.message).toBe('Unexpected response: Not Found.')
+    expect(e.message).toBe('Unexpected response: Not Found')
   }
 })

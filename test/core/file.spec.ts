@@ -170,8 +170,8 @@ test('unit:core:file:untildify', async () => {
   expect(result5).toBe('untildify')
 
   // ignore not home sub dir
-  const result6 = file.untildify('/untildify')
-  expect(result6).toBe('/untildify')
+  const result6 = file.untildify(__dirname)
+  expect(result6).toBe(__dirname)
 })
 
 test('unit:core:file:extract:zip', async () => {

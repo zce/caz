@@ -358,6 +358,7 @@ Nothing else.
 The following are the features I want to achieve or are under development:
 
 - [ ] test spec
+- [ ] all lifecycle hooks
 - [ ] list command for local cache
 - [ ] config command
 - [ ] cache command

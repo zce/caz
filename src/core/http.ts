@@ -16,7 +16,7 @@ export const request = async (url: fetch.RequestInfo, init?: fetch.RequestInit):
   const response = await fetch(url, init)
   // res.status >= 200 && res.status < 300
   if (response.ok) return response
-  throw Error(`Unexpected response: ${response.statusText}.`)
+  throw Error(`Unexpected response: ${response.statusText}`)
 }
 
 /**

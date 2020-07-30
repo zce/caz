@@ -35,6 +35,7 @@ module.exports = {
       type: 'multiselect',
       name: 'features',
       message: 'Project description',
+      instructions: false,
       choices: [
         { title: 'TypeScript', value: 'typescript', selected: true },
         { title: 'CLI Program', value: 'cli' }
@@ -43,7 +44,8 @@ module.exports = {
     {
       type: 'confirm',
       name: 'install',
-      message: 'Install dependencies'
+      message: 'Install dependencies',
+      initial: true
     },
     {
       type: prev => prev ? 'select' : null,

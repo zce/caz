@@ -142,7 +142,9 @@ export const tildify = (input: string): string => {
 export const untildify = (input: string): string => {
   const home = os.homedir()
 
-  return input.replace(/^~(?=$|\/|\\)/, home)
+  input = input.replace(/^~(?=$|\/|\\)/, home)
+
+  return path.normalize(input)
 }
 
 /**

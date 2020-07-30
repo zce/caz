@@ -29,6 +29,12 @@ export const getTemplateUrl = async (input: string): Promise<string> => {
  * Resolve template from remote or local.
  */
 export default async (ctx: Context): Promise<void> => {
+  // '~/foo/bar' in windows
+  if (ctx.template.startsWith('~')) {
+    ctx.src = file.untildify(ctx.template)
+    return
+  }
+
   // local template path
   if (/^[./]|^[a-zA-Z]:/.test(ctx.template)) {
     ctx.src = path.resolve(ctx.template)
