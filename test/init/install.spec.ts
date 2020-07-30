@@ -1,8 +1,20 @@
-import os from 'os'
 import fs from 'fs'
 import path from 'path'
-import { createContext } from './util'
+import { createContext, createTempDir } from './util'
 import install from '../../src/init/install'
+
+// let stdoutWrite: jest.SpyInstance
+// let stderrWrite: jest.SpyInstance
+
+// beforeAll(async () => {
+//   stdoutWrite = jest.spyOn(process.stdout, 'write').mockImplementation()
+//   stderrWrite = jest.spyOn(process.stderr, 'write').mockImplementation()
+// })
+
+// afterAll(async () => {
+//   stdoutWrite.mockRestore()
+//   stderrWrite.mockRestore()
+// })
 
 test('unit:init:install', async () => {
   expect(typeof install).toBe('function')
@@ -21,7 +33,7 @@ test('unit:init:init:null', async () => {
 })
 
 test('unit:init:init:default', async () => {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'caz-test-'))
+  const temp = await createTempDir()
   const pkg = { dependencies: { caz: '0.0.0' } }
   await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
   const ctx = createContext({
@@ -37,7 +49,7 @@ test('unit:init:init:default', async () => {
 })
 
 test('unit:init:init:manual:yarn', async () => {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'caz-test-'))
+  const temp = await createTempDir()
   const pkg = { dependencies: { caz: '0.0.0' } }
   await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
   const ctx = createContext({ dest: temp }, { install: 'yarn' })
@@ -50,7 +62,7 @@ test('unit:init:init:manual:yarn', async () => {
 })
 
 test('unit:init:init:manual:error', async () => {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'caz-test-'))
+  const temp = await createTempDir()
   await fs.promises.writeFile(path.join(temp, 'package.json'), 'error package.json')
   const ctx = createContext({ dest: temp }, { install: 'npm' })
   expect.hasAssertions()

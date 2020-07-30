@@ -35,20 +35,35 @@ module.exports = {
       type: 'multiselect',
       name: 'features',
       message: 'Project description',
-      instructions: false,
       choices: [
-        { title: 'Foo', value: 'foo', selected: true },
-        { title: 'Bar', value: 'bar', selected: true }
+        { title: 'TypeScript', value: 'typescript', selected: true },
+        { title: 'CLI Program', value: 'cli' }
+      ]
+    },
+    {
+      type: 'confirm',
+      name: 'install',
+      message: 'Install dependencies'
+    },
+    {
+      type: prev => prev ? 'select' : null,
+      name: 'pm',
+      message: 'Package manager',
+      hint: ' ',
+      choices: [
+        { title: 'npm', value: 'npm' },
+        { title: 'yarn', value: 'yarn' },
+        { title: 'pnpm', value: 'pnpm' }
       ]
     }
   ],
   filters: {
     /** @param {{ features: string[] }} a */
-    'foo.txt': a => a.features.includes('foo'),
+    'bin/**': a => a.features.includes('cli'),
     /** @param {{ features: string[] }} a */
-    'bar.txt': a => a.features.includes('bar'),
+    'src/**': a => a.features.includes('typescript'),
     /** @param {{ features: string[] }} a */
-    '**/*.js': a => a.features.includes('bar')
+    'lib/**': a => !a.features.includes('typescript')
   },
   helpers: {
     lower: i => i.toLowerCase(),
@@ -58,6 +73,7 @@ module.exports = {
   init: true,
   setup: ctx => {
     console.log(ctx.template, 'template setup')
+    ctx.config.install = ctx.answers.pm
   },
   complete: ctx => {
     console.clear()

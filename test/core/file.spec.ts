@@ -1,9 +1,8 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
+import { createTempDir } from '../init/util'
 import * as file from '../../src/core/file'
-
-const tempPrefix = path.join(os.tmpdir(), 'caz-test-')
 
 test('unit:core:file:exists', async () => {
   const result1 = await file.exists(__dirname)
@@ -39,7 +38,7 @@ test('unit:core:file:isEmpty', async () => {
   const empty1 = await file.isEmpty(__dirname)
   expect(empty1).toBe(false)
 
-  const temp2 = await fs.promises.mkdtemp(tempPrefix)
+  const temp2 = await createTempDir()
   const empty2 = await file.isEmpty(temp2)
   expect(empty2).toBe(true)
   await fs.promises.rmdir(temp2)
@@ -47,19 +46,19 @@ test('unit:core:file:isEmpty', async () => {
 
 test('unit:core:file:mkdir', async () => {
   // relative (cwd) path recursive
-  const root1 = 'test/.temp'
+  const root1 = 'test/.temp/1'
   const target1 = `${root1}/${Date.now()}/caz/mkdir/1`
   await file.mkdir(target1)
   expect(fs.existsSync(target1)).toBe(true)
 
   // absolute path recursive
-  const root2 = tempPrefix + Date.now().toString() + '2'
+  const root2 = await createTempDir()
   const target2 = `${root2}/caz/mkdir/2`
   await file.mkdir(target2)
   expect(fs.existsSync(target2)).toBe(true)
 
   // mode options
-  const root3 = tempPrefix + Date.now().toString() + '3'
+  const root3 = 'test/.temp/3'
   await file.mkdir(root3, { mode: 0o755, recursive: false })
   const stat3 = await fs.promises.stat(root3)
   expect(stat3.mode).toBe(process.platform === 'win32' ? 16822 : 16877)
@@ -71,7 +70,7 @@ test('unit:core:file:mkdir', async () => {
 })
 
 test('unit:core:file:remove', async () => {
-  const temp = await fs.promises.mkdtemp(tempPrefix)
+  const temp = await createTempDir()
 
   // remove not exists
   const target1 = path.join(temp, 'caz-remove-1')
@@ -176,31 +175,31 @@ test('unit:core:file:untildify', async () => {
 })
 
 test('unit:core:file:extract:zip', async () => {
-  const temp = await fs.promises.mkdtemp(tempPrefix)
+  const temp = await createTempDir()
 
   await file.extract(path.join(__dirname, '../fixtures/archive.zip'), temp)
 
-  const stats1 = fs.statSync(path.join(temp, 'archive'))
+  const stats1 = await fs.promises.stat(path.join(temp, 'archive'))
   expect(stats1.isDirectory()).toBe(true)
 
-  const stats2 = fs.statSync(path.join(temp, 'archive/LICENSE'))
+  const stats2 = await fs.promises.stat(path.join(temp, 'archive/LICENSE'))
   expect(stats2.isFile()).toBe(true)
 
-  const stats3 = fs.statSync(path.join(temp, 'archive/README.md'))
+  const stats3 = await fs.promises.stat(path.join(temp, 'archive/README.md'))
   expect(stats3.isFile()).toBe(true)
 
   await fs.promises.rmdir(temp, { recursive: true })
 })
 
 test('unit:core:file:extract:strip', async () => {
-  const temp = await fs.promises.mkdtemp(tempPrefix)
+  const temp = await createTempDir()
 
   await file.extract(path.join(__dirname, '../fixtures/archive.zip'), temp, 1)
 
-  const stats1 = fs.statSync(path.join(temp, 'LICENSE'))
+  const stats1 = await fs.promises.stat(path.join(temp, 'LICENSE'))
   expect(stats1.isFile()).toBe(true)
 
-  const stats2 = fs.statSync(path.join(temp, 'README.md'))
+  const stats2 = await fs.promises.stat(path.join(temp, 'README.md'))
   expect(stats2.isFile()).toBe(true)
 
   await fs.promises.rmdir(temp, { recursive: true })

@@ -1,7 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
-import { createContext } from './util'
+import { createContext, createTempDir } from './util'
 import init from '../../src/init/init'
 
 const gitconfig = path.join(os.homedir(), '.gitconfig')
@@ -35,7 +35,7 @@ test('unit:init:init:false', async () => {
 })
 
 test('unit:init:init:default', async () => {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'caz-test-'))
+  const temp = await createTempDir()
   await fs.promises.writeFile(path.join(temp, 'caz.txt'), 'hello')
   const ctx = createContext({
     dest: temp,
@@ -52,7 +52,7 @@ test('unit:init:init:default', async () => {
 })
 
 test('unit:init:init:manual', async () => {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'caz-test-'))
+  const temp = await createTempDir()
   await fs.promises.writeFile(path.join(temp, 'caz.txt'), 'hello')
   const ctx = createContext({ dest: temp }, { init: true })
   await init(ctx)
@@ -66,7 +66,7 @@ test('unit:init:init:manual', async () => {
 })
 
 test('unit:init:init:error', async () => {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'caz-test-'))
+  const temp = await createTempDir()
   const ctx = createContext({ dest: temp }, { init: true })
   expect.hasAssertions()
   try {

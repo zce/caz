@@ -1,3 +1,5 @@
+import os from 'os'
+import fs from 'fs'
 import path from 'path'
 import { Context, Template } from '../../src'
 
@@ -12,3 +14,7 @@ export const createContext = (context?: Partial<Context>, config?: Partial<Templ
   files: [],
   ...context
 })
+
+export const createTempDir = async (): Promise<string> => {
+  return await fs.promises.mkdtemp(path.join(os.tmpdir(), 'caz-test-'))
+}

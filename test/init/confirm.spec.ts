@@ -1,21 +1,20 @@
-import os from 'os'
 import fs from 'fs'
 import path from 'path'
 import prompts from 'prompts'
-import { createContext } from './util'
+import { createContext, createTempDir } from './util'
 import confirm from '../../src/init/confirm'
 
 let cwd: string
 
 beforeAll(async () => {
   cwd = process.cwd()
-  process.chdir(fs.mkdtempSync(path.join(os.tmpdir(), 'caz-test-')))
+  process.chdir(await createTempDir())
 })
 
 afterAll(async () => {
   const temp = process.cwd()
   process.chdir(cwd)
-  fs.rmdirSync(temp, { recursive: true })
+  await fs.promises.rmdir(temp, { recursive: true })
 })
 
 test('unit:init:confirm', async () => {
