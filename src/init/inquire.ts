@@ -12,7 +12,8 @@ export const validater: Record<string, (input: string) => true | string> = {
   name: input => {
     const result = validateName(input)
     if (result.validForNewPackages) return true
-    return result.errors?.join(', ') ?? ''
+    /* istanbul ignore next */
+    return result.errors?.join(', ') ?? result.warnings?.join(',') ?? ''
   },
   version: input => {
     const valid = semver.valid(input)
@@ -24,7 +25,7 @@ export const validater: Record<string, (input: string) => true | string> = {
     return valid || `The \`${input}\` is not a email address.`
   },
   url: input => {
-    const valid = /https?:\/\/[^\s]*/.test(input)
+    const valid = /https?:\/\/[^\s]+/.test(input)
     return valid || `The \`${input}\` is not a url address.`
   }
 }
@@ -81,6 +82,7 @@ export default async (ctx: Context): Promise<void> => {
   // TODO: override by options (cli argv)
   // prompts.override(ctx.options)
 
+  /* istanbul ignore next */
   const onCancel = (): never => {
     throw new Error('You have cancelled this task.')
   }
