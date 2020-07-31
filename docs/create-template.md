@@ -487,3 +487,10 @@ module.exports = {
   // Have type hint and IntelliSense (VSCode)
 }
 ```
+
+## Template Paraphrase
+
+If you want direct output template interpolate, like this:
+
+- `<%= '<%= name %>' %>` => `<%= name %>`
+- `<%= '${name}' %>` => `${name}`
