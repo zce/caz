@@ -34,7 +34,7 @@ module.exports = {
     {
       type: 'multiselect',
       name: 'features',
-      message: 'Project description',
+      message: 'Project features',
       instructions: false,
       choices: [
         { title: 'TypeScript', value: 'typescript', selected: true },
