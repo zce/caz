@@ -1,7 +1,5 @@
-import fs from 'fs'
-import path from 'path'
 import ora from 'ora'
-import { file, http, config } from '../core'
+import { http, config } from '../core'
 
 export interface Repository {
   name: string
@@ -23,7 +21,7 @@ export interface Result {
  * Fetch remote template list
  * @param owner template owner name
  */
-export const remote = async (owner: string): Promise<Result[]> => {
+export default async (owner: string): Promise<Result[]> => {
   const spinner = ora('Loading available list from remote...').start()
 
   try {
@@ -50,27 +48,4 @@ export const remote = async (owner: string): Promise<Result[]> => {
     spinner.stop()
     throw new Error(`Failed to fetch list from remote: ${e.message as string}.`)
   }
-}
-
-/**
- * Fetch local template list
- * @param owner template owner name
- * @todo read local cache
- */
-export const local = async (owner: string): Promise<Result[]> => {
-  const exists = await file.exists(config.paths.cache)
-  if (exists !== 'dir') return []
-
-  const entries = await fs.promises.readdir(config.paths.cache)
-
-  return entries.reduce<Result[]>((prev, current) => {
-    const fullpath = path.join(config.paths.cache, current)
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { name, owner: author, description, updated } = require(fullpath)
-      if (author !== owner) return prev
-      prev.push({ name, owner: author, description, updated, fullName: `${author as string}/${name as string}` })
-    } catch {}
-    return prev
-  }, [])
 }

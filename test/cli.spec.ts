@@ -41,15 +41,13 @@ test('unit:cli:init', async () => {
 })
 
 test('unit:cli:list', async () => {
-  const restore = mockArgv(['list', 'zce', '--cache', '--json', '--short'])
+  const restore = mockArgv(['list', 'zce', '--json', '--short'])
   jest.resetModules()
   require('../src/cli')
   expect(mockedList).toHaveBeenCalled()
   expect(mockedList.mock.calls[0][0]).toBe('zce')
   expect(mockedList.mock.calls[0][1]).toEqual({
     '--': [],
-    c: true,
-    cache: true,
     j: true,
     json: true,
     s: true,

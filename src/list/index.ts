@@ -1,18 +1,16 @@
 import { config } from '../core'
-import { local, remote } from './fetch'
+import fetch from './fetch'
 
 export interface ListOptions {
-  cache?: boolean
   json?: boolean
   short?: boolean
 }
 
 /**
  * Show all available templates.
- * @todo local template list
  */
 export default async (owner: string = config.official, options: ListOptions = {}): Promise<void> => {
-  const results = await (options.cache ?? false ? local(owner) : remote(owner))
+  const results = await fetch(owner)
 
   const isOfficial = owner === config.official
 

@@ -16,7 +16,6 @@ cli
 cli
   .command('list [owner]', 'Show all available templates')
   .alias('ls')
-  .option('-c, --cache', 'Show all cached templates')
   .option('-j, --json', 'Output with json format')
   .option('-s, --short', 'Output with short format')
   .action(list)

@@ -178,12 +178,11 @@ By running this command, CAZ will try to find a cached version of `nm` template 
 Show all available templates
 
 ```shell
-$ caz list [owner] [-c|--cache] [-j|--json] [-s|--short]
+$ caz list [owner] [-j|--json] [-s|--short]
 ```
 
 #### Options:
 
-- `-c, --cache`: Show all cached templates
 - `-j, --json`: Output with json format
 - `-s, --short`: Output with short format
 - `-h, --help`: Display this message
@@ -359,7 +358,6 @@ The following are the features I want to achieve or are under development:
 
 - [ ] test spec
 - [ ] all lifecycle hooks
-- [ ] list command for local cache
 - [ ] config command
 - [ ] cache command
 - [ ] console output (colorful & verbose)
