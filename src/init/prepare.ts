@@ -26,4 +26,8 @@ export default async (ctx: Context): Promise<void> => {
   //   const contents = await file.read(path.join(cwd, entry.path))
   //   ctx.files.push({ path: entry.path, stats: entry.stats, contents })
   // }))
+
+  // Apply template prepare hook.
+  if (ctx.config.prepare == null) return
+  await ctx.config.prepare(ctx)
 }

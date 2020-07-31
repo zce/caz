@@ -21,6 +21,8 @@ test('unit:init:load:normal', async () => {
   expect(ctx.config.install).toBe('npm')
   expect(ctx.config.init).toBe(true)
   expect(typeof ctx.config.setup).toBe('function')
+  expect(typeof ctx.config.prepare).toBe('function')
+  expect(typeof ctx.config.emit).toBe('function')
   expect(typeof ctx.config.complete).toBe('function')
 })
 

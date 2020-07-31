@@ -42,3 +42,10 @@ test('unit:init:prepare:custom', async () => {
   expect(names).toContain('bin/{name}.js')
   expect(names).toContain('src/index.ts')
 })
+
+test('unit:init:prepare:hook', async () => {
+  const callback = jest.fn()
+  const ctx = createContext({}, { prepare: callback })
+  await prepare(ctx)
+  expect(callback.mock.calls[0][0]).toBe(ctx)
+})

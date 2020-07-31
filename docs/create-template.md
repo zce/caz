@@ -36,6 +36,8 @@ module.exports = {
 }
 ```
 
+Type: [Template](#template)
+
 The configuration file can contain the following fields:
 
 ### name
@@ -211,12 +213,96 @@ module.exports = {
 ### setup
 
 - Type: `(ctx: Context) => Promise<void>`
-- Details: Template setup hook.
+- Details: Template setup hook, execute after template loaded.
+- Ref: [Context](#context)
 
 ```javascript
 module.exports = {
   setup: async (ctx) => {
+    const { 
+      template, 
+      project, 
+      options, 
+      dest, 
+      src, 
+      config
+    } = ctx
     console.log('template setup')
+  }
+}
+```
+
+### prepare
+
+- Type: `(ctx: Context) => Promise<void>`
+- Details: Template prepare hook, execute after template files prepare.
+- Ref: [Context](#context)
+
+```javascript
+module.exports = {
+  prepare: async (ctx) => {
+    const { 
+      template, 
+      project, 
+      options, 
+      dest, 
+      src, 
+      config, 
+      answers, 
+      files // before rename & render
+    } = ctx
+    console.log('template prepare')
+  }
+}
+```
+
+Example:
+
+Package manager choose.
+
+```javascript
+module.exports = {
+  // ...
+  prompts: [
+    {
+      type: 'select',
+      name: 'pm',
+      message: 'Package manager',
+      hint: ' ',
+      choices: [
+        { title: 'npm', value: 'npm' },
+        { title: 'yarn', value: 'yarn' },
+        { title: 'pnpm', value: 'pnpm' }
+      ]
+    }
+  ],
+  prepare: ctx => {
+    // use select pm
+    ctx.config.install = ctx.answers.pm
+  }
+}
+```
+
+### emit
+
+- Type: `(ctx: Context) => Promise<void>`
+- Details: Template emit hook, execute after all files emit to the destination.
+- Ref: [Context](#context)
+
+```javascript
+module.exports = {
+  emit: async (ctx) => {
+    const { 
+      template, 
+      project, 
+      options, 
+      dest, 
+      src, 
+      config, 
+      answers, 
+      files // after rename & render
+    } = ctx
+    console.log('template emit')
   }
 }
 ```
@@ -225,11 +311,13 @@ module.exports = {
 
 - Type: `string` or `(ctx: Context) => string | Promise<void | string>`
 - Details: Generate completed callback. if got a string, print it to the console.
+- Ref: [Context](#context)
 
 ```javascript
 // callback
 module.exports = {
   complete: async ctx => {
+    // ctx => all context
     console.log('  Happy hacking ;)')
   }
 }
@@ -237,6 +325,119 @@ module.exports = {
 // or string
 module.exports = {
   complete: '  Happy hacking ;)'
+}
+```
+
+## Core Types
+
+### Context
+
+```typescript
+/**
+ * Creator context.
+ */
+interface Context {
+  /**
+   * Template name.
+   * e.g.
+   * - offlical short name: `nm`
+   * - offlical short name with branch: `nm#master`
+   * - custom full name: `zce/nm`
+   * - custom full name with branch: `zce/nm#master`
+   * - local directory path: `~/templates/nm`
+   * - full url: `https://github.com/zce/nm/archive/master.zip`
+   */
+  readonly template: string
+  /**
+   * Project name, which is also the project directory.
+   */
+  readonly project: string
+  /**
+   * More options.
+   */
+  readonly options: Options & Record<string, any>
+  /**
+   * The source directory where the template (absolute).
+   */
+  src: string
+  /**
+   * Generated result output destination directory (absolute).
+   */
+  dest: string
+  /**
+   * Template config.
+   */
+  readonly config: Template
+  /**
+   * Template prompts answers.
+   */
+  readonly answers: Answers<string>
+  /**
+   * Template files.
+   */
+  readonly files: File[]
+}
+```
+
+### Template
+
+```typescript
+/**
+ * Template config.
+ */
+export interface Template {
+  /**
+   * Template name.
+   */
+  name: string
+  /**
+   * Template version.
+   */
+  version?: string
+  /**
+   * Template source dirname.
+   */
+  source?: string
+  /**
+   * Template metadata.
+   */
+  metadata?: Record<string, unknown>
+  /**
+   * Template prompts.
+   */
+  prompts?: PromptObject | PromptObject[]
+  /**
+   * Template file filters.
+   */
+  filters?: Record<string, (answers: Answers<string>) => boolean>
+  /**
+   * Template engine helpers.
+   */
+  helpers?: Record<string, unknown>
+  /**
+   * Auto install dependencies.
+   */
+  install?: false | 'npm' | 'yarn' | 'pnpm'
+  /**
+   * Auto init git repository.
+   */
+  init?: boolean
+  /**
+   * Template setup hook.
+   */
+  setup?: (ctx: Context) => Promise<void>
+  /**
+   * Template prepare hook.
+   */
+  prepare?: (ctx: Context) => Promise<void>
+  /**
+   * Template emit hook.
+   */
+  emit?: (ctx: Context) => Promise<void>
+  /**
+   * Template all completed.
+   */
+  complete?: ((ctx: Context) => string | Promise<string> | Promise<void>) | string
 }
 ```
 

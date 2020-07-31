@@ -23,3 +23,10 @@ test('unit:init:emit:normal', async () => {
   expect(bar).toBe('bar')
   await fs.promises.rmdir(temp, { recursive: true })
 })
+
+test('unit:init:emit:hook', async () => {
+  const callback = jest.fn()
+  const ctx = createContext({}, { emit: callback })
+  await emit(ctx)
+  expect(callback.mock.calls[0][0]).toBe(ctx)
+})

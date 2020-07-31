@@ -2,7 +2,7 @@ import { spawn } from 'child_process'
 import { Context } from './types'
 
 /**
- * Execute `npm | yarn install` command.
+ * Execute `npm | yarn | pnpm install` command.
  */
 export default async (ctx: Context): Promise<void> => {
   if (ctx.config.install === false) return // off install

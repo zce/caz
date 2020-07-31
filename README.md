@@ -37,6 +37,8 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 - High efficiency
 - Less dependencies
 - Configurable
+- Extensible
+- Template-based
 - TypeScript
 - Use modern API
 - Easy to use
@@ -278,7 +280,7 @@ import caz from 'caz'
 })()
 ```
 
-_For more examples, please refer to the [examples/usage.ts](examples/usage.ts)._
+_For more examples, please refer to the [example/usage.ts](example/usage.ts)._
 
 ## References
 
@@ -336,6 +338,25 @@ Nothing else.
 ![Scaffolding flow](https://user-images.githubusercontent.com/6166576/88473012-d4ecb180-cf4b-11ea-968a-5508c6f84502.png)
 
 > P.S. The picture is from the Internet, but I have forgotten the specific source, sorry to the author.
+
+#### Main Workflow
+
+The [core code](src/init/index.ts) is based on the middleware mechanism provided by [zce/mwa](https://github.com/zce/mwa).
+
+The following middleware will be executed sequentially.
+
+1. [confirm](src/init/confirm.ts) - Confirm destination by [prompts](https://github.com/terkelg/prompts).
+2. [resolve](src/init/resolve.ts) - Resolve template from remote or local.
+3. [load](src/init/load.ts) - Load template config by require.
+4. [setup](src/init/setup.ts) - Apply template setup hook.
+5. [inquire](src/init/inquire.ts) - Inquire template prompts by [prompts](https://github.com/terkelg/prompts).
+6. [prepare](src/init/prepare.ts) - Prepare all template files.
+7. [rename](src/init/rename.ts) - Rename file if necessary.
+8. [render](src/init/render.ts) - Render file if template.
+9. [emit](src/init/emit.ts) - Emit files to destination.
+10. [install](src/init/install.ts) - Execute `npm | yarn | pnpm install` command.
+11. [init](src/init/init.ts) - Execute `git init && git add && git commit` command.
+12. [complete](src/init/complete.ts) - Apply template complete hook.
 
 ### Built With
 

@@ -59,6 +59,14 @@ export interface Template {
    */
   setup?: (ctx: Context) => Promise<void>
   /**
+   * Template prepare hook.
+   */
+  prepare?: (ctx: Context) => Promise<void>
+  /**
+   * Template emit hook.
+   */
+  emit?: (ctx: Context) => Promise<void>
+  /**
    * Template all completed.
    */
   complete?: ((ctx: Context) => string | Promise<string> | Promise<void>) | string
@@ -82,6 +90,9 @@ export interface File {
   contents: Buffer
 }
 
+/**
+ * Creator context.
+ */
 export interface Context {
   /**
    * Template name.
@@ -99,7 +110,7 @@ export interface Context {
    */
   readonly project: string
   /**
-   * More options.
+   * More options, most of the cases come from CLI..
    */
   readonly options: Options & Record<string, any>
   /**

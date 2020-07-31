@@ -20,8 +20,8 @@ test('unit:init:complete:fallback', async () => {
     template: 'fallback',
     project: 'fallback-app',
     files: [
-      { path: 'foo/bar.txt', contents: Buffer.from('') },
       { path: 'foo.txt', contents: Buffer.from('') },
+      { path: 'foo/bar.txt', contents: Buffer.from('') },
       { path: 'bar.txt', contents: Buffer.from('') }
     ]
   })

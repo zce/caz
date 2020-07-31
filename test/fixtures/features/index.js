@@ -75,7 +75,13 @@ module.exports = {
   init: true,
   setup: ctx => {
     console.log(ctx.template, 'template setup')
+  },
+  prepare: ctx => {
+    console.log(ctx.template, 'template prepare')
     ctx.config.install = ctx.answers.pm
+  },
+  emit: ctx => {
+    console.log(ctx.template, 'template emit')
   },
   complete: ctx => {
     console.clear()
