@@ -105,9 +105,9 @@ Upon metadata definition, they can be used in template files as follows:
 ```javascript
 module.exports = {
   prompts: [
-    { type: 'text', name: 'name', message: 'Project name' },
-    { type: 'text', name: 'version', message: 'Project version' },
-    { type: 'confirm', name: 'sass', message: 'Use sass preprocessor?', initial: true }
+    { name: 'name', type: 'text', message: 'Project name' },
+    { name: 'version', type: 'text', message: 'Project version' },
+    { name: 'sass', type: 'confirm', message: 'Use sass preprocessor?', initial: true }
   ]
 }
 ```
@@ -149,9 +149,9 @@ Upon prompts answers, they can be used in template files as follows:
 
 ```javascript
 module.exports = {
-  prompts: {
-    sass: { type: 'confirm', message: 'Use sass preprocessor?', initial: true }
-  },
+  prompts: [
+    { name: 'sass', type: 'confirm', message: 'Use sass preprocessor?', initial: true }
+  ],
   filters: {
     '*/*.scss': answers => answers.sass,
     '*/*.css': answers => !answers.sass
@@ -265,8 +265,8 @@ module.exports = {
   // ...
   prompts: [
     {
-      type: 'select',
       name: 'pm',
+      type: 'select',
       message: 'Package manager',
       hint: ' ',
       choices: [

@@ -36,13 +36,13 @@ export default async (ctx: Context): Promise<void> => {
   // confirm & choose next
   const { choose }: { choose?: string } = await prompts([
     {
-      type: 'confirm',
       name: 'sure',
+      type: 'confirm',
       message: isCurrent ? 'Create in current directory?' : 'Target directory already exists. Continue?'
     },
     {
-      type: (prev: boolean) => prev ? 'select' : null,
       name: 'choose',
+      type: (prev: boolean) => prev ? 'select' : null,
       message: `${isCurrent ? 'Current' : 'Target'} directory is not empty. How to continue?`,
       hint: ' ',
       choices: [

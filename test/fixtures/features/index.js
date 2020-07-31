@@ -14,26 +14,26 @@ module.exports = {
   metadata: { date: new Date() },
   prompts: [
     {
-      type: 'text',
       name: 'name',
+      type: 'text',
       message: 'Project name',
       initial: 'my-project'
     },
     {
-      type: 'text',
       name: 'version',
+      type: 'text',
       message: 'Project version',
       initial: '0.1.0'
     },
     {
-      type: 'text',
       name: 'description',
+      type: 'text',
       message: 'Project description',
       initial: 'Awesome project'
     },
     {
-      type: 'multiselect',
       name: 'features',
+      type: 'multiselect',
       message: 'Project features',
       instructions: false,
       choices: [
@@ -42,14 +42,14 @@ module.exports = {
       ]
     },
     {
-      type: 'confirm',
       name: 'install',
+      type: 'confirm',
       message: 'Install dependencies',
       initial: true
     },
     {
-      type: prev => prev ? 'select' : null,
       name: 'pm',
+      type: prev => prev ? 'select' : null,
       message: 'Package manager',
       hint: ' ',
       choices: [
