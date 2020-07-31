@@ -14,9 +14,7 @@ import install from './install'
 import init from './init'
 import complete from './complete'
 
-// TODO:
-// - require lazy
-// - all lifecycle hooks
+// TODO: require lazy ??
 
 const creator = new Ware<Context>()
 
@@ -33,14 +31,13 @@ creator.use(install)
 creator.use(init)
 creator.use(complete)
 
-// creator.use(ctx => console.log(ctx))
-
 export default async (template: string, project: string = '.', options: Options = {}): Promise<void> => {
   // required arguments
   if (template == null || template === '') {
     throw new Error('Missing required argument: `template`.')
   }
 
+  // create context
   const context = {
     template,
     project,
@@ -52,6 +49,7 @@ export default async (template: string, project: string = '.', options: Options 
     files: []
   }
 
+  // running creator
   await creator.run(context)
 }
 
