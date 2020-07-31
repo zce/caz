@@ -15,11 +15,22 @@ test('unit:init:complete', async () => {
   expect(typeof complete).toBe('function')
 })
 
-test('unit:init:complete:null', async () => {
-  const ctx = createContext()
-  const result = await complete(ctx)
-  expect(result).toBe(undefined)
-  expect(log).not.toHaveBeenCalled()
+test('unit:init:complete:fallback', async () => {
+  const ctx = createContext({
+    template: 'fallback',
+    project: 'fallback-app',
+    files: [
+      { path: 'foo/bar.txt', contents: Buffer.from('') },
+      { path: 'foo.txt', contents: Buffer.from('') },
+      { path: 'bar.txt', contents: Buffer.from('') }
+    ]
+  })
+  await complete(ctx)
+  expect(log.mock.calls[0][0]).toBe('Created a new project in `fallback-app` by the `fallback` template.\n')
+  expect(log.mock.calls[1][0]).toBe('bar.txt')
+  expect(log.mock.calls[2][0]).toBe('foo.txt')
+  expect(log.mock.calls[3][0]).toBe('foo/bar.txt')
+  expect(log.mock.calls[4][0]).toBe('\nHappy hacking :)\n')
 })
 
 test('unit:init:complete:string', async () => {
