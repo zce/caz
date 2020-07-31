@@ -27,10 +27,10 @@ test('unit:init:complete:fallback', async () => {
   })
   await complete(ctx)
   expect(log.mock.calls[0][0]).toBe('Created a new project in `fallback-app` by the `fallback` template.\n')
-  expect(log.mock.calls[1][0]).toBe('bar.txt')
-  expect(log.mock.calls[2][0]).toBe('foo.txt')
-  expect(log.mock.calls[3][0]).toBe('foo/bar.txt')
-  expect(log.mock.calls[4][0]).toBe('\nHappy hacking :)\n')
+  expect(log.mock.calls[1][0]).toBe('- bar.txt')
+  expect(log.mock.calls[2][0]).toBe('- foo.txt')
+  expect(log.mock.calls[3][0]).toBe('- foo/bar.txt')
+  expect(log.mock.calls[4][0]).toBe('\nHappy hacking :)')
 })
 
 test('unit:init:complete:string', async () => {

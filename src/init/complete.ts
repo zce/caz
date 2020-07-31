@@ -5,8 +5,8 @@ import { Context } from './types'
  */
 export const fallback = async (ctx: Context): Promise<void> => {
   console.log(`Created a new project in \`${ctx.project}\` by the \`${ctx.template}\` template.\n`)
-  ctx.files.map(i => i.path).sort((a, b) => a > b ? +1 : -1).forEach(i => console.log(i))
-  console.log('\nHappy hacking :)\n')
+  ctx.files.map(i => i.path).sort((a, b) => a > b ? +1 : -1).forEach(i => console.log('- ' + i))
+  console.log('\nHappy hacking :)')
 }
 
 /**
