@@ -194,8 +194,8 @@ $ caz list [owner] [-j|--json] [-s|--short]
 
 Current available templates list:
 
-- [template](https://github.com/caz-templates/template) - Templates template
-- [nm](https://github.com/caz-templates/nm) - Node module boilerplate
+- [template](https://github.com/caz-templates/template) - for creating caz templates.
+- [nm](https://github.com/caz-templates/nm) - for creating node modules.
 - [webapp](https://github.com/caz-templates/webapp) - :construction: Modern web app
 - [react](https://github.com/caz-templates/react) - :construction: Modern web app by React.js
 - [vue](https://github.com/caz-templates/vue) - :construction: Modern web app by Vue.js
