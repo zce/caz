@@ -401,12 +401,11 @@ The following middleware will be executed sequentially.
 
 The following are the features I want to achieve or are under development:
 
-- [ ] test spec
-- [ ] all lifecycle hooks
+- [ ] basic official templates
 - [ ] config command
 - [ ] cache command
+- [ ] all lifecycle hooks
 - [ ] console output (colorful & verbose)
-- [ ] basic official templates
 - [ ] more and more official templates
 
 See the [open issues](https://github.com/zce/caz/issues) for a list of proposed features (and known issues).
