@@ -263,24 +263,48 @@ $ npm install caz
 $ yarn add caz
 ```
 
+with ESM and async/await:
+
 ```javascript
 import caz from 'caz'
 
 ;(async () => {
-  const template = 'nm'
-  const project = 'my-project'
-  const options = {
-    force: false,
-    offline: false
+  try {
+    const template = 'nm'
+    // project path (relative cwd or full path)
+    const project = 'my-project'
+    const options = { force: false, offline: false }
+    // scaffolding by caz...
+    await caz(template, project, options)
+    // success created my-project by nm template
+  } catch (e) {
+    // error handling
+    console.error(e)
   }
-
-  await caz(template, project, options)
-
-  // Scaffolding...
 })()
 ```
 
-_For more examples, please refer to the [example/usage.ts](example/usage.ts)._
+or with CommonJS and Promise:
+
+```javascript
+const { default: caz } = require('caz')
+
+const template = 'nm'
+// project path (relative cwd or full path)
+const project = 'my-project'
+const options = { force: false, offline: false }
+// scaffolding by caz...
+caz(template, project, options)
+  .then(() => {
+    // success created my-project by nm template
+  })
+  .catch(e => {
+    // error handling
+    console.error(e)
+  })
+```
+
+<!-- _For more examples, please refer to the [example/usage.ts](example/usage.ts)._ -->
 
 ## References
 

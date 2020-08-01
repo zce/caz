@@ -9,8 +9,10 @@ cli
   .option('-f, --force', 'Overwrite if the target exists')
   .option('-o, --offline', 'Try to use an offline template')
   // .allowUnknownOptions() // for prompts override.
-  .example(name => `  $ ${name} <template> [project] # with an official template`)
-  .example(name => `  $ ${name} <owner>/<repo> [project] # with a github repo`)
+  .example('  # with an official template')
+  .example(`  $ ${name} <template> [project]`)
+  .example('  # with a custom github repo')
+  .example(`  $ ${name} <owner>/<repo> [project]`)
   .action(init)
 
 cli
