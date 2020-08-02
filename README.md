@@ -399,7 +399,6 @@ The following middleware will be executed sequentially.
 
 The following are the features I want to achieve or are under development:
 
-- [ ] basic official templates
 - [ ] config command
 - [ ] cache command
 - [ ] all lifecycle hooks
