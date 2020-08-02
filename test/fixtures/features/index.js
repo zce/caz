@@ -1,6 +1,7 @@
 // full features template
 
 // !!! Sharing the dependencies of caz
+// Make sure the following statement is executed before all code
 module.paths = module.parent.paths
 
 const path = require('path')

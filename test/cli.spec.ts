@@ -42,8 +42,7 @@ test('unit:cli:init', async () => {
 
 test('unit:cli:list', async () => {
   const restore = mockArgv(['list', 'zce', '--json', '--short'])
-  jest.resetModules()
-  require('../src/cli')
+  await import('../src/cli')
   expect(mockedList).toHaveBeenCalled()
   expect(mockedList.mock.calls[0][0]).toBe('zce')
   expect(mockedList.mock.calls[0][1]).toEqual({
@@ -66,20 +65,12 @@ test('unit:cli:help', async () => {
 })
 
 // // TODO: error
+// // https://github.com/facebook/jest/issues/5620
 // test('unit:cli:error', async () => {
-//   mockedInit = jest.fn().mockImplementation(async () => {
-//     throw new Error('message')
-//   })
-//   jest.mock('../src', () => ({
-//     __esModule: true,
-//     default: mockedInit,
-//     list: mockedList
-//   }))
 //   const error = jest.spyOn(console, 'error').mockImplementation()
 //   const exit = jest.spyOn(process, 'exit').mockImplementation()
-//   const restore = mockArgv(['template'])
+//   const restore = mockArgv([])
 //   await import('../src/cli')
-//   expect(mockedInit).toHaveBeenCalled()
 //   expect(error).toHaveBeenCalled()
 //   expect(exit).toHaveBeenCalled()
 //   restore()
