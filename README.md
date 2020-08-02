@@ -78,11 +78,9 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 10.12, 12.10 preferred)
+- [Node.js](https://nodejs.org) (>= 10.17, 12.10 preferred)
 - [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.20)
 - [Git](https://git-scm.com) (optional)
-
-> `yarn` required for running tests.
 
 ### Installation
 

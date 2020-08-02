@@ -9,6 +9,13 @@
 
 > **NOTE**: Be sure to merge the latest from "upstream" before making a pull request!
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org) (>= 12.10)
+- [npm](https://www.npmjs.com) (>= 6.x)
+- [yarn](https://yarnpkg.com) (>= 1.20)
+- [Git](https://git-scm.com) (>= 2.20)
+
 ## Development
 
 ```shell
