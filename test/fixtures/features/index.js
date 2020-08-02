@@ -79,23 +79,22 @@ module.exports = {
   },
   prepare: ctx => {
     console.log(ctx.template, 'template prepare')
-    ctx.config.install = ctx.answers.pm
+    ctx.config.install = ctx.answers.install && ctx.answers.pm
   },
   emit: ctx => {
     console.log(ctx.template, 'template emit')
   },
   complete: ctx => {
     console.clear()
-
-    console.log(chalk`Created a new project in {cyan ${ctx.dest}} by the {blue ${ctx.template}} template.\n`)
-
+    console.log(chalk`Created a new project in {cyan ${ctx.project}} by the {blue ${ctx.template}} template.\n`)
     console.log('Getting Started:')
-
     if (ctx.dest !== process.cwd()) {
-      console.log(chalk.cyan(`  $ cd ${path.relative(process.cwd(), ctx.dest)}`))
+      console.log(chalk`  $ {cyan cd ${path.relative(process.cwd(), ctx.dest)}}`)
     }
-    console.log(chalk.cyan('  $ npm run dev'))
-
+    if (ctx.config.install === false) {
+      console.log(chalk`  $ {cyan npm install} {gray # or yarn}`)
+    }
+    console.log(chalk`  $ {cyan ${ctx.config.install ? ctx.config.install : 'npm'} test}`)
     // console.log('Good luck :)')
     console.log('\nHappy hacking :)\n')
   }

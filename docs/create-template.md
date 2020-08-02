@@ -219,12 +219,12 @@ module.exports = {
 ```javascript
 module.exports = {
   setup: async (ctx) => {
-    const { 
-      template, 
-      project, 
-      options, 
-      dest, 
-      src, 
+    const {
+      template,
+      project,
+      options,
+      dest,
+      src,
       config
     } = ctx
     console.log('template setup')
@@ -241,14 +241,14 @@ module.exports = {
 ```javascript
 module.exports = {
   prepare: async (ctx) => {
-    const { 
-      template, 
-      project, 
-      options, 
-      dest, 
-      src, 
-      config, 
-      answers, 
+    const {
+      template,
+      project,
+      options,
+      dest,
+      src,
+      config,
+      answers,
       files // before rename & render
     } = ctx
     console.log('template prepare')
@@ -265,8 +265,14 @@ module.exports = {
   // ...
   prompts: [
     {
+      name: 'install',
+      type: 'confirm',
+      message: 'Install dependencies',
+      initial: true
+    },
+    {
       name: 'pm',
-      type: 'select',
+      type: prev => prev ? 'select' : null,
       message: 'Package manager',
       hint: ' ',
       choices: [
@@ -277,8 +283,8 @@ module.exports = {
     }
   ],
   prepare: ctx => {
-    // use select pm
-    ctx.config.install = ctx.answers.pm
+    // choose package manager
+    ctx.config.install = ctx.answers.install && ctx.answers.pm
   }
 }
 ```
@@ -292,14 +298,14 @@ module.exports = {
 ```javascript
 module.exports = {
   emit: async (ctx) => {
-    const { 
-      template, 
-      project, 
-      options, 
-      dest, 
-      src, 
-      config, 
-      answers, 
+    const {
+      template,
+      project,
+      options,
+      dest,
+      src,
+      config,
+      answers,
       files // after rename & render
     } = ctx
     console.log('template emit')
@@ -327,6 +333,8 @@ module.exports = {
   complete: '  Happy hacking ;)'
 }
 ```
+
+_For more examples, please refer to the [fixtures](../test/fixtures/features/index.js)._
 
 ## Core Types
 
