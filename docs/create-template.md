@@ -119,7 +119,7 @@ The following keys automatically assign initial values (from other config or sys
 - `author` - npm or git name config
 - `email` - npm or git email config
 - `url` - npm or git url config
-- `license` - npm init config, fallback: `MIT`
+<!-- - `license` - npm init config, fallback: `MIT` -->
 
 The following keys automatically assign default validater:
 
