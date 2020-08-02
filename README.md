@@ -26,7 +26,7 @@ CAZ (**C**reate **A**pp **Z**en)
 
 It's a a simple template-based Scaffolding tools for my personal productivity, inspired by [Yeoman](https://yeoman.io) &amp; [Vue CLI 2](https://npmjs.com/vue-cli) &amp; etc.
 
-- pronounced: [kæts] 📷 ✌
+- pronounced: [kæz] 📷 ✌
 - written: CAZ / caz
 
 _For more introduction, please refer to the [How it works](#how-it-works)._
