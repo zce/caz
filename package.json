@@ -112,7 +112,6 @@
     "node": ">=10.17"
   },
   "publishConfig": {
-    "tag": "alpha",
     "registry": "https://registry.npmjs.org"
   }
 }
