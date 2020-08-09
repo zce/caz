@@ -118,6 +118,13 @@ test('unit:core:file:write', async () => {
   await fs.promises.rmdir(dirname, { recursive: true })
 })
 
+test('unit:core:file:isBinary', async () => {
+  const buffer1 = await fs.promises.readFile(path.join(__dirname, '../fixtures/archive.zip'))
+  expect(file.isBinary(buffer1)).toBe(true)
+  const buffer2 = await fs.promises.readFile(path.join(__dirname, '../fixtures/.cazrc'))
+  expect(file.isBinary(buffer2)).toBe(false)
+})
+
 test('unit:core:file:tildify', async () => {
   const home = os.homedir()
 

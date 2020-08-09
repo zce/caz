@@ -117,6 +117,17 @@ export const write = async (input: string, contents: string | Uint8Array): Promi
 }
 
 /**
+ * Detect buffer is binary.
+ * @param input input buffer
+ */
+export const isBinary = (input: Uint8Array): boolean => {
+  // Detect encoding
+  // 65533 is the unknown char
+  // 8 and below are control chars (e.g. backspace, null, eof, etc)
+  return input.some(item => item === 65533 || item <= 8)
+}
+
+/**
  * Tildify absolute path.
  * @param input absolute path
  * @see https://github.com/sindresorhus/tildify

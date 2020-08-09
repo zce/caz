@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { file } from '../core'
 import { Context } from './types'
 
 /**
@@ -15,9 +16,12 @@ export default async (ctx: Context): Promise<void> => {
   }
 
   ctx.files.forEach(item => {
+    // ignore binary files
+    if (file.isBinary(item.contents)) return
+
     const text = item.contents.toString()
 
-    // ignore template files without interpolate
+    // ignore files without interpolate
     if (!regexp.test(text)) return
 
     const compiled = _.template(text, { imports })
