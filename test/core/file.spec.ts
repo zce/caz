@@ -203,3 +203,15 @@ test('unit:core:file:extract:strip', async () => {
 
   await fs.promises.rmdir(temp, { recursive: true })
 })
+
+test('unit:core:file:extract:strip-max', async () => {
+  const temp = await createTempDir()
+
+  await file.extract(path.join(__dirname, '../fixtures/archive.zip'), temp, 10)
+
+  expect(fs.existsSync(path.join(temp, 'LICENSE'))).toBe(true)
+  expect(fs.existsSync(path.join(temp, 'README.md'))).toBe(true)
+
+  // await fs.promises.rmdir(temp, { recursive: true })
+  console.log(temp)
+})

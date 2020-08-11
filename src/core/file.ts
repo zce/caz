@@ -171,10 +171,8 @@ export const extract = async (input: string, output: string, strip = 0): Promise
     onEntry: entry => {
       if (strip === 0) return
       const items = entry.fileName.split(/\/|\\/)
-      const start = Math.min(items.length, strip)
-      // console.log('->', entry.fileName)
+      const start = Math.min(strip, items.length - 1)
       entry.fileName = items.slice(start).join('/')
-      // console.log('<-', entry.fileName)
     }
   })
 }
