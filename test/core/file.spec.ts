@@ -212,6 +212,5 @@ test('unit:core:file:extract:strip-max', async () => {
   expect(fs.existsSync(path.join(temp, 'LICENSE'))).toBe(true)
   expect(fs.existsSync(path.join(temp, 'README.md'))).toBe(true)
 
-  // await fs.promises.rmdir(temp, { recursive: true })
-  console.log(temp)
+  await fs.promises.rmdir(temp, { recursive: true })
 })
