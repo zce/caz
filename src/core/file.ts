@@ -118,7 +118,7 @@ export const write = async (input: string, contents: string | Uint8Array): Promi
 
 /**
  * Detect buffer is binary.
- * @param input input buffer
+ * @param input buffer
  */
 export const isBinary = (input: Uint8Array): boolean => {
   // Detect encoding
@@ -146,8 +146,8 @@ export const tildify = (input: string): string => {
 }
 
 /**
- * Untildify absolute path.
- * @param input absolute path
+ * Untildify tilde path.
+ * @param input tilde path
  * @see https://github.com/sindresorhus/untildify
  */
 export const untildify = (input: string): string => {
