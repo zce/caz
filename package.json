@@ -73,6 +73,11 @@
       "!src/**/*.d.ts"
     ]
   },
+  "renovate": {
+    "extends": [
+      "zce"
+    ]
+  },
   "dependencies": {
     "cac": "^6.6.1",
     "chalk": "^4.1.0",
