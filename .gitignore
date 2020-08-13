@@ -7,5 +7,4 @@ node_modules
 /coverage
 /test/.temp
 
-package-lock.json
 yarn.lock
