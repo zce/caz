@@ -302,6 +302,10 @@ caz(template, project, options)
   })
 ```
 
+This means that you can develop your own scaffolding module based on it.
+
+To create and distribute your own scaffolding tools, please refer to the [How to create scaffolding tools based on CAZ](docs/create-scaffold.md).
+
 <!-- _For more examples, please refer to the [example/usage.ts](example/usage.ts)._ -->
 
 ## References
