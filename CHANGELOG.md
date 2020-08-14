@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.2] - 2020-08-14
+
+- feat: setup after inquire
+- fix: extract zip strip
+
 ## [0.1.1] - 2020-08-09
 
 - fix: skip binary files when rendering templates (#5)
