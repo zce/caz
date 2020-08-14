@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import { createContext } from './util'
 import render from '../../src/init/render'
 
@@ -11,6 +13,9 @@ test('unit:init:render:normal', async () => {
     hahaha
     <% } %>
   `
+  // binary files
+  const img = fs.readFileSync(path.join(__dirname, '../fixtures/caz.png'))
+  const zip = fs.readFileSync(path.join(__dirname, '../fixtures/archive.zip'))
 
   const ctx = createContext({
     answers: {
@@ -19,7 +24,9 @@ test('unit:init:render:normal', async () => {
     },
     files: [
       { path: 'a.txt', contents: Buffer.from(template) },
-      { path: 'b.txt', contents: Buffer.from('bar') }
+      { path: 'b.txt', contents: Buffer.from('bar') },
+      { path: 'caz.png', contents: img },
+      { path: 'archive.zip', contents: zip }
     ]
   })
 
@@ -28,8 +35,9 @@ test('unit:init:render:normal', async () => {
   expect(ctx.files[0].contents.toString()).toBe(`
     caz test
   `)
-
   expect(ctx.files[1].contents.toString()).toBe('bar')
+  expect(ctx.files[2].contents).toBe(img)
+  expect(ctx.files[3].contents).toBe(zip)
 })
 
 test('unit:init:render:metadata', async () => {
@@ -48,7 +56,7 @@ test('unit:init:render:metadata', async () => {
   expect(ctx.files[0].contents.toString()).toBe(now.toString())
 })
 
-test('unit:init:render:metadata', async () => {
+test('unit:init:render:helpers', async () => {
   const ctx = createContext({
     files: [
       { path: 'a.txt', contents: Buffer.from('<%= upper(\'caz\') %>') }
