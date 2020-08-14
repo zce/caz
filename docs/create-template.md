@@ -42,8 +42,9 @@ The configuration file can contain the following fields:
 
 ### name
 
+The name of the template.
+
 - Type: `string`
-- Details: The name of the template.
 
 ```javascript
 module.exports = {
@@ -53,8 +54,9 @@ module.exports = {
 
 ### version
 
+The version of the template.
+
 - Type: `string`
-- Details: The version of the template.
 
 ```javascript
 module.exports = {
@@ -64,8 +66,9 @@ module.exports = {
 
 ### source
 
+Template source files directory.
+
 - Type: `string`
-- Details: Template source files directory.
 - Default: `'template'`
 
 ```javascript
@@ -76,8 +79,9 @@ module.exports = {
 
 ### metadata
 
+The metadata you can use in the template files.
+
 - Type: `Record<string, unknown>`
-- Details: The metadata you can use in the template files.
 
 ```javascript
 module.exports = {
@@ -99,8 +103,10 @@ Upon metadata definition, they can be used in template files as follows:
 
 ### prompts
 
+Interactive prompts, use [prompts](https://github.com/terkelg/prompts), please refer to [prompts docs](https://github.com/terkelg/prompts#-prompt-objects).
+
 - Type: `PromptObject | PromptObject[]`
-- Details: Interactive prompts, use [prompts](https://github.com/terkelg/prompts), please refer to [prompts docs](https://github.com/terkelg/prompts#-prompt-objects).
+- Default: `'{ name: 'name', type: 'text', message: 'Project name' }'`
 
 ```javascript
 module.exports = {
@@ -144,8 +150,9 @@ Upon prompts answers, they can be used in template files as follows:
 
 ### filters
 
+Filter files that you want to output.
+
 - Type: `Record<string, (answers: Answers) => boolean>`
-- Details: Filter files that you want to output.
 
 ```javascript
 module.exports = {
@@ -161,8 +168,9 @@ module.exports = {
 
 ### helpers
 
+Custom template engine helpers.
+
 - Type: `Record<string, any>`
-- Details: Custom template engine helpers.
 - Default: `{ _: require('lodash') }`
 
 ```javascript
@@ -186,77 +194,58 @@ Upon registration, they can be used in template files as follows:
 
 ### install
 
+Auto install dependencies after generation.
+
 - Type: `false | 'npm' | 'yarn' | 'pnpm'`
-- Details: Auto install dependencies after generation.
 - Default: According generated files contains `package.json`
 
 ```javascript
 module.exports = {
-  // run `yarn install` after emit.
+  // run `yarn install` after files emit.
   install: 'yarn'
 }
 ```
 
 ### init
 
+Auto init git repository after generation.
+
 - Type: `boolean`
-- Details: Auto init git repository after generation.
 - Default: According generated files contains `.gitignore`
 
 ```javascript
 module.exports = {
-  // run `git init && git add && git commit` after emit.
+  // run `git init && git add && git commit` after files emit.
   init: true
 }
 ```
 
 ### setup
 
+Template setup hook, execute after template loaded & inquire completed.
+
 - Type: `(ctx: Context) => Promise<void>`
-- Details: Template setup hook, execute after template loaded.
 - Ref: [Context](#context)
 
 ```javascript
 module.exports = {
-  setup: async (ctx) => {
-    const {
-      template,
-      project,
-      options,
-      dest,
-      src,
-      config
+  setup: async ctx => {
+    // You can get the following data in context
+    const { 
+      template, 
+      project, 
+      options, 
+      dest, 
+      src, 
+      config, 
+      answers // inquire answers
     } = ctx
-    console.log('template setup')
+    console.log('template setup', ctx)
   }
 }
 ```
 
-### prepare
-
-- Type: `(ctx: Context) => Promise<void>`
-- Details: Template prepare hook, execute after template files prepare.
-- Ref: [Context](#context)
-
-```javascript
-module.exports = {
-  prepare: async (ctx) => {
-    const {
-      template,
-      project,
-      options,
-      dest,
-      src,
-      config,
-      answers,
-      files // before rename & render
-    } = ctx
-    console.log('template prepare')
-  }
-}
-```
-
-Example:
+#### Examples:
 
 Package manager choose.
 
@@ -277,27 +266,96 @@ module.exports = {
       hint: ' ',
       choices: [
         { title: 'npm', value: 'npm' },
-        { title: 'yarn', value: 'yarn' },
-        { title: 'pnpm', value: 'pnpm' }
+        { title: 'yarn', value: 'yarn' }
       ]
     }
   ],
-  prepare: ctx => {
-    // choose package manager
+  setup: async ctx => {
+    // Execute install according to user's choice.
     ctx.config.install = ctx.answers.install && ctx.answers.pm
+  }
+}
+```
+
+Dynamic setting template files directory.
+
+```javascript
+module.exports = {
+  // ...
+  prompts: [
+    {
+      name: 'features',
+      type: 'multiselect',
+      message: 'Project features',
+      instructions: false,
+      choices: [
+        { title: 'TypeScript', value: 'typescript', selected: true }
+        // ....
+      ]
+    }
+  ],
+  setup: async ctx => {
+    // Dynamic setting template files directory.
+    ctx.config.source = ctx.answers.features.includes('typescript') 
+      ? 'template/typescript' 
+      : 'template/javascript'
+  }
+}
+```
+
+Other settings, use your creativity as much as possible...
+
+### prepare
+
+Template prepare hook, execute after template files prepare, before rename & render.
+
+- Type: `(ctx: Context) => Promise<void>`
+- Ref: [Context](#context)
+
+```javascript
+module.exports = {
+  prepare: async ctx => {
+    // You can get the following data in context
+    const {
+      template,
+      project,
+      options,
+      dest,
+      src,
+      config,
+      answers,
+      files // before rename & render
+    } = ctx
+    console.log('template prepare', ctx)
+  }
+}
+```
+
+#### Examples:
+
+Add files to be generated dynamically.
+
+```javascript
+module.exports = {
+  prepare: async ctx => {
+    ctx.files.push({
+      path: 'additional.txt',
+      contents: Buffer.from('<%= name %> additional contents')
+    })
   }
 }
 ```
 
 ### emit
 
+Template emit hook, execute after all files emit to the destination.
+
 - Type: `(ctx: Context) => Promise<void>`
-- Details: Template emit hook, execute after all files emit to the destination.
 - Ref: [Context](#context)
 
 ```javascript
 module.exports = {
-  emit: async (ctx) => {
+  emit: async ctx => {
     const {
       template,
       project,
@@ -315,20 +373,26 @@ module.exports = {
 
 ### complete
 
+Generate completed callback. if got a string, print it to the console.
+
 - Type: `string` or `(ctx: Context) => string | Promise<void | string>`
-- Details: Generate completed callback. if got a string, print it to the console.
+- Default: Log all generated files.
 - Ref: [Context](#context)
 
+callback
+
 ```javascript
-// callback
 module.exports = {
   complete: async ctx => {
     // ctx => all context
     console.log('  Happy hacking ;)')
   }
 }
+```
 
-// or string
+or string
+
+```javascript
 module.exports = {
   complete: '  Happy hacking ;)'
 }
@@ -431,21 +495,39 @@ export interface Template {
    */
   init?: boolean
   /**
-   * Template setup hook.
+   * Template setup hook, execute after template loaded & inquire completed.
    */
   setup?: (ctx: Context) => Promise<void>
   /**
-   * Template prepare hook.
+   * Template prepare hook, execute after template files prepare, before rename & render.
    */
   prepare?: (ctx: Context) => Promise<void>
   /**
-   * Template emit hook.
+   * Template emit hook, execute after all files emit to the destination.
    */
   emit?: (ctx: Context) => Promise<void>
   /**
    * Template all completed.
    */
   complete?: ((ctx: Context) => string | Promise<string> | Promise<void>) | string
+}
+```
+
+### File 
+
+```typescript
+/**
+ * File info.
+ */
+export interface File {
+  /**
+   * File full path
+   */
+  path: string
+  /**
+   * File contents (buffer)
+   */
+  contents: Buffer
 }
 ```
 

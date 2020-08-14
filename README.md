@@ -374,8 +374,8 @@ The following middleware will be executed sequentially.
 1. [confirm](src/init/confirm.ts) - Confirm destination by [prompts](https://github.com/terkelg/prompts).
 2. [resolve](src/init/resolve.ts) - Resolve template from remote or local.
 3. [load](src/init/load.ts) - Load template config by require.
-4. [setup](src/init/setup.ts) - Apply template setup hook.
-5. [inquire](src/init/inquire.ts) - Inquire template prompts by [prompts](https://github.com/terkelg/prompts).
+4. [inquire](src/init/inquire.ts) - Inquire template prompts by [prompts](https://github.com/terkelg/prompts).
+5. [setup](src/init/setup.ts) - Apply template setup hook.
 6. [prepare](src/init/prepare.ts) - Prepare all template files.
 7. [rename](src/init/rename.ts) - Rename file if necessary.
 8. [render](src/init/render.ts) - Render file if template.
