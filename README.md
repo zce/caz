@@ -195,11 +195,11 @@ Current available templates list:
 - [template](https://github.com/caz-templates/template) - for creating [caz](https://github.com/zce/caz) templates.
 - [nm](https://github.com/caz-templates/nm) - for creating [node](https://nodejs.org) modules.
 - [react](https://github.com/caz-templates/react) - :construction: for creating modern [react](https://reactjs.org) app.
-- [vue](https://github.com/caz-templates/vue) - :construction: for creating modern [vue.js](https://vuejs.org) app.
+- [vue](https://github.com/caz-templates/vue) - for creating modern [vue.js](https://vuejs.org) app.
 - [electron](https://github.com/caz-templates/electron) - :construction: for creating [electron](https://electronjs.org) app.
-- [jekyll](https://github.com/caz-templates/jekyll) - :construction: for creating [jekyll](https://jekyllrb.com/) site.
-- [mp](https://github.com/caz-templates/mp) - :construction: for creating [wechat mini-programs](https://developers.weixin.qq.com/miniprogram/dev/framework/).
-- [x-pages](https://github.com/caz-templates/x-pages) - :construction: for creating [x-pages](https://github.com/zce/x-pages) static site.
+- [jekyll](https://github.com/caz-templates/jekyll) - :construction: for creating [jekyll](https://jekyllrb.com) site.
+- [mp](https://github.com/caz-templates/mp) - :construction: for creating wechat [mini-programs](https://developers.weixin.qq.com/miniprogram/dev/framework).
+- [x-pages](https://github.com/caz-templates/x-pages) - for creating [x-pages](https://github.com/zce/x-pages) static site.
 
 Maybe more: https://github.com/caz-templates
 
