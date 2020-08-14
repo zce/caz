@@ -55,15 +55,15 @@ export interface Template {
    */
   init?: boolean
   /**
-   * Template setup hook.
+   * Template setup hook, execute after template loaded & inquire completed.
    */
   setup?: (ctx: Context) => Promise<void>
   /**
-   * Template prepare hook.
+   * Template prepare hook, execute after template files prepare, before rename & render.
    */
   prepare?: (ctx: Context) => Promise<void>
   /**
-   * Template emit hook.
+   * Template emit hook, execute after all files emit to the destination.
    */
   emit?: (ctx: Context) => Promise<void>
   /**

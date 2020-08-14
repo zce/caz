@@ -74,17 +74,26 @@ module.exports = {
   },
   install: 'npm',
   init: true,
-  setup: ctx => {
-    console.log(ctx.template, 'template setup')
-  },
-  prepare: ctx => {
-    console.log(ctx.template, 'template prepare')
+  setup: async ctx => {
+    console.log('template setup', ctx)
+    // Execute install according to user's choice.
     ctx.config.install = ctx.answers.install && ctx.answers.pm
+    // Dynamic setting template files directory.
+    ctx.config.source = 'template'
+    // Other settings ...
   },
-  emit: ctx => {
-    console.log(ctx.template, 'template emit')
+  prepare: async ctx => {
+    console.log('template prepare', ctx)
+    // Add files to be generated dynamically
+    ctx.files.push({
+      path: 'additional.txt',
+      contents: Buffer.from('<%= name %> additional contents')
+    })
   },
-  complete: ctx => {
+  emit: async ctx => {
+    console.log('template emit', ctx)
+  },
+  complete: async ctx => {
     console.clear()
     console.log(chalk`Created a new project in {cyan ${ctx.project}} by the {blue ${ctx.template}} template.\n`)
     console.log('Getting Started:')

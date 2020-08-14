@@ -4,8 +4,8 @@ import { Options, Context, Template } from './types'
 import confirm from './confirm'
 import resolve from './resolve'
 import load from './load'
-import setup from './setup'
 import inquire from './inquire'
+import setup from './setup'
 import prepare from './prepare'
 import rename from './rename'
 import render from './render'
@@ -21,8 +21,8 @@ const creator = new Ware<Context>()
 creator.use(confirm)
 creator.use(resolve)
 creator.use(load)
-creator.use(setup)
 creator.use(inquire)
+creator.use(setup)
 creator.use(prepare)
 creator.use(rename)
 creator.use(render)
