@@ -11,8 +11,6 @@ test('unit:core:config', async () => {
   expect(config.official).toBe('caz-templates')
   expect(config.branch).toBe('master')
   expect(config.commitMessage).toBe('feat: initial commit')
-  expect(config.clientId).toBe('c07ff4d0cbddbfe57545')
-  expect(config.clientSecret).toBe('19484a928f48768a8329d6cb11ab020625dc86c3')
 })
 
 test('unit:core:config:custom', async () => {
@@ -23,8 +21,6 @@ test('unit:core:config:custom', async () => {
   expect(conf.official).toBe('faker')
   expect(conf.branch).toBe('dev')
   expect(conf.commitMessage).toBe('feat: initial commit')
-  expect(conf.clientId).toBe('c07ff4d0cbddbfe57545')
-  expect(conf.clientSecret).toBe('19484a928f48768a8329d6cb11ab020625dc86c3')
   homedir.mockRestore()
 })
 

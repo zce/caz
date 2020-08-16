@@ -21,7 +21,7 @@ export default async (owner: string = config.official, options: ListOptions = {}
 
   // short output
   if (options.short ?? false) {
-    return results.forEach(i => console.log(`→ ${isOfficial ? i.name : i.fullName}`))
+    return results.forEach(i => console.log(`→ ${isOfficial ? i.name : i.fullname}`))
   }
 
   // full mode
@@ -30,7 +30,7 @@ export default async (owner: string = config.official, options: ListOptions = {}
   }
 
   console.log(`Available ${isOfficial ? 'official' : owner}'s templates:`)
-  const infos = results.map(i => [isOfficial ? i.name : i.fullName, i.description])
+  const infos = results.map(i => [isOfficial ? i.name : i.fullname, i.description])
   const width = Math.max(5, ...infos.map(i => i[0].length))
   const gap = (name: string): string => ' '.repeat(width - name.length)
   infos.forEach(([name, desc]) => console.log(`  → ${name} ${gap(name)} ${desc}`))
