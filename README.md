@@ -24,9 +24,9 @@
 
 CAZ (**C**reate **A**pp **Z**en)
 
-It's a a simple template-based Scaffolding tools for my personal productivity, inspired by [Yeoman](https://yeoman.io) &amp; [Vue CLI 2](https://npmjs.com/vue-cli) &amp; etc.
+It's a a simple template-based Scaffolding tools for my personal productivity, inspired by [Yeoman](https://yeoman.io) &amp; [Vue CLI 2](https://npm.im/vue-cli) &amp; etc.
 
-- pronounced: [kæz] 📷 ✌
+- pronounced: [[kæz]](http://dict.youdao.com/dictvoice?audio=caz) 📷 ✌
 - written: CAZ / caz
 
 _For more introduction, please refer to the [How it works](#how-it-works)._
