@@ -582,5 +582,5 @@ module.exports = {
 
 If you want direct output template interpolate, like this:
 
-- `<%= '<%= name %>' %>` => `<%= name %>`
+- `<%= '\<%= name %\>' %>` => `<%= name %>`
 - `<%= '${name}' %>` => `${name}`
