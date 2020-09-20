@@ -231,13 +231,13 @@ Template setup hook, execute after template loaded & inquire completed.
 module.exports = {
   setup: async ctx => {
     // You can get the following data in context
-    const { 
-      template, 
-      project, 
-      options, 
-      dest, 
-      src, 
-      config, 
+    const {
+      template,
+      project,
+      options,
+      dest,
+      src,
+      config,
       answers // inquire answers
     } = ctx
     console.log('template setup', ctx)
@@ -296,8 +296,8 @@ module.exports = {
   ],
   setup: async ctx => {
     // Dynamic setting template files directory.
-    ctx.config.source = ctx.answers.features.includes('typescript') 
-      ? 'template/typescript' 
+    ctx.config.source = ctx.answers.features.includes('typescript')
+      ? 'template/typescript'
       : 'template/javascript'
   }
 }
@@ -513,7 +513,7 @@ export interface Template {
 }
 ```
 
-### File 
+### File
 
 ```typescript
 /**

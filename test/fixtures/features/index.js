@@ -2,7 +2,7 @@
 
 // !!! Sharing the dependencies of caz
 // Make sure the following statement is executed before all code
-module.paths = module.parent.paths
+module.paths = require.main.paths
 
 const path = require('path')
 const chalk = require('chalk')
