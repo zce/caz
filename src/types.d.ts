@@ -1,9 +1,9 @@
 // Global types & Module declarations.
 // - [x] Global types for ease of use
 // - [x] ~~Module declarations in order to reduce the devDependencies that need to be installed~~
-interface Dictionary<T> {
-  [key: string]: T
-}
+// interface Dictionary<T> {
+//   [key: string]: T
+// }
 
 /**
  * PackageJson declaration type.
