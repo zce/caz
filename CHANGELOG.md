@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.4] - 2020-12-04
+
+- chore: update deps
+- docs: update docs
+
 ## [0.1.3] - 2020-08-16
 
 - feat: using self built api instead github api
