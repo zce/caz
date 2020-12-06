@@ -36,15 +36,15 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 - Light-weight
 - High efficiency
 - Less dependencies
-- Configurable
-- Extensible
-- Template-based
-- TypeScript
-- Use modern API
 - Easy to use
 - Still powerful
+- Template-based
+- Configurable
+- Extensible
+- TypeScript
+- Use modern API
 
-> I'll give you specific reasons later
+> I'll give you specific reasons later.
 
 ## Table of Contents
 
@@ -53,15 +53,15 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Basic Usage](#basic-usage)
-- [Common Usage](#common-usage)
-  - [GitHub Repository Templates](#github-repository-templates)
+  - [Quick Start](#quick-start)
+- [Recipes](#recipes)
+  - [GitHub Repo Templates](#github-repo-templates)
   - [Local Templates](#local-templates)
   - [Remote ZIP Templates](#remote-zip-templates)
   - [Offline Mode](#offline-mode)
   - [List Available Templates](#list-available-templates)
   - [Official Templates](#official-templates)
-- [Advanced Usage](#advanced-usage)
+- [Advanced](#advanced)
   - [Create Your Template](#create-your-template)
   - [Configuration](#configuration)
   - [Programic API](#programic-api)
@@ -78,9 +78,9 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 10.17, 12.10 preferred)
+- [Node.js](https://nodejs.org) (>= 10.17, 14.15 preferred)
 - [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.20)
-- [Git](https://git-scm.com) (>= 2.20)
+- [Git](https://git-scm.com) (>= 2.0)
 
 ### Installation
 
@@ -92,7 +92,7 @@ $ npm install -g caz
 $ yarn global add caz
 ```
 
-### Basic Usage
+### Quick Start
 
 Create new project from a template.
 
@@ -117,9 +117,9 @@ $ npx caz <template> [project] [-f|--force] [-o|--offline]
 - `-f, --force`: Overwrite if the target exists
 - `-o, --offline`: Try to use an offline template
 
-## Common Usage
+## Recipes
 
-### GitHub Repository Templates
+### GitHub Repo Templates
 
 ```shell
 $ caz nm my-project
@@ -139,7 +139,9 @@ By running this command, CAZ will pulls the template from typescript branch of [
 $ caz zce/nm my-project
 ```
 
-The above command pulls the template from [zce/nm](https://github.com/zce/nm). This means that you can also pull templates from your GitHub repository.
+The above command pulls the template from [zce/nm](https://github.com/zce/nm). This means that you can also pull templates from your public GitHub repository.
+
+**Public repository is necessary.**
 
 ### Local Templates
 
@@ -181,12 +183,14 @@ Show all available templates
 $ caz list [owner] [-j|--json] [-s|--short]
 ```
 
-#### Options:
+#### Arguments
+
+- `[owner]`: GitHub orgs or user slug, default: `'caz-templates'`
+
+#### Options
 
 - `-j, --json`: Output with json format
 - `-s, --short`: Output with short format
-- `-h, --help`: Display this message
-- `-v, --version`: Display version number
 
 ### Official Templates
 
@@ -196,6 +200,7 @@ Current available templates list:
 - [nm](https://github.com/caz-templates/nm) - for creating [node](https://nodejs.org) modules.
 - [react](https://github.com/caz-templates/react) - :construction: for creating modern [react](https://reactjs.org) app.
 - [vue](https://github.com/caz-templates/vue) - for creating modern [vue.js](https://vuejs.org) app.
+- [vite](https://github.com/caz-templates/vite) - for creating vue.js app powered by [vite](https://github.com/vitejs/vite).
 - [electron](https://github.com/caz-templates/electron) - :construction: for creating [electron](https://electronjs.org) app.
 - [jekyll](https://github.com/caz-templates/jekyll) - :construction: for creating [jekyll](https://jekyllrb.com) site.
 - [mp](https://github.com/caz-templates/mp) - :construction: for creating wechat [mini-programs](https://developers.weixin.qq.com/miniprogram/dev/framework).
@@ -205,7 +210,7 @@ Maybe more: https://github.com/caz-templates
 
 > You can also run `$ caz list` to see all available official templates in real time.
 
-## Advanced Usage
+## Advanced
 
 ### Create Your Template
 
