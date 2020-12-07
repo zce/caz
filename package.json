@@ -85,11 +85,11 @@
     "extract-zip": "^2.0.1",
     "fast-glob": "^3.2.4",
     "ini": "^1.3.5",
-    "lodash": "^4.17.19",
-    "node-fetch": "^3.0.0-beta.8",
-    "ora": "^5.0.0",
-    "prompts": "^2.3.2",
-    "semver": "^7.3.2",
+    "lodash": "^4.17.20",
+    "node-fetch": "^3.0.0-beta.9",
+    "ora": "^5.1.0",
+    "prompts": "^2.4.0",
+    "semver": "^7.3.4",
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
@@ -111,7 +111,7 @@
     "npm-run-all": "4.1.5",
     "rimraf": "3.0.2",
     "ts-jest": "26.4.4",
-    "typescript": "4.0.5"
+    "typescript": "4.1.2"
   },
   "engines": {
     "node": ">=10.17"

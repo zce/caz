@@ -1,4 +1,4 @@
-import { spawn } from 'child_process'
+import { exec } from '../core'
 import { Context } from './types'
 
 /**
@@ -16,17 +16,14 @@ export default async (ctx: Context): Promise<void> => {
 
   // Installing dependencies...
 
-  const client = ctx.config.install
-  /* istanbul ignore next */
-  const cmd = process.platform === 'win32' ? client + '.cmd' : client
+  try {
+    const client = ctx.config.install
+    /* istanbul ignore next */
+    const cmd = process.platform === 'win32' ? client + '.cmd' : client
+    await exec(cmd, ['install'], { cwd: ctx.dest, stdio: 'inherit' })
+  } catch (e) {
+    throw new Error('Install dependencies failed.')
+  }
 
-  await new Promise((resolve, reject) => {
-    const child = spawn(cmd, ['install'], { cwd: ctx.dest, stdio: 'inherit' })
-    child.on('error', reject).on('exit', code => {
-      if (code === 0) return resolve()
-      reject(new Error('Install dependencies failed.'))
-    })
-  })
-
-  // Install deps completed。
+  // Install deps completed.
 }
