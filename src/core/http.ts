@@ -2,7 +2,7 @@ import { join } from 'path'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
 import { promises as fs, createWriteStream } from 'fs'
-import fetch from 'node-fetch'
+import fetch, { RequestInfo, RequestInit, Response } from 'node-fetch'
 import config from './config'
 
 const pipe = promisify(pipeline)
@@ -12,7 +12,7 @@ const pipe = promisify(pipeline)
  * @param url url
  * @param init init
  */
-export const request = async (url: fetch.RequestInfo, init?: fetch.RequestInit): Promise<fetch.Response> => {
+export const request = async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
   const response = await fetch(url, init)
   // res.status >= 200 && res.status < 300
   if (response.ok) return response
@@ -29,7 +29,6 @@ export const download = async (url: string): Promise<string> => {
   // ensure temp dirname
   await fs.mkdir(config.paths.temp, { recursive: true })
   const filename = join(config.paths.temp, Date.now().toString() + '.tmp')
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  await pipe(response.body!, createWriteStream(filename))
+  await pipe(response.body, createWriteStream(filename))
   return filename
 }
