@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.5] - 2020-12-10
+
+- chore: downgrade node-fetch to 2.x (#142)
+
 ## [0.1.4] - 2020-12-04
 
 - chore: update deps
