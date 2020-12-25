@@ -2,7 +2,10 @@ import { Context } from './types'
 
 /**
  * Load template config.
- * @todo Adapt to any repository?
+ * @todo
+ * - Adapt to any repository?
+ * - Template dependencies not found.
+ * - Check template is available.
  */
 export default async (ctx: Context): Promise<void> => {
   // default template name
@@ -18,7 +21,6 @@ export default async (ctx: Context): Promise<void> => {
 
     Object.assign(ctx.config, mod)
   } catch (e) {
-    // TODO: template dependencies not found.
     if (e.code === 'MODULE_NOT_FOUND') return
     e.message = `Invalid template: ${e.message as string}`
     throw e
