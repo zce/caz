@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0] - 2021-01-29
+
+- feat: license prompt default value
+- chore: update license year
+- chore: update deps
+
 ## [0.1.5] - 2020-12-10
 
 - chore: downgrade node-fetch to 2.x (#142)
@@ -33,6 +39,8 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[0.2.0]: https://github.com/zce/caz/compare/v0.1.5...v0.2.0
+[0.1.5]: https://github.com/zce/caz/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/zce/caz/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/zce/caz/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/zce/caz/compare/v0.1.1...v0.1.2
