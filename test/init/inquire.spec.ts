@@ -215,31 +215,31 @@ test('unit:init:inquire:processor:url', async () => {
   mockConfig.mockRestore()
 })
 
-// test('unit:init:inquire:processor:license', async () => {
-//   const ctx = createContext({})
-//   const fn = processor(ctx)
+test('unit:init:inquire:processor:license', async () => {
+  const ctx = createContext({})
+  const fn = processor(ctx)
 
-//   const prompt0: PromptObject = { name: 'license', type: 'text', initial: 'ZCE' }
-//   fn(prompt0)
-//   expect(prompt0.initial).toBe('ZCE')
+  const prompt0: PromptObject = { name: 'license', type: 'text', initial: 'ZCE' }
+  fn(prompt0)
+  expect(prompt0.initial).toBe('ZCE')
 
-//   const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-license': 'CAZ' })
-//   const prompt1: PromptObject = { name: 'license', type: 'text' }
-//   fn(prompt1)
-//   expect(prompt1.initial).toBe('CAZ')
+  const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-license': 'CAZ' })
+  const prompt1: PromptObject = { name: 'license', type: 'text' }
+  fn(prompt1)
+  expect(prompt1.initial).toBe('CAZ')
 
-//   jest.spyOn(config, 'npm', 'get').mockReturnValue({})
-//   const prompt2: PromptObject = { name: 'license', type: 'text' }
-//   fn(prompt2)
-//   expect(prompt2.initial).toBe('MIT')
+  jest.spyOn(config, 'npm', 'get').mockReturnValue({})
+  const prompt2: PromptObject = { name: 'license', type: 'text' }
+  fn(prompt2)
+  expect(prompt2.initial).toBe('MIT')
 
-//   jest.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
-//   const prompt3: PromptObject = { name: 'license', type: 'text' }
-//   fn(prompt3)
-//   expect(prompt3.initial).toBe('MIT')
+  jest.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
+  const prompt3: PromptObject = { name: 'license', type: 'text' }
+  fn(prompt3)
+  expect(prompt3.initial).toBe('MIT')
 
-//   mockConfig.mockRestore()
-// })
+  mockConfig.mockRestore()
+})
 
 test('unit:init:inquire:default', async () => {
   const clear = jest.spyOn(console, 'clear').mockImplementation()

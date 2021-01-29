@@ -55,10 +55,9 @@ export const processor = (ctx: Context) => (item: PromptObject) => {
       item.validate = item.validate ?? validater.url
       item.initial = item.initial ?? config.npm?.['init-author-url'] ?? config.git?.user?.url
       break
-    // TODO: license choices
-    // case 'license':
-    //   item.initial = item.initial ?? config.npm?.['init-license'] ?? 'MIT'
-    //   break
+    case 'license':
+      item.initial = item.initial ?? config.npm?.['init-license'] ?? 'MIT'
+      break
   }
 }
 
