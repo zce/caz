@@ -14,8 +14,6 @@ import install from './install'
 import init from './init'
 import complete from './complete'
 
-// TODO: require lazy ??
-
 const creator = new Ware<Context>()
 
 creator.use(confirm)
