@@ -1,7 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
-import extractZip from 'extract-zip'
+import AdmZip from 'adm-zip'
 
 /**
  * Checks whether something exists on given path.
@@ -165,14 +165,18 @@ export const untildify = (input: string): string => {
  * @param strip strip output path
  * @see https://github.com/shinnn/node-strip-dirs
  */
-export const extract = async (input: string, output: string, strip = 0): Promise<void> => {
-  await extractZip(input, {
-    dir: output,
-    onEntry: entry => {
-      if (strip === 0) return
-      const items = entry.fileName.split(/\/|\\/)
-      const start = Math.min(strip, items.length - 1)
-      entry.fileName = items.slice(start).join('/')
-    }
+export const extract = async (input: string, output: string, strip = 0): Promise<void> => await new Promise(resolve => {
+  const zip = new AdmZip(input)
+
+  strip === 0 || zip.getEntries().forEach(entry => {
+    const items = entry.entryName.split(/\/|\\/)
+    const start = Math.min(strip, items.length - 1)
+    const stripped = items.slice(start).join('/')
+    entry.entryName = stripped === '' ? entry.entryName : stripped
   })
-}
+
+  zip.extractAllToAsync(output, true, err => {
+    if (err != null) throw err
+    resolve()
+  })
+})

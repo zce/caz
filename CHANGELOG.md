@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.3.0] - 2021-03-17
+
+- feat: using adm-zip instead extract-zip
+
 ## [0.2.1] - 2021-01-29
 
 - fix: remove license initial value
@@ -43,6 +47,7 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[0.3.0]: https://github.com/zce/caz/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/zce/caz/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/zce/caz/compare/v0.1.5...v0.2.0
 [0.1.5]: https://github.com/zce/caz/compare/v0.1.4...v0.1.5
