@@ -2,8 +2,7 @@
   <a href="https://github.com/zce/caz"><img src="https://user-images.githubusercontent.com/6166576/88473000-af5fa800-cf4b-11ea-8ce4-59f1b1f09efe.png" alt="CAZ"></a>
   <p align="center">A simple yet powerful template-based Scaffolding tools for my personal productivity.</p>
   <p align="center">
-    <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI" alt="GitHub Actions Status"></a>
-    <a href="https://travis-ci.com/zce/caz"><img src="https://img.shields.io/travis/com/zce/caz?label=travis" alt="Travis CI Status"></a>
+    <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI" alt="Build Status"></a>
     <a href="https://codecov.io/gh/zce/caz"><img src="https://img.shields.io/codecov/c/github/zce/caz" alt="Coverage Status"></a>
     <a href="https://github.com/zce/caz/blob/master/LICENSE"><img src="https://img.shields.io/github/license/zce/caz" alt="License"></a>
     <a href="https://npm.im/caz"><img src="https://img.shields.io/node/v/caz" alt="Node Version"></a>
