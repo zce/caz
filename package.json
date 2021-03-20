@@ -1,14 +1,11 @@
 {
   "name": "caz",
   "version": "0.4.0",
-  "description": "A simple yet powerful template-based Scaffolding tools for my personal productivity.",
+  "description": "A simple yet powerful template-based Scaffolding tools.",
   "keywords": [
     "scaffolding",
     "generator",
     "cli",
-    "typescript",
-    "jest",
-    "node",
     "zce"
   ],
   "homepage": "https://github.com/zce/caz#readme",
@@ -38,8 +35,8 @@
     "copy": "copyfiles -u 1 \"src/**/*.d.ts\" lib",
     "build": "npm run clean && npm run compile && npm run copy",
     "test": "jest --coverage",
-    "prepare": "husky install",
-    "prepublishOnly": "npm run lint && npm run build && npm run test"
+    "prepublishOnly": "npm run lint && npm run build && npm run test",
+    "prepare": "husky install"
   },
   "commitlint": {
     "extends": [
@@ -51,10 +48,7 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testTimeout": 20000,
-    "collectCoverageFrom": [
-      "src"
-    ]
+    "testTimeout": 20000
   },
   "renovate": {
     "extends": [
