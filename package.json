@@ -64,7 +64,6 @@
   "dependencies": {
     "adm-zip": "^0.5.4",
     "cac": "^6.7.2",
-    "chalk": "^4.1.0",
     "env-paths": "^2.2.1",
     "fast-glob": "^3.2.5",
     "ini": "^2.0.0",

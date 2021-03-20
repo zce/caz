@@ -392,7 +392,6 @@ The following middleware will be executed sequentially.
 
 - [adm-zip](https://github.com/cthackers/adm-zip) - A Javascript implementation of zip for nodejs. Allows user to create or extract zip files both in memory or to/from disk
 - [cac](https://github.com/cacjs/cac) - Simple yet powerful framework for building command-line apps.
-- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
 - [env-paths](https://github.com/sindresorhus/env-paths) - Get paths for storing things like data, config, cache, etc
 - [fast-glob](https://github.com/mrmlnc/fast-glob) - It's a very fast and efficient glob library for Node.js
 - [ini](https://github.com/npm/ini) - An ini encoder/decoder for node
