@@ -1,4 +1,3 @@
-// import { Stats } from 'fs'
 import { PromptObject, Answers } from 'prompts'
 
 export interface Options {
@@ -80,10 +79,6 @@ export interface File {
    * File full path
    */
   path: string
-  /**
-   * File stat (useless)
-   */
-  // stats?: Stats
   /**
    * File contents (buffer)
    */
