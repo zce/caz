@@ -5,10 +5,10 @@
     <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI" alt="Build Status"></a>
     <a href="https://codecov.io/gh/zce/caz"><img src="https://img.shields.io/codecov/c/github/zce/caz" alt="Coverage Status"></a>
     <a href="https://github.com/zce/caz/blob/master/LICENSE"><img src="https://img.shields.io/github/license/zce/caz" alt="License"></a>
+    <a href="https://npm.im/caz"><img src="https://img.shields.io/npm/v/caz" alt="NPM Version"></a>
     <a href="https://npm.im/caz"><img src="https://img.shields.io/node/v/caz" alt="Node Version"></a>
     <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen" alt="Code Style"></a>
     <br>
-    <a href="https://npm.im/caz"><img src="https://img.shields.io/npm/v/caz" alt="NPM Version"></a>
     <a href="https://npm.im/caz"><img src="https://img.shields.io/npm/dm/caz" alt="NPM Downloads"></a>
     <a href="https://packagephobia.com/result?p=caz"><img src="https://packagephobia.com/badge?p=caz" alt="Install Size"></a>
     <a href="https://github.com/zce/caz"><img src="https://img.shields.io/github/repo-size/zce/caz" alt="Repo size"></a>
