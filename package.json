@@ -32,15 +32,14 @@
     "lib"
   ],
   "scripts": {
-    "clean": "rimraf lib",
     "lint": "ts-standard",
+    "clean": "rimraf lib",
     "compile": "tsc",
     "copy": "copyfiles -u 1 \"src/**/*.d.ts\" lib",
-    "build": "run-s clean lint compile copy",
-    "test": "jest",
-    "cov": "jest --coverage",
+    "build": "npm run clean && npm run compile && npm run copy",
+    "test": "jest --coverage",
     "prepare": "husky install",
-    "prepublish": "run-s build test"
+    "prepublishOnly": "npm run lint && npm run build && npm run test"
   },
   "commitlint": {
     "extends": [
@@ -54,8 +53,7 @@
     "preset": "ts-jest",
     "testTimeout": 20000,
     "collectCoverageFrom": [
-      "src/**/*.ts",
-      "!src/**/*.d.ts"
+      "src"
     ]
   },
   "renovate": {
@@ -72,7 +70,7 @@
     "ini": "^2.0.0",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
-    "ora": "^5.3.0",
+    "ora": "^5.4.0",
     "prompts": "^2.4.0",
     "semver": "^7.3.4",
     "validate-npm-package-name": "^3.0.0"
@@ -82,7 +80,7 @@
     "@commitlint/config-conventional": "12.0.1",
     "@types/adm-zip": "0.4.33",
     "@types/ini": "1.3.30",
-    "@types/jest": "26.0.20",
+    "@types/jest": "26.0.21",
     "@types/lodash": "4.14.168",
     "@types/node": "14.14.35",
     "@types/node-fetch": "2.5.8",
@@ -93,9 +91,8 @@
     "husky": "5.1.3",
     "jest": "26.6.3",
     "lint-staged": "10.5.4",
-    "npm-run-all": "4.1.5",
     "rimraf": "3.0.2",
-    "ts-jest": "26.5.3",
+    "ts-jest": "26.5.4",
     "ts-standard": "10.0.0",
     "typescript": "4.2.3"
   },
