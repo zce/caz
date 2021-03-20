@@ -4,9 +4,6 @@ on: push
 
 jobs:
   build:
-
-    if: "!contains(github.event.commits[0].message, '[skip ci]')"
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,4 +19,8 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run test
+      - run: npm publish
+        if: matrix.node-version == '14.x' && startsWith(github.ref, 'refs/tags')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npx codecov
