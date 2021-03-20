@@ -548,7 +548,7 @@ To solve this problem, you can also host `node_modules` to template repository, 
 
 But I don't recommend it because it's extremely inefficient.
 
-I personally prefer to modify `index.js` module paths to sharing the dependencies of caz.
+I personally prefer to modify `index.js` module paths to sharing the [dependencies of caz](https://npm.im/caz).
 
 e.g. template `index.js`:
 
