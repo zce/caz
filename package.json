@@ -48,7 +48,10 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testTimeout": 20000
+    "testTimeout": 20000,
+    "collectCoverageFrom": [
+      "src"
+    ]
   },
   "renovate": {
     "extends": [

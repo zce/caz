@@ -24,3 +24,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npx codecov
+        if: matrix.node-version == '14.x'
