@@ -176,6 +176,7 @@ export const extract = async (input: string, output: string, strip = 0): Promise
   })
 
   zip.extractAllToAsync(output, true, err => {
+    /* istanbul ignore if */
     if (err != null) throw err
     resolve()
   })

@@ -193,6 +193,16 @@ test('unit:core:file:extract:zip', async () => {
   await fs.promises.rmdir(temp, { recursive: true })
 })
 
+test('unit:core:file:extract:error', async () => {
+  const temp = await createTempDir()
+  expect.hasAssertions()
+  try {
+    await file.extract(path.join(__dirname, '../fixtures/error.zip'), temp)
+  } catch (e) {
+    expect(e.message).toBe('Invalid or unsupported zip format. No END header found')
+  }
+})
+
 test('unit:core:file:extract:strip', async () => {
   const temp = await createTempDir()
 
