@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.5.1] - 2021-03-21
+
+- fix: update npm scripts
+
 ## [0.5.0] - 2021-03-21
 
 - ci: update ci config
