@@ -50,7 +50,7 @@
     "preset": "ts-jest",
     "testTimeout": 20000,
     "collectCoverageFrom": [
-      "src"
+      "src/**"
     ]
   },
   "renovate": {
