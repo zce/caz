@@ -32,11 +32,11 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 ### Features
 
+- Easy to use
 - Light-weight
+- Still powerful
 - High efficiency
 - Less dependencies
-- Easy to use
-- Still powerful
 - Template-based
 - Configurable
 - Extensible
@@ -63,7 +63,7 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 - [Advanced](#advanced)
   - [Create Your Template](#create-your-template)
   - [Configuration](#configuration)
-  - [Programic API](#programic-api)
+  - [Create Your Scaffold](#create-your-scaffold)
 - [References](#references)
 - [Motivation](#motivation)
 - [About](#about)
@@ -255,7 +255,7 @@ $ caz nm my-project
 
 The above command will download & extract template from `https://gitlab.com/faker/nm/archive/dev.zip`.
 
-### Programic API
+### Create Your Scaffold
 
 ```shell
 # install it locally
