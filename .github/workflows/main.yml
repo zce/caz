@@ -8,20 +8,26 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
+        node-version: [12, 14, 15]
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+      - run: npm install --ignore-scripts
       - run: npm run lint
       - run: npm run build
       - run: npm run test
-      - run: npm publish
-        if: matrix.node-version == '14.x' && startsWith(github.ref, 'refs/tags')
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm install --ignore-scripts
+      - run: npm publish --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npx codecov
-        if: matrix.node-version == '14.x'

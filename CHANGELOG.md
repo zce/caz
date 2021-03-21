@@ -1,9 +1,5 @@
 # Changelog
 
-## [0.5.0] - 2021-03-20
-
-- chore: meta tweaks
-
 ## [0.4.0] - 2021-03-20
 
 - ci: remove travis ci

@@ -35,8 +35,8 @@
     "copy": "copyfiles -u 1 \"src/**/*.d.ts\" lib",
     "build": "npm run clean && npm run compile && npm run copy",
     "test": "jest --coverage",
-    "prepublishOnly": "npm run lint && npm run build && npm run test",
-    "prepare": "husky install"
+    "prepare": "npm run lint && npm run build && npm run test",
+    "postinstall": "husky install"
   },
   "commitlint": {
     "extends": [
@@ -94,5 +94,8 @@
   },
   "engines": {
     "node": ">=10.12"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
