@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.5.0] - 2021-03-21
+
+- ci: update ci config
+
 ## [0.4.0] - 2021-03-20
 
 - ci: remove travis ci
@@ -53,6 +57,7 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[0.5.0]: https://github.com/zce/caz/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/zce/caz/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/zce/caz/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/zce/caz/compare/v0.2.0...v0.2.1
