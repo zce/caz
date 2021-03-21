@@ -20,6 +20,15 @@ jobs:
       - run: npm run build
       - run: npm run test
 
+  codecov:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+      - run: npm install --ignore-scripts
+      - run: npm run test
+      - run: npx codecov
+
   publish:
     if: startsWith(github.ref, 'refs/tags')
     needs: build
@@ -27,8 +36,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: npm install --ignore-scripts
-      - run: npm publish
+        with:
+          registry-url: https://registry.npmjs.org
+      - run: npm install
+      - run: npm publish --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npx codecov
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     registry-url: https://npm.pkg.github.com
+      # - run: npm publish --ignore-scripts
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
