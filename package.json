@@ -35,7 +35,7 @@
     "copy": "copyfiles -u 1 \"src/**/*.d.ts\" lib",
     "build": "npm run clean && npm run compile && npm run copy",
     "test": "jest --coverage",
-    "prepare": "husky install && npm run lint && npm run build && npm run test"
+    "prepare": "husky install .github/husky && npm run lint && npm run build && npm run test"
   },
   "commitlint": {
     "extends": [
