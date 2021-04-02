@@ -13,7 +13,7 @@ export default async (ctx: Context): Promise<void> => {
   // exist
   const exists = await file.exists(ctx.dest)
 
-  //  dist not exists
+  // dist not exists
   if (exists === false) return
 
   // force mode
