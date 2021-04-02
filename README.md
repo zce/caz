@@ -174,6 +174,14 @@ $ caz nm my-project --offline
 
 By running this command, CAZ will try to find a cached version of `nm` template or download from GitHub if it's not yet cached.
 
+### Prompts Override
+
+CAZ allows you to specify prompt response answers through cli parameters.
+
+```shell
+$ caz minima my-project --name my-proj
+```
+
 ### List Available Templates
 
 Show all available templates
@@ -334,7 +342,7 @@ Create new project from a template
 #### options
 
 - Type: `object`
-- Details: options
+- Details: options & prompts override
 - Default: `{}`
 
 ##### force
@@ -348,6 +356,11 @@ Default: `false`
 Type: `boolean`
 Details: try to use an offline template
 Default: `false`
+
+##### [key: string]
+
+Type: `any`
+Details: cli options to override prompts
 
 ## Motivation
 

@@ -8,7 +8,7 @@ cli
   .command('<template> [project]', 'Create new project from a template')
   .option('-f, --force', 'Overwrite if the target exists')
   .option('-o, --offline', 'Try to use an offline template')
-  // .allowUnknownOptions() // for prompts override.
+  .allowUnknownOptions() // for prompts override.
   .example('  # with an official template')
   .example(`  $ ${name} <template> [project]`)
   .example('  # with a custom github repo')

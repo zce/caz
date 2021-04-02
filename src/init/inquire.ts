@@ -76,8 +76,8 @@ export default async (ctx: Context): Promise<void> => {
 
   ctx.config.prompts.forEach(processor(ctx))
 
-  // TODO: override by options (cli argv)
-  // prompts.override(ctx.options)
+  // override by options (cli argv)
+  prompts.override(ctx.options)
 
   /* istanbul ignore next */
   const onCancel = (): never => {
