@@ -240,3 +240,19 @@ test('unit:init:inquire:custom', async () => {
   expect(ctx.answers).toEqual({ foo: 'zce', bar: 'caz' })
   clear.mockRestore()
 })
+
+test('unit:init:inquire:override', async () => {
+  const clear = jest.spyOn(console, 'clear').mockImplementation()
+  const ctx = createContext({}, {
+    prompts: [
+      { name: 'foo', type: 'text', message: 'foo' },
+      { name: 'bar', type: 'text', message: 'bar' }
+    ]
+  })
+  // options for override
+  Object.assign(ctx.options, { foo: 'zce', bar: 'caz' })
+  await inquire(ctx)
+  expect(clear).toBeCalledTimes(1)
+  expect(ctx.answers).toEqual({ foo: 'zce', bar: 'caz' })
+  clear.mockRestore()
+})
