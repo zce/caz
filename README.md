@@ -182,6 +182,14 @@ CAZ allows you to specify prompt response answers through cli parameters.
 $ caz minima my-project --name my-proj
 ```
 
+### Debug Mode
+
+```shell
+$ caz nm my-project --debug
+```
+
+`--debug` parameter will open the debug mode, In debug mode, once an exception occurs, the exception details will be automatically output. This is very helpful in finding errors in the template.
+
 ### List Available Templates
 
 Show all available templates

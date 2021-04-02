@@ -8,6 +8,7 @@ cli
   .command('<template> [project]', 'Create new project from a template')
   .option('-f, --force', 'Overwrite if the target exists')
   .option('-o, --offline', 'Try to use an offline template')
+  // .option('-d, --debug', 'Output detailed exception when exception occurs')
   .allowUnknownOptions() // for prompts override.
   .example('  # with an official template')
   .example(`  $ ${name} <template> [project]`)
@@ -27,7 +28,9 @@ cli.help().version(version).parse()
 // https://github.com/cacjs/cac#error-handling
 /* istanbul ignore next */
 const onError = (err: Error): void => {
-  console.error(err.message)
+  // output details when exception occurs
+  cli.options.debug as boolean && console.error(err)
+  console.error('Exception occurred: ' + err.message)
   process.exit(1)
 }
 
