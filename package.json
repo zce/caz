@@ -78,7 +78,7 @@
     "@types/jest": "26.0.23",
     "@types/lodash": "4.14.170",
     "@types/node": "15.6.1",
-    "@types/node-fetch": "2.5.10",
+    "@types/node-fetch": "2.5.11",
     "@types/prompts": "2.0.12",
     "@types/semver": "7.3.6",
     "@types/validate-npm-package-name": "3.0.2",
