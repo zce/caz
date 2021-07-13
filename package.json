@@ -85,7 +85,7 @@
     "copyfiles": "2.4.1",
     "husky": "6.0.0",
     "jest": "27.0.3",
-    "lint-staged": "11.0.0",
+    "lint-staged": "11.0.1",
     "rimraf": "3.0.2",
     "ts-jest": "27.0.1",
     "ts-standard": "10.0.0",
