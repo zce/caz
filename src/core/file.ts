@@ -71,11 +71,14 @@ export const mkdir = async (input: string, options?: fs.MakeDirectoryOptions): P
  * @todo https://github.com/sindresorhus/trash
  */
 export const remove = async (input: string, options?: fs.RmDirOptions): Promise<void> => {
-  if (await isDirectory(input)) {
-    await fs.promises.rmdir(input, { recursive: true, ...options })
-  } else {
-    await fs.promises.unlink(input)
-  }
+  const result = await exists(input)
+  if (result === false) return
+
+  // file or other
+  if (result !== 'dir') return await fs.promises.unlink(input)
+
+  // dir
+  await fs.promises.rmdir(input, { recursive: true, ...options })
 }
 
 /**
