@@ -56,46 +56,26 @@ export const isEmpty = async (input: string): Promise<boolean> => {
 
 /**
  * Make directory recursive.
+ * require node >= v10.12
  * @param input input path
  * @param options recursive by default
  */
 export const mkdir = async (input: string, options?: fs.MakeDirectoryOptions): Promise<void> => {
-  // require node > v10.12
   await fs.promises.mkdir(input, { recursive: true, ...options })
 }
 
 /**
  * Remove input dir or file. recursive when dir
+ * require node >= v12.10
  * @param input input path
  * @todo https://github.com/sindresorhus/trash
  */
 export const remove = async (input: string, options?: fs.RmDirOptions): Promise<void> => {
-  const result = await exists(input)
-
-  // not exists
-  if (result === false) return
-
-  // otherwise: file / other
-  if (result !== 'dir') {
-    return await fs.promises.unlink(input)
+  if (await isDirectory(input)) {
+    await fs.promises.rmdir(input, { recursive: true, ...options })
+  } else {
+    await fs.promises.unlink(input)
   }
-
-  // directory
-  const entries = await fs.promises.readdir(input)
-
-  // recursive all entries
-  await Promise.all(entries.map(async item => {
-    await remove(path.join(input, item), options)
-  }))
-
-  await fs.promises.rmdir(input, options)
-
-  // require node >= v12.10
-  // if (await isDirectory(input)) {
-  //   await fs.promises.rmdir(input, { recursive: true, ...options })
-  // } else {
-  //   await fs.promises.unlink(input)
-  // }
 }
 
 /**

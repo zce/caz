@@ -63,7 +63,7 @@ test('unit:core:file:mkdir', async () => {
   const stat3 = await fs.promises.stat(root3)
   expect(stat3.mode).toBe(process.platform === 'win32' ? 16822 : 16877)
 
-  // cleanup require node > v12.10
+  // cleanup require node >= v12.10
   await fs.promises.rmdir(root1, { recursive: true })
   await fs.promises.rmdir(root2, { recursive: true })
   await fs.promises.rmdir(root3, { recursive: true })

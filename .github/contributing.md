@@ -11,9 +11,9 @@
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 12.10)
-- [npm](https://www.npmjs.com) (>= 6.x)
-- [yarn](https://yarnpkg.com) (>= 1.20)
+- [Node.js](https://nodejs.org) (>= 14.17)
+- [npm](https://www.npmjs.com) (>= 6.14)
+- [yarn](https://yarnpkg.com) (>= 1.22)
 - [Git](https://git-scm.com) (>= 2.20)
 
 ## Development

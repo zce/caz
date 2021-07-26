@@ -77,8 +77,8 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 10.12, 14.15 preferred)
-- [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.20)
+- [Node.js](https://nodejs.org) (>= 12.10 required, >= 14.17 preferred)
+- [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.22)
 - [Git](https://git-scm.com) (>= 2.0)
 
 ### Installation
@@ -130,7 +130,7 @@ The above command pulls the template from [caz-templates/nm](https://github.com/
 $ caz nm#typescript my-project
 ```
 
-By running this command, CAZ will pulls the template from typescript branch of [caz-templates/nm](https://github.com/caz-templates/nm).
+By running this command, CAZ will pulls the template from `typescript` branch of [caz-templates/nm](https://github.com/caz-templates/nm).
 
 #### Use Custom templates
 
@@ -213,12 +213,12 @@ Current available templates list:
 
 - [template](https://github.com/caz-templates/template) - for creating [caz](https://github.com/zce/caz) templates.
 - [nm](https://github.com/caz-templates/nm) - for creating [node](https://nodejs.org) modules.
-- [react](https://github.com/caz-templates/react) - :construction: for creating modern [react](https://reactjs.org) app.
+- [react](https://github.com/caz-templates/react) - for creating modern [react](https://reactjs.org) app.
 - [vue](https://github.com/caz-templates/vue) - for creating modern [vue.js](https://vuejs.org) app.
 - [vite](https://github.com/caz-templates/vite) - for creating vue.js app powered by [vite](https://github.com/vitejs/vite).
 - [electron](https://github.com/caz-templates/electron) - :construction: for creating [electron](https://electronjs.org) app.
-- [jekyll](https://github.com/caz-templates/jekyll) - :construction: for creating [jekyll](https://jekyllrb.com) site.
 - [mp](https://github.com/caz-templates/mp) - :construction: for creating wechat [mini-programs](https://developers.weixin.qq.com/miniprogram/dev/framework).
+- [jekyll](https://github.com/caz-templates/jekyll) - :construction: for creating [jekyll](https://jekyllrb.com) site.
 - [x-pages](https://github.com/caz-templates/x-pages) - for creating [x-pages](https://github.com/zce/x-pages) static site.
 
 Maybe more: https://github.com/caz-templates
@@ -260,7 +260,7 @@ For example, in your `~/.cazrc`:
 ```ini
 registry = https://gitlab.com/{owner}/{name}/archive/{branch}.zip
 official = faker
-branch = dev
+branch = main
 ```
 
 Then run the following command:
@@ -269,7 +269,7 @@ Then run the following command:
 $ caz nm my-project
 ```
 
-The above command will download & extract template from `https://gitlab.com/faker/nm/archive/dev.zip`.
+The above command will download & extract template from `https://gitlab.com/faker/nm/archive/main.zip`.
 
 ### Create Your Scaffold
 
