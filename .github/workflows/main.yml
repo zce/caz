@@ -15,19 +15,19 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install --ignore-scripts
+      - run: npm install
       - run: npm run lint
       - run: npm run build
       - run: npm run test
 
   codecov:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: npm install --ignore-scripts
+      - run: npm install
       - run: npm run test
       - run: npx codecov
 
@@ -40,8 +40,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           registry-url: https://registry.npmjs.org
-      - run: npm install --ignore-scripts
+      - run: npm install
       - run: npm run build
-      - run: npm publish --ignore-scripts
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

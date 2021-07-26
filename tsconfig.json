@@ -1,7 +1,7 @@
 /* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
   "compilerOptions": {
-    "target": "ES2018", // require node >= 10
+    "target": "ES2019", // require node >= 12
     "module": "CommonJS",
     "declaration": true,
     "outDir": "lib",
@@ -9,5 +9,5 @@
     "esModuleInterop": true,
     "pretty": true
   },
-  "include": ["src"] // declarations.d.ts
+  "include": ["src", "types.d.ts"]
 }

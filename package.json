@@ -3,8 +3,14 @@
   "version": "0.6.0",
   "description": "A simple yet powerful template-based Scaffolding tools.",
   "keywords": [
+    "productivity",
     "scaffolding",
+    "boilerplate",
     "generator",
+    "starter-kit",
+    "templates",
+    "template",
+    "caz",
     "cli",
     "zce"
   ],
@@ -26,16 +32,16 @@
   "types": "lib/index.d.ts",
   "bin": "bin/caz.js",
   "files": [
-    "lib"
+    "lib",
+    "types.d.ts"
   ],
   "scripts": {
     "lint": "ts-standard",
     "clean": "rimraf lib",
     "compile": "tsc",
-    "copy": "copyfiles -u 1 \"src/**/*.d.ts\" lib",
-    "build": "npm run clean && npm run compile && npm run copy",
+    "build": "npm run clean && npm run compile",
     "test": "jest --coverage",
-    "prepare": "husky install .github/husky && npm run lint && npm run build && npm run test"
+    "prepare": "husky install .github/husky"
   },
   "commitlint": {
     "extends": [
@@ -82,7 +88,6 @@
     "@types/prompts": "2.0.14",
     "@types/semver": "7.3.8",
     "@types/validate-npm-package-name": "3.0.3",
-    "copyfiles": "2.4.1",
     "husky": "7.0.1",
     "jest": "27.0.6",
     "lint-staged": "11.1.1",
