@@ -5,7 +5,25 @@ import { file, http, config } from '../core'
 import { Context } from './types'
 
 /**
- * Get template url.
+ * Get local template dir.
+ * @param input template dir
+ * @example
+ * 1. relative path, e.g. './foo', '../foo'
+ * 2. absolute path, e.g. '/foo', 'C:\\foo'
+ * 3. tildify path in windows, e.g. '~/foo'
+ */
+export const getTemplatePath = async (input: string): Promise<false | string> => {
+  if (!/^[./]|^[a-zA-Z]:|^~[/\\]/.test(input)) return false
+
+  const dir = path.resolve(file.untildify(input))
+
+  if (await file.exists(dir) === 'dir') return dir
+
+  throw new Error(`Local template not found: \`${input}\` is not a directory`)
+}
+
+/**
+ * Get remote template url.
  * @param input template name or uri
  * @example
  * 1. short name, e.g. 'nm'
@@ -29,15 +47,11 @@ export const getTemplateUrl = async (input: string): Promise<string> => {
  * Resolve template from remote or local.
  */
 export default async (ctx: Context): Promise<void> => {
-  // '~/foo/bar' in windows
-  if (ctx.template.startsWith('~')) {
-    ctx.src = file.untildify(ctx.template)
-    return
-  }
-
   // local template path
-  if (/^[./]|^[a-zA-Z]:/.test(ctx.template)) {
-    ctx.src = path.resolve(ctx.template)
+  const dir = await getTemplatePath(ctx.template)
+
+  if (dir !== false) {
+    ctx.src = dir
     return
   }
 
