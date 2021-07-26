@@ -1,9 +1,8 @@
-import os from 'os'
 import fs from 'fs'
 import path from 'path'
-import { file, config } from '../../src'
 import { createContext } from './util'
-import resolve, { getTemplateUrl } from '../../src/init/resolve'
+import { file, config } from '../../src'
+import resolve, { getTemplatePath, getTemplateUrl } from '../../src/init/resolve'
 
 let log: jest.SpyInstance
 
@@ -17,6 +16,28 @@ afterEach(async () => {
 
 test('unit:init:resolve', async () => {
   expect(typeof resolve).toBe('function')
+  expect(typeof getTemplatePath).toBe('function')
+  expect(typeof getTemplateUrl).toBe('function')
+})
+
+test('unit:init:resolve:getTemplatePath', async () => {
+  const notdir = await getTemplatePath('caz-faker')
+  expect(notdir).toBe(false)
+
+  const dir1 = await getTemplatePath(__dirname)
+  expect(dir1).toBe(__dirname)
+
+  try {
+    await getTemplatePath('./caz-faker')
+  } catch (e) {
+    expect(e.message).toBe('Local template not found: `./caz-faker` is not a directory')
+  }
+
+  try {
+    await getTemplatePath('~/caz-faker')
+  } catch (e) {
+    expect(e.message).toBe('Local template not found: `~/caz-faker` is not a directory')
+  }
 })
 
 test('unit:init:resolve:getTemplateUrl', async () => {
@@ -36,22 +57,28 @@ test('unit:init:resolve:getTemplateUrl', async () => {
   expect(url5).toBe('https://github.com/zce/tpl5/archive/dev.zip')
 })
 
-test('unit:init:resolve:local-tildify', async () => {
-  const ctx = createContext({ template: '~/caz' })
-  await resolve(ctx)
-  expect(ctx.src).toBe(path.join(os.homedir(), 'caz'))
-})
-
 test('unit:init:resolve:local-relative', async () => {
-  const ctx = createContext({ template: './caz' })
-  await resolve(ctx)
-  expect(ctx.src).toBe(path.join(process.cwd(), 'caz'))
+  const ctx = createContext({ template: './caz-faker' })
+  try {
+    await resolve(ctx)
+  } catch (e) {
+    expect(e.message).toBe('Local template not found: `./caz-faker` is not a directory')
+  }
 })
 
 test('unit:init:resolve:local-absolute', async () => {
   const ctx = createContext({ template: __dirname })
   await resolve(ctx)
   expect(ctx.src).toBe(__dirname)
+})
+
+test('unit:init:resolve:local-tildify', async () => {
+  const ctx = createContext({ template: '~/caz-faker' })
+  try {
+    await resolve(ctx)
+  } catch (e) {
+    expect(e.message).toBe('Local template not found: `~/caz-faker` is not a directory')
+  }
 })
 
 test('unit:init:resolve:fetch-remote', async () => {
