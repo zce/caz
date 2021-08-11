@@ -16,7 +16,7 @@ const parseIni = (filename: string): Record<string, any> | undefined => {
 }
 
 const defaults = {
-  registry: 'https://github.com/{owner}/{name}/archive/{branch}.zip',
+  registry: 'https://github.com/{owner}/{name}/archive/refs/heads/{branch}.zip',
   official: 'caz-templates',
   branch: 'master',
   // git init commit message
