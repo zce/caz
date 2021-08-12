@@ -37,7 +37,10 @@ export const getTemplateUrl = async (input: string): Promise<string> => {
   input = input.includes('/') ? input : `${config.official}/${input}`
   input = input.includes('#') ? input : `${input}#${config.branch}`
 
-  const [owner, name, branch] = input.split(/\/|#/)
+  const regex: RegExp = /(?<owner>[\w-]+)\/(?<name>[\w-]+)#(?<branch>[\w-/]+)/mg
+  const match = regex.exec(input)
+
+  const { owner, name, branch } = ((match?.groups) != null) || {}
   const data: Record<string, string> = { owner, name, branch }
 
   return config.registry.replace(/{(.*?)}/g, (_, key) => data[key])

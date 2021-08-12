@@ -42,19 +42,22 @@ test('unit:init:resolve:getTemplatePath', async () => {
 
 test('unit:init:resolve:getTemplateUrl', async () => {
   const url1 = await getTemplateUrl('tpl1')
-  expect(url1).toBe('https://github.com/caz-templates/tpl1/archive/master.zip')
+  expect(url1).toBe('https://github.com/caz-templates/tpl1/archive/refs/heads/master.zip')
 
   const url2 = await getTemplateUrl('zce/tpl2')
-  expect(url2).toBe('https://github.com/zce/tpl2/archive/master.zip')
+  expect(url2).toBe('https://github.com/zce/tpl2/archive/refs/heads/master.zip')
 
   const url3 = await getTemplateUrl('zce/tpl3#dev')
-  expect(url3).toBe('https://github.com/zce/tpl3/archive/dev.zip')
+  expect(url3).toBe('https://github.com/zce/tpl3/archive/refs/heads/dev.zip')
 
   const url4 = await getTemplateUrl('tpl4#dev')
-  expect(url4).toBe('https://github.com/caz-templates/tpl4/archive/dev.zip')
+  expect(url4).toBe('https://github.com/caz-templates/tpl4/archive/refs/heads/dev.zip')
 
-  const url5 = await getTemplateUrl('https://github.com/zce/tpl5/archive/dev.zip')
-  expect(url5).toBe('https://github.com/zce/tpl5/archive/dev.zip')
+  const url5 = await getTemplateUrl('https://github.com/zce/tpl5/archive/refs/heads/dev.zip')
+  expect(url5).toBe('https://github.com/zce/tpl5/archive/refs/heads/dev.zip')
+
+  const url6 = await getTemplateUrl('zce/tpl3#dev/cli')
+  expect(url6).toBe('https://github.com/zce/tpl3/archive/refs/heads/dev/cli.zip')
 })
 
 test('unit:init:resolve:local-relative', async () => {
@@ -82,7 +85,7 @@ test('unit:init:resolve:local-tildify', async () => {
 })
 
 test('unit:init:resolve:fetch-remote', async () => {
-  const src = path.join(config.paths.cache, '2680caf29ce3a5b7')
+  const src = path.join(config.paths.cache, 'f8327697301af2fa')
   if (!fs.existsSync(src)) {
     await fs.promises.mkdir(src, { recursive: true })
   }
@@ -95,7 +98,7 @@ test('unit:init:resolve:fetch-remote', async () => {
 })
 
 test('unit:init:resolve:fetch-cache-success', async () => {
-  const src = path.join(config.paths.cache, '2680caf29ce3a5b7')
+  const src = path.join(config.paths.cache, 'f8327697301af2fa')
   if (!fs.existsSync(src)) {
     await fs.promises.mkdir(src, { recursive: true })
   }
@@ -105,7 +108,7 @@ test('unit:init:resolve:fetch-cache-success', async () => {
 })
 
 test('unit:init:resolve:fetch-cache-failed', async () => {
-  const src = path.join(config.paths.cache, '2680caf29ce3a5b7')
+  const src = path.join(config.paths.cache, 'f8327697301af2fa')
   if (fs.existsSync(src)) {
     await fs.promises.rmdir(src, { recursive: true })
   }

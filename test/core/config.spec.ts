@@ -7,7 +7,7 @@ const mockHomedir = (): jest.SpyInstance => {
 }
 
 test('unit:core:config', async () => {
-  expect(config.registry).toBe('https://github.com/{owner}/{name}/archive/{branch}.zip')
+  expect(config.registry).toBe('https://github.com/{owner}/{name}/archive/refs/heads/{branch}.zip')
   expect(config.official).toBe('caz-templates')
   expect(config.branch).toBe('master')
   expect(config.commitMessage).toBe('feat: initial commit')
@@ -17,7 +17,7 @@ test('unit:core:config:custom', async () => {
   const homedir = mockHomedir()
   jest.resetModules()
   const { default: conf } = await import('../../src/core/config')
-  expect(conf.registry).toBe('https://gitlab.com/{owner}/{name}/archive/{branch}.zip')
+  expect(conf.registry).toBe('https://gitlab.com/{owner}/{name}/archive/refs/heads/{branch}.zip')
   expect(conf.official).toBe('faker')
   expect(conf.branch).toBe('dev')
   expect(conf.commitMessage).toBe('feat: initial commit')
