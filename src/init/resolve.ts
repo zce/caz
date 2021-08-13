@@ -23,6 +23,33 @@ export const getTemplatePath = async (input: string): Promise<false | string> =>
 }
 
 /**
+ * Check if a given input is considered empty, i.e either undefined, null, 0 and ''
+ * @private
+ * @param input
+ */
+
+const isEmpty = (input: string | undefined): boolean => {
+  return typeof input === 'undefined' || input === ''
+}
+
+/**
+ * Parse the template name or the URI to get the config 'owner', 'name' and 'branch'
+ * @private
+ * @param input
+ */
+const parseTemplateUri = (input: string): Record<string, string> => {
+  let [fullName, branch] = input.split(/#/)
+  const [maybeOwner, maybeName] = fullName.split(/\//)
+
+  const owner = isEmpty(maybeName) ? config.official : maybeOwner
+  const name = isEmpty(maybeName) ? maybeOwner : maybeName
+
+  branch = isEmpty(branch) ? config.branch : branch
+
+  return { owner, name, branch }
+}
+
+/**
  * Get remote template url.
  * @param input template name or uri
  * @example
@@ -34,14 +61,7 @@ export const getTemplatePath = async (input: string): Promise<false | string> =>
 export const getTemplateUrl = async (input: string): Promise<string> => {
   if (/^https?:/.test(input)) return input
 
-  input = input.includes('/') ? input : `${config.official}/${input}`
-  input = input.includes('#') ? input : `${input}#${config.branch}`
-
-  const regex: RegExp = /(?<owner>[\w-]+)\/(?<name>[\w-]+)#(?<branch>[\w-/]+)/mg
-  const match = regex.exec(input)
-
-  const { owner, name, branch } = ((match?.groups) != null) || {}
-  const data: Record<string, string> = { owner, name, branch }
+  const data: Record<string, string> = parseTemplateUri(input)
 
   return config.registry.replace(/{(.*?)}/g, (_, key) => data[key])
 }

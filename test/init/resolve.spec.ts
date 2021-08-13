@@ -58,6 +58,9 @@ test('unit:init:resolve:getTemplateUrl', async () => {
 
   const url6 = await getTemplateUrl('zce/tpl3#dev/cli')
   expect(url6).toBe('https://github.com/zce/tpl3/archive/refs/heads/dev/cli.zip')
+
+  const url7 = await getTemplateUrl('tpl7#topic/xyz')
+  expect(url7).toBe('https://github.com/caz-templates/tpl7/archive/refs/heads/topic/xyz.zip')
 })
 
 test('unit:init:resolve:local-relative', async () => {
