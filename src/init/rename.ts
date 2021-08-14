@@ -4,7 +4,7 @@ import { Context } from './types'
  * Rename file if necessary.
  */
 export default async (ctx: Context): Promise<void> => {
-  const regexp = /{(.*?)}/g
+  const regexp = /{(\w+)}/g
 
   ctx.files.forEach(item => {
     if (!regexp.test(item.path)) return

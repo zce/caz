@@ -45,7 +45,7 @@ export const getTemplateUrl = async (input: string): Promise<string> => {
 
   const data: Record<string, string> = { owner, name, branch }
 
-  return config.registry.replace(/{(.*?)}/g, (_, key) => data[key])
+  return config.registry.replace(/{(\w+)}/g, (_, key) => data[key])
 }
 
 /**
