@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.8.0] - 2021-08-14
+
+- feat: support path-based branch name (#62)
+- fix: mini template replace regex
+
 ## [0.7.0] - 2021-07-26
 
 - feat: ensure local template dir exists (#55)
@@ -71,6 +76,7 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[0.8.0]: https://github.com/zce/caz/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/zce/caz/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/zce/caz/compare/v0.5.1...v0.6.0
 [0.5.1]: https://github.com/zce/caz/compare/v0.5.0...v0.5.1
