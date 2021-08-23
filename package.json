@@ -71,7 +71,7 @@
     "ini": "^2.0.0",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
-    "ora": "^5.4.1",
+    "ora": "^6.0.0",
     "prompts": "^2.4.1",
     "semver": "^7.3.5",
     "validate-npm-package-name": "^3.0.0"
