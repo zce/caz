@@ -66,7 +66,7 @@
   "dependencies": {
     "adm-zip": "^0.5.5",
     "cac": "^6.7.3",
-    "env-paths": "^2.2.1",
+    "env-paths": "^3.0.0",
     "fast-glob": "^3.2.7",
     "ini": "^2.0.0",
     "lodash": "^4.17.21",
