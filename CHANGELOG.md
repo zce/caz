@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.8.1] - 2021-09-22
+
+- fix: temp pin adm-zip 0.5.5 (cthackers/adm-zip#389)
+
 ## [0.8.0] - 2021-08-14
 
 - feat: support path-based branch name (#62)
