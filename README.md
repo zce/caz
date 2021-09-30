@@ -49,40 +49,25 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 - [Introduction](#introduction)
   - [Features](#features)
-- [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Quick Start](#quick-start)
-    - [Options](#options)
 - [Recipes](#recipes)
   - [GitHub Repo Templates](#github-repo-templates)
-    - [Use Custom templates](#use-custom-templates)
   - [Local Templates](#local-templates)
   - [Remote ZIP Templates](#remote-zip-templates)
   - [Offline Mode](#offline-mode)
-  - [Prompts Override](#prompts-override)
-  - [Debug Mode](#debug-mode)
   - [List Available Templates](#list-available-templates)
-    - [Arguments](#arguments)
-    - [Options](#options-1)
   - [Official Templates](#official-templates)
 - [Advanced](#advanced)
   - [Create Your Template](#create-your-template)
   - [Configuration](#configuration)
   - [Create Your Scaffold](#create-your-scaffold)
 - [References](#references)
-  - [caz(template, project?, options?)](#caztemplate-project-options)
-    - [template](#template)
-    - [project](#project)
-    - [options](#options-2)
-      - [force](#force)
-      - [offline](#offline)
-      - [[key: string]](#key-string)
 - [Motivation](#motivation)
 - [About](#about)
   - [How It Works](#how-it-works)
-    - [Main Workflow](#main-workflow)
   - [Built With](#built-with)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
@@ -156,17 +141,6 @@ $ caz zce/nm my-project
 The above command pulls the template from [zce/nm](https://github.com/zce/nm). This means that you can also pull templates from your public GitHub repository.
 
 **Public repository is necessary.**
-
-> You can also get your template from branches defined inside your public repositories. Use the `:` separator as follows:
-> ```shell
-> $ caz zce/nm:<branch-name> my-project
-> ```
->  
-> e.g.
-> ```shell
-> $ caz zce/nm:category1/name my-project
-> ``` 
-> The command above will pull the template from the branch `category1/name` of the public repo `zce/nm`.
 
 ### Local Templates
 
