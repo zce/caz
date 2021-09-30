@@ -127,7 +127,7 @@ $ caz nm my-project
 The above command pulls the template from [caz-templates/nm](https://github.com/caz-templates/nm), then prompts for some information according to the configuration of this template, and generate the project at `./my-project`.
 
 ```shell
-$ caz nm#typescript my-project
+$ caz nm:typescript my-project
 ```
 
 By running this command, CAZ will pulls the template from `typescript` branch of [caz-templates/nm](https://github.com/caz-templates/nm).
