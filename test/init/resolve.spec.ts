@@ -47,19 +47,19 @@ test('unit:init:resolve:getTemplateUrl', async () => {
   const url2 = await getTemplateUrl('zce/tpl2')
   expect(url2).toBe('https://github.com/zce/tpl2/archive/refs/heads/master.zip')
 
-  const url3 = await getTemplateUrl('zce/tpl3#dev')
+  const url3 = await getTemplateUrl('zce/tpl3:dev')
   expect(url3).toBe('https://github.com/zce/tpl3/archive/refs/heads/dev.zip')
 
-  const url4 = await getTemplateUrl('tpl4#dev')
+  const url4 = await getTemplateUrl('tpl4:dev')
   expect(url4).toBe('https://github.com/caz-templates/tpl4/archive/refs/heads/dev.zip')
 
   const url5 = await getTemplateUrl('https://github.com/zce/tpl5/archive/refs/heads/dev.zip')
   expect(url5).toBe('https://github.com/zce/tpl5/archive/refs/heads/dev.zip')
 
-  const url6 = await getTemplateUrl('zce/tpl3#dev/cli')
+  const url6 = await getTemplateUrl('zce/tpl3:dev/cli')
   expect(url6).toBe('https://github.com/zce/tpl3/archive/refs/heads/dev/cli.zip')
 
-  const url7 = await getTemplateUrl('tpl7#topic/xyz')
+  const url7 = await getTemplateUrl('tpl7:topic/xyz')
   expect(url7).toBe('https://github.com/caz-templates/tpl7/archive/refs/heads/topic/xyz.zip')
 })
 

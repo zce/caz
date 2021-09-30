@@ -34,7 +34,7 @@ export const getTemplatePath = async (input: string): Promise<false | string> =>
 export const getTemplateUrl = async (input: string): Promise<string> => {
   if (/^https?:/.test(input)) return input
 
-  const [fullname, maybeBranch] = input.split('#')
+  const [fullname, maybeBranch] = input.split(':')
   const [maybeOwner, maybeName] = fullname.split('/')
 
   const isEmpty = (input?: string): boolean => input == null || input === ''
