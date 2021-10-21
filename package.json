@@ -88,7 +88,7 @@
     "@types/prompts": "2.0.14",
     "@types/semver": "7.3.8",
     "@types/validate-npm-package-name": "3.0.3",
-    "husky": "7.0.1",
+    "husky": "7.0.4",
     "jest": "27.0.6",
     "lint-staged": "11.1.2",
     "rimraf": "3.0.2",
