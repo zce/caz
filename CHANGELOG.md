@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.8.2] - 2022-01-20
+
+- fix: output types.d.ts
+
 ## [0.8.1] - 2021-09-22
 
 - fix: temp pin adm-zip 0.5.5 (cthackers/adm-zip#389)
@@ -80,6 +84,8 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[0.8.2]: https://github.com/zce/caz/compare/v0.8.1...v0.8.2
+[0.8.1]: https://github.com/zce/caz/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/zce/caz/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/zce/caz/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/zce/caz/compare/v0.5.1...v0.6.0
