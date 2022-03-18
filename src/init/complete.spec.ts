@@ -1,5 +1,5 @@
-import { createContext } from './util'
-import complete from '../../src/init/complete'
+import { createContext } from '../../test/helpers'
+import complete from './complete'
 
 let log: jest.SpyInstance
 

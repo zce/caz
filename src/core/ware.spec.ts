@@ -27,7 +27,7 @@ test('unit:core:ware', async () => {
   try {
     await app.run({ a: 1 })
   } catch (e) {
-    expect(e.message).toEqual('break')
+    expect((e as Error).message).toEqual('break')
   }
 
   expect(order).toEqual([1, 2])

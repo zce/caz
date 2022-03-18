@@ -1,7 +1,7 @@
 import path from 'path'
 import prompts, { PromptObject } from 'prompts'
 import { config } from '../../src'
-import { createContext } from './util'
+import { createContext } from '../../test/helpers'
 import inquire, { validater, processor } from '../../src/init/inquire'
 
 test('unit:init:inquire', async () => {

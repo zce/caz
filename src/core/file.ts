@@ -20,7 +20,7 @@ export const exists = async (input: string): Promise<false | 'file' | 'dir' | 'o
     }
   } catch (err) {
     /* istanbul ignore if */
-    if (err.code !== 'ENOENT') {
+    if ((err as NodeJS.ErrnoException).code !== 'ENOENT') {
       throw err
     }
     return false

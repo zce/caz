@@ -97,6 +97,6 @@ export default async (ctx: Context): Promise<void> => {
     spinner.succeed('Download template complete.')
   } catch (e) {
     spinner.stop()
-    throw new Error(`Failed to pull \`${ctx.template}\` template: ${e.message as string}.`)
+    throw new Error(`Failed to pull \`${ctx.template}\` template: ${(e as Error).message}.`)
   }
 }

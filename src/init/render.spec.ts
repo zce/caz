@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { createContext } from './util'
+import { createContext } from '../../test/helpers'
 import render from '../../src/init/render'
 
 test('unit:init:render', async () => {

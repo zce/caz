@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { createContext, createTempDir } from './util'
+import { createContext, createTempDir } from '../../test/helpers'
 import emit from '../../src/init/emit'
 
 test('unit:init:emit', async () => {

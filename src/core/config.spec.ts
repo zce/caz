@@ -1,6 +1,6 @@
 import os from 'os'
 import path from 'path'
-import config from '../../src/core/config'
+import config from './config'
 
 const mockHomedir = (): jest.SpyInstance => {
   return jest.spyOn(os, 'homedir').mockImplementation(() => path.join(__dirname, '../../test/fixtures'))
@@ -16,7 +16,7 @@ test('unit:core:config', async () => {
 test('unit:core:config:custom', async () => {
   const homedir = mockHomedir()
   jest.resetModules()
-  const { default: conf } = await import('../../src/core/config')
+  const { default: conf } = await import('./config')
   expect(conf.registry).toBe('https://gitlab.com/{owner}/{name}/archive/refs/heads/{branch}.zip')
   expect(conf.official).toBe('faker')
   expect(conf.branch).toBe('dev')

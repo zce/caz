@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { createContext, createTempDir } from './util'
+import { createContext, createTempDir } from '../../test/helpers'
 import install from '../../src/init/install'
 
 // let stdoutWrite: jest.SpyInstance
@@ -69,7 +69,7 @@ test('unit:init:init:manual:error', async () => {
   try {
     await install(ctx)
   } catch (e) {
-    expect(e.message).toBe('Install dependencies failed.')
+    expect((e as Error).message).toBe('Install dependencies failed.')
   }
   await fs.promises.rmdir(temp, { recursive: true })
 })

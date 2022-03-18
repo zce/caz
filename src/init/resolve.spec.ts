@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { createContext } from './util'
+import { createContext } from '../../test/helpers'
 import { file, config } from '../../src'
 import resolve, { getTemplatePath, getTemplateUrl } from '../../src/init/resolve'
 
@@ -30,13 +30,13 @@ test('unit:init:resolve:getTemplatePath', async () => {
   try {
     await getTemplatePath('./caz-faker')
   } catch (e) {
-    expect(e.message).toBe('Local template not found: `./caz-faker` is not a directory')
+    expect((e as Error).message).toBe('Local template not found: `./caz-faker` is not a directory')
   }
 
   try {
     await getTemplatePath('~/caz-faker')
   } catch (e) {
-    expect(e.message).toBe('Local template not found: `~/caz-faker` is not a directory')
+    expect((e as Error).message).toBe('Local template not found: `~/caz-faker` is not a directory')
   }
 })
 
@@ -68,7 +68,7 @@ test('unit:init:resolve:local-relative', async () => {
   try {
     await resolve(ctx)
   } catch (e) {
-    expect(e.message).toBe('Local template not found: `./caz-faker` is not a directory')
+    expect((e as Error).message).toBe('Local template not found: `./caz-faker` is not a directory')
   }
 })
 
@@ -83,7 +83,7 @@ test('unit:init:resolve:local-tildify', async () => {
   try {
     await resolve(ctx)
   } catch (e) {
-    expect(e.message).toBe('Local template not found: `~/caz-faker` is not a directory')
+    expect((e as Error).message).toBe('Local template not found: `~/caz-faker` is not a directory')
   }
 })
 
@@ -130,6 +130,6 @@ test('unit:init:resolve:fetch-error', async () => {
   try {
     await resolve(ctx)
   } catch (e) {
-    expect(e.message).toBe('Failed to pull `not-found` template: Unexpected response: Not Found.')
+    expect((e as Error).message).toBe('Failed to pull `not-found` template: Unexpected response: Not Found.')
   }
 })

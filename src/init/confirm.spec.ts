@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import prompts from 'prompts'
-import { createContext, createTempDir } from './util'
+import { createContext, createTempDir } from '../../test/helpers'
 import confirm from '../../src/init/confirm'
 
 let cwd: string
@@ -48,7 +48,7 @@ test('unit:init:confirm:file', async () => {
   try {
     await confirm(ctx)
   } catch (e) {
-    expect(e.message).toBe('Cannot create file: File exists.')
+    expect((e as Error).message).toBe('Cannot create file: File exists.')
   }
 })
 
@@ -72,7 +72,7 @@ test('unit:init:confirm:sure', async () => {
   try {
     await confirm(ctx)
   } catch (e) {
-    expect(e.message).toBe('You have cancelled this task.')
+    expect((e as Error).message).toBe('You have cancelled this task.')
   }
 })
 
@@ -86,7 +86,7 @@ test('unit:init:confirm:sure-cwd', async () => {
   try {
     await confirm(ctx)
   } catch (e) {
-    expect(e.message).toBe('You have cancelled this task.')
+    expect((e as Error).message).toBe('You have cancelled this task.')
   }
 })
 
@@ -125,7 +125,7 @@ test('unit:init:confirm:cancel', async () => {
   try {
     await confirm(ctx)
   } catch (e) {
-    expect(e.message).toBe('You have cancelled this task.')
+    expect((e as Error).message).toBe('You have cancelled this task.')
     expect(fs.existsSync('cancel/file')).toBe(true)
   }
 })

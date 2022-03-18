@@ -24,6 +24,6 @@ export default async (owner: string): Promise<Result[]> => {
     return results
   } catch (e) {
     spinner.stop()
-    throw new Error(`Failed to fetch list from remote: ${e.message as string}.`)
+    throw new Error(`Failed to fetch list from remote: ${(e as Error).message}.`)
   }
 }

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import cac from 'cac'
 import init, { list } from '.'
 import { name, version } from '../package.json'

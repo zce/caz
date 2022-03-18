@@ -1,7 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
-import { createContext, createTempDir } from './util'
+import { createContext, createTempDir } from '../../test/helpers'
 import init from '../../src/init/init'
 
 const gitconfig = path.join(os.homedir(), '.gitconfig')
@@ -72,7 +72,7 @@ test('unit:init:init:error', async () => {
   try {
     await init(ctx)
   } catch (e) {
-    expect(e.message).toBe('Initial repository failed.')
+    expect((e as Error).message).toBe('Initial repository failed.')
   }
   await fs.promises.rmdir(temp, { recursive: true })
 })

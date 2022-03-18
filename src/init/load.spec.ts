@@ -1,5 +1,5 @@
 import path from 'path'
-import { createContext } from './util'
+import { createContext } from '../../test/helpers'
 import load from '../../src/init/load'
 
 test('unit:init:load', async () => {
@@ -43,6 +43,6 @@ test('unit:init:load:error', async () => {
   try {
     await load(ctx)
   } catch (e) {
-    expect(e.message).toBe('Invalid template: template needs to expose an object.')
+    expect((e as Error).message).toBe('Invalid template: template needs to expose an object.')
   }
 })

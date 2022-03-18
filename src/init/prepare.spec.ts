@@ -1,5 +1,5 @@
 import path from 'path'
-import { createContext } from './util'
+import { createContext } from '../../test/helpers'
 import prepare from '../../src/init/prepare'
 
 const src = path.join(__dirname, '../fixtures/features')

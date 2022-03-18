@@ -1,4 +1,4 @@
-import { createContext } from './util'
+import { createContext } from '../../test/helpers'
 import setup from '../../src/init/setup'
 
 test('unit:init:setup', async () => {

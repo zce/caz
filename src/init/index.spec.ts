@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { createTempDir } from './util'
+import { createTempDir } from '../../test/helpers'
 import init from '../../src/init'
 import prompts from 'prompts'
 
@@ -12,12 +12,12 @@ test('unit:init:error', async () => {
   try {
     await init(null as unknown as string)
   } catch (e) {
-    expect(e.message).toBe('Missing required argument: `template`.')
+    expect((e as Error).message).toBe('Missing required argument: `template`.')
   }
   try {
     await init('')
   } catch (e) {
-    expect(e.message).toBe('Missing required argument: `template`.')
+    expect((e as Error).message).toBe('Missing required argument: `template`.')
   }
 })
 

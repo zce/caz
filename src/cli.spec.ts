@@ -26,7 +26,7 @@ afterAll(async () => {
 
 test('unit:cli:init', async () => {
   const restore = mockArgv(['template', 'project', '--force', '--offline'])
-  await import('../src/cli')
+  await import('./cli')
   expect(mockedInit).toHaveBeenCalled()
   expect(mockedInit.mock.calls[0][0]).toBe('template')
   expect(mockedInit.mock.calls[0][1]).toBe('project')
@@ -42,7 +42,7 @@ test('unit:cli:init', async () => {
 
 test('unit:cli:list', async () => {
   const restore = mockArgv(['list', 'zce', '--json', '--short'])
-  await import('../src/cli')
+  await import('./cli')
   expect(mockedList).toHaveBeenCalled()
   expect(mockedList.mock.calls[0][0]).toBe('zce')
   expect(mockedList.mock.calls[0][1]).toEqual({
@@ -58,7 +58,7 @@ test('unit:cli:list', async () => {
 test('unit:cli:help', async () => {
   const restore = mockArgv(['--help'])
   const log = jest.spyOn(console, 'log').mockImplementation()
-  await import('../src/cli')
+  await import('./cli')
   expect(log).toHaveBeenCalledTimes(1)
   expect(log.mock.calls[0][0]).toContain('$ caz <template> [project]')
   restore()

@@ -1,4 +1,4 @@
-import fetch from '../../src/list/fetch'
+import fetch from './fetch'
 
 test('unit:fetch', async () => {
   expect(typeof fetch).toBe('function')
@@ -19,6 +19,6 @@ test('unit:fetch:error', async () => {
   try {
     await fetch('fakkkkkkkkkkker')
   } catch (e) {
-    expect(e.message).toBe('Failed to fetch list from remote: Unexpected response: Not Found.')
+    expect((e as Error).message).toBe('Failed to fetch list from remote: Unexpected response: Not Found.')
   }
 })

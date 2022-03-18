@@ -1,7 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
-import { createTempDir } from '../init/util'
+import { createTempDir } from '../../test/helpers'
 import * as file from '../../src/core/file'
 
 test('unit:core:file:exists', async () => {
@@ -199,7 +199,7 @@ test('unit:core:file:extract:error', async () => {
   try {
     await file.extract(path.join(__dirname, '../fixtures/error.zip'), temp)
   } catch (e) {
-    expect(e.message).toBe('Invalid or unsupported zip format. No END header found')
+    expect((e as Error).message).toBe('Invalid or unsupported zip format. No END header found')
   }
 })
 

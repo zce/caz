@@ -20,9 +20,10 @@ export default async (ctx: Context): Promise<void> => {
     }
 
     Object.assign(ctx.config, mod)
-  } catch (e) {
+  } catch (err) {
+    const e = err as NodeJS.ErrnoException
     if (e.code === 'MODULE_NOT_FOUND') return
-    e.message = `Invalid template: ${e.message as string}`
+    e.message = `Invalid template: ${e.message}`
     throw e
   }
 }

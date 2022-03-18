@@ -1,4 +1,4 @@
-import { createContext } from './util'
+import { createContext } from '../../test/helpers'
 import rename from '../../src/init/rename'
 
 test('unit:init:rename', async () => {
