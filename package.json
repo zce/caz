@@ -100,7 +100,8 @@
     "node": ">=14.14"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "tag": "next"
   },
   "renovate": {
     "extends": [
