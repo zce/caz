@@ -10,8 +10,7 @@ const mockArgv = (...args: string[]): () => void => {
 beforeEach(async () => {
   jest.resetAllMocks()
   jest.resetModules()
-  jest.mock('./init', () => ({ __esModule: true, default: mockedInit }))
-  jest.mock('./list', () => ({ __esModule: true, default: mockedList }))
+  jest.mock('.', () => ({ __esModule: true, default: mockedInit, list: mockedList }))
 })
 
 afterAll(async () => {

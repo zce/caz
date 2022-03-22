@@ -4,13 +4,15 @@ import { Context } from './types'
  * Load template config.
  * @todo
  * - Adapt to any repository?
- * - Automatic installation dependency.
+ * - Automatic install template dependencies.
  * - Template dependencies not found.
  * - Check template is available.
  */
 export default async (ctx: Context): Promise<void> => {
   // default template name
   ctx.config.name = ctx.template
+
+  // Automatic install template dependencies.
 
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
