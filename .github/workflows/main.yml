@@ -5,11 +5,9 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14, 16, 17]
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -18,15 +16,6 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm run build
-
-  codecov:
-    if: github.ref == 'refs/heads/main'
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: npm install
       - run: npm run test
       - run: npx codecov
 
