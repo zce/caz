@@ -1,11 +1,9 @@
 import fs from 'fs'
-import { createTempDir } from '../../test/helpers'
-import init from '../../src/init'
+import path from 'path'
 import prompts from 'prompts'
-
-test('unit:init', async () => {
-  expect(typeof init).toBe('function')
-})
+import { http } from '../core'
+import { destory, exists, fixture, mktmpdir } from '../../test/helpers'
+import init from '.'
 
 test('unit:init:error', async () => {
   expect.assertions(2)
@@ -24,16 +22,23 @@ test('unit:init:error', async () => {
 test('unit:init:default', async () => {
   const log = jest.spyOn(console, 'log').mockImplementation()
   const clear = jest.spyOn(console, 'clear').mockImplementation()
-  const temp = await createTempDir()
+  const download = jest.spyOn(http, 'download').mockImplementation(async () => {
+    const file = fixture('minima.zip')
+    const target = path.join(await mktmpdir(), 'minima.zip')
+    await fs.promises.copyFile(file, target)
+    return target
+  })
+  const temp = await mktmpdir()
   const original = process.cwd()
   process.chdir(temp)
   prompts.inject(['caz'])
-  await init('minima', 'minima-app', { force: true, offline: true })
-  expect(fs.existsSync('minima-app')).toBe(true)
+  await init('minima', 'minima-app', { force: true, offline: false })
+  expect(await exists('minima-app')).toBe(true)
   const contents = await fs.promises.readFile('minima-app/caz.txt', 'utf8')
   expect(contents.trim()).toBe('hey caz.')
   process.chdir(original)
-  await fs.promises.rmdir(temp, { recursive: true })
+  await destory(temp)
   log.mockRestore()
   clear.mockRestore()
+  download.mockRestore()
 })

@@ -36,7 +36,7 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 - Light-weight
 - Still powerful
 - High efficiency
-- Less dependencies
+- Zero dependencies
 - Template-based
 - Configurable
 - Extensible
@@ -77,8 +77,8 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 12.10 required, >= 14.17 preferred)
-- [npm](https://www.npmjs.com) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.22)
+- [Node.js](https://nodejs.org) (>= 14.14 required, >= 16.13 preferred)
+- [npm](https://www.npmjs.com) (>= 7.x) or [pnpm](https://pnpm.io) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.22)
 - [Git](https://git-scm.com) (>= 2.0)
 
 ### Installation

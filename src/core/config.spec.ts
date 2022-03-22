@@ -1,9 +1,9 @@
 import os from 'os'
-import path from 'path'
+import { fixture } from '../../test/helpers'
 import config from './config'
 
 const mockHomedir = (): jest.SpyInstance => {
-  return jest.spyOn(os, 'homedir').mockImplementation(() => path.join(__dirname, '../../test/fixtures'))
+  return jest.spyOn(os, 'homedir').mockImplementation(() => fixture(''))
 }
 
 test('unit:core:config', async () => {
@@ -45,7 +45,7 @@ test('unit:core:config:paths', async () => {
 })
 
 test('unit:core:config:ini', async () => {
-  const result1 = config.ini(path.join(__dirname, '../fixtures/.npmrc'))
+  const result1 = config.ini(fixture('.npmrc'))
   expect(result1?.['init-author-name']).toBe('zce')
   const result2 = config.ini('fakkkkkkker.ini')
   expect(result2).toBe(undefined)

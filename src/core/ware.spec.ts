@@ -1,4 +1,4 @@
-import { Ware } from '../../src/core/ware'
+import { Ware } from './ware'
 
 test('unit:core:ware', async () => {
   type State = Record<string, number>

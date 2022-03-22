@@ -1,9 +1,5 @@
 import fetch from './fetch'
 
-test('unit:fetch', async () => {
-  expect(typeof fetch).toBe('function')
-})
-
 test('unit:fetch:empty', async () => {
   const results = await fetch('ghost')
   expect(results).toEqual([])

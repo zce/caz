@@ -1,11 +1,6 @@
 import fs from 'fs'
-import path from 'path'
-import { createContext } from '../../test/helpers'
-import render from '../../src/init/render'
-
-test('unit:init:render', async () => {
-  expect(typeof render).toBe('function')
-})
+import { context, fixture } from '../../test/helpers'
+import render from './render'
 
 test('unit:init:render:normal', async () => {
   const template = `
@@ -14,10 +9,10 @@ test('unit:init:render:normal', async () => {
     <% } %>
   `
   // binary files
-  const img = fs.readFileSync(path.join(__dirname, '../fixtures/caz.png'))
-  const zip = fs.readFileSync(path.join(__dirname, '../fixtures/archive.zip'))
+  const img = fs.readFileSync(fixture('caz.png'))
+  const zip = fs.readFileSync(fixture('archive.zip'))
 
-  const ctx = createContext({
+  const ctx = context({
     answers: {
       title: 'caz test',
       enable: false
@@ -43,7 +38,7 @@ test('unit:init:render:normal', async () => {
 test('unit:init:render:metadata', async () => {
   const now = Date.now()
 
-  const ctx = createContext({
+  const ctx = context({
     files: [
       { path: 'a.txt', contents: Buffer.from('<%= now %>') }
     ]
@@ -57,7 +52,7 @@ test('unit:init:render:metadata', async () => {
 })
 
 test('unit:init:render:helpers', async () => {
-  const ctx = createContext({
+  const ctx = context({
     files: [
       { path: 'a.txt', contents: Buffer.from('<%= upper(\'caz\') %>') }
     ]

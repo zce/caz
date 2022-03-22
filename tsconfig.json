@@ -1,11 +1,11 @@
 /* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
   "compilerOptions": {
+    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "allowJs": true,
-    "strict": true,
     "esModuleInterop": true,
-    "pretty": true
+    "allowJs": true,
+    "strict": true
   }
 }

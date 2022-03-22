@@ -1,12 +1,8 @@
-import { createContext } from '../../test/helpers'
-import rename from '../../src/init/rename'
-
-test('unit:init:rename', async () => {
-  expect(typeof rename).toBe('function')
-})
+import { context } from '../../test/helpers'
+import rename from './rename'
 
 test('unit:init:rename:normal', async () => {
-  const ctx = createContext({
+  const ctx = context({
     answers: { foo: 'caz' },
     files: [
       { path: 'original', contents: Buffer.from('') },

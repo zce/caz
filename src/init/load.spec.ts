@@ -1,14 +1,9 @@
-import path from 'path'
-import { createContext } from '../../test/helpers'
-import load from '../../src/init/load'
-
-test('unit:init:load', async () => {
-  expect(typeof load).toBe('function')
-})
+import { context, fixture } from '../../test/helpers'
+import load from './load'
 
 test('unit:init:load:normal', async () => {
-  const ctx = createContext({
-    src: path.join(__dirname, '../fixtures/features')
+  const ctx = context({
+    src: fixture('features')
   })
   await load(ctx)
   expect(ctx.config.name).toBe('features')
@@ -27,17 +22,17 @@ test('unit:init:load:normal', async () => {
 })
 
 test('unit:init:load:default', async () => {
-  const ctx = createContext({
+  const ctx = context({
     template: 'fake-load',
-    src: path.join(__dirname, '../fixtures/minima')
+    src: fixture('minima')
   })
   await load(ctx)
   expect(ctx.config.name).toBe('fake-load')
 })
 
 test('unit:init:load:error', async () => {
-  const ctx = createContext({
-    src: path.join(__dirname, '../fixtures/error')
+  const ctx = context({
+    src: fixture('error')
   })
   expect.hasAssertions()
   try {

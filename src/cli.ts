@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import cac from 'cac'
-import init, { list } from '.'
+import init from './init'
+import list from './list'
 import { name, version } from '../package.json'
 
 const cli = cac(name)

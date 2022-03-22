@@ -1,12 +1,8 @@
 import path from 'path'
 import prompts, { PromptObject } from 'prompts'
 import { config } from '../../src'
-import { createContext } from '../../test/helpers'
-import inquire, { validater, processor } from '../../src/init/inquire'
-
-test('unit:init:inquire', async () => {
-  expect(typeof inquire).toBe('function')
-})
+import { context } from '../../test/helpers'
+import inquire, { validater, processor } from './inquire'
 
 test('unit:init:inquire:validater:name', async () => {
   expect(validater.name('foo')).toBe(true)
@@ -38,7 +34,7 @@ test('unit:init:inquire:validater:url', async () => {
 })
 
 test('unit:init:inquire:processor:name', async () => {
-  const ctx = createContext({ dest: __dirname })
+  const ctx = context({ dest: __dirname })
   const fn = processor(ctx)
 
   const prompt1: PromptObject = { name: 'name', type: 'text' }
@@ -58,7 +54,7 @@ test('unit:init:inquire:processor:name', async () => {
 })
 
 test('unit:init:inquire:processor:version', async () => {
-  const ctx = createContext({})
+  const ctx = context({})
   const fn = processor(ctx)
 
   const prompt0: PromptObject = { name: 'version', type: 'text', initial: '3.2.1' }
@@ -67,6 +63,7 @@ test('unit:init:inquire:processor:version', async () => {
   expect(prompt0.initial).toBe('3.2.1')
 
   const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-version': '1.2.3' })
+
   const prompt1: PromptObject = { name: 'version', type: 'text' }
   fn(prompt1)
   expect(prompt1.initial).toBe('1.2.3')
@@ -90,7 +87,7 @@ test('unit:init:inquire:processor:version', async () => {
 })
 
 test('unit:init:inquire:processor:author', async () => {
-  const ctx = createContext({})
+  const ctx = context({})
   const fn = processor(ctx)
 
   const prompt0: PromptObject = { name: 'author', type: 'text', initial: 'zce' }
@@ -98,6 +95,7 @@ test('unit:init:inquire:processor:author', async () => {
   expect(prompt0.initial).toBe('zce')
 
   const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-name': 'faker-npm' })
+
   const prompt1: PromptObject = { name: 'author', type: 'text' }
   fn(prompt1)
   expect(prompt1.initial).toBe('faker-npm')
@@ -128,7 +126,7 @@ test('unit:init:inquire:processor:author', async () => {
 })
 
 test('unit:init:inquire:processor:email', async () => {
-  const ctx = createContext({})
+  const ctx = context({})
   const fn = processor(ctx)
 
   const prompt0: PromptObject = { name: 'email', type: 'text', initial: 'w@zce.me' }
@@ -136,6 +134,7 @@ test('unit:init:inquire:processor:email', async () => {
   expect(prompt0.initial).toBe('w@zce.me')
 
   const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-email': 'npm@faker.com' })
+
   const prompt1: PromptObject = { name: 'email', type: 'text' }
   fn(prompt1)
   expect(prompt1.validate).toBe(validater.email)
@@ -172,7 +171,7 @@ test('unit:init:inquire:processor:email', async () => {
 })
 
 test('unit:init:inquire:processor:url', async () => {
-  const ctx = createContext({})
+  const ctx = context({})
   const fn = processor(ctx)
 
   const prompt0: PromptObject = { name: 'url', type: 'text', initial: 'https://zce.me' }
@@ -180,6 +179,7 @@ test('unit:init:inquire:processor:url', async () => {
   expect(prompt0.initial).toBe('https://zce.me')
 
   const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-url': 'https://npm.faker.com' })
+
   const prompt1: PromptObject = { name: 'url', type: 'text' }
   fn(prompt1)
   expect(prompt1.validate).toBe(validater.url)
@@ -217,7 +217,7 @@ test('unit:init:inquire:processor:url', async () => {
 
 test('unit:init:inquire:default', async () => {
   const clear = jest.spyOn(console, 'clear').mockImplementation()
-  const ctx = createContext({ dest: __dirname })
+  const ctx = context({ dest: __dirname })
   prompts.inject(['foo'])
   await inquire(ctx)
   expect(clear).toBeCalledTimes(1)
@@ -228,7 +228,7 @@ test('unit:init:inquire:default', async () => {
 
 test('unit:init:inquire:custom', async () => {
   const clear = jest.spyOn(console, 'clear').mockImplementation()
-  const ctx = createContext({}, {
+  const ctx = context({}, {
     prompts: [
       { name: 'foo', type: 'text', message: 'foo' },
       { name: 'bar', type: 'text', message: 'bar' }
@@ -243,7 +243,7 @@ test('unit:init:inquire:custom', async () => {
 
 test('unit:init:inquire:override', async () => {
   const clear = jest.spyOn(console, 'clear').mockImplementation()
-  const ctx = createContext({}, {
+  const ctx = context({}, {
     prompts: [
       { name: 'foo', type: 'text', message: 'foo' },
       { name: 'bar', type: 'text', message: 'bar' }

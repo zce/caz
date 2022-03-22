@@ -6,7 +6,3 @@ node_modules
 
 /coverage
 /test/.temp
-
-package-lock.json
-pnpm-lock.yaml
-yarn.lock

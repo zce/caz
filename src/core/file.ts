@@ -66,19 +66,13 @@ export const mkdir = async (input: string, options?: fs.MakeDirectoryOptions): P
 
 /**
  * Remove input dir or file. recursive when dir
- * require node >= v12.10
+ * require node >= v14.14.0
  * @param input input path
+ * @param options recursive & force by default
  * @todo https://github.com/sindresorhus/trash
  */
-export const remove = async (input: string, options?: fs.RmDirOptions): Promise<void> => {
-  const result = await exists(input)
-  if (result === false) return
-
-  // file or other
-  if (result !== 'dir') return await fs.promises.unlink(input)
-
-  // dir
-  await fs.promises.rmdir(input, { recursive: true, ...options })
+export const remove = async (input: string, options?: fs.RmOptions): Promise<void> => {
+  await fs.promises.rm(input, { recursive: true, force: true, ...options })
 }
 
 /**
@@ -158,7 +152,10 @@ export const extract = async (input: string, output: string, strip = 0): Promise
     entry.entryName = stripped === '' ? entry.entryName : stripped
   })
 
-  zip.extractAllToAsync(output, true, err => {
+  // https://github.com/cthackers/adm-zip/issues/389
+  // https://github.com/cthackers/adm-zip/issues/407#issuecomment-990086783
+  // keep original file permissions
+  zip.extractAllToAsync(output, true, true, err => {
     /* istanbul ignore if */
     if (err != null) throw err
     resolve()

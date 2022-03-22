@@ -1,15 +1,11 @@
 import fs from 'fs'
 import path from 'path'
-import { createContext, createTempDir } from '../../test/helpers'
-import emit from '../../src/init/emit'
-
-test('unit:init:emit', async () => {
-  expect(typeof emit).toBe('function')
-})
+import { context, mktmpdir } from '../../test/helpers'
+import emit from './emit'
 
 test('unit:init:emit:normal', async () => {
-  const temp = await createTempDir()
-  const ctx = createContext({
+  const temp = await mktmpdir()
+  const ctx = context({
     dest: temp,
     files: [
       { path: 'hello.txt', contents: Buffer.from('hello') },
@@ -26,7 +22,7 @@ test('unit:init:emit:normal', async () => {
 
 test('unit:init:emit:hook', async () => {
   const callback = jest.fn()
-  const ctx = createContext({}, { emit: callback })
+  const ctx = context({}, { emit: callback })
   await emit(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)
 })

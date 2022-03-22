@@ -1,23 +1,27 @@
 import fs from 'fs'
 import path from 'path'
-import { createContext } from '../../test/helpers'
-import { file, config } from '../../src'
-import resolve, { getTemplatePath, getTemplateUrl } from '../../src/init/resolve'
+import { file, http, config } from '../core'
+import { context, exists, destory, fixture, mktmpdir } from '../../test/helpers'
+import resolve, { getTemplatePath, getTemplateUrl } from './resolve'
 
 let log: jest.SpyInstance
+let download: jest.SpyInstance
+
+const src = path.join(config.paths.cache, 'f8327697301af2fa')
 
 beforeEach(async () => {
   log = jest.spyOn(console, 'log').mockImplementation()
+  download = jest.spyOn(http, 'download').mockImplementation(async () => {
+    const file = fixture('archive.zip')
+    const target = path.join(await mktmpdir(), 'archive.zip')
+    await fs.promises.copyFile(file, target)
+    return target
+  })
 })
 
 afterEach(async () => {
   log.mockRestore()
-})
-
-test('unit:init:resolve', async () => {
-  expect(typeof resolve).toBe('function')
-  expect(typeof getTemplatePath).toBe('function')
-  expect(typeof getTemplateUrl).toBe('function')
+  download.mockRestore()
 })
 
 test('unit:init:resolve:getTemplatePath', async () => {
@@ -64,7 +68,7 @@ test('unit:init:resolve:getTemplateUrl', async () => {
 })
 
 test('unit:init:resolve:local-relative', async () => {
-  const ctx = createContext({ template: './caz-faker' })
+  const ctx = context({ template: './caz-faker' })
   try {
     await resolve(ctx)
   } catch (e) {
@@ -73,13 +77,13 @@ test('unit:init:resolve:local-relative', async () => {
 })
 
 test('unit:init:resolve:local-absolute', async () => {
-  const ctx = createContext({ template: __dirname })
+  const ctx = context({ template: __dirname })
   await resolve(ctx)
   expect(ctx.src).toBe(__dirname)
 })
 
 test('unit:init:resolve:local-tildify', async () => {
-  const ctx = createContext({ template: '~/caz-faker' })
+  const ctx = context({ template: '~/caz-faker' })
   try {
     await resolve(ctx)
   } catch (e) {
@@ -88,48 +92,46 @@ test('unit:init:resolve:local-tildify', async () => {
 })
 
 test('unit:init:resolve:fetch-remote', async () => {
-  const src = path.join(config.paths.cache, 'f8327697301af2fa')
-  if (!fs.existsSync(src)) {
-    await fs.promises.mkdir(src, { recursive: true })
-  }
-  const ctx = createContext({ template: 'minima' })
+  await fs.promises.mkdir(src, { recursive: true })
+
+  const ctx = context({ template: 'minima' })
   await resolve(ctx)
   expect(ctx.src).toBe(src)
-  expect(fs.existsSync(src)).toBe(true)
-  expect(fs.existsSync(path.join(src, 'template'))).toBe(true)
-  expect(fs.existsSync(path.join(src, 'template', 'caz.txt'))).toBe(true)
+  expect(await exists(src)).toBe(true)
+  expect(await exists(path.join(src, 'LICENSE'))).toBe(true)
+  expect(await exists(path.join(src, 'README.md'))).toBe(true)
 })
 
 test('unit:init:resolve:fetch-cache-success', async () => {
-  const src = path.join(config.paths.cache, 'f8327697301af2fa')
-  if (!fs.existsSync(src)) {
-    await fs.promises.mkdir(src, { recursive: true })
-  }
-  const ctx = createContext({ template: 'minima', options: { offline: true } })
+  await fs.promises.mkdir(src, { recursive: true })
+
+  const ctx = context({ template: 'minima', options: { offline: true } })
   await resolve(ctx)
   expect(log.mock.calls[0][0]).toBe(`Using cached template: \`${file.tildify(src)}\`.`)
 })
 
 test('unit:init:resolve:fetch-cache-failed', async () => {
-  const src = path.join(config.paths.cache, 'f8327697301af2fa')
-  if (fs.existsSync(src)) {
-    await fs.promises.rmdir(src, { recursive: true })
-  }
-  const ctx = createContext({ template: 'minima', options: { offline: true } })
+  await destory(src)
+
+  const ctx = context({ template: 'minima', options: { offline: true } })
   await resolve(ctx)
   expect(log.mock.calls[0][0]).toBe(`Cache not found: \`${file.tildify(src)}\`.`)
   expect(ctx.src).toBe(src)
-  expect(fs.existsSync(src)).toBe(true)
-  expect(fs.existsSync(path.join(src, 'template'))).toBe(true)
-  expect(fs.existsSync(path.join(src, 'template', 'caz.txt'))).toBe(true)
+  expect(await exists(src)).toBe(true)
+  expect(await exists(path.join(src, 'LICENSE'))).toBe(true)
+  expect(await exists(path.join(src, 'README.md'))).toBe(true)
 })
 
 test('unit:init:resolve:fetch-error', async () => {
-  const ctx = createContext({ template: 'not-found' })
+  download.mockImplementation(async () => {
+    throw new Error('download error')
+  })
+
+  const ctx = context({ template: 'not-found' })
   expect.hasAssertions()
   try {
     await resolve(ctx)
   } catch (e) {
-    expect((e as Error).message).toBe('Failed to pull `not-found` template: Unexpected response: Not Found.')
+    expect((e as Error).message).toBe('Failed to pull `not-found` template: download error.')
   }
 })

@@ -1,4 +1,4 @@
-import exec from '../../src/core/exec'
+import exec from './exec'
 
 test('unit:core:exec:normal', async () => {
   await exec('node', ['--version'], { stdio: 'ignore' })

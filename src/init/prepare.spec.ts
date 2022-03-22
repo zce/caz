@@ -1,15 +1,10 @@
-import path from 'path'
-import { createContext } from '../../test/helpers'
-import prepare from '../../src/init/prepare'
+import { context, fixture } from '../../test/helpers'
+import prepare from './prepare'
 
-const src = path.join(__dirname, '../fixtures/features')
-
-test('unit:init:prepare', async () => {
-  expect(typeof prepare).toBe('function')
-})
+const src = fixture('features')
 
 test('unit:init:prepare:default', async () => {
-  const ctx = createContext({ src })
+  const ctx = context({ src })
   await prepare(ctx)
   expect(ctx.files).toHaveLength(6)
   const names = ctx.files.map(i => i.path)
@@ -22,7 +17,7 @@ test('unit:init:prepare:default', async () => {
 })
 
 test('unit:init:prepare:custom', async () => {
-  const ctx = createContext({
+  const ctx = context({
     src,
     answers: {
       features: ['cli', 'typescript']
@@ -47,7 +42,7 @@ test('unit:init:prepare:custom', async () => {
 
 test('unit:init:prepare:hook', async () => {
   const callback = jest.fn()
-  const ctx = createContext({}, { prepare: callback })
+  const ctx = context({}, { prepare: callback })
   await prepare(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)
 })
