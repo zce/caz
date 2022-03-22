@@ -286,20 +286,18 @@ with ESM and async/await:
 ```javascript
 import caz from 'caz'
 
-;(async () => {
-  try {
-    const template = 'nm'
-    // project path (relative cwd or full path)
-    const project = 'my-project'
-    const options = { force: false, offline: false }
-    // scaffolding by caz...
-    await caz(template, project, options)
-    // success created my-project by nm template
-  } catch (e) {
-    // error handling
-    console.error(e)
-  }
-})()
+try {
+  const template = 'nm'
+  // project path (relative cwd or full path)
+  const project = 'my-project'
+  const options = { force: false, offline: false }
+  // scaffolding by caz...
+  await caz(template, project, options)
+  // success created my-project by nm template
+} catch (e) {
+  // error handling
+  console.error(e)
+}
 ```
 
 or with CommonJS and Promise:

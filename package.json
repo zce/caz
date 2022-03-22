@@ -28,12 +28,7 @@
     "email": "w@zce.me",
     "url": "https://zce.me"
   },
-  "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": "dist/cli.js",
   "files": [
@@ -115,10 +110,6 @@
     ],
     "clean": true,
     "splitting": true,
-    "format": [
-      "cjs",
-      "esm"
-    ],
     "dts": {
       "resolve": true,
       "entry": "src/index.ts"

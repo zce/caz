@@ -531,35 +531,35 @@ export interface File {
 }
 ```
 
-## Dependencies
-
-Because the template does not automatically install its own dependencies before it works, it is not possible to load third-party modules in the template configuration file at this time.
-
-e.g. template `index.js`:
-
-```javascript
-const chalk = require('chalk')
-// => Cannot find module 'chalk'
-```
-
-The reason why we don't install template dependencies automatically is to ensure that the templates are simple and take less space.
-
-To solve this problem, you can also host `node_modules` to template repository, these modules will work properly.
-
-But I don't recommend it because it's extremely inefficient.
-
-I personally prefer to modify `index.js` module paths to sharing the [dependencies of caz](https://npm.im/caz).
-
-e.g. template `index.js`:
-
-```javascript
-// Sharing the dependencies of caz
-// Make sure the following statement is executed before all code
-module.paths = require.main.paths
-
-const chalk = require('chalk')
-// => require chalk module from caz dependencies
-```
+> ## Dependencies
+>
+> Because the template does not automatically install its own dependencies before it works, it is not possible to load third-party modules in the template configuration file at this time.
+>
+> e.g. template `index.js`:
+>
+> ```javascript
+> const chalk = require('chalk')
+> // => Cannot find module 'chalk'
+> ```
+>
+> The reason why we don't install template dependencies automatically is to ensure that the templates are simple and take less space.
+>
+> To solve this problem, you can also host `node_modules` to template repository, these modules will work properly.
+>
+> But I don't recommend it because it's extremely inefficient.
+>
+> I personally prefer to modify `index.js` module paths to sharing the [dependencies of caz](https://npm.im/caz).
+>
+> e.g. template `index.js`:
+>
+> ```javascript
+> // Sharing the dependencies of caz
+> // Make sure the following statement is executed before all code
+> module.paths = require.main.paths
+>
+> const chalk = require('chalk')
+> // => require chalk module from caz dependencies
+> ```
 
 ## Type Annotation
 
