@@ -22,9 +22,10 @@ test('unit:init:error', async () => {
 test('unit:init:default', async () => {
   const log = jest.spyOn(console, 'log').mockImplementation()
   const clear = jest.spyOn(console, 'clear').mockImplementation()
+  const downloadtmpdir = await mktmpdir()
   const download = jest.spyOn(http, 'download').mockImplementation(async () => {
     const file = fixture('minima.zip')
-    const target = path.join(await mktmpdir(), 'minima.zip')
+    const target = path.join(downloadtmpdir, 'minima.zip')
     await fs.promises.copyFile(file, target)
     return target
   })
@@ -37,8 +38,8 @@ test('unit:init:default', async () => {
   const contents = await fs.promises.readFile('minima-app/caz.txt', 'utf8')
   expect(contents.trim()).toBe('hey caz.')
   process.chdir(original)
-  await destory(temp)
   log.mockRestore()
   clear.mockRestore()
   download.mockRestore()
+  await destory(temp, downloadtmpdir)
 })

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { context, mktmpdir } from '../../test/helpers'
+import { context, destory, mktmpdir } from '../../test/helpers'
 import emit from './emit'
 
 test('unit:init:emit:normal', async () => {
@@ -17,7 +17,7 @@ test('unit:init:emit:normal', async () => {
   expect(hello).toBe('hello')
   const bar = await fs.promises.readFile(path.join(temp, 'foo/bar.txt'), 'utf8')
   expect(bar).toBe('bar')
-  await fs.promises.rmdir(temp, { recursive: true })
+  await destory(temp)
 })
 
 test('unit:init:emit:hook', async () => {

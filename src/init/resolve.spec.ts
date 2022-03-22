@@ -6,14 +6,16 @@ import resolve, { getTemplatePath, getTemplateUrl } from './resolve'
 
 let log: jest.SpyInstance
 let download: jest.SpyInstance
+let tmpdir: string | undefined
 
 const src = path.join(config.paths.cache, 'f8327697301af2fa')
 
 beforeEach(async () => {
   log = jest.spyOn(console, 'log').mockImplementation()
   download = jest.spyOn(http, 'download').mockImplementation(async () => {
+    tmpdir = await mktmpdir()
     const file = fixture('archive.zip')
-    const target = path.join(await mktmpdir(), 'archive.zip')
+    const target = path.join(tmpdir, 'archive.zip')
     await fs.promises.copyFile(file, target)
     return target
   })
@@ -22,6 +24,10 @@ beforeEach(async () => {
 afterEach(async () => {
   log.mockRestore()
   download.mockRestore()
+  if (tmpdir != null) {
+    await destory(tmpdir)
+    tmpdir = undefined
+  }
 })
 
 test('unit:init:resolve:getTemplatePath', async () => {

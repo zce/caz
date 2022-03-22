@@ -212,6 +212,8 @@ test('unit:core:file:extract:error', async () => {
   } catch (e) {
     expect((e as Error).message).toBe('Invalid or unsupported zip format. No END header found')
   }
+
+  await destory(temp)
 })
 
 test('unit:core:file:extract:strip', async () => {
