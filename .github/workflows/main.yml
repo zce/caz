@@ -13,10 +13,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm i pnpm yarn -g
       - run: npm install
       - run: npm run lint
       - run: npm run build
-      - run: npm i pnpm yarn -g
       - run: npm run test
       - run: npx codecov
 
