@@ -10,6 +10,7 @@ test('unit:exports', async () => {
   expect(typeof caz.file).toBe('object')
   expect(typeof caz.http).toBe('object')
   expect(typeof caz.config).toBe('object')
+  expect(typeof caz.exec).toBe('function')
   expect(typeof caz.Ware).toBe('function')
   expect(typeof caz.list).toBe('function')
   expect(typeof caz.default).toBe('function')

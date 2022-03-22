@@ -1,3 +1,5 @@
+import ora from 'ora'
+import { exec } from './core'
 import { Context } from './types'
 
 /**
@@ -13,6 +15,15 @@ export default async (ctx: Context): Promise<void> => {
   ctx.config.name = ctx.template
 
   // Automatic install template dependencies.
+  const spinner = ora('Installing template dependencies...').start()
+  try {
+    /* istanbul ignore next */
+    const cmd = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+    await exec(cmd, ['install', '--production'], { cwd: ctx.src })
+    spinner.succeed('Installing template dependencies complete.')
+  } catch {
+    spinner.fail('Install template dependencies failed.')
+  }
 
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires

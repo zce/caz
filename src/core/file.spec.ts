@@ -107,13 +107,13 @@ test('unit:core:file:read', async () => {
 })
 
 test('unit:core:file:write', async () => {
-  const dirname = path.join(__dirname, '../.temp')
-  const filename = path.join(dirname, 'temp.txt')
+  const temp = await mktmpdir()
+  const filename = path.join(temp, 'temp.txt')
   await file.write(filename, 'hello zce')
   const contents = await fs.promises.readFile(filename, 'utf8')
   expect(contents).toBe('hello zce')
 
-  await destory(dirname)
+  await destory(temp)
 })
 
 test('unit:core:file:isBinary', async () => {
