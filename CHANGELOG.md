@@ -4,6 +4,7 @@
 
 - zero dependency by tsup
 - node v14.14.0 required
+- auto install template dependencies
 - support native esm
 - upgrade all dependencies
 - refactor test
