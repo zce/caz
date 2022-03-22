@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import prompts from 'prompts'
-import { context, destory, mktmpdir } from '../../test/helpers'
+import { context, destory, mktmpdir } from '../test/helpers'
 import confirm from './confirm'
 
 const cwd = process.cwd()
@@ -16,7 +16,7 @@ afterAll(async () => {
   await destory(temp)
 })
 
-test('unit:init:confirm:not-exists', async () => {
+test('unit:confirm:not-exists', async () => {
   const ctx = context({
     project: 'not-exists'
   })
@@ -24,7 +24,7 @@ test('unit:init:confirm:not-exists', async () => {
   expect(ctx.dest).toBe(path.resolve('not-exists'))
 })
 
-test('unit:init:confirm:force', async () => {
+test('unit:confirm:force', async () => {
   await fs.promises.writeFile('force', '')
   const ctx = context({
     project: 'force',
@@ -34,7 +34,7 @@ test('unit:init:confirm:force', async () => {
   expect(ctx.dest).toBe(path.resolve('force'))
 })
 
-test('unit:init:confirm:file', async () => {
+test('unit:confirm:file', async () => {
   await fs.promises.writeFile('file', '')
   const ctx = context({
     project: 'file'
@@ -47,7 +47,7 @@ test('unit:init:confirm:file', async () => {
   }
 })
 
-test('unit:init:confirm:empty', async () => {
+test('unit:confirm:empty', async () => {
   await fs.promises.mkdir('empty')
   const ctx = context({
     project: 'empty'
@@ -56,7 +56,7 @@ test('unit:init:confirm:empty', async () => {
   expect(ctx.dest).toBe(path.resolve('empty'))
 })
 
-test('unit:init:confirm:sure', async () => {
+test('unit:confirm:sure', async () => {
   await fs.promises.mkdir('sure')
   await fs.promises.writeFile('sure/file', '')
   prompts.inject([false])
@@ -71,7 +71,7 @@ test('unit:init:confirm:sure', async () => {
   }
 })
 
-test('unit:init:confirm:sure-cwd', async () => {
+test('unit:confirm:sure-cwd', async () => {
   prompts.inject([false])
   await fs.promises.writeFile('file', '')
   const ctx = context({
@@ -85,7 +85,7 @@ test('unit:init:confirm:sure-cwd', async () => {
   }
 })
 
-test('unit:init:confirm:merge', async () => {
+test('unit:confirm:merge', async () => {
   await fs.promises.mkdir('merge')
   await fs.promises.writeFile('merge/file', '')
   prompts.inject([true, 'merge'])
@@ -97,7 +97,7 @@ test('unit:init:confirm:merge', async () => {
   expect(fs.existsSync('merge/file')).toBe(true)
 })
 
-test('unit:init:confirm:overwrite', async () => {
+test('unit:confirm:overwrite', async () => {
   await fs.promises.mkdir('overwrite')
   await fs.promises.writeFile('overwrite/file', '')
   prompts.inject([true, 'overwrite'])
@@ -109,7 +109,7 @@ test('unit:init:confirm:overwrite', async () => {
   expect(fs.existsSync('overwrite')).toBe(false)
 })
 
-test('unit:init:confirm:cancel', async () => {
+test('unit:confirm:cancel', async () => {
   await fs.promises.mkdir('cancel')
   await fs.promises.writeFile('cancel/file', '')
   prompts.inject([true, 'cancel'])

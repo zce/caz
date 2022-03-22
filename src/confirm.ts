@@ -1,6 +1,6 @@
 import path from 'path'
 import prompts from 'prompts'
-import { file } from '../core'
+import { file } from './core'
 import { Context } from './types'
 
 /**

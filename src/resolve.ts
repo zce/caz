@@ -1,7 +1,7 @@
 import path from 'path'
 import crypto from 'crypto'
 import ora from 'ora'
-import { file, http, config } from '../core'
+import { file, http, config } from './core'
 import { Context } from './types'
 
 /**

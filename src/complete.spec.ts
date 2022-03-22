@@ -1,4 +1,4 @@
-import { context } from '../../test/helpers'
+import { context } from '../test/helpers'
 import complete from './complete'
 
 let log: jest.SpyInstance
@@ -11,7 +11,7 @@ afterEach(async () => {
   log.mockRestore()
 })
 
-test('unit:init:complete:fallback', async () => {
+test('unit:complete:fallback', async () => {
   const ctx = context({
     template: 'fallback',
     project: 'fallback-app',
@@ -29,20 +29,20 @@ test('unit:init:complete:fallback', async () => {
   expect(log.mock.calls[4][0]).toBe('\nHappy hacking :)')
 })
 
-test('unit:init:complete:string', async () => {
+test('unit:complete:string', async () => {
   const ctx = context({}, { complete: 'completed' })
   await complete(ctx)
   expect(log.mock.calls[0][0]).toBe('completed')
 })
 
-test('unit:init:complete:callback', async () => {
+test('unit:complete:callback', async () => {
   const callback = jest.fn()
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)
 })
 
-test('unit:init:complete:callback-return', async () => {
+test('unit:complete:callback-return', async () => {
   const callback = jest.fn().mockReturnValue('completed')
   const ctx = context({}, { complete: callback })
   await complete(ctx)
@@ -50,7 +50,7 @@ test('unit:init:complete:callback-return', async () => {
   expect(log.mock.calls[0][0]).toBe('completed')
 })
 
-test('unit:init:complete:callback-promise', async () => {
+test('unit:complete:callback-promise', async () => {
   const callback = jest.fn().mockReturnValue(Promise.resolve('completed'))
   const ctx = context({}, { complete: callback })
   await complete(ctx)

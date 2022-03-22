@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 import cac from 'cac'
-import init from './init'
-import list from './list'
+import main, { list } from '.'
 import { name, version } from '../package.json'
 
 const cli = cac(name)
@@ -17,7 +16,7 @@ cli
   .example(`  $ ${name} <template> [project]`)
   .example('  # with a custom github repo')
   .example(`  $ ${name} <owner>/<repo> [project]`)
-  .action(init)
+  .action(main)
 
 cli
   .command('list [owner]', 'Show all available templates')

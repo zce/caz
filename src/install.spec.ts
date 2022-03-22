@@ -1,34 +1,21 @@
 import fs from 'fs'
 import path from 'path'
-import { context, destory, exists, mktmpdir } from '../../test/helpers'
+import { context, destory, exists, mktmpdir } from '../test/helpers'
 import install from './install'
 
-// let stdoutWrite: jest.SpyInstance
-// let stderrWrite: jest.SpyInstance
-
-// beforeAll(async () => {
-//   stdoutWrite = jest.spyOn(process.stdout, 'write').mockImplementation()
-//   stderrWrite = jest.spyOn(process.stderr, 'write').mockImplementation()
-// })
-
-// afterAll(async () => {
-//   stdoutWrite.mockRestore()
-//   stderrWrite.mockRestore()
-// })
-
-test('unit:init:init:false', async () => {
+test('unit:install:false', async () => {
   const ctx = context({}, { install: false })
   const result = await install(ctx)
   expect(result).toBe(undefined)
 })
 
-test('unit:init:init:null', async () => {
+test('unit:install:null', async () => {
   const ctx = context()
   const result = await install(ctx)
   expect(result).toBe(undefined)
 })
 
-test('unit:init:init:default', async () => {
+test('unit:install:default', async () => {
   const temp = await mktmpdir()
   const pkg = { dependencies: { caz: '0.0.0' } }
   await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
@@ -45,7 +32,7 @@ test('unit:init:init:default', async () => {
 })
 
 // required yarn env
-test('unit:init:init:manual:yarn', async () => {
+test('unit:install:manual:yarn', async () => {
   const temp = await mktmpdir()
   const pkg = { dependencies: { caz: '0.0.0' } }
   await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
@@ -59,7 +46,7 @@ test('unit:init:init:manual:yarn', async () => {
 })
 
 // required pnpm env
-test('unit:init:init:manual:pnpm', async () => {
+test('unit:install:manual:pnpm', async () => {
   const temp = await mktmpdir()
   const pkg = { dependencies: { caz: '0.0.0' } }
   await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
@@ -72,7 +59,7 @@ test('unit:init:init:manual:pnpm', async () => {
   await destory(temp)
 })
 
-test('unit:init:init:manual:error', async () => {
+test('unit:install:manual:error', async () => {
   const temp = await mktmpdir()
   await fs.promises.writeFile(path.join(temp, 'package.json'), 'error package.json')
   const ctx = context({ dest: temp }, { install: 'npm' })

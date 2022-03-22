@@ -1,10 +1,10 @@
 import path from 'path'
 import prompts, { PromptObject } from 'prompts'
-import { config } from '../../src'
-import { context } from '../../test/helpers'
+import { config } from './core'
+import { context } from '../test/helpers'
 import inquire, { validater, processor } from './inquire'
 
-test('unit:init:inquire:validater:name', async () => {
+test('unit:inquire:validater:name', async () => {
   expect(validater.name('foo')).toBe(true)
   expect(validater.name('foo-bar')).toBe(true)
   expect(validater.name('foo_bar')).toBe(true)
@@ -14,26 +14,26 @@ test('unit:init:inquire:validater:name', async () => {
   expect(validater.name('Caz')).toBe('name can no longer contain capital letters')
 })
 
-test('unit:init:inquire:validater:version', async () => {
+test('unit:inquire:validater:version', async () => {
   expect(validater.version('0.1.0')).toBe(true)
   expect(validater.version('0.1')).toBe('The `0.1` is not a semantic version.')
   expect(validater.version('0')).toBe('The `0` is not a semantic version.')
 })
 
-test('unit:init:inquire:validater:email', async () => {
+test('unit:inquire:validater:email', async () => {
   expect(validater.email('w@zce.me')).toBe(true)
   expect(validater.email('foo')).toBe('The `foo` is not a email address.')
   expect(validater.email('w@zce')).toBe('The `w@zce` is not a email address.')
 })
 
-test('unit:init:inquire:validater:url', async () => {
+test('unit:inquire:validater:url', async () => {
   expect(validater.url('http://zce.me')).toBe(true)
   expect(validater.url('https://zce.me')).toBe(true)
   expect(validater.url('foo')).toBe('The `foo` is not a url address.')
   expect(validater.url('ftp://zce.me')).toBe('The `ftp://zce.me` is not a url address.')
 })
 
-test('unit:init:inquire:processor:name', async () => {
+test('unit:inquire:processor:name', async () => {
   const ctx = context({ dest: __dirname })
   const fn = processor(ctx)
 
@@ -53,7 +53,7 @@ test('unit:init:inquire:processor:name', async () => {
   expect(prompt3.validate).toBe(validate3)
 })
 
-test('unit:init:inquire:processor:version', async () => {
+test('unit:inquire:processor:version', async () => {
   const ctx = context({})
   const fn = processor(ctx)
 
@@ -86,7 +86,7 @@ test('unit:init:inquire:processor:version', async () => {
   mockConfig.mockRestore()
 })
 
-test('unit:init:inquire:processor:author', async () => {
+test('unit:inquire:processor:author', async () => {
   const ctx = context({})
   const fn = processor(ctx)
 
@@ -125,7 +125,7 @@ test('unit:init:inquire:processor:author', async () => {
   mockConfig.mockRestore()
 })
 
-test('unit:init:inquire:processor:email', async () => {
+test('unit:inquire:processor:email', async () => {
   const ctx = context({})
   const fn = processor(ctx)
 
@@ -170,7 +170,7 @@ test('unit:init:inquire:processor:email', async () => {
   mockConfig.mockRestore()
 })
 
-test('unit:init:inquire:processor:url', async () => {
+test('unit:inquire:processor:url', async () => {
   const ctx = context({})
   const fn = processor(ctx)
 
@@ -215,7 +215,7 @@ test('unit:init:inquire:processor:url', async () => {
   mockConfig.mockRestore()
 })
 
-test('unit:init:inquire:default', async () => {
+test('unit:inquire:default', async () => {
   const clear = jest.spyOn(console, 'clear').mockImplementation()
   const ctx = context({ dest: __dirname })
   prompts.inject(['foo'])
@@ -226,7 +226,7 @@ test('unit:init:inquire:default', async () => {
   clear.mockRestore()
 })
 
-test('unit:init:inquire:custom', async () => {
+test('unit:inquire:custom', async () => {
   const clear = jest.spyOn(console, 'clear').mockImplementation()
   const ctx = context({}, {
     prompts: [
@@ -241,7 +241,7 @@ test('unit:init:inquire:custom', async () => {
   clear.mockRestore()
 })
 
-test('unit:init:inquire:override', async () => {
+test('unit:inquire:override', async () => {
   const clear = jest.spyOn(console, 'clear').mockImplementation()
   const ctx = context({}, {
     prompts: [

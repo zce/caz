@@ -1,8 +1,8 @@
 import fs from 'fs'
-import { context, fixture } from '../../test/helpers'
+import { context, fixture } from '../test/helpers'
 import render from './render'
 
-test('unit:init:render:normal', async () => {
+test('unit:render:normal', async () => {
   const template = `
     <%= title %><% if (enable) { %>
     hahaha
@@ -35,7 +35,7 @@ test('unit:init:render:normal', async () => {
   expect(ctx.files[3].contents).toBe(zip)
 })
 
-test('unit:init:render:metadata', async () => {
+test('unit:render:metadata', async () => {
   const now = Date.now()
 
   const ctx = context({
@@ -51,7 +51,7 @@ test('unit:init:render:metadata', async () => {
   expect(ctx.files[0].contents.toString()).toBe(now.toString())
 })
 
-test('unit:init:render:helpers', async () => {
+test('unit:render:helpers', async () => {
   const ctx = context({
     files: [
       { path: 'a.txt', contents: Buffer.from('<%= upper(\'caz\') %>') }

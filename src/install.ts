@@ -1,4 +1,4 @@
-import { exec } from '../core'
+import { exec } from './core'
 import { Context } from './types'
 
 /**

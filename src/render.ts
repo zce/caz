@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { file } from '../core'
+import { file } from './core'
 import { Context } from './types'
 
 /**

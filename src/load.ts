@@ -4,6 +4,7 @@ import { Context } from './types'
  * Load template config.
  * @todo
  * - Adapt to any repository?
+ * - Automatic installation dependency.
  * - Template dependencies not found.
  * - Check template is available.
  */

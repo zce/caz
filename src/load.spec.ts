@@ -1,7 +1,7 @@
-import { context, fixture } from '../../test/helpers'
+import { context, fixture } from '../test/helpers'
 import load from './load'
 
-test('unit:init:load:normal', async () => {
+test('unit:load:normal', async () => {
   const ctx = context({
     src: fixture('features')
   })
@@ -21,7 +21,7 @@ test('unit:init:load:normal', async () => {
   expect(typeof ctx.config.complete).toBe('function')
 })
 
-test('unit:init:load:default', async () => {
+test('unit:load:default', async () => {
   const ctx = context({
     template: 'fake-load',
     src: fixture('minima')
@@ -30,7 +30,7 @@ test('unit:init:load:default', async () => {
   expect(ctx.config.name).toBe('fake-load')
 })
 
-test('unit:init:load:error', async () => {
+test('unit:load:error', async () => {
   const ctx = context({
     src: fixture('error')
   })

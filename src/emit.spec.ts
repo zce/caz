@@ -1,9 +1,9 @@
 import fs from 'fs'
 import path from 'path'
-import { context, destory, mktmpdir } from '../../test/helpers'
+import { context, destory, mktmpdir } from '../test/helpers'
 import emit from './emit'
 
-test('unit:init:emit:normal', async () => {
+test('unit:emit:normal', async () => {
   const temp = await mktmpdir()
   const ctx = context({
     dest: temp,
@@ -20,7 +20,7 @@ test('unit:init:emit:normal', async () => {
   await destory(temp)
 })
 
-test('unit:init:emit:hook', async () => {
+test('unit:emit:hook', async () => {
   const callback = jest.fn()
   const ctx = context({}, { emit: callback })
   await emit(ctx)

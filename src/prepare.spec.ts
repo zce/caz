@@ -1,9 +1,9 @@
-import { context, fixture } from '../../test/helpers'
+import { context, fixture } from '../test/helpers'
 import prepare from './prepare'
 
 const src = fixture('features')
 
-test('unit:init:prepare:default', async () => {
+test('unit:prepare:default', async () => {
   const ctx = context({ src })
   await prepare(ctx)
   expect(ctx.files).toHaveLength(6)
@@ -16,7 +16,7 @@ test('unit:init:prepare:default', async () => {
   expect(names).toContain('src/index.ts')
 })
 
-test('unit:init:prepare:custom', async () => {
+test('unit:prepare:custom', async () => {
   const ctx = context({
     src,
     answers: {
@@ -40,7 +40,7 @@ test('unit:init:prepare:custom', async () => {
   expect(names).toContain('src/index.ts')
 })
 
-test('unit:init:prepare:hook', async () => {
+test('unit:prepare:hook', async () => {
   const callback = jest.fn()
   const ctx = context({}, { prepare: callback })
   await prepare(ctx)

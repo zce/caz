@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { file, http, config } from '../core'
-import { context, exists, destory, fixture, mktmpdir } from '../../test/helpers'
+import { file, http, config } from './core'
+import { context, exists, destory, fixture, mktmpdir } from '../test/helpers'
 import resolve, { getTemplatePath, getTemplateUrl } from './resolve'
 
 let log: jest.SpyInstance
@@ -30,7 +30,7 @@ afterEach(async () => {
   }
 })
 
-test('unit:init:resolve:getTemplatePath', async () => {
+test('unit:resolve:getTemplatePath', async () => {
   const notdir = await getTemplatePath('caz-faker')
   expect(notdir).toBe(false)
 
@@ -50,7 +50,7 @@ test('unit:init:resolve:getTemplatePath', async () => {
   }
 })
 
-test('unit:init:resolve:getTemplateUrl', async () => {
+test('unit:resolve:getTemplateUrl', async () => {
   const url1 = await getTemplateUrl('tpl1')
   expect(url1).toBe('https://github.com/caz-templates/tpl1/archive/refs/heads/master.zip')
 
@@ -73,7 +73,7 @@ test('unit:init:resolve:getTemplateUrl', async () => {
   expect(url7).toBe('https://github.com/caz-templates/tpl7/archive/refs/heads/topic/xyz.zip')
 })
 
-test('unit:init:resolve:local-relative', async () => {
+test('unit:resolve:local-relative', async () => {
   const ctx = context({ template: './caz-faker' })
   try {
     await resolve(ctx)
@@ -82,13 +82,13 @@ test('unit:init:resolve:local-relative', async () => {
   }
 })
 
-test('unit:init:resolve:local-absolute', async () => {
+test('unit:resolve:local-absolute', async () => {
   const ctx = context({ template: __dirname })
   await resolve(ctx)
   expect(ctx.src).toBe(__dirname)
 })
 
-test('unit:init:resolve:local-tildify', async () => {
+test('unit:resolve:local-tildify', async () => {
   const ctx = context({ template: '~/caz-faker' })
   try {
     await resolve(ctx)
@@ -97,7 +97,7 @@ test('unit:init:resolve:local-tildify', async () => {
   }
 })
 
-test('unit:init:resolve:fetch-remote', async () => {
+test('unit:resolve:fetch-remote', async () => {
   await fs.promises.mkdir(src, { recursive: true })
 
   const ctx = context({ template: 'minima' })
@@ -108,7 +108,7 @@ test('unit:init:resolve:fetch-remote', async () => {
   expect(await exists(path.join(src, 'README.md'))).toBe(true)
 })
 
-test('unit:init:resolve:fetch-cache-success', async () => {
+test('unit:resolve:fetch-cache-success', async () => {
   await fs.promises.mkdir(src, { recursive: true })
 
   const ctx = context({ template: 'minima', options: { offline: true } })
@@ -116,7 +116,7 @@ test('unit:init:resolve:fetch-cache-success', async () => {
   expect(log.mock.calls[0][0]).toBe(`Using cached template: \`${file.tildify(src)}\`.`)
 })
 
-test('unit:init:resolve:fetch-cache-failed', async () => {
+test('unit:resolve:fetch-cache-failed', async () => {
   await destory(src)
 
   const ctx = context({ template: 'minima', options: { offline: true } })
@@ -128,7 +128,7 @@ test('unit:init:resolve:fetch-cache-failed', async () => {
   expect(await exists(path.join(src, 'README.md'))).toBe(true)
 })
 
-test('unit:init:resolve:fetch-error', async () => {
+test('unit:resolve:fetch-error', async () => {
   download.mockImplementation(async () => {
     throw new Error('download error')
   })

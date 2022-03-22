@@ -5,11 +5,11 @@ import { Context, Template } from '../src'
 
 /**
  * Get a fixture file path.
- * @param file relative path
+ * @param target relative path
  * @returns absolute path
  */
-export const fixture = (file: string): string => {
-  return path.join(__dirname, 'fixtures', file)
+export const fixture = (target: string): string => {
+  return path.join(__dirname, 'fixtures', target)
 }
 
 /**

@@ -1,4 +1,4 @@
-import { exec, config } from '../core'
+import { exec, config } from './core'
 import { Context } from './types'
 
 /**

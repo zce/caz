@@ -1,7 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
-import { context, destory, exists, mktmpdir } from '../../test/helpers'
+import { context, destory, exists, mktmpdir } from '../test/helpers'
 import init from './init'
 
 const gitconfig = path.join(os.homedir(), '.gitconfig')
@@ -18,19 +18,19 @@ afterAll(async () => {
   fs.unlinkSync(gitconfig)
 })
 
-test('unit:init:init:null', async () => {
+test('unit:init:null', async () => {
   const ctx = context()
   const result = await init(ctx)
   expect(result).toBe(undefined)
 })
 
-test('unit:init:init:false', async () => {
+test('unit:init:false', async () => {
   const ctx = context({}, { init: false })
   const result = await init(ctx)
   expect(result).toBe(undefined)
 })
 
-test('unit:init:init:default', async () => {
+test('unit:init:default', async () => {
   const temp = await mktmpdir()
   await fs.promises.writeFile(path.join(temp, 'caz.txt'), 'hello')
   const ctx = context({
@@ -47,7 +47,7 @@ test('unit:init:init:default', async () => {
   await destory(temp)
 })
 
-test('unit:init:init:manual', async () => {
+test('unit:init:manual', async () => {
   const temp = await mktmpdir()
   await fs.promises.writeFile(path.join(temp, 'caz.txt'), 'hello')
   const ctx = context({ dest: temp }, { init: true })
@@ -61,7 +61,7 @@ test('unit:init:init:manual', async () => {
   await destory(temp)
 })
 
-test('unit:init:init:error', async () => {
+test('unit:init:error', async () => {
   const temp = await mktmpdir()
   const ctx = context({ dest: temp }, { init: true })
   expect.hasAssertions()

@@ -1,5 +1,5 @@
 import path from 'path'
-import { file } from '../core'
+import { file } from './core'
 import { Context } from './types'
 
 /**

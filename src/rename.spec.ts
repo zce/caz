@@ -1,7 +1,7 @@
-import { context } from '../../test/helpers'
+import { context } from '../test/helpers'
 import rename from './rename'
 
-test('unit:init:rename:normal', async () => {
+test('unit:rename:normal', async () => {
   const ctx = context({
     answers: { foo: 'caz' },
     files: [
