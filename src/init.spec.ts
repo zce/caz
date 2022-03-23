@@ -1,22 +1,7 @@
-import os from 'os'
 import fs from 'fs'
 import path from 'path'
 import { context, destory, exists, mktmpdir } from '../test/helpers'
 import init from './init'
-
-const gitconfig = path.join(os.homedir(), '.gitconfig')
-let autoGitConfig = false
-
-beforeAll(async () => {
-  if (await exists(gitconfig)) return
-  fs.writeFileSync(gitconfig, '[user]\n  name = bot\n  email = bot@zce.me')
-  autoGitConfig = true
-})
-
-afterAll(async () => {
-  if (!autoGitConfig) return
-  fs.unlinkSync(gitconfig)
-})
 
 test('unit:init:null', async () => {
   const ctx = context()
