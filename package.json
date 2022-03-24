@@ -41,6 +41,20 @@
     "test": "jest --coverage",
     "prepare": "husky install .github/husky"
   },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/cli.ts"
+    ],
+    "clean": true,
+    "minify": true,
+    "splitting": true,
+    "dts": {
+      "resolve": true,
+      "entry": "src/index.ts",
+      "banner": "/// <reference path=\"../types.d.ts\" />"
+    }
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -61,6 +75,11 @@
     },
     "transformIgnorePatterns": [
       "node_modules/(?!(node-fetch|fetch-blob|formdata-polyfill|data-uri-to-buffer|env-paths|ora|cli-cursor|restore-cursor|chalk|log-symbols|is-unicode-supported|is-interactive|strip-ansi|ansi-regex))"
+    ]
+  },
+  "renovate": {
+    "extends": [
+      "zce"
     ]
   },
   "devDependencies": {
@@ -97,23 +116,5 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "tag": "next"
-  },
-  "renovate": {
-    "extends": [
-      "zce"
-    ]
-  },
-  "tsup": {
-    "entry": [
-      "src/index.ts",
-      "src/cli.ts"
-    ],
-    "clean": true,
-    "minify": true,
-    "splitting": true,
-    "dts": {
-      "resolve": true,
-      "entry": "src/index.ts"
-    }
   }
 }
