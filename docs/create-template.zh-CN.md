@@ -1,54 +1,54 @@
-# Writing Custom Templates from Scratch
+# 从头开始编写自定义模板
 
-**English** | [简体中文](create-template.zh-CN.md)
+**简体中文** | [English](create-template.md)
 
-In reading this section, you'll learn how to create and distribute your own template.
+通过阅读这部分，你将学习如何创建和发布你自己的 CAZ 模版。
 
-## Template structure
+## 模板结构
 
 ```
 └── my-template
-    ├── template ··················· Template source files directory (Required, Can be configured with other names)
-    │   ├── lib ···················· Any directory (Recurse all subdirectories)
-    │   │   ├── {name}.js ·········· Any file name with interpolate (Auto rename by answers)
-    │   │   └── logo.png ··········· Any file without interpolate (Auto skip binary file)
-    │   └── package.json ··········· Any file contents with interpolate (Auto render interpolate by answers)
-    ├── index.js ··················· Entry point (Optional, Template configuration file)
-    ├── package.json ··············· Package info (Optional)
-    └── README.md ·················· README (Optional)
+    ├── template ··················· 模板源文件目录（必须的，但可以配置为其他名称）
+    │   ├── lib ···················· 任何文件夹（可以递归包含任意层级的子目录）
+    │   │   ├── {name}.js ·········· 文件名包含插值表达式（自动替换插值重命名）
+    │   │   └── logo.png ··········· 其他文件（二进制文件不经过加工，自动拷贝输出）
+    │   └── package.json ··········· 文件内容包含插值表达式（自动经过模板引擎加工）
+    ├── index.js ··················· 入口文件（可选的，作为模板配置文件）
+    ├── package.json ··············· 模板包信息文件（可选的）
+    └── README.md ·················· 模板自述文件（可选的）
 ```
 
-## Generate a template from a template
+## 使用模板创建一个自定义模板
 
-We built a [template](https://github.com/caz-templates/template) to help users get started with their own template.
+我们开发了一个 [template](https://github.com/caz-templates/template) 用于帮助用户快速创建自己的自定义模板。
 
 ```shell
 $ caz template my-template
 ```
 
-Feel free to use it to bootstrap your own template once you understand the below concepts.
+一旦你理解了以下的基本概念，就可以使用它来引导你创建自己的模板。
 
-## Configuration
+## 配置选项
 
-A template repo may have a configuration file for the template which can be either a `index.js` or `main` field defined in `package.json`.
+一个模板仓库可以有一个配置文件，这个配置文件可以是 `index.js` 或者是在 `package.json` 中 `main` 字段定义的文件。
 
-It must export an object:
+这个文件必须导出一个对象：
 
 ```javascript
 module.exports = {
-  // your config...
+  // 你的自定义配置...
 }
 ```
 
-Type: [Template](#template)
+对象类型：[Template](#template)
 
-The configuration file can contain the following fields:
+这个配置文件可以包含以下字段：
 
 ### name
 
-The name of the template.
+模板名称
 
-- Type: `string`
+- 类型：`string`
 
 ```javascript
 module.exports = {
@@ -58,9 +58,9 @@ module.exports = {
 
 ### version
 
-The version of the template.
+模板版本
 
-- Type: `string`
+- 类型：`string`
 
 ```javascript
 module.exports = {
@@ -70,10 +70,10 @@ module.exports = {
 
 ### source
 
-Template source files directory.
+模板源文件目录
 
-- Type: `string`
-- Default: `'template'`
+- 类型：`string`
+- 默认值：`'template'`
 
 ```javascript
 module.exports = {
@@ -83,9 +83,9 @@ module.exports = {
 
 ### metadata
 
-The metadata you can use in the template files.
+可以在模板文件中使用的预设元数据
 
-- Type: `Record<string, unknown>`
+- 类型：`Record<string, unknown>`
 
 ```javascript
 module.exports = {
@@ -96,7 +96,7 @@ module.exports = {
 }
 ```
 
-Upon metadata definition, they can be used in template files as follows:
+一旦定义了以上数据，可以在模板文件中使用以下方式：
 
 ```ejs
 <%= bio %>
@@ -107,10 +107,10 @@ Upon metadata definition, they can be used in template files as follows:
 
 ### prompts
 
-Interactive prompts, use [prompts](https://github.com/terkelg/prompts), please refer to [prompts docs](https://github.com/terkelg/prompts#-prompt-objects).
+交互式询问，使用 [prompts](https://github.com/terkelg/prompts)，请参考 [prompts 文档](https://github.com/terkelg/prompts#-prompt-objects)
 
-- Type: `PromptObject | PromptObject[]`
-- Default: `'{ name: 'name', type: 'text', message: 'Project name' }'`
+- 类型：`PromptObject | PromptObject[]`
+- 默认值：`'{ name: 'name', type: 'text', message: 'Project name' }'`
 
 ```javascript
 module.exports = {
@@ -122,22 +122,23 @@ module.exports = {
 }
 ```
 
-The following keys automatically assign initial values (from other config or system info):
+使用以下键名将自动分配初始值（来自其他配置或系统信息）：
 
-- `name` - destination path basename, fallback: `path.basename(dest)`
-- `version` - npm init config, fallback: `'0.1.0'`
-- `author` - npm or git name config
-- `email` - npm or git email config
-- `url` - npm or git url config
+- `name` - 目标文件夹名称，默认值：`path.basename(dest)`
+- `version` - npm 配置的版本号，默认值：`'0.1.0'`
+- `author` - npm 或 git 配置的作者
+- `email` - npm 或 git 配置的邮箱
+- `url` - npm 或 git 配置的网址
 
-The following keys automatically assign default validater:
+使用以下键名将自动指定默认验证器：
 
-- `name` - by [validate-npm-package-name](https://github.com/npm/validate-npm-package-name)
-- `version` - by [semver](https://github.com/npm/node-semver)
-- `email` - by RegExp `/[^\s]+@[^\s]+\.[^\s]+/`
-- `url` - by RegExp `/https?:\/\/[^\s]*/`
+- `name` - 使用 [validate-npm-package-name](https://github.com/npm/validate-npm-package-name)
+- `version` - 使用 [semver](https://github.com/npm/node-semver)
+- `email` - 使用正则 `/[^\s]+@[^\s]+\.[^\s]+/`
+- `url` - 使用正则 `/https?:\/\/[^\s]*/`
 
 Upon prompts answers, they can be used in template files as follows:
+经过上述问题询问，最后可以在模板文件中使用以下变量：
 
 ```ejs
 <%= name %>
@@ -153,9 +154,9 @@ Upon prompts answers, they can be used in template files as follows:
 
 ### filters
 
-Filter files that you want to output.
+过滤哪些文件你希望被输出
 
-- Type: `Record<string, (answers: Answers) => boolean>`
+- 类型：`Record<string, (answers: Answers) => boolean>`
 
 ```javascript
 module.exports = {
@@ -171,10 +172,10 @@ module.exports = {
 
 ### helpers
 
-Custom template engine helpers.
+自定义模板引擎的助手函数
 
-- Type: `Record<string, any>`
-- Default: `{ _: require('lodash') }`
+- 类型：`Record<string, any>`
+- 默认值：`{ _: require('lodash') }`
 
 ```javascript
 module.exports = {
@@ -184,7 +185,7 @@ module.exports = {
 }
 ```
 
-Upon registration, they can be used in template files as follows:
+一旦注册，你可以在模板中使用以下函数：
 
 ```ejs
 <%= upper('zce') %>
@@ -197,43 +198,43 @@ Upon registration, they can be used in template files as follows:
 
 ### install
 
-Auto install dependencies after generation.
+在生成文件完成过后自动安装依赖项
 
-- Type: `false | 'npm' | 'yarn' | 'pnpm'`
-- Default: According generated files contains `package.json`
+- 类型：`false | 'npm' | 'yarn' | 'pnpm'`
+- 默认值：根据所生成的文件中是否包含 `package.json` 文件决定
 
 ```javascript
 module.exports = {
-  // run `yarn install` after files emit.
+  // 生成文件后运行 `yarn install`
   install: 'yarn'
 }
 ```
 
 ### init
 
-Auto init git repository after generation.
+在生成文件完成过后自动初始化仓库
 
-- Type: `boolean`
-- Default: According generated files contains `.gitignore`
+- 类型：`boolean`
+- 默认值：根据所生成的文件中是否包含 `.gitignore` 文件决定
 
 ```javascript
 module.exports = {
-  // run `git init && git add && git commit` after files emit.
+  // 生成文件后运行 `git init && git add && git commit`
   init: true
 }
 ```
 
 ### setup
 
-Template setup hook, execute after template loaded & inquire completed.
+模板初始化钩子，在模板加载完成且问题询问完成后执行
 
-- Type: `(ctx: Context) => Promise<void>`
-- Ref: [Context](#context)
+- 类型：`(ctx: Context) => Promise<void>`
+- 引用：[Context](#context)
 
 ```javascript
 module.exports = {
   setup: async ctx => {
-    // You can get the following data in context
+    // 此时你可以在上下文中安全的访问以下成员
     const {
       template,
       project,
@@ -241,16 +242,16 @@ module.exports = {
       dest,
       src,
       config,
-      answers // inquire answers
+      answers // 用户回答
     } = ctx
     console.log('template setup', ctx)
   }
 }
 ```
 
-#### Examples:
+#### 示例：
 
-Package manager choose.
+选择包管理工具
 
 ```javascript
 module.exports = {
@@ -274,13 +275,13 @@ module.exports = {
     }
   ],
   setup: async ctx => {
-    // Execute install according to user's choice.
+    // 根据用户选择决定如何安装依赖
     ctx.config.install = ctx.answers.install && ctx.answers.pm
   }
 }
 ```
 
-Dynamic setting template files directory.
+动态设置模板源文件目录
 
 ```javascript
 module.exports = {
@@ -298,7 +299,7 @@ module.exports = {
     }
   ],
   setup: async ctx => {
-    // Dynamic setting template files directory.
+    // 动态设置模板源文件目录
     ctx.config.source = ctx.answers.features.includes('typescript')
       ? 'template/typescript'
       : 'template/javascript'
@@ -306,19 +307,20 @@ module.exports = {
 }
 ```
 
-Other settings, use your creativity as much as possible...
+其他设置，尽可能发挥你的创造力...
 
 ### prepare
 
 Template prepare hook, execute after template files prepare, before rename & render.
+模板准备完成钩子，在模板文件准备完成后、重命名和渲染之前执行
 
-- Type: `(ctx: Context) => Promise<void>`
-- Ref: [Context](#context)
+- 类型：`(ctx: Context) => Promise<void>`
+- 引用：[Context](#context)
 
 ```javascript
 module.exports = {
   prepare: async ctx => {
-    // You can get the following data in context
+    // 此时你可以在上下文中安全的访问以下成员
     const {
       template,
       project,
@@ -327,16 +329,16 @@ module.exports = {
       src,
       config,
       answers,
-      files // before rename & render
+      files // 尚未重命名和渲染的文件列表
     } = ctx
     console.log('template prepare', ctx)
   }
 }
 ```
 
-#### Examples:
+#### 示例：
 
-Add files to be generated dynamically.
+动态添加需要生成的文件
 
 ```javascript
 module.exports = {
@@ -352,14 +354,15 @@ module.exports = {
 ### emit
 
 Template emit hook, execute after all files emit to the destination.
+模板文件生成钩子，在所有文件生成到目标目录后执行
 
-- Type: `(ctx: Context) => Promise<void>`
-- Ref: [Context](#context)
+- 类型：`(ctx: Context) => Promise<void>`
+- 引用：[Context](#context)
 
 ```javascript
 module.exports = {
-    // You can get the following data in context
   emit: async ctx => {
+    // 此时你可以在上下文中安全的访问以下成员
     const {
       template,
       project,
@@ -368,7 +371,7 @@ module.exports = {
       src,
       config,
       answers,
-      files // after rename & render
+      files // 已经重命名和渲染的文件列表
     } = ctx
     console.log('template emit')
   }
@@ -377,13 +380,13 @@ module.exports = {
 
 ### complete
 
-Generate completed callback. if got a string, print it to the console.
+生成完成回调，如果设置为一个字符串，则将其打印到控制台
 
-- Type: `string` or `(ctx: Context) => string | Promise<void | string>`
-- Default: Log all generated files.
-- Ref: [Context](#context)
+- 类型：`string` or `(ctx: Context) => string | Promise<void | string>`
+- 默认值：打印全部生成的文件列表
+- 引用：[Context](#context)
 
-callback
+回掉函数
 
 ```javascript
 module.exports = {
@@ -394,7 +397,7 @@ module.exports = {
 }
 ```
 
-or string
+或者字符串
 
 ```javascript
 module.exports = {
@@ -402,9 +405,9 @@ module.exports = {
 }
 ```
 
-_For more examples, please refer to the [fixtures](../test/fixtures/features/index.js)._
+_更多示例，可以参考 [fixtures](../test/fixtures/features/index.js)。_
 
-## Core Types
+## 核心类型
 
 ### Context
 
@@ -535,13 +538,13 @@ export interface File {
 }
 ```
 
-## Dependencies
+## 依赖项
 
-Because the template will automatically install its production dependencies before it works, so you can normally use the third-party NPM module in the template configuration file.
+因为模板在工作前会自动安装生产依赖，所以你可以在模板配置文件中正常的使用第三方的 NPM 模块。
 
 e.g.
 
-Install `chalk` as production dependencies:
+将 `chalk` 模块作为生产依赖安装：
 
 ```shell
 $ npm install chalk --save
@@ -553,28 +556,28 @@ $ npm install chalk --save
 const chalk = require('chalk')
 ```
 
-> **NOTE:** Only production dependencies are automatically installed.
+> **注意：** 只有生产依赖才会被自动安装。
 
-## Type Annotation
+## 类型注解
 
-Install `caz` as devDependencies:
+将 `caz` 模块作为开发依赖安装：
 
 ```shell
 $ npm install caz --save-dev
 ```
 
-Then in your template configuration file:
+然后在你的模板配置文件中：
 
 ```javascript
 /** @type {import('caz').Template} */
 module.exports = {
-  // Have type hint and IntelliSense (VSCode)
+  // 拥有智能提示和类型感知（VSCode）
 }
 ```
 
-## Template Paraphrase
+## 模板转译
 
-If you want direct output template interpolate, like this:
+如果你想直接输出模板插值表达式字符，你可以这样：
 
 - `<%= '\<%= name %\>' %>` => `<%= name %>`
 - `<%= '${name}' %>` => `${name}`

@@ -7,17 +7,17 @@
     <a href="https://github.com/zce/caz/blob/master/LICENSE"><img src="https://img.shields.io/github/license/zce/caz" alt="License"></a>
     <a href="https://npm.im/caz"><img src="https://img.shields.io/npm/v/caz" alt="NPM Version"></a>
     <a href="https://npm.im/caz"><img src="https://img.shields.io/node/v/caz" alt="Node Version"></a>
-    <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen" alt="Code Style"></a>
     <br>
+    <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen" alt="Code Style"></a>
     <a href="https://npm.im/caz"><img src="https://img.shields.io/npm/dm/caz" alt="NPM Downloads"></a>
     <a href="https://packagephobia.com/result?p=caz"><img src="https://packagephobia.com/badge?p=caz" alt="Install Size"></a>
     <a href="https://github.com/zce/caz"><img src="https://img.shields.io/github/repo-size/zce/caz" alt="Repo size"></a>
-    <a href="https://david-dm.org/zce/caz"><img src="https://img.shields.io/david/zce/caz" alt="Dependencies Status"></a>
-    <a href="https://david-dm.org/zce/caz?type=dev"><img src="https://img.shields.io/david/dev/zce/caz" alt="DevDependencies Status"></a>
   </p>
 </div>
 
 <br>
+
+**English** | [简体中文](README.zh-CN.md)
 
 ## Introduction
 
@@ -58,11 +58,13 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
   - [Local Templates](#local-templates)
   - [Remote ZIP Templates](#remote-zip-templates)
   - [Offline Mode](#offline-mode)
+  - [Prompts Override](#prompts-override)
+  - [Debug Mode](#debug-mode)
   - [List Available Templates](#list-available-templates)
-  - [Official Templates](#official-templates)
+- [Official Templates](#official-templates)
 - [Advanced](#advanced)
-  - [Create Your Template](#create-your-template)
   - [Configuration](#configuration)
+  - [Create Your Template](#create-your-template)
   - [Create Your Scaffold](#create-your-scaffold)
 - [References](#references)
 - [Motivation](#motivation)
@@ -182,17 +184,21 @@ CAZ allows you to specify prompt response answers through cli parameters.
 $ caz minima my-project --name my-proj
 ```
 
+By running this command, you don't have to answer the next `name` prompts.
+
 ### Debug Mode
 
 ```shell
 $ caz nm my-project --debug
 ```
 
-`--debug` parameter will open the debug mode, In debug mode, once an exception occurs, the exception details will be automatically output. This is very helpful in finding errors in the template.
+`--debug` parameter will open the debug mode.
+
+In debug mode, once an exception occurs, the exception details will be automatically output. This is very helpful in finding errors in the template.
 
 ### List Available Templates
 
-Show all available templates
+Show all available templates:
 
 ```shell
 $ caz list [owner] [-j|--json] [-s|--short]
@@ -207,16 +213,17 @@ $ caz list [owner] [-j|--json] [-s|--short]
 - `-j, --json`: Output with json format
 - `-s, --short`: Output with short format
 
-### Official Templates
+## Official Templates
 
 Current available templates list:
 
 - [template](https://github.com/caz-templates/template) - for creating [caz](https://github.com/zce/caz) templates.
 - [nm](https://github.com/caz-templates/nm) - for creating [node](https://nodejs.org) modules.
-- [react](https://github.com/caz-templates/react) - for creating modern [react](https://reactjs.org) app.
-- [vue](https://github.com/caz-templates/vue) - for creating modern [vue.js](https://vuejs.org) app.
-- [vite](https://github.com/caz-templates/vite) - for creating vue.js app powered by [vite](https://github.com/vitejs/vite).
-- [electron](https://github.com/caz-templates/electron) - :construction: for creating [electron](https://electronjs.org) app.
+- [vercel](https://github.com/caz-templates/vercel) - for creating [vercel](https://vercel.com) apps.
+- [react](https://github.com/caz-templates/react) - for creating modern [react](https://reactjs.org) apps.
+- [vue](https://github.com/caz-templates/vue) - for creating modern [vue.js](https://vuejs.org) apps.
+- [vite](https://github.com/caz-templates/vite) - for creating vue.js apps powered by [vite](https://github.com/vitejs/vite).
+- [electron](https://github.com/caz-templates/electron) - :construction: for creating [electron](https://electronjs.org) apps.
 - [mp](https://github.com/caz-templates/mp) - :construction: for creating wechat [mini-programs](https://developers.weixin.qq.com/miniprogram/dev/framework).
 - [jekyll](https://github.com/caz-templates/jekyll) - :construction: for creating [jekyll](https://jekyllrb.com) site.
 - [x-pages](https://github.com/caz-templates/x-pages) - for creating [x-pages](https://github.com/zce/x-pages) static site.
@@ -225,26 +232,16 @@ Maybe more: https://github.com/caz-templates
 
 > You can also run `$ caz list` to see all available official templates in real time.
 
+**All templates are currently hosted on GitHub, Chinese users can [use the mirror](#mirror-for-chinese) on coding.net.**
+
 ## Advanced
-
-### Create Your Template
-
-```shell
-$ caz template my-template
-```
-
-The above command will pulls the template from [caz-templates/template](https://github.com/caz-templates/template), and help you create your own CAZ template.
-
-To create and distribute your own template, please refer to the [How to create template](docs/create-template.md).
-
-> Maybe fork an official template is also a good decision.
 
 ### Configuration
 
 CAZ will read the configuration file in `~/.cazrc`, default config:
 
 ```ini
-; template download registry,
+; template download registry
 ; {owner} & {name} & {branch} will eventually be replaced by the corresponding value.
 registry = https://github.com/{owner}/{name}/archive/{branch}.zip
 ; template offlicial organization name
@@ -270,6 +267,29 @@ $ caz nm my-project
 ```
 
 The above command will download & extract template from `https://gitlab.com/faker/nm/archive/main.zip`.
+
+#### Mirror for Chinese
+
+Due to network limitations, the template download may time out, you can consider using the mirror repository I configured on [coding.net](https://coding.net).
+
+`~/.cazrc`:
+
+```ini
+registry = https://zce.coding.net/p/{owner}/d/{name}/git/archive/{branch}
+official = caz
+```
+
+### Create Your Template
+
+```shell
+$ caz template my-template
+```
+
+The above command will pulls the template from [caz-templates/template](https://github.com/caz-templates/template), and help you create your own CAZ template.
+
+To create and distribute your own template, please refer to the [How to create template](docs/create-template.md).
+
+> Maybe fork an official template is also a good decision.
 
 ### Create Your Scaffold
 
@@ -324,8 +344,6 @@ This means that you can develop your own scaffolding module based on it.
 
 To create and distribute your own scaffolding tools, please refer to the [How to create scaffolding tools based on CAZ](docs/create-scaffold.md).
 
-<!-- _For more examples, please refer to the [example/usage.ts](example/usage.ts)._ -->
-
 ## References
 
 <!-- API Docs -->
@@ -337,12 +355,12 @@ Create new project from a template
 #### template
 
 - Type: `string`
-- Details: template name
+- Details: template name, it can also be a template folder path
 
 #### project
 
 - Type: `string`
-- Details: project name
+- Details: project name, it can also be a project folder path
 - Default: `'.'`
 
 #### options
@@ -353,20 +371,20 @@ Create new project from a template
 
 ##### force
 
-Type: `boolean`
-Details: overwrite if the target exists
-Default: `false`
+- Type: `boolean`
+- Details: overwrite if the target exists
+- Default: `false`
 
 ##### offline
 
-Type: `boolean`
-Details: try to use an offline template
-Default: `false`
+- Type: `boolean`
+- Details: try to use an offline template
+- Default: `false`
 
 ##### [key: string]
 
-Type: `any`
-Details: cli options to override prompts
+- Type: `any`
+- Details: cli options to override prompts
 
 ## Motivation
 
@@ -374,13 +392,11 @@ Details: cli options to override prompts
 
 Joking: I want to make wheels ;P
 
-The real reason is that I think I need a scaffolding tool that is more suitable for my personal productivity.
+The real reason is that I think I need a scaffolding tool that is more suitable for my personal productivity. The existing tools have more or less certain limitations because of their different starting points.
 
 Nothing else.
 
-<!-- TODO: Concepts / Recipes / Documentation -->
-
-## About
+## Concepts
 
 ### How It Works
 
@@ -390,22 +406,22 @@ Nothing else.
 
 #### Main Workflow
 
-The [core code](src/init/index.ts) is based on the middleware mechanism provided by [zce/mwa](https://github.com/zce/mwa).
+The [core code](src/index.ts) is based on the middleware mechanism provided by [zce/mwa](https://github.com/zce/mwa).
 
 The following middleware will be executed sequentially.
 
-1. [confirm](src/init/confirm.ts) - Confirm destination by [prompts](https://github.com/terkelg/prompts).
-2. [resolve](src/init/resolve.ts) - Resolve template from remote or local.
-3. [load](src/init/load.ts) - Load template config by require.
-4. [inquire](src/init/inquire.ts) - Inquire template prompts by [prompts](https://github.com/terkelg/prompts).
-5. [setup](src/init/setup.ts) - Apply template setup hook.
-6. [prepare](src/init/prepare.ts) - Prepare all template files.
-7. [rename](src/init/rename.ts) - Rename file if necessary.
-8. [render](src/init/render.ts) - Render file if template.
-9. [emit](src/init/emit.ts) - Emit files to destination.
-10. [install](src/init/install.ts) - Execute `npm | yarn | pnpm install` command.
-11. [init](src/init/init.ts) - Execute `git init && git add && git commit` command.
-12. [complete](src/init/complete.ts) - Apply template complete hook.
+1. [confirm](src/confirm.ts) - Confirm destination by [prompts](https://github.com/terkelg/prompts).
+2. [resolve](src/resolve.ts) - Resolve template from remote or local filesystem.
+3. [load](src/load.ts) - Install template dependencies, load template config by `require`.
+4. [inquire](src/inquire.ts) - Inquire template prompts by [prompts](https://github.com/terkelg/prompts).
+5. [setup](src/setup.ts) - Only apply template setup hook function.
+6. [prepare](src/prepare.ts) - Filter out unnecessary files and prepare all files to be generated.
+7. [rename](src/rename.ts) - Rename each file if the filename contains interpolations.
+8. [render](src/render.ts) - Render the contents of each file if template.
+9. [emit](src/emit.ts) - Emit files to destination.
+10. [install](src/install.ts) - Execute `npm | yarn | pnpm install` command if necessary.
+11. [init](src/init.ts) - Execute `git init && git add && git commit` command if necessary.
+12. [complete](src/complete.ts) - Only apply template complete hook function.
 
 ### Built With
 
