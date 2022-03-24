@@ -2,10 +2,11 @@
 
 node_modules
 
-/lib
+/dist
 
 /coverage
 /test/.temp
 
 package-lock.json
+pnpm-lock.yaml
 yarn.lock

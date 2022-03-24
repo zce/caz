@@ -1,13 +1,11 @@
 /* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
   "compilerOptions": {
-    "target": "ES2019", // require node >= 12
-    "module": "CommonJS",
-    "declaration": true,
-    "outDir": "lib",
-    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "pretty": true
-  },
-  "include": ["src", "types.d.ts"]
+    "allowJs": true,
+    "strict": true
+  }
 }

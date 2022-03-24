@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.0] - 2022-03-24
+
+- zero dependency by tsup
+- node v14.14.0 required
+- auto install template dependencies
+- support native esm
+- upgrade all dependencies
+- refactor test
+- chore: minify output dist
+- docs: chinese docs
+- fix: dts output
+
 ## [0.8.2] - 2022-01-20
 
 - fix: output types.d.ts
@@ -84,6 +96,7 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[1.0.0]: https://github.com/zce/caz/compare/v0.8.2...v1.0.0
 [0.8.2]: https://github.com/zce/caz/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/zce/caz/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/zce/caz/compare/v0.7.0...v0.8.0

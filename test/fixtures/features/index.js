@@ -1,11 +1,7 @@
 // full features template
-
-// !!! Sharing the dependencies of caz
-// Make sure the following statement is executed before all code
-module.paths = require.main.paths
+// @ts-check
 
 const path = require('path')
-const chalk = require('chalk')
 
 /** @type {import('../../../src').Template} */
 module.exports = {
@@ -95,16 +91,15 @@ module.exports = {
   },
   complete: async ctx => {
     console.clear()
-    console.log(chalk`Created a new project in {cyan ${ctx.project}} by the {blue ${ctx.template}} template.\n`)
+    console.log(`Created a new project in ${ctx.project} by the ${ctx.template} template.\n`)
     console.log('Getting Started:')
     if (ctx.dest !== process.cwd()) {
-      console.log(chalk`  $ {cyan cd ${path.relative(process.cwd(), ctx.dest)}}`)
+      console.log(`  $ cd ${path.relative(process.cwd(), ctx.dest)}`)
     }
     if (ctx.config.install === false) {
-      console.log(chalk`  $ {cyan npm install} {gray # or yarn}`)
+      console.log('  $ npm install # or yarn')
     }
-    console.log(chalk`  $ {cyan ${ctx.config.install ? ctx.config.install : 'npm'} test}`)
-    // console.log('Good luck :)')
+    console.log(`  $ ${ctx.config.install ? ctx.config.install : 'npm'} test`)
     console.log('\nHappy hacking :)\n')
   }
 }

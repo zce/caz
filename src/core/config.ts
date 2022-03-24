@@ -36,7 +36,7 @@ export default {
   },
   get paths () {
     // TODO: cache version
-    return envPaths(name, { suffix: undefined })
+    return envPaths(name, { suffix: '' })
   },
   ini: parseIni
 }

@@ -26,6 +26,8 @@ export const request = async (url: RequestInfo, init?: RequestInit): Promise<Res
  */
 export const download = async (url: string): Promise<string> => {
   const response = await request(url)
+  /* istanbul ignore if */
+  if (response.body == null) throw Error('Unexpected response: Response body is empty')
   // ensure temp dirname
   await fs.mkdir(config.paths.temp, { recursive: true })
   const filename = join(config.paths.temp, Date.now().toString() + '.tmp')
