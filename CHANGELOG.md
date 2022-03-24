@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0-alpha.1] - 2022-03-24
+
+- chore: minify output dist
+- docs: chinese docs
+
 ## [1.0.0-alpha.0] - 2022-03-22
 
 - zero dependency by tsup
@@ -93,6 +98,7 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[1.0.0-alpha.1]: https://github.com/zce/caz/compare/v1.0.0-alpha.0...v1.0.0-alpha.1
 [1.0.0-alpha.0]: https://github.com/zce/caz/compare/v0.8.2...v1.0.0-alpha.0
 [0.8.2]: https://github.com/zce/caz/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/zce/caz/compare/v0.8.0...v0.8.1
