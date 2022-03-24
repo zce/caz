@@ -11,8 +11,9 @@
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 14.17)
-- [npm](https://www.npmjs.com) (>= 6.14)
+- [Node.js](https://nodejs.org) (>= 16.13)
+- [npm](https://www.npmjs.com) (>= 7.x)
+- [pnpm](https://pnpm.io) (>= 6.x)
 - [yarn](https://yarnpkg.com) (>= 1.22)
 - [Git](https://git-scm.com) (>= 2.20)
 
@@ -22,6 +23,7 @@
 $ git clone https://github.com/zce/caz.git
 $ cd caz
 $ npm install
+$ npm run build
 $ npm link
 ```
 
