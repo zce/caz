@@ -11,7 +11,8 @@
     <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen" alt="Code Style"></a>
     <a href="https://npm.im/caz"><img src="https://img.shields.io/npm/dm/caz" alt="NPM Downloads"></a>
     <a href="https://packagephobia.com/result?p=caz"><img src="https://packagephobia.com/badge?p=caz" alt="Install Size"></a>
-    <a href="https://github.com/zce/caz"><img src="https://img.shields.io/github/repo-size/zce/caz" alt="Repo size"></a>
+    <a href="https://github.com/zce/caz"><img src="https://img.shields.io/github/repo-size/zce/caz" alt="Repo Size"></a>
+    <a href="https://github.com/zce/caz"><img src="https://img.shields.io/librariesio/release/npm/caz" alt="Dependencies Status"></a>
   </p>
 </div>
 

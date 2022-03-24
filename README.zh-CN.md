@@ -12,6 +12,7 @@
     <a href="https://npm.im/caz"><img src="https://img.shields.io/npm/dm/caz" alt="NPM 下载量"></a>
     <a href="https://packagephobia.com/result?p=caz"><img src="https://packagephobia.com/badge?p=caz" alt="安装包体积"></a>
     <a href="https://github.com/zce/caz"><img src="https://img.shields.io/github/repo-size/zce/caz" alt="仓库体积"></a>
+    <a href="https://github.com/zce/caz"><img src="https://img.shields.io/librariesio/release/npm/caz" alt="依赖状态"></a>
   </p>
 </div>
 
