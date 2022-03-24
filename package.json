@@ -1,6 +1,6 @@
 {
   "name": "caz",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0",
   "description": "A simple yet powerful template-based Scaffolding tools.",
   "keywords": [
     "productivity",
@@ -114,7 +114,6 @@
     "node": ">=14.14"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "tag": "next"
+    "registry": "https://registry.npmjs.org"
   }
 }
