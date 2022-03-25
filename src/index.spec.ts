@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import prompts from 'prompts'
 import { http } from './core'
 import { destory, exists, fixture, mktmpdir } from '../test/helpers'
 import * as caz from '.'
@@ -29,8 +28,7 @@ test('unit:default', async () => {
   const temp = await mktmpdir()
   const original = process.cwd()
   process.chdir(temp)
-  prompts.inject(['caz'])
-  await caz.default('minima', 'minima-app', { force: true, offline: false })
+  await caz.default('minima', 'minima-app', { force: true, offline: false, name: 'caz' })
   expect(await exists('minima-app')).toBe(true)
   const contents = await fs.promises.readFile('minima-app/caz.txt', 'utf8')
   expect(contents.trim()).toBe('hey caz.')

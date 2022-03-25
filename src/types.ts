@@ -11,6 +11,10 @@ export interface Options {
    * @default false
    */
   offline?: boolean
+  /**
+   * cli options to override prompts
+   */
+  [key: string]: unknown
 }
 
 /**
