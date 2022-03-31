@@ -2,7 +2,7 @@
 
 ## [1.0.0] - 2022-03-24
 
-- zero dependency by tsup
+- zero dependencies by tsup
 - node v14.14.0 required
 - auto install template dependencies
 - support native esm
