@@ -1,7 +1,7 @@
 <div align="center">
   <a href="https://github.com/zce/caz"><img src="docs/caz.png" alt="CAZ"></a>
-  <p align="center">一个基于模板机制、简单而又强大的脚手架工具，用于提升我个人生产力。</p>
-  <p align="center">
+  <p>一个基于模板机制、简单而又强大的脚手架工具，用于提升我个人生产力。</p>
+  <p>
     <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI" alt="构建状态"></a>
     <a href="https://codecov.io/gh/zce/caz"><img src="https://img.shields.io/codecov/c/github/zce/caz" alt="测试覆盖率"></a>
     <a href="https://github.com/zce/caz/blob/master/LICENSE"><img src="https://img.shields.io/github/license/zce/caz" alt="许可证"></a>
