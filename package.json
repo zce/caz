@@ -108,7 +108,7 @@
     "ts-standard": "11.0.0",
     "tsup": "5.12.1",
     "typescript": "4.6.3",
-    "validate-npm-package-name": "3.0.0"
+    "validate-npm-package-name": "4.0.0"
   },
   "engines": {
     "node": ">=14.14"
