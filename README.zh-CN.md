@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/zce/caz"><img src="https://user-images.githubusercontent.com/6166576/88473000-af5fa800-cf4b-11ea-8ce4-59f1b1f09efe.png" alt="CAZ"></a>
+  <a href="https://github.com/zce/caz"><img src="docs/caz.png" alt="CAZ"></a>
   <p align="center">一个基于模板机制、简单而又强大的脚手架工具，用于提升我个人生产力。</p>
   <p align="center">
     <a href="https://github.com/zce/caz/actions"><img src="https://img.shields.io/github/workflow/status/zce/caz/CI" alt="构建状态"></a>
