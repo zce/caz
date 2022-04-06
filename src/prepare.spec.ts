@@ -23,11 +23,10 @@ test('unit:prepare:custom', async () => {
       features: ['cli', 'typescript']
     }
   }, {
-    source: 'template',
     filters: {
-      'bin/**': a => a.features.includes('cli'),
-      'src/**': a => a.features.includes('typescript'),
-      'lib/**': a => a.features.includes('typescript') === false
+      'bin/**': a => (a.features as string[]).includes('cli'),
+      'src/**': a => (a.features as string[]).includes('typescript'),
+      'lib/**': a => !(a.features as string[]).includes('typescript')
     }
   })
   await prepare(ctx)

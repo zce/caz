@@ -12,6 +12,6 @@ export default async (ctx: Context): Promise<void> => {
     // maybe windows path: \
 
     // rename it by replace
-    item.path = item.path.replace(regexp, (_, key) => ctx.answers[key])
+    item.path = item.path.replace(regexp, (_, key) => ctx.answers[key] as string)
   })
 }

@@ -1,4 +1,4 @@
-import { inject } from 'prompts'
+import prompts from 'prompts'
 
 import list, { ListOptions } from './list'
 
@@ -17,6 +17,9 @@ import emit from './emit'
 import install from './install'
 import init from './init'
 import complete from './complete'
+
+// export inject for test
+const { inject } = prompts
 
 const creator = new Ware<Context>()
 

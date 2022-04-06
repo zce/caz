@@ -1,4 +1,4 @@
-import { PromptObject, Answers } from 'prompts'
+import prompts from 'prompts'
 
 export interface Options {
   /**
@@ -40,11 +40,11 @@ export interface Template {
   /**
    * Template prompts.
    */
-  prompts?: PromptObject | PromptObject[]
+  prompts?: prompts.PromptObject | prompts.PromptObject[]
   /**
    * Template file filters.
    */
-  filters?: Record<string, (answers: Answers<string>) => boolean>
+  filters?: Record<string, (answers: Record<string, unknown>) => boolean>
   /**
    * Template engine helpers.
    */
@@ -111,7 +111,7 @@ export interface Context {
   /**
    * More options, most of the cases come from CLI..
    */
-  readonly options: Options & Record<string, any>
+  readonly options: Options
   /**
    * The source directory where the template (absolute).
    */
@@ -127,7 +127,7 @@ export interface Context {
   /**
    * Template prompts answers.
    */
-  readonly answers: Answers<string>
+  readonly answers: Record<string, unknown>
   /**
    * Template files.
    */
