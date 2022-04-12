@@ -103,7 +103,7 @@
     "node-fetch": "3.2.3",
     "ora": "6.1.0",
     "prompts": "2.4.2",
-    "semver": "7.3.6",
+    "semver": "7.3.7",
     "ts-jest": "27.1.4",
     "ts-standard": "11.0.0",
     "tsup": "5.12.4",
