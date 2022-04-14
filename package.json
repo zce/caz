@@ -106,7 +106,7 @@
     "semver": "7.3.6",
     "ts-jest": "27.1.4",
     "ts-standard": "11.0.0",
-    "tsup": "5.12.4",
+    "tsup": "5.12.5",
     "typescript": "4.6.3",
     "validate-npm-package-name": "4.0.0"
   },
