@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.0] - 2022-04-19
+
+- feat: add socks proxy support
+
 ## [1.0.0] - 2022-03-24
 
 - zero dependencies by tsup
@@ -96,6 +100,7 @@
 
 <!-- http://keepachangelog.com/ -->
 
+[1.1.0]: https://github.com/zce/caz/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/zce/caz/compare/v0.8.2...v1.0.0
 [0.8.2]: https://github.com/zce/caz/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/zce/caz/compare/v0.8.0...v0.8.1
