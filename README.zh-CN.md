@@ -280,6 +280,22 @@ registry = https://zce.coding.net/p/{owner}/d/{name}/git/archive/{branch}
 official = caz
 ```
 
+#### 请求代理
+
+CAZ 支持网络请求代理配置。
+
+`~/.cazrc`:
+
+```ini
+proxy = socks5://127.0.0.1:1080
+```
+
+或者在使用环境变量:
+
+```shell
+$ ALL_PROXY=socks5://127.0.0.1:1080 caz nm my-project
+```
+
 ### 创建你的模板
 
 ```shell

@@ -3,6 +3,7 @@ import { pipeline } from 'stream'
 import { promisify } from 'util'
 import { promises as fs, createWriteStream } from 'fs'
 import fetch, { RequestInfo, RequestInit, Response } from 'node-fetch'
+import { SocksProxyAgent } from 'socks-proxy-agent'
 import config from './config'
 
 const pipe = promisify(pipeline)
@@ -12,7 +13,11 @@ const pipe = promisify(pipeline)
  * @param url url
  * @param init init
  */
-export const request = async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
+export const request = async (url: RequestInfo, init: RequestInit = {}): Promise<Response> => {
+  /* istanbul ignore if */
+  if (config.proxy != null) {
+    init.agent = new SocksProxyAgent(config.proxy)
+  }
   const response = await fetch(url, init)
   // res.status >= 200 && res.status < 300
   if (response.ok) return response

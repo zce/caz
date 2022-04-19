@@ -10,6 +10,7 @@ test('unit:core:config', async () => {
   expect(config.registry).toBe('https://github.com/{owner}/{name}/archive/refs/heads/{branch}.zip')
   expect(config.official).toBe('caz-templates')
   expect(config.branch).toBe('master')
+  expect(config.proxy).toBe(undefined)
   expect(config.commitMessage).toBe('feat: initial commit')
 })
 
@@ -20,8 +21,35 @@ test('unit:core:config:custom', async () => {
   expect(conf.registry).toBe('https://gitlab.com/{owner}/{name}/archive/refs/heads/{branch}.zip')
   expect(conf.official).toBe('faker')
   expect(conf.branch).toBe('dev')
+  expect(conf.proxy).toBe('socks://127.0.0.1:1080')
   expect(conf.commitMessage).toBe('feat: initial commit')
   homedir.mockRestore()
+})
+
+test('unit:core:config:env', async () => {
+  jest.resetModules()
+  process.env.ALL_PROXY = 'socks://127.0.0.1:11111'
+  expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:11111')
+
+  jest.resetModules()
+  process.env.HTTPS_PROXY = 'socks://127.0.0.1:22222'
+  expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
+
+  jest.resetModules()
+  process.env.https_proxy = 'socks://127.0.0.1:22222'
+  expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
+
+  jest.resetModules()
+  process.env.HTTP_PROXY = 'socks://127.0.0.1:22222'
+  expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
+
+  jest.resetModules()
+  process.env.http_proxy = 'socks://127.0.0.1:22222'
+  expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
+
+  jest.resetModules()
+  process.env.NO_PROXY = '1'
+  expect((await import('./config')).default.proxy).toBe(undefined)
 })
 
 test('unit:core:config:npm', async () => {

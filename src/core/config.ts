@@ -16,14 +16,28 @@ const parseIni = (filename: string): Record<string, any> | undefined => {
 }
 
 const defaults = {
+  // template download registry
+  // {owner} & {name} & {branch} will eventually be replaced by the corresponding value
   registry: 'https://github.com/{owner}/{name}/archive/refs/heads/{branch}.zip',
+  // template offlicial owner name
   official: 'caz-templates',
+  // default template branch name
   branch: 'master',
+  // download socks proxy config
+  proxy: undefined as string | undefined,
   // git init commit message
   commitMessage: 'feat: initial commit'
 }
 
-const config = parseIni(path.join(os.homedir(), `.${name}rc`))
+const config = parseIni(path.join(os.homedir(), `.${name}rc`)) ?? {}
+
+// env proxy config
+const envProxy = process.env.http_proxy ?? process.env.HTTP_PROXY ?? process.env.https_proxy ?? process.env.HTTPS_PROXY ?? process.env.ALL_PROXY
+config.proxy = envProxy ?? config.proxy
+
+if (process.env.no_proxy != null || process.env.NO_PROXY != null) {
+  delete config.proxy // disable proxy
+}
 
 export default {
   ...defaults,

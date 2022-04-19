@@ -1,3 +1,4 @@
 registry = https://gitlab.com/{owner}/{name}/archive/refs/heads/{branch}.zip
 official = faker
 branch = dev
+proxy = socks://127.0.0.1:1080

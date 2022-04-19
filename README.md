@@ -280,6 +280,22 @@ registry = https://zce.coding.net/p/{owner}/d/{name}/git/archive/{branch}
 official = caz
 ```
 
+#### Socks Proxy
+
+CAZ supports socks proxy config.
+
+`~/.cazrc`:
+
+```ini
+proxy = socks5://127.0.0.1:1080
+```
+
+or environment variable:
+
+```shell
+$ ALL_PROXY=socks5://127.0.0.1:1080 caz nm my-project
+```
+
 ### Create Your Template
 
 ```shell
