@@ -98,7 +98,7 @@
     "husky": "7.0.4",
     "ini": "3.0.0",
     "jest": "27.5.1",
-    "lint-staged": "12.3.8",
+    "lint-staged": "12.4.0",
     "lodash": "4.17.21",
     "node-fetch": "3.2.3",
     "ora": "6.1.0",
