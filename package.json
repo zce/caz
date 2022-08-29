@@ -92,7 +92,7 @@
     "@types/semver": "7.3.12",
     "@types/validate-npm-package-name": "4.0.0",
     "adm-zip": "0.5.9",
-    "cac": "6.7.12",
+    "cac": "6.7.14",
     "env-paths": "3.0.0",
     "fast-glob": "3.2.11",
     "husky": "8.0.1",
