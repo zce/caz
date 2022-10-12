@@ -1,7 +1,8 @@
 import path from 'path'
-import prompts, { PromptObject } from 'prompts'
-import { config } from './core'
+import prompts, { Answers, PromptObject } from 'prompts'
+import { jest, test, expect } from '@jest/globals'
 import { context } from '../test/helpers'
+import { config } from './core'
 import inquire, { validater, processor } from './inquire'
 
 test('unit:inquire:validater:name', async () => {
@@ -47,7 +48,7 @@ test('unit:inquire:processor:name', async () => {
   expect(prompt2.validate).toBe(validater.name)
   expect(prompt2.initial).toBe('foo')
 
-  const validate3 = jest.fn()
+  const validate3 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
   const prompt3: PromptObject = { name: 'name', type: 'text', validate: validate3 }
   fn(prompt3)
   expect(prompt3.validate).toBe(validate3)
@@ -68,7 +69,7 @@ test('unit:inquire:processor:version', async () => {
   fn(prompt1)
   expect(prompt1.initial).toBe('1.2.3')
 
-  const validate2 = jest.fn()
+  const validate2 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
   const prompt2: PromptObject = { name: 'version', type: 'text', validate: validate2 }
   fn(prompt2)
   expect(prompt2.validate).toBe(validate2)
@@ -162,7 +163,7 @@ test('unit:inquire:processor:email', async () => {
   fn(prompt5)
   expect(prompt5.initial).toBe(undefined)
 
-  const validate6 = jest.fn()
+  const validate6 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
   const prompt6: PromptObject = { name: 'email', type: 'text', validate: validate6 }
   fn(prompt6)
   expect(prompt6.validate).toBe(validate6)
@@ -207,7 +208,7 @@ test('unit:inquire:processor:url', async () => {
   fn(prompt5)
   expect(prompt5.initial).toBe(undefined)
 
-  const validate6 = jest.fn()
+  const validate6 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
   const prompt6: PromptObject = { name: 'url', type: 'text', validate: validate6 }
   fn(prompt6)
   expect(prompt6.validate).toBe(validate6)
@@ -216,7 +217,7 @@ test('unit:inquire:processor:url', async () => {
 })
 
 test('unit:inquire:default', async () => {
-  const clear = jest.spyOn(console, 'clear').mockImplementation()
+  const clear = jest.spyOn(console, 'clear')
   const ctx = context({ dest: __dirname })
   prompts.inject(['foo'])
   await inquire(ctx)
@@ -227,7 +228,7 @@ test('unit:inquire:default', async () => {
 })
 
 test('unit:inquire:custom', async () => {
-  const clear = jest.spyOn(console, 'clear').mockImplementation()
+  const clear = jest.spyOn(console, 'clear')
   const ctx = context({}, {
     prompts: [
       { name: 'foo', type: 'text', message: 'foo' },
@@ -242,7 +243,7 @@ test('unit:inquire:custom', async () => {
 })
 
 test('unit:inquire:override', async () => {
-  const clear = jest.spyOn(console, 'clear').mockImplementation()
+  const clear = jest.spyOn(console, 'clear')
   const ctx = context({}, {
     prompts: [
       { name: 'foo', type: 'text', message: 'foo' },

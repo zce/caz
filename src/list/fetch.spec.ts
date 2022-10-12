@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals'
 import fetch from './fetch'
 
 test('unit:fetch:empty', async () => {

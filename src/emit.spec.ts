@@ -1,7 +1,9 @@
 import fs from 'fs'
 import path from 'path'
+import { jest, test, expect } from '@jest/globals'
 import { context, destory, mktmpdir } from '../test/helpers'
 import emit from './emit'
+import { Context } from './types'
 
 test('unit:emit:normal', async () => {
   const temp = await mktmpdir()
@@ -21,7 +23,7 @@ test('unit:emit:normal', async () => {
 })
 
 test('unit:emit:hook', async () => {
-  const callback = jest.fn()
+  const callback = jest.fn<(ctx: Context) => Promise<void>>()
   const ctx = context({}, { emit: callback })
   await emit(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)

@@ -1,5 +1,7 @@
-const mockedInit = jest.fn().mockImplementation()
-const mockedList = jest.fn().mockImplementation()
+import { jest, test, expect, beforeEach, afterAll } from '@jest/globals'
+
+const mockedInit = jest.fn()
+const mockedList = jest.fn()
 
 const mockArgv = (...args: string[]): () => void => {
   const original = process.argv
@@ -38,7 +40,7 @@ test('unit:cli:list', async () => {
 
 test('unit:cli:help', async () => {
   const restore = mockArgv('--help')
-  const log = jest.spyOn(console, 'log').mockImplementation()
+  const log = jest.spyOn(console, 'log')
   await import('./cli')
   expect(log).toHaveBeenCalledTimes(1)
   expect(log.mock.calls[0][0]).toContain('$ caz <template> [project]')
@@ -49,8 +51,8 @@ test('unit:cli:help', async () => {
 // // TODO: error
 // // https://github.com/facebook/jest/issues/5620
 // test('unit:cli:error', async () => {
-//   const error = jest.spyOn(console, 'error').mockImplementation()
-//   const exit = jest.spyOn(process, 'exit').mockImplementation()
+//   const error = jest.spyOn(console, 'error')
+//   const exit = jest.spyOn(process, 'exit')
 //   const restore = mockArgv()
 //   await import('./cli')
 //   expect(error).toHaveBeenCalled()

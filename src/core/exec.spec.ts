@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals'
 import exec from './exec'
 
 test('unit:core:exec:normal', async () => {

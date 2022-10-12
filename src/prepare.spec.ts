@@ -1,5 +1,7 @@
+import { jest, test, expect } from '@jest/globals'
 import { context, fixture } from '../test/helpers'
 import prepare from './prepare'
+import { Context } from './types'
 
 const src = fixture('features')
 
@@ -40,7 +42,7 @@ test('unit:prepare:custom', async () => {
 })
 
 test('unit:prepare:hook', async () => {
-  const callback = jest.fn()
+  const callback = jest.fn<(ctx: Context) => Promise<void>>()
   const ctx = context({}, { prepare: callback })
   await prepare(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)

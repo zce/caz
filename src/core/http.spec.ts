@@ -1,5 +1,6 @@
 import fs from 'fs'
 import * as http from './http'
+import { test, expect } from '@jest/globals'
 import { destory } from '../../test/helpers'
 
 const registry = 'https://registry.npmjs.org'

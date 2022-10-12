@@ -1,10 +1,10 @@
 import os from 'os'
+import { SpyInstance } from 'jest-mock'
+import { jest, test, expect } from '@jest/globals'
 import { fixture } from '../../test/helpers'
 import config from './config'
 
-const mockHomedir = (): jest.SpyInstance => {
-  return jest.spyOn(os, 'homedir').mockImplementation(() => fixture(''))
-}
+const mockHomedir = (): SpyInstance => jest.spyOn(os, 'homedir').mockImplementation(() => fixture(''))
 
 test('unit:core:config', async () => {
   expect(config.registry).toBe('https://github.com/{owner}/{name}/archive/refs/heads/{branch}.zip')

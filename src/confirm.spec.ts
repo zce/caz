@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import prompts from 'prompts'
+import { test, expect, beforeAll, afterAll } from '@jest/globals'
 import { context, destory, mktmpdir } from '../test/helpers'
 import confirm from './confirm'
 

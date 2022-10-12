@@ -1,10 +1,13 @@
+import { SpyInstance } from 'jest-mock'
+import { jest, test, expect, beforeEach, afterEach } from '@jest/globals'
 import { context } from '../test/helpers'
 import complete from './complete'
+import { Context } from './types'
 
-let log: jest.SpyInstance
+let log: SpyInstance<(message?: any, ...optionalParams: any[]) => void>
 
 beforeEach(async () => {
-  log = jest.spyOn(console, 'log').mockImplementation()
+  log = jest.spyOn(console, 'log')
 })
 
 afterEach(async () => {
@@ -36,14 +39,15 @@ test('unit:complete:string', async () => {
 })
 
 test('unit:complete:callback', async () => {
-  const callback = jest.fn()
+  const callback = jest.fn<(ctx: Context) => string | Promise<string> | Promise<void>>()
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)
 })
 
 test('unit:complete:callback-return', async () => {
-  const callback = jest.fn().mockReturnValue('completed')
+  // eslint-disable-next-line @typescript-eslint/no-extra-parens
+  const callback = jest.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(() => 'completed')
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback).toHaveBeenCalled()
@@ -51,7 +55,8 @@ test('unit:complete:callback-return', async () => {
 })
 
 test('unit:complete:callback-promise', async () => {
-  const callback = jest.fn().mockReturnValue(Promise.resolve('completed'))
+  // eslint-disable-next-line @typescript-eslint/no-extra-parens
+  const callback = jest.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(async () => 'completed')
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback).toHaveBeenCalled()

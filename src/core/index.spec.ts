@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals'
 import * as core from '.'
 
 test('unit:core', async () => {

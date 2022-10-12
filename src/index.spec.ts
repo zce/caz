@@ -1,7 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import { http } from './core'
+import { jest, test, expect } from '@jest/globals'
 import { destory, exists, fixture, mktmpdir } from '../test/helpers'
+import { http } from './core'
 import * as caz from '.'
 
 test('unit:exports', async () => {
@@ -16,8 +17,8 @@ test('unit:exports', async () => {
 })
 
 test('unit:default', async () => {
-  const log = jest.spyOn(console, 'log').mockImplementation()
-  const clear = jest.spyOn(console, 'clear').mockImplementation()
+  const log = jest.spyOn(console, 'log')
+  const clear = jest.spyOn(console, 'clear')
   const downloadtmpdir = await mktmpdir()
   const download = jest.spyOn(http, 'download').mockImplementation(async () => {
     const file = fixture('minima.zip')
