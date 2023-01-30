@@ -8,7 +8,7 @@ import { Context } from './types'
 export default async (ctx: Context): Promise<void> => {
   // interpolate
   // https://github.com/lodash/lodash/blob/master/.internal/reEvaluate.js
-  const regexp = /<%([\s\S]+?)%>/
+  const regexp = /<%(.+?)%>|\${(.+?)}/
 
   const imports = {
     ...ctx.config.metadata,

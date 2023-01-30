@@ -36,6 +36,22 @@ test('unit:render:normal', async () => {
   expect(ctx.files[3].contents).toBe(zip)
 })
 
+test('unit:render:es2015-synax', async () => {
+  // eslint-disable-next-line no-template-curly-in-string
+  const template = '${title}'
+
+  const ctx = context({
+    answers: { title: 'caz test' },
+    files: [
+      { path: 'a.txt', contents: Buffer.from(template) }
+    ]
+  })
+
+  await render(ctx)
+
+  expect(ctx.files[0].contents.toString()).toBe('caz test')
+})
+
 test('unit:render:metadata', async () => {
   const now = Date.now()
 
