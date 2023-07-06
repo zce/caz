@@ -95,7 +95,7 @@
     "fast-glob": "3.2.12",
     "husky": "8.0.3",
     "ini": "3.0.1",
-    "jest": "29.4.1",
+    "jest": "29.6.1",
     "lint-staged": "13.1.0",
     "lodash": "4.17.21",
     "node-fetch": "3.3.0",
