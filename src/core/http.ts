@@ -14,7 +14,7 @@ const pipe = promisify(pipeline)
  * @param init init
  */
 export const request = async (url: RequestInfo, init: RequestInit = {}): Promise<Response> => {
-  /* istanbul ignore if */
+  /* c8 ignore next */
   if (config.proxy != null) {
     init.agent = new SocksProxyAgent(config.proxy)
   }
@@ -31,7 +31,7 @@ export const request = async (url: RequestInfo, init: RequestInit = {}): Promise
  */
 export const download = async (url: string): Promise<string> => {
   const response = await request(url)
-  /* istanbul ignore if */
+  /* c8 ignore next */
   if (response.body == null) throw Error('Unexpected response: Response body is empty')
   // ensure temp dirname
   await fs.mkdir(config.paths.temp, { recursive: true })

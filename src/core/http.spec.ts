@@ -1,6 +1,6 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import * as http from './http'
-import { test, expect } from '@jest/globals'
+import { test, expect } from 'vitest'
 import { destory } from '../../test/helpers'
 
 const registry = 'https://registry.npmjs.org'
@@ -26,7 +26,7 @@ test('unit:core:http:request:error', async () => {
 
 test('unit:core:http:download', async () => {
   const filename = await http.download(tarball)
-  const stats = await fs.promises.stat(filename)
+  const stats = await fs.stat(filename)
   expect(stats.isFile()).toBe(true)
   expect(stats.size).toBe(367)
   await destory(filename)
@@ -34,7 +34,7 @@ test('unit:core:http:download', async () => {
 
 test('unit:core:http:download:text', async () => {
   const filename = await http.download(registry)
-  const stats = await fs.promises.stat(filename)
+  const stats = await fs.stat(filename)
   expect(stats.isFile()).toBe(true)
   await destory(filename)
 })

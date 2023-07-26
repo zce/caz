@@ -1,6 +1,6 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import path from 'path'
-import { test, expect } from '@jest/globals'
+import { test, expect } from 'vitest'
 import { context, destory, exists, fixture, mktmpdir } from '../test/helpers'
 import load from './load'
 
@@ -41,7 +41,7 @@ test('unit:load:error', async () => {
 test('unit:load:install-deps', async () => {
   const temp = await mktmpdir()
 
-  await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify({
+  await fs.writeFile(path.join(temp, 'package.json'), JSON.stringify({
     dependencies: { caz: '0.0.0' },
     devDependencies: { zce: '0.0.0' }
   }))

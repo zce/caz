@@ -28,7 +28,6 @@ cli
 cli.help().version(version).parse()
 
 // https://github.com/cacjs/cac#error-handling
-/* istanbul ignore next */
 const onError = (err: Error): void => {
   // output details when exception occurs
   cli.options.debug as boolean && console.error(err)

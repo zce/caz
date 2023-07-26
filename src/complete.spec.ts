@@ -1,13 +1,12 @@
-import { SpyInstance } from 'jest-mock'
-import { jest, test, expect, beforeEach, afterEach } from '@jest/globals'
+import { vi, test, expect, beforeEach, afterEach, SpyInstance } from 'vitest'
 import { context } from '../test/helpers'
 import complete from './complete'
 import { Context } from './types'
 
-let log: SpyInstance<(message?: any, ...optionalParams: any[]) => void>
+let log: SpyInstance<[message?: any, ...optionalParams: any[]], void>
 
 beforeEach(async () => {
-  log = jest.spyOn(console, 'log')
+  log = vi.spyOn(console, 'log')
 })
 
 afterEach(async () => {
@@ -39,7 +38,7 @@ test('unit:complete:string', async () => {
 })
 
 test('unit:complete:callback', async () => {
-  const callback = jest.fn<(ctx: Context) => string | Promise<string> | Promise<void>>()
+  const callback = vi.fn<(ctx: Context) => string | Promise<string> | Promise<void>>()
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)
@@ -47,7 +46,7 @@ test('unit:complete:callback', async () => {
 
 test('unit:complete:callback-return', async () => {
   // eslint-disable-next-line @typescript-eslint/no-extra-parens
-  const callback = jest.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(() => 'completed')
+  const callback = vi.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(() => 'completed')
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback).toHaveBeenCalled()
@@ -56,7 +55,7 @@ test('unit:complete:callback-return', async () => {
 
 test('unit:complete:callback-promise', async () => {
   // eslint-disable-next-line @typescript-eslint/no-extra-parens
-  const callback = jest.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(async () => 'completed')
+  const callback = vi.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(async () => 'completed')
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback).toHaveBeenCalled()

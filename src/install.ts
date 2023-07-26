@@ -18,7 +18,7 @@ export default async (ctx: Context): Promise<void> => {
 
   try {
     const client = ctx.config.install
-    /* istanbul ignore next */
+    /* c8 ignore next */
     const cmd = process.platform === 'win32' ? client + '.cmd' : client
     await exec(cmd, ['install'], { cwd: ctx.dest, stdio: 'inherit' })
   } catch (e) {

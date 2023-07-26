@@ -1,6 +1,6 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import path from 'path'
-import { test, expect } from '@jest/globals'
+import { test, expect } from 'vitest'
 import { context, destory, exists, mktmpdir } from '../test/helpers'
 import init from './init'
 
@@ -18,31 +18,31 @@ test('unit:init:false', async () => {
 
 test('unit:init:default', async () => {
   const temp = await mktmpdir()
-  await fs.promises.writeFile(path.join(temp, 'caz.txt'), 'hello')
+  await fs.writeFile(path.join(temp, 'caz.txt'), 'hello')
   const ctx = context({
     dest: temp,
     files: [{ path: '.gitignore', contents: Buffer.from('') }]
   })
   await init(ctx)
   expect(await exists(path.join(temp, '.git'))).toBe(true)
-  const stats = await fs.promises.stat(path.join(temp, '.git'))
+  const stats = await fs.stat(path.join(temp, '.git'))
   expect(stats.isDirectory()).toBe(true)
   expect(await exists(path.join(temp, '.git', 'COMMIT_EDITMSG'))).toBe(true)
-  const msg = await fs.promises.readFile(path.join(temp, '.git', 'COMMIT_EDITMSG'), 'utf8')
+  const msg = await fs.readFile(path.join(temp, '.git', 'COMMIT_EDITMSG'), 'utf8')
   expect(msg.trim()).toBe('feat: initial commit')
   await destory(temp)
 })
 
 test('unit:init:manual', async () => {
   const temp = await mktmpdir()
-  await fs.promises.writeFile(path.join(temp, 'caz.txt'), 'hello')
+  await fs.writeFile(path.join(temp, 'caz.txt'), 'hello')
   const ctx = context({ dest: temp }, { init: true })
   await init(ctx)
   expect(await exists(path.join(temp, '.git'))).toBe(true)
-  const stats = await fs.promises.stat(path.join(temp, '.git'))
+  const stats = await fs.stat(path.join(temp, '.git'))
   expect(stats.isDirectory()).toBe(true)
   expect(await exists(path.join(temp, '.git', 'COMMIT_EDITMSG'))).toBe(true)
-  const msg = await fs.promises.readFile(path.join(temp, '.git', 'COMMIT_EDITMSG'), 'utf8')
+  const msg = await fs.readFile(path.join(temp, '.git', 'COMMIT_EDITMSG'), 'utf8')
   expect(msg.trim()).toBe('feat: initial commit')
   await destory(temp)
 })
