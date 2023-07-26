@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import fs from 'fs/promises'
+import path from 'path'
 import { vi, test, expect, beforeEach, afterEach, SpyInstance } from 'vitest'
 import { context, exists, destory, fixture, mktmpdir } from '../test/helpers'
 import { file, http, config } from './core'

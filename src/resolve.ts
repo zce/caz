@@ -1,5 +1,5 @@
-import path from 'node:path'
-import crypto from 'node:crypto'
+import path from 'path'
+import crypto from 'crypto'
 import ora from 'ora'
 import { file, http, config } from './core'
 import { Context } from './types'

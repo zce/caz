@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import fs from 'fs/promises'
+import path from 'path'
 import { vi, test, expect } from 'vitest'
 import { context, destory, mktmpdir } from '../test/helpers'
 import emit from './emit'

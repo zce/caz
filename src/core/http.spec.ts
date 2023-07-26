@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises'
+import fs from 'fs/promises'
 import * as http from './http'
 import { test, expect } from 'vitest'
 import { destory } from '../../test/helpers'

@@ -1,4 +1,4 @@
-import os from 'node:os'
+import os from 'os'
 import { vi, test, expect, SpyInstance } from 'vitest'
 import { fixture } from '../../test/helpers'
 import config from './config'

@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import fs from 'fs/promises'
+import path from 'path'
 import prompts from 'prompts'
 import { vi, test, expect, beforeAll, afterAll, SpyInstance } from 'vitest'
 import { context, destory, exists, mktmpdir } from '../test/helpers'

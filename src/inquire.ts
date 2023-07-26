@@ -1,4 +1,4 @@
-import path from 'node:path'
+import path from 'path'
 import semver from 'semver'
 import prompts, { PromptObject } from 'prompts'
 import validateName from 'validate-npm-package-name'

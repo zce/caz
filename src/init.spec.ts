@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import fs from 'fs/promises'
+import path from 'path'
 import { test, expect } from 'vitest'
 import { context, destory, exists, mktmpdir } from '../test/helpers'
 import init from './init'

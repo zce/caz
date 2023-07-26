@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
-import { spawn, SpawnOptions } from 'node:child_process'
+import { spawn, SpawnOptions } from 'child_process'
 
 /**
  * Execute a command.

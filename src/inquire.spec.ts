@@ -1,4 +1,4 @@
-import path from 'node:path'
+import path from 'path'
 import prompts, { Answers, PromptObject } from 'prompts'
 import { vi, test, expect } from 'vitest'
 import { context } from '../test/helpers'

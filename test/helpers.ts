@@ -1,6 +1,6 @@
-import os from 'node:os'
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import os from 'os'
+import fs from 'fs/promises'
+import path from 'path'
 import { Context, Template } from '../src'
 
 /**
