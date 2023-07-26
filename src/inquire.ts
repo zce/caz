@@ -79,7 +79,7 @@ export default async (ctx: Context): Promise<void> => {
   // override by options (cli argv)
   prompts.override(ctx.options)
 
-  /* c8 ignore next */
+  /* c8 ignore next 3 */
   const onCancel = (): never => {
     throw new Error('You have cancelled this task.')
   }

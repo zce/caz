@@ -14,7 +14,7 @@ const pipe = promisify(pipeline)
  * @param init init
  */
 export const request = async (url: RequestInfo, init: RequestInit = {}): Promise<Response> => {
-  /* c8 ignore next */
+  /* c8 ignore next 3 */
   if (config.proxy != null) {
     init.agent = new SocksProxyAgent(config.proxy)
   }

@@ -10,16 +10,15 @@ import AdmZip from 'adm-zip'
 export const exists = async (input: string): Promise<false | 'file' | 'dir' | 'other'> => {
   try {
     const stat = await fs.promises.stat(input)
-    /* c8 ignore next 5 */
     if (stat.isDirectory()) {
       return 'dir'
     } else if (stat.isFile()) {
       return 'file'
-    } else {
+    } /* c8 ignore next 3 */ else {
       return 'other'
     }
   } catch (err) {
-    /* c8 ignore next */
+    /* c8 ignore next 3 */
     if ((err as NodeJS.ErrnoException).code !== 'ENOENT') {
       throw err
     }
