@@ -80,7 +80,7 @@ _更多介绍，请阅读[它如何工作](#如何工作)。_
 
 ### 环境准备
 
-- [Node.js](https://nodejs.org) (必须 >= 14.14, >= 16.13 更佳)
+- [Node.js](https://nodejs.org) (必须 >= 16.x, >= 18.x 更佳)
 - [npm](https://www.npmjs.com) (>= 7.x) 或 [pnpm](https://pnpm.io) (>= 6.x) 或 [yarn](https://yarnpkg.com) (>= 1.22)
 - [Git](https://git-scm.com) (>= 2.0)
 

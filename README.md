@@ -80,7 +80,7 @@ _For more introduction, please refer to the [How it works](#how-it-works)._
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 14.14 required, >= 16.13 preferred)
+- [Node.js](https://nodejs.org) (>= 16.x required, >= 18.x preferred)
 - [npm](https://www.npmjs.com) (>= 7.x) or [pnpm](https://pnpm.io) (>= 6.x) or [yarn](https://yarnpkg.com) (>= 1.22)
 - [Git](https://git-scm.com) (>= 2.0)
 

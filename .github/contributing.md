@@ -11,7 +11,7 @@
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org) (>= 16.13)
+- [Node.js](https://nodejs.org) (>= 18.x)
 - [npm](https://www.npmjs.com) (>= 7.x)
 - [pnpm](https://pnpm.io) (>= 6.x)
 - [yarn](https://yarnpkg.com) (>= 1.22)
