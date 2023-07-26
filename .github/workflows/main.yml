@@ -3,28 +3,29 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
     strategy:
       matrix:
-        node-version: [14, 16, 17, 18]
+        os: [ubuntu-latest, windows-latest]
+        node: [16, 18, 20]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node }}
       - run: npm i pnpm yarn -g
       - run: git config --global user.name "GitHub Actions"
       - run: git config --global user.email "bots@github.com"
       - run: npm install
-      - run: npm run lint
-      - run: npm run build
-      - run: npm run test
+      - run: npm i @vitest/coverage-v8
+      - run: npx ts-standard
+      - run: npx vitest run --coverage
       - run: npx codecov
 
   publish:
     if: startsWith(github.ref, 'refs/tags')
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

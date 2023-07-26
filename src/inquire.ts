@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import semver from 'semver'
 import prompts, { PromptObject } from 'prompts'
 import validateName from 'validate-npm-package-name'
@@ -12,7 +12,7 @@ export const validater: Record<string, (input: string) => true | string> = {
   name: input => {
     const result = validateName(input)
     if (result.validForNewPackages) return true
-    /* istanbul ignore next */
+    /* c8 ignore next */
     return result.errors?.join(', ') ?? result.warnings?.join(',') ?? ''
   },
   version: input => {
@@ -79,7 +79,7 @@ export default async (ctx: Context): Promise<void> => {
   // override by options (cli argv)
   prompts.override(ctx.options)
 
-  /* istanbul ignore next */
+  /* c8 ignore next */
   const onCancel = (): never => {
     throw new Error('You have cancelled this task.')
   }

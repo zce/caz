@@ -1,6 +1,6 @@
-import fs from 'fs'
-import path from 'path'
-import { test, expect } from '@jest/globals'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { test, expect } from 'vitest'
 import { context, destory, exists, mktmpdir } from '../test/helpers'
 import install from './install'
 
@@ -19,7 +19,7 @@ test('unit:install:null', async () => {
 test('unit:install:default', async () => {
   const temp = await mktmpdir()
   const pkg = { dependencies: { caz: '0.0.0' } }
-  await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
+  await fs.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
   const ctx = context({
     dest: temp,
     files: [{ path: 'package.json', contents: Buffer.from('') }]
@@ -33,10 +33,10 @@ test('unit:install:default', async () => {
 })
 
 // required yarn env
-test('unit:install:manual:yarn', async () => {
+test('unit:install:yarn', async () => {
   const temp = await mktmpdir()
   const pkg = { dependencies: { caz: '0.0.0' } }
-  await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
+  await fs.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
   const ctx = context({ dest: temp }, { install: 'yarn' })
   await install(ctx)
   expect(await exists(path.join(temp, 'yarn.lock'))).toBe(true)
@@ -47,10 +47,10 @@ test('unit:install:manual:yarn', async () => {
 })
 
 // required pnpm env
-test('unit:install:manual:pnpm', async () => {
+test('unit:install:pnpm', async () => {
   const temp = await mktmpdir()
   const pkg = { dependencies: { caz: '0.0.0' } }
-  await fs.promises.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
+  await fs.writeFile(path.join(temp, 'package.json'), JSON.stringify(pkg))
   const ctx = context({ dest: temp }, { install: 'pnpm' })
   await install(ctx)
   expect(await exists(path.join(temp, 'pnpm-lock.yaml'))).toBe(true)
@@ -60,9 +60,9 @@ test('unit:install:manual:pnpm', async () => {
   await destory(temp)
 })
 
-test('unit:install:manual:error', async () => {
+test('unit:install:error', async () => {
   const temp = await mktmpdir()
-  await fs.promises.writeFile(path.join(temp, 'package.json'), 'error package.json')
+  await fs.writeFile(path.join(temp, 'package.json'), 'error package.json')
   const ctx = context({ dest: temp }, { install: 'npm' })
   expect.hasAssertions()
   try {

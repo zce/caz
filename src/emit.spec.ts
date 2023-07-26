@@ -1,6 +1,6 @@
-import fs from 'fs'
-import path from 'path'
-import { jest, test, expect } from '@jest/globals'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { vi, test, expect } from 'vitest'
 import { context, destory, mktmpdir } from '../test/helpers'
 import emit from './emit'
 import { Context } from './types'
@@ -15,15 +15,15 @@ test('unit:emit:normal', async () => {
     ]
   })
   await emit(ctx)
-  const hello = await fs.promises.readFile(path.join(temp, 'hello.txt'), 'utf8')
+  const hello = await fs.readFile(path.join(temp, 'hello.txt'), 'utf8')
   expect(hello).toBe('hello')
-  const bar = await fs.promises.readFile(path.join(temp, 'foo/bar.txt'), 'utf8')
+  const bar = await fs.readFile(path.join(temp, 'foo/bar.txt'), 'utf8')
   expect(bar).toBe('bar')
   await destory(temp)
 })
 
 test('unit:emit:hook', async () => {
-  const callback = jest.fn<(ctx: Context) => Promise<void>>()
+  const callback = vi.fn<[ctx: Context], Promise<void>>()
   const ctx = context({}, { emit: callback })
   await emit(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)

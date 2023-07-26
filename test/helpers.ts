@@ -1,6 +1,6 @@
-import os from 'os'
-import fs from 'fs'
-import path from 'path'
+import os from 'node:os'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 import { Context, Template } from '../src'
 
 /**
@@ -18,7 +18,7 @@ export const fixture = (target: string): string => {
  * @returns true if input is exists
  */
 export const exists = async (input: string): Promise<boolean> => {
-  return await fs.promises.access(input).then(() => true).catch(() => false)
+  return await fs.access(input).then(() => true).catch(() => false)
 }
 
 /**
@@ -26,7 +26,7 @@ export const exists = async (input: string): Promise<boolean> => {
  * @returns temp directory path
  */
 export const mktmpdir = async (): Promise<string> => {
-  return await fs.promises.mkdtemp(path.join(os.tmpdir(), 'caz-test-'))
+  return await fs.mkdtemp(path.join(os.tmpdir(), 'caz-test-'))
 }
 
 /**
@@ -36,7 +36,7 @@ export const mktmpdir = async (): Promise<string> => {
 export const destory = async (...target: string[]): Promise<void> => {
   for (const item of target) {
     // cleanup require node >= v14.14.0
-    await fs.promises.rm(item, { recursive: true, force: true })
+    await fs.rm(item, { recursive: true, force: true })
   }
 }
 
@@ -47,7 +47,7 @@ export const destory = async (...target: string[]): Promise<void> => {
 // export const download = async () => {
 //   const file = fixture('archive.zip')
 //   const target = path.join(await mktmpdir(), 'archive.zip')
-//   await fs.promises.copyFile(file, target)
+//   await fs.copyFile(file, target)
 //   return target
 // }
 

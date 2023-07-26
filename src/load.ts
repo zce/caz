@@ -17,7 +17,7 @@ export default async (ctx: Context): Promise<void> => {
   // Automatic install template dependencies.
   const spinner = ora('Installing template dependencies...').start()
   try {
-    /* istanbul ignore next */
+    /* c8 ignore next */
     const cmd = process.platform === 'win32' ? 'npm.cmd' : 'npm'
     await exec(cmd, ['install', '--production'], { cwd: ctx.src })
     spinner.succeed('Installing template dependencies complete.')

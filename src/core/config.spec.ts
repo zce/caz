@@ -1,10 +1,9 @@
-import os from 'os'
-import { SpyInstance } from 'jest-mock'
-import { jest, test, expect } from '@jest/globals'
+import os from 'node:os'
+import { vi, test, expect, SpyInstance } from 'vitest'
 import { fixture } from '../../test/helpers'
 import config from './config'
 
-const mockHomedir = (): SpyInstance => jest.spyOn(os, 'homedir').mockImplementation(() => fixture(''))
+const mockHomedir = (): SpyInstance => vi.spyOn(os, 'homedir').mockImplementation(() => fixture(''))
 
 test('unit:core:config', async () => {
   expect(config.registry).toBe('https://github.com/{owner}/{name}/archive/refs/heads/{branch}.zip')
@@ -16,7 +15,7 @@ test('unit:core:config', async () => {
 
 test('unit:core:config:custom', async () => {
   const homedir = mockHomedir()
-  jest.resetModules()
+  vi.resetModules()
   const { default: conf } = await import('./config')
   expect(conf.registry).toBe('https://gitlab.com/{owner}/{name}/archive/refs/heads/{branch}.zip')
   expect(conf.official).toBe('faker')
@@ -27,27 +26,27 @@ test('unit:core:config:custom', async () => {
 })
 
 test('unit:core:config:env', async () => {
-  jest.resetModules()
+  vi.resetModules()
   process.env.ALL_PROXY = 'socks://127.0.0.1:11111'
   expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:11111')
 
-  jest.resetModules()
+  vi.resetModules()
   process.env.HTTPS_PROXY = 'socks://127.0.0.1:22222'
   expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
 
-  jest.resetModules()
+  vi.resetModules()
   process.env.https_proxy = 'socks://127.0.0.1:22222'
   expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
 
-  jest.resetModules()
+  vi.resetModules()
   process.env.HTTP_PROXY = 'socks://127.0.0.1:22222'
   expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
 
-  jest.resetModules()
+  vi.resetModules()
   process.env.http_proxy = 'socks://127.0.0.1:22222'
   expect((await import('./config')).default.proxy).toBe('socks://127.0.0.1:22222')
 
-  jest.resetModules()
+  vi.resetModules()
   process.env.NO_PROXY = '1'
   expect((await import('./config')).default.proxy).toBe(undefined)
 })

@@ -1,45 +1,39 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 import prompts from 'prompts'
-import { test, expect, beforeAll, afterAll } from '@jest/globals'
-import { context, destory, mktmpdir } from '../test/helpers'
+import { vi, test, expect, beforeAll, afterAll, SpyInstance } from 'vitest'
+import { context, destory, exists, mktmpdir } from '../test/helpers'
 import confirm from './confirm'
 
-const cwd = process.cwd()
+let tempcwd: string
+let mockcwd: SpyInstance<[], string>
 
 beforeAll(async () => {
-  process.chdir(await mktmpdir())
+  tempcwd = await mktmpdir()
+  mockcwd = vi.spyOn(process, 'cwd').mockReturnValue(tempcwd)
 })
 
 afterAll(async () => {
-  const temp = process.cwd()
-  process.chdir(cwd)
-  await destory(temp)
+  mockcwd.mockRestore()
+  await destory(tempcwd)
 })
 
 test('unit:confirm:not-exists', async () => {
-  const ctx = context({
-    project: 'not-exists'
-  })
+  const ctx = context({ project: 'not-exists' })
   await confirm(ctx)
   expect(ctx.dest).toBe(path.resolve('not-exists'))
 })
 
 test('unit:confirm:force', async () => {
-  await fs.promises.writeFile('force', '')
-  const ctx = context({
-    project: 'force',
-    options: { force: true }
-  })
+  await fs.writeFile(path.resolve('force'), '')
+  const ctx = context({ project: 'force', options: { force: true } })
   await confirm(ctx)
   expect(ctx.dest).toBe(path.resolve('force'))
 })
 
 test('unit:confirm:file', async () => {
-  await fs.promises.writeFile('file', '')
-  const ctx = context({
-    project: 'file'
-  })
+  await fs.writeFile(path.resolve('file'), '')
+  const ctx = context({ project: 'file' })
   expect.hasAssertions()
   try {
     await confirm(ctx)
@@ -49,21 +43,17 @@ test('unit:confirm:file', async () => {
 })
 
 test('unit:confirm:empty', async () => {
-  await fs.promises.mkdir('empty')
-  const ctx = context({
-    project: 'empty'
-  })
+  await fs.mkdir(path.resolve('empty'))
+  const ctx = context({ project: 'empty' })
   await confirm(ctx)
   expect(ctx.dest).toBe(path.resolve('empty'))
 })
 
 test('unit:confirm:sure', async () => {
-  await fs.promises.mkdir('sure')
-  await fs.promises.writeFile('sure/file', '')
+  await fs.mkdir(path.resolve('sure'))
+  await fs.writeFile(path.resolve('sure/file'), '')
   prompts.inject([false])
-  const ctx = context({
-    project: 'sure'
-  })
+  const ctx = context({ project: 'sure' })
   expect.hasAssertions()
   try {
     await confirm(ctx)
@@ -74,10 +64,8 @@ test('unit:confirm:sure', async () => {
 
 test('unit:confirm:sure-cwd', async () => {
   prompts.inject([false])
-  await fs.promises.writeFile('file', '')
-  const ctx = context({
-    project: '.'
-  })
+  await fs.writeFile(path.resolve('sure-cwd'), '')
+  const ctx = context({ project: '.' })
   expect.hasAssertions()
   try {
     await confirm(ctx)
@@ -87,41 +75,35 @@ test('unit:confirm:sure-cwd', async () => {
 })
 
 test('unit:confirm:merge', async () => {
-  await fs.promises.mkdir('merge')
-  await fs.promises.writeFile('merge/file', '')
+  await fs.mkdir(path.resolve('merge'))
+  await fs.writeFile(path.resolve('merge/file'), '')
   prompts.inject([true, 'merge'])
-  const ctx = context({
-    project: 'merge'
-  })
+  const ctx = context({ project: 'merge' })
   await confirm(ctx)
   expect(ctx.dest).toBe(path.resolve('merge'))
-  expect(fs.existsSync('merge/file')).toBe(true)
+  expect(await exists(path.resolve('merge/file'))).toBe(true)
 })
 
 test('unit:confirm:overwrite', async () => {
-  await fs.promises.mkdir('overwrite')
-  await fs.promises.writeFile('overwrite/file', '')
+  await fs.mkdir(path.resolve('overwrite'))
+  await fs.writeFile(path.resolve('overwrite/file'), '')
   prompts.inject([true, 'overwrite'])
-  const ctx = context({
-    project: 'overwrite'
-  })
+  const ctx = context({ project: 'overwrite' })
   await confirm(ctx)
   expect(ctx.dest).toBe(path.resolve('overwrite'))
-  expect(fs.existsSync('overwrite')).toBe(false)
+  expect(await exists(path.resolve('overwrite'))).toBe(false)
 })
 
 test('unit:confirm:cancel', async () => {
-  await fs.promises.mkdir('cancel')
-  await fs.promises.writeFile('cancel/file', '')
+  await fs.mkdir(path.resolve('cancel'))
+  await fs.writeFile(path.resolve('cancel/file'), '')
   prompts.inject([true, 'cancel'])
-  const ctx = context({
-    project: 'cancel'
-  })
+  const ctx = context({ project: 'cancel' })
   expect.hasAssertions()
   try {
     await confirm(ctx)
   } catch (e) {
     expect((e as Error).message).toBe('You have cancelled this task.')
-    expect(fs.existsSync('cancel/file')).toBe(true)
+    expect(await exists(path.resolve('cancel/file'))).toBe(true)
   }
 })

@@ -1,7 +1,7 @@
-import fs from 'fs'
-import path from 'path'
-import { jest, test, expect } from '@jest/globals'
-import { destory, exists, fixture, mktmpdir } from '../test/helpers'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { vi, test, expect } from 'vitest'
+import { destory, fixture, mktmpdir } from '../test/helpers'
 import { http } from './core'
 import * as caz from '.'
 
@@ -17,27 +17,25 @@ test('unit:exports', async () => {
 })
 
 test('unit:default', async () => {
-  const log = jest.spyOn(console, 'log')
-  const clear = jest.spyOn(console, 'clear')
+  const cwdtmpdir = await mktmpdir()
   const downloadtmpdir = await mktmpdir()
-  const download = jest.spyOn(http, 'download').mockImplementation(async () => {
+  const log = vi.spyOn(console, 'log')
+  const clear = vi.spyOn(console, 'clear')
+  const cwd = vi.spyOn(process, 'cwd').mockReturnValue(cwdtmpdir)
+  const download = vi.spyOn(http, 'download').mockImplementation(async () => {
     const file = fixture('minima.zip')
     const target = path.join(downloadtmpdir, 'minima.zip')
-    await fs.promises.copyFile(file, target)
+    await fs.copyFile(file, target)
     return target
   })
-  const temp = await mktmpdir()
-  const original = process.cwd()
-  process.chdir(temp)
   await caz.default('minima', 'minima-app', { force: true, offline: false, name: 'caz' })
-  expect(await exists('minima-app')).toBe(true)
-  const contents = await fs.promises.readFile('minima-app/caz.txt', 'utf8')
+  const contents = await fs.readFile(path.resolve('minima-app/caz.txt'), 'utf8')
   expect(contents.trim()).toBe('hey caz.')
-  process.chdir(original)
   log.mockRestore()
   clear.mockRestore()
+  cwd.mockRestore()
   download.mockRestore()
-  await destory(temp, downloadtmpdir)
+  await destory(cwdtmpdir, downloadtmpdir)
 })
 
 test('unit:error', async () => {

@@ -1,7 +1,7 @@
-import os from 'os'
-import fs from 'fs'
-import path from 'path'
-import { test, expect } from '@jest/globals'
+import os from 'node:os'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { test, expect } from 'vitest'
 import { fixture, exists, mktmpdir, destory } from '../../test/helpers'
 import * as file from './file'
 
@@ -63,7 +63,7 @@ test('unit:core:file:mkdir', async () => {
   // mode options (recursive false dependency case 1)
   const target3 = temp + '/3'
   await file.mkdir(target3, { mode: 0o755, recursive: false })
-  const stat3 = await fs.promises.stat(target3)
+  const stat3 = await fs.stat(target3)
   if (process.platform !== 'win32') {
     expect(stat3.mode & 0o777).toBe(0o755)
   }
@@ -81,19 +81,19 @@ test('unit:core:file:remove', async () => {
 
   // remove a file
   const target2 = path.join(temp, 'caz-remove-2')
-  await fs.promises.writeFile(target2, '')
+  await fs.writeFile(target2, '')
   await file.remove(target2)
   expect(await exists(target2)).toBe(false)
 
   // remove a dir
   const target3 = path.join(temp, 'caz-remove-3')
-  await fs.promises.mkdir(target3)
+  await fs.mkdir(target3)
   await file.remove(target3)
   expect(await exists(target3)).toBe(false)
 
   // remove a dir recursive
   const target4 = path.join(temp, 'caz-remove-4')
-  await fs.promises.mkdir(target4 + '/subdir/foo/bar', { recursive: true })
+  await fs.mkdir(target4 + '/subdir/foo/bar', { recursive: true })
   await file.remove(target4)
   expect(await exists(target4)).toBe(false)
 
@@ -111,16 +111,16 @@ test('unit:core:file:write', async () => {
   const temp = await mktmpdir()
   const filename = path.join(temp, 'temp.txt')
   await file.write(filename, 'hello zce')
-  const contents = await fs.promises.readFile(filename, 'utf8')
+  const contents = await fs.readFile(filename, 'utf8')
   expect(contents).toBe('hello zce')
 
   await destory(temp)
 })
 
 test('unit:core:file:isBinary', async () => {
-  const buffer1 = await fs.promises.readFile(fixture('archive.zip'))
+  const buffer1 = await fs.readFile(fixture('archive.zip'))
   expect(file.isBinary(buffer1)).toBe(true)
-  const buffer2 = await fs.promises.readFile(fixture('.cazrc'))
+  const buffer2 = await fs.readFile(fixture('.cazrc'))
   expect(file.isBinary(buffer2)).toBe(false)
 })
 
@@ -190,14 +190,14 @@ test('unit:core:file:extract:zip', async () => {
 
   const file1 = path.join(dir, 'LICENSE')
   expect(await exists(file1)).toBe(true)
-  const stat1 = await fs.promises.stat(file1)
+  const stat1 = await fs.stat(file1)
   if (process.platform !== 'win32') {
     expect(stat1.mode & 0o777).toBe(0o644)
   }
 
   const file2 = path.join(dir, 'README.md')
   expect(await exists(file2)).toBe(true)
-  const stat2 = await fs.promises.stat(file2)
+  const stat2 = await fs.stat(file2)
   if (process.platform !== 'win32') {
     expect(stat2.mode & 0o777).toBe(0o755)
   }

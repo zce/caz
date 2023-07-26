@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import glob from 'fast-glob'
 import { file } from './core'
 import { Context } from './types'

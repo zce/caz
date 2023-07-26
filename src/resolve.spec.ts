@@ -1,24 +1,23 @@
-import fs from 'fs'
-import path from 'path'
-import { SpyInstance } from 'jest-mock'
-import { jest, test, expect, beforeEach, afterEach } from '@jest/globals'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { vi, test, expect, beforeEach, afterEach, SpyInstance } from 'vitest'
 import { context, exists, destory, fixture, mktmpdir } from '../test/helpers'
 import { file, http, config } from './core'
 import resolve, { getTemplatePath, getTemplateUrl } from './resolve'
 
-let log: SpyInstance<(message?: any, ...optionalParams: any[]) => void>
-let download: SpyInstance<(url: string) => Promise<string>>
+let log: SpyInstance<[message?: any, ...optionalParams: any[]], void>
+let download: SpyInstance<[url: string], Promise<string>>
 let tmpdir: string | undefined
 
 const src = path.join(config.paths.cache, 'f8327697301af2fa')
 
 beforeEach(async () => {
-  log = jest.spyOn(console, 'log')
-  download = jest.spyOn(http, 'download').mockImplementation(async () => {
+  log = vi.spyOn(console, 'log')
+  download = vi.spyOn(http, 'download').mockImplementation(async () => {
     tmpdir = await mktmpdir()
     const file = fixture('archive.zip')
     const target = path.join(tmpdir, 'archive.zip')
-    await fs.promises.copyFile(file, target)
+    await fs.copyFile(file, target)
     return target
   })
 })
@@ -100,7 +99,7 @@ test('unit:resolve:local-tildify', async () => {
 })
 
 test('unit:resolve:fetch-remote', async () => {
-  await fs.promises.mkdir(src, { recursive: true })
+  await fs.mkdir(src, { recursive: true })
 
   const ctx = context({ template: 'minima' })
   await resolve(ctx)
@@ -111,7 +110,7 @@ test('unit:resolve:fetch-remote', async () => {
 })
 
 test('unit:resolve:fetch-cache-success', async () => {
-  await fs.promises.mkdir(src, { recursive: true })
+  await fs.mkdir(src, { recursive: true })
 
   const ctx = context({ template: 'minima', options: { offline: true } })
   await resolve(ctx)

@@ -1,6 +1,6 @@
-import path from 'path'
+import path from 'node:path'
 import prompts, { Answers, PromptObject } from 'prompts'
-import { jest, test, expect } from '@jest/globals'
+import { vi, test, expect } from 'vitest'
 import { context } from '../test/helpers'
 import { config } from './core'
 import inquire, { validater, processor } from './inquire'
@@ -48,7 +48,7 @@ test('unit:inquire:processor:name', async () => {
   expect(prompt2.validate).toBe(validater.name)
   expect(prompt2.initial).toBe('foo')
 
-  const validate3 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
+  const validate3 = vi.fn<[prev: any, values: Answers<string>, prompt: PromptObject], string>()
   const prompt3: PromptObject = { name: 'name', type: 'text', validate: validate3 }
   fn(prompt3)
   expect(prompt3.validate).toBe(validate3)
@@ -63,23 +63,23 @@ test('unit:inquire:processor:version', async () => {
   expect(prompt0.validate).toBe(validater.version)
   expect(prompt0.initial).toBe('3.2.1')
 
-  const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-version': '1.2.3' })
+  const mockConfig = vi.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-version': '1.2.3' })
 
   const prompt1: PromptObject = { name: 'version', type: 'text' }
   fn(prompt1)
   expect(prompt1.initial).toBe('1.2.3')
 
-  const validate2 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
+  const validate2 = vi.fn<[prev: any, values: Answers<string>, prompt: PromptObject], string>()
   const prompt2: PromptObject = { name: 'version', type: 'text', validate: validate2 }
   fn(prompt2)
   expect(prompt2.validate).toBe(validate2)
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue({})
+  vi.spyOn(config, 'npm', 'get').mockReturnValue({})
   const prompt3: PromptObject = { name: 'version', type: 'text' }
   fn(prompt3)
   expect(prompt3.initial).toBe('0.1.0')
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
+  vi.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
   const prompt4: PromptObject = { name: 'version', type: 'text' }
   fn(prompt4)
   expect(prompt4.initial).toBe('0.1.0')
@@ -95,30 +95,30 @@ test('unit:inquire:processor:author', async () => {
   fn(prompt0)
   expect(prompt0.initial).toBe('zce')
 
-  const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-name': 'faker-npm' })
+  const mockConfig = vi.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-name': 'faker-npm' })
 
   const prompt1: PromptObject = { name: 'author', type: 'text' }
   fn(prompt1)
   expect(prompt1.initial).toBe('faker-npm')
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue({})
-  jest.spyOn(config, 'git', 'get').mockReturnValue({ user: { name: 'faker-git' } })
+  vi.spyOn(config, 'npm', 'get').mockReturnValue({})
+  vi.spyOn(config, 'git', 'get').mockReturnValue({ user: { name: 'faker-git' } })
   const prompt2: PromptObject = { name: 'author', type: 'text' }
   fn(prompt2)
   expect(prompt2.initial).toBe('faker-git')
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
-  jest.spyOn(config, 'git', 'get').mockReturnValue({ user: { name: 'faker-git' } })
+  vi.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
+  vi.spyOn(config, 'git', 'get').mockReturnValue({ user: { name: 'faker-git' } })
   const prompt3: PromptObject = { name: 'author', type: 'text' }
   fn(prompt3)
   expect(prompt3.initial).toBe('faker-git')
 
-  jest.spyOn(config, 'git', 'get').mockReturnValue({})
+  vi.spyOn(config, 'git', 'get').mockReturnValue({})
   const prompt4: PromptObject = { name: 'author', type: 'text' }
   fn(prompt4)
   expect(prompt4.initial).toBe(undefined)
 
-  jest.spyOn(config, 'git', 'get').mockReturnValue(undefined)
+  vi.spyOn(config, 'git', 'get').mockReturnValue(undefined)
   const prompt5: PromptObject = { name: 'author', type: 'text' }
   fn(prompt5)
   expect(prompt5.initial).toBe(undefined)
@@ -134,36 +134,36 @@ test('unit:inquire:processor:email', async () => {
   fn(prompt0)
   expect(prompt0.initial).toBe('w@zce.me')
 
-  const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-email': 'npm@faker.com' })
+  const mockConfig = vi.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-email': 'npm@faker.com' })
 
   const prompt1: PromptObject = { name: 'email', type: 'text' }
   fn(prompt1)
   expect(prompt1.validate).toBe(validater.email)
   expect(prompt1.initial).toBe('npm@faker.com')
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue({})
-  jest.spyOn(config, 'git', 'get').mockReturnValue({ user: { email: 'git@faker.com' } })
+  vi.spyOn(config, 'npm', 'get').mockReturnValue({})
+  vi.spyOn(config, 'git', 'get').mockReturnValue({ user: { email: 'git@faker.com' } })
   const prompt2: PromptObject = { name: 'email', type: 'text' }
   fn(prompt2)
   expect(prompt2.initial).toBe('git@faker.com')
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
-  jest.spyOn(config, 'git', 'get').mockReturnValue({ user: { email: 'git@faker.com' } })
+  vi.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
+  vi.spyOn(config, 'git', 'get').mockReturnValue({ user: { email: 'git@faker.com' } })
   const prompt3: PromptObject = { name: 'email', type: 'text' }
   fn(prompt3)
   expect(prompt3.initial).toBe('git@faker.com')
 
-  jest.spyOn(config, 'git', 'get').mockReturnValue({})
+  vi.spyOn(config, 'git', 'get').mockReturnValue({})
   const prompt4: PromptObject = { name: 'email', type: 'text' }
   fn(prompt4)
   expect(prompt4.initial).toBe(undefined)
 
-  jest.spyOn(config, 'git', 'get').mockReturnValue(undefined)
+  vi.spyOn(config, 'git', 'get').mockReturnValue(undefined)
   const prompt5: PromptObject = { name: 'email', type: 'text' }
   fn(prompt5)
   expect(prompt5.initial).toBe(undefined)
 
-  const validate6 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
+  const validate6 = vi.fn<[prev: any, values: Answers<string>, prompt: PromptObject], string>()
   const prompt6: PromptObject = { name: 'email', type: 'text', validate: validate6 }
   fn(prompt6)
   expect(prompt6.validate).toBe(validate6)
@@ -179,36 +179,36 @@ test('unit:inquire:processor:url', async () => {
   fn(prompt0)
   expect(prompt0.initial).toBe('https://zce.me')
 
-  const mockConfig = jest.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-url': 'https://npm.faker.com' })
+  const mockConfig = vi.spyOn(config, 'npm', 'get').mockReturnValue({ 'init-author-url': 'https://npm.faker.com' })
 
   const prompt1: PromptObject = { name: 'url', type: 'text' }
   fn(prompt1)
   expect(prompt1.validate).toBe(validater.url)
   expect(prompt1.initial).toBe('https://npm.faker.com')
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue({})
-  jest.spyOn(config, 'git', 'get').mockReturnValue({ user: { url: 'https://git.faker.com' } })
+  vi.spyOn(config, 'npm', 'get').mockReturnValue({})
+  vi.spyOn(config, 'git', 'get').mockReturnValue({ user: { url: 'https://git.faker.com' } })
   const prompt2: PromptObject = { name: 'url', type: 'text' }
   fn(prompt2)
   expect(prompt2.initial).toBe('https://git.faker.com')
 
-  jest.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
-  jest.spyOn(config, 'git', 'get').mockReturnValue({ user: { url: 'https://git.faker.com' } })
+  vi.spyOn(config, 'npm', 'get').mockReturnValue(undefined)
+  vi.spyOn(config, 'git', 'get').mockReturnValue({ user: { url: 'https://git.faker.com' } })
   const prompt3: PromptObject = { name: 'url', type: 'text' }
   fn(prompt3)
   expect(prompt3.initial).toBe('https://git.faker.com')
 
-  jest.spyOn(config, 'git', 'get').mockReturnValue({})
+  vi.spyOn(config, 'git', 'get').mockReturnValue({})
   const prompt4: PromptObject = { name: 'url', type: 'text' }
   fn(prompt4)
   expect(prompt4.initial).toBe(undefined)
 
-  jest.spyOn(config, 'git', 'get').mockReturnValue(undefined)
+  vi.spyOn(config, 'git', 'get').mockReturnValue(undefined)
   const prompt5: PromptObject = { name: 'url', type: 'text' }
   fn(prompt5)
   expect(prompt5.initial).toBe(undefined)
 
-  const validate6 = jest.fn<(prev: any, values: Answers<string>, prompt: PromptObject) => string>()
+  const validate6 = vi.fn<[prev: any, values: Answers<string>, prompt: PromptObject], string>()
   const prompt6: PromptObject = { name: 'url', type: 'text', validate: validate6 }
   fn(prompt6)
   expect(prompt6.validate).toBe(validate6)
@@ -217,7 +217,7 @@ test('unit:inquire:processor:url', async () => {
 })
 
 test('unit:inquire:default', async () => {
-  const clear = jest.spyOn(console, 'clear')
+  const clear = vi.spyOn(console, 'clear')
   const ctx = context({ dest: __dirname })
   prompts.inject(['foo'])
   await inquire(ctx)
@@ -228,7 +228,7 @@ test('unit:inquire:default', async () => {
 })
 
 test('unit:inquire:custom', async () => {
-  const clear = jest.spyOn(console, 'clear')
+  const clear = vi.spyOn(console, 'clear')
   const ctx = context({}, {
     prompts: [
       { name: 'foo', type: 'text', message: 'foo' },
@@ -243,7 +243,7 @@ test('unit:inquire:custom', async () => {
 })
 
 test('unit:inquire:override', async () => {
-  const clear = jest.spyOn(console, 'clear')
+  const clear = vi.spyOn(console, 'clear')
   const ctx = context({}, {
     prompts: [
       { name: 'foo', type: 'text', message: 'foo' },

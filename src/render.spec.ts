@@ -1,5 +1,5 @@
-import fs from 'fs'
-import { test, expect } from '@jest/globals'
+import fs from 'node:fs'
+import { test, expect } from 'vitest'
 import { context, fixture } from '../test/helpers'
 import render from './render'
 

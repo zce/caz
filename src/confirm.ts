@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import prompts from 'prompts'
 import { file } from './core'
 import { Context } from './types'

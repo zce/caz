@@ -1,6 +1,6 @@
-import os from 'os'
-import fs from 'fs'
-import path from 'path'
+import os from 'node:os'
+import fs from 'node:fs'
+import path from 'node:path'
 import AdmZip from 'adm-zip'
 
 /**
@@ -10,7 +10,7 @@ import AdmZip from 'adm-zip'
 export const exists = async (input: string): Promise<false | 'file' | 'dir' | 'other'> => {
   try {
     const stat = await fs.promises.stat(input)
-    /* istanbul ignore else */
+    /* c8 ignore next 5 */
     if (stat.isDirectory()) {
       return 'dir'
     } else if (stat.isFile()) {
@@ -19,7 +19,7 @@ export const exists = async (input: string): Promise<false | 'file' | 'dir' | 'o
       return 'other'
     }
   } catch (err) {
-    /* istanbul ignore if */
+    /* c8 ignore next */
     if ((err as NodeJS.ErrnoException).code !== 'ENOENT') {
       throw err
     }
@@ -156,7 +156,7 @@ export const extract = async (input: string, output: string, strip = 0): Promise
   // https://github.com/cthackers/adm-zip/issues/407#issuecomment-990086783
   // keep original file permissions
   zip.extractAllToAsync(output, true, true, err => {
-    /* istanbul ignore if */
+    /* c8 ignore next */
     if (err != null) throw err
     resolve()
   })
