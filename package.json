@@ -89,7 +89,7 @@
     "semver": "7.5.4",
     "socks-proxy-agent": "8.0.1",
     "ts-standard": "12.0.2",
-    "tsup": "7.1.0",
+    "tsup": "7.2.0",
     "typescript": "5.1.6",
     "validate-npm-package-name": "5.0.0",
     "vitest": "0.33.0"
