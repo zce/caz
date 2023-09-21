@@ -42,7 +42,7 @@ test('unit:prepare:custom', async () => {
 })
 
 test('unit:prepare:hook', async () => {
-  const callback = vi.fn<(ctx: Context) => Promise<void>>()
+  const callback = vi.fn<[ctx: Context], Promise<void>>()
   const ctx = context({}, { prepare: callback })
   await prepare(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)

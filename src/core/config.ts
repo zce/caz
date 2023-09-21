@@ -34,7 +34,6 @@ const config = parseIni(path.join(os.homedir(), `.${name}rc`)) ?? {}
 // env proxy config
 const envProxy = process.env.http_proxy ?? process.env.HTTP_PROXY ?? process.env.https_proxy ?? process.env.HTTPS_PROXY ?? process.env.ALL_PROXY
 config.proxy = envProxy ?? config.proxy
-
 if (process.env.no_proxy != null || process.env.NO_PROXY != null) {
   delete config.proxy // disable proxy
 }

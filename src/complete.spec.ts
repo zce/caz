@@ -38,7 +38,7 @@ test('unit:complete:string', async () => {
 })
 
 test('unit:complete:callback', async () => {
-  const callback = vi.fn<(ctx: Context) => string | Promise<string> | Promise<void>>()
+  const callback = vi.fn<[ctx: Context], string | Promise<string> | Promise<void>>()
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback.mock.calls[0][0]).toBe(ctx)
@@ -46,7 +46,7 @@ test('unit:complete:callback', async () => {
 
 test('unit:complete:callback-return', async () => {
   // eslint-disable-next-line @typescript-eslint/no-extra-parens
-  const callback = vi.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(() => 'completed')
+  const callback = vi.fn<[ctx: Context], string | Promise<string> | Promise<void>>(() => 'completed')
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback).toHaveBeenCalled()
@@ -55,7 +55,7 @@ test('unit:complete:callback-return', async () => {
 
 test('unit:complete:callback-promise', async () => {
   // eslint-disable-next-line @typescript-eslint/no-extra-parens
-  const callback = vi.fn<(ctx: Context) => string | Promise<string> | Promise<void>>(async () => 'completed')
+  const callback = vi.fn<[ctx: Context], string | Promise<string> | Promise<void>>(async () => 'completed')
   const ctx = context({}, { complete: callback })
   await complete(ctx)
   expect(callback).toHaveBeenCalled()
