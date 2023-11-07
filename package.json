@@ -74,7 +74,7 @@
     "@types/lodash": "4.14.198",
     "@types/node": "20.6.3",
     "@types/semver": "7.5.2",
-    "@types/validate-npm-package-name": "4.0.0",
+    "@types/validate-npm-package-name": "4.0.2",
     "adm-zip": "0.5.10",
     "cac": "6.7.14",
     "env-paths": "3.0.0",
