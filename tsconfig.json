@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "moduleResolution": "node",
+    "target": "es2022",
+    "lib": ["es2022"],
+    "module": "es2022",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
     "strict": true
-  }
+  },
+  "include": ["src"]
 }
