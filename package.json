@@ -91,7 +91,7 @@
     "ts-standard": "12.0.2",
     "tsup": "7.2.0",
     "typescript": "5.2.2",
-    "validate-npm-package-name": "5.0.0",
+    "validate-npm-package-name": "5.0.1",
     "vitest": "0.34.4"
   },
   "engines": {
