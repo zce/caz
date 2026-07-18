@@ -75,7 +75,7 @@
     "@types/node": "20.11.22",
     "@types/semver": "7.5.2",
     "@types/validate-npm-package-name": "4.0.0",
-    "adm-zip": "0.5.10",
+    "adm-zip": "0.6.0",
     "cac": "6.7.14",
     "env-paths": "3.0.0",
     "fast-glob": "3.3.1",
